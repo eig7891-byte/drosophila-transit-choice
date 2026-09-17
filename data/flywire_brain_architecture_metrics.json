@@ -1,0 +1,49 @@
+{
+  "total_annotated_neurons": 138327,
+  "total_classified_neurons": 139255,
+  "super_class_counts": {
+    "optic": 77873,
+    "central": 32381,
+    "sensory": 16938,
+    "visual_projection": 7684,
+    "ascending": 1750,
+    "descending": 1305,
+    "sensory_ascending": 612,
+    "visual_centrifugal": 522,
+    "motor": 110,
+    "endocrine": 80
+  },
+  "class_counts_top": {
+    "optic_lobe_intrinsic": 77382,
+    "visual": 11426,
+    "Kenyon_Cell": 5177,
+    "CX": 2878,
+    "mechanosensory": 2674,
+    "olfactory": 2281,
+    "AN": 2276,
+    "ALPN": 685,
+    "LHLN": 517,
+    "ALLN": 429,
+    "gustatory": 408,
+    "DAN": 331,
+    "bilateral": 220,
+    "TuBu": 150,
+    "unknown_sensory": 132,
+    "brain_motor_neuron": 106,
+    "MBON": 96,
+    "mAL": 77,
+    "hygrosensory": 74,
+    "ocellar": 63
+  },
+  "kenyon_cell_count": 5177,
+  "total_mbon_count": 96,
+  "total_pam_count": 307,
+  "total_ppl1_count": 16,
+  "epg_compass_count": 47,
+  "motor_neuron_count": 110,
+  "ratios": {
+    "kc_to_mbon01": 2588.5,
+    "pam_to_ppl1_total": 19.1875,
+    "sensory_to_motor_funnel": 153.98181818181817
+  }
+}

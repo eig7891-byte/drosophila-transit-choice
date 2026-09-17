@@ -1,0 +1,16 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+venv/
+env/
+.venv/
+
+# Temporary and local IDE settings
+.vscode/
+.idea/
+.DS_Store
+*.csv.gz
+scratch_*.txt

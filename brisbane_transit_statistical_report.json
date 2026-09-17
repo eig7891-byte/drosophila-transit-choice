@@ -1,0 +1,482 @@
+{
+  "total_commuters_simulated": 10000,
+  "demographics": {
+    "overall_ownership": {
+      "car": 87.8,
+      "bike": 32.9,
+      "scooter": 9.5
+    },
+    "archetype_counts": {
+      "CBD_Professional": 3998,
+      "Student": 2545,
+      "Suburban_Worker": 1982,
+      "Fitness_Enthusiast": 1475
+    },
+    "archetype_ownership": {
+      "has_car": {
+        "CBD_Professional": 95.9,
+        "Fitness_Enthusiast": 88.6,
+        "Student": 68.7,
+        "Suburban_Worker": 95.6
+      },
+      "has_bike": {
+        "CBD_Professional": 20.5,
+        "Fitness_Enthusiast": 91.7,
+        "Student": 30.5,
+        "Suburban_Worker": 17.2
+      },
+      "has_scooter": {
+        "CBD_Professional": 7.8,
+        "Fitness_Enthusiast": 9.2,
+        "Student": 15.4,
+        "Suburban_Worker": 5.8
+      }
+    }
+  },
+  "scenarios": {
+    "Policy_1_Current_50c": {
+      "transit_fare_aud": 0.5,
+      "transit_speed_factor": 1.0,
+      "bike_effort_discount": 0.0,
+      "weather_heat_index": 0.25,
+      "mode_shares": {
+        "Car": 51.38,
+        "Transit": 36.010000000000005,
+        "Bicycle": 12.61
+      },
+      "mode_counts": {
+        "Car": 5138,
+        "Transit_Walk": 3219,
+        "Bicycle": 1261,
+        "Transit_Scooter": 382
+      },
+      "daily_car_vkt": 158976.28,
+      "daily_vkt_saved": 135173.91999999995,
+      "daily_co2_kg": 27184.943880000003,
+      "daily_co2_saved_kg": 23114.740319999994,
+      "archetype_breakdown_pct": {
+        "Bicycle": {
+          "CBD_Professional": 5.1,
+          "Fitness_Enthusiast": 37.9,
+          "Student": 14.2,
+          "Suburban_Worker": 7.0
+        },
+        "Car": {
+          "CBD_Professional": 73.1,
+          "Fitness_Enthusiast": 34.7,
+          "Student": 24.8,
+          "Suburban_Worker": 54.1
+        },
+        "Transit_Scooter": {
+          "CBD_Professional": 2.5,
+          "Fitness_Enthusiast": 2.7,
+          "Student": 7.4,
+          "Suburban_Worker": 2.7
+        },
+        "Transit_Walk": {
+          "CBD_Professional": 19.3,
+          "Fitness_Enthusiast": 24.7,
+          "Student": 53.6,
+          "Suburban_Worker": 36.2
+        }
+      },
+      "corridor_breakdown_pct": {
+        "Bicycle": {
+          "Carindale to CBD (Eastern)": 11.2,
+          "Chermside to CBD (Northern)": 13.9,
+          "Indooroopilly to CBD (Western)": 14.2,
+          "Logan Central to CBD (Outer South)": 8.5,
+          "Mt Gravatt to CBD (South-East)": 12.6,
+          "Springwood to Rochedale South (5.2km Local)": 19.5,
+          "Springwood to UQ St Lucia (28.8km University)": 8.5
+        },
+        "Car": {
+          "Carindale to CBD (Eastern)": 39.6,
+          "Chermside to CBD (Northern)": 48.6,
+          "Indooroopilly to CBD (Western)": 35.8,
+          "Logan Central to CBD (Outer South)": 56.8,
+          "Mt Gravatt to CBD (South-East)": 56.0,
+          "Springwood to Rochedale South (5.2km Local)": 61.6,
+          "Springwood to UQ St Lucia (28.8km University)": 61.4
+        },
+        "Transit_Scooter": {
+          "Carindale to CBD (Eastern)": 4.1,
+          "Chermside to CBD (Northern)": 3.2,
+          "Indooroopilly to CBD (Western)": 3.4,
+          "Logan Central to CBD (Outer South)": 4.1,
+          "Mt Gravatt to CBD (South-East)": 3.8,
+          "Springwood to Rochedale South (5.2km Local)": 3.6,
+          "Springwood to UQ St Lucia (28.8km University)": 4.6
+        },
+        "Transit_Walk": {
+          "Carindale to CBD (Eastern)": 45.1,
+          "Chermside to CBD (Northern)": 34.4,
+          "Indooroopilly to CBD (Western)": 46.6,
+          "Logan Central to CBD (Outer South)": 30.6,
+          "Mt Gravatt to CBD (South-East)": 27.6,
+          "Springwood to Rochedale South (5.2km Local)": 15.4,
+          "Springwood to UQ St Lucia (28.8km University)": 25.6
+        }
+      }
+    },
+    "Policy_2_Fare_Rollback_Old_Tariff": {
+      "transit_fare_aud": 4.5,
+      "transit_speed_factor": 1.0,
+      "bike_effort_discount": 0.0,
+      "weather_heat_index": 0.25,
+      "mode_shares": {
+        "Car": 53.800000000000004,
+        "Transit": 32.58,
+        "Bicycle": 13.62
+      },
+      "mode_counts": {
+        "Car": 5380,
+        "Transit_Walk": 2929,
+        "Bicycle": 1362,
+        "Transit_Scooter": 329
+      },
+      "daily_car_vkt": 163479.72,
+      "daily_vkt_saved": 130670.47999999995,
+      "daily_co2_kg": 27955.032120000003,
+      "daily_co2_saved_kg": 22344.652079999993,
+      "archetype_breakdown_pct": {
+        "Bicycle": {
+          "CBD_Professional": 5.1,
+          "Fitness_Enthusiast": 41.7,
+          "Student": 15.7,
+          "Suburban_Worker": 7.3
+        },
+        "Car": {
+          "CBD_Professional": 73.9,
+          "Fitness_Enthusiast": 34.4,
+          "Student": 29.7,
+          "Suburban_Worker": 58.7
+        },
+        "Transit_Scooter": {
+          "CBD_Professional": 2.4,
+          "Fitness_Enthusiast": 2.4,
+          "Student": 6.4,
+          "Suburban_Worker": 1.8
+        },
+        "Transit_Walk": {
+          "CBD_Professional": 18.7,
+          "Fitness_Enthusiast": 21.5,
+          "Student": 48.2,
+          "Suburban_Worker": 32.2
+        }
+      },
+      "corridor_breakdown_pct": {
+        "Bicycle": {
+          "Carindale to CBD (Eastern)": 12.3,
+          "Chermside to CBD (Northern)": 15.5,
+          "Indooroopilly to CBD (Western)": 16.8,
+          "Logan Central to CBD (Outer South)": 11.1,
+          "Mt Gravatt to CBD (South-East)": 12.1,
+          "Springwood to Rochedale South (5.2km Local)": 19.4,
+          "Springwood to UQ St Lucia (28.8km University)": 8.3
+        },
+        "Car": {
+          "Carindale to CBD (Eastern)": 41.9,
+          "Chermside to CBD (Northern)": 49.9,
+          "Indooroopilly to CBD (Western)": 42.0,
+          "Logan Central to CBD (Outer South)": 57.1,
+          "Mt Gravatt to CBD (South-East)": 58.3,
+          "Springwood to Rochedale South (5.2km Local)": 65.8,
+          "Springwood to UQ St Lucia (28.8km University)": 61.7
+        },
+        "Transit_Scooter": {
+          "Carindale to CBD (Eastern)": 3.9,
+          "Chermside to CBD (Northern)": 2.8,
+          "Indooroopilly to CBD (Western)": 3.6,
+          "Logan Central to CBD (Outer South)": 3.1,
+          "Mt Gravatt to CBD (South-East)": 3.3,
+          "Springwood to Rochedale South (5.2km Local)": 3.1,
+          "Springwood to UQ St Lucia (28.8km University)": 3.2
+        },
+        "Transit_Walk": {
+          "Carindale to CBD (Eastern)": 41.8,
+          "Chermside to CBD (Northern)": 31.8,
+          "Indooroopilly to CBD (Western)": 37.6,
+          "Logan Central to CBD (Outer South)": 28.7,
+          "Mt Gravatt to CBD (South-East)": 26.4,
+          "Springwood to Rochedale South (5.2km Local)": 11.7,
+          "Springwood to UQ St Lucia (28.8km University)": 26.8
+        }
+      }
+    },
+    "Policy_3_50c_Plus_Brisbane_Metro": {
+      "transit_fare_aud": 0.5,
+      "transit_speed_factor": 0.7,
+      "bike_effort_discount": 0.0,
+      "weather_heat_index": 0.25,
+      "mode_shares": {
+        "Car": 45.57,
+        "Transit": 43.51,
+        "Bicycle": 10.92
+      },
+      "mode_counts": {
+        "Car": 4557,
+        "Transit_Walk": 3958,
+        "Bicycle": 1092,
+        "Transit_Scooter": 393
+      },
+      "daily_car_vkt": 142197.32,
+      "daily_vkt_saved": 151952.87999999995,
+      "daily_co2_kg": 24315.74172,
+      "daily_co2_saved_kg": 25983.942479999994,
+      "archetype_breakdown_pct": {
+        "Bicycle": {
+          "CBD_Professional": 4.5,
+          "Fitness_Enthusiast": 32.5,
+          "Student": 12.0,
+          "Suburban_Worker": 6.4
+        },
+        "Car": {
+          "CBD_Professional": 66.0,
+          "Fitness_Enthusiast": 30.7,
+          "Student": 21.1,
+          "Suburban_Worker": 46.7
+        },
+        "Transit_Scooter": {
+          "CBD_Professional": 2.7,
+          "Fitness_Enthusiast": 3.0,
+          "Student": 7.1,
+          "Suburban_Worker": 3.1
+        },
+        "Transit_Walk": {
+          "CBD_Professional": 26.8,
+          "Fitness_Enthusiast": 33.8,
+          "Student": 59.8,
+          "Suburban_Worker": 43.7
+        }
+      },
+      "corridor_breakdown_pct": {
+        "Bicycle": {
+          "Carindale to CBD (Eastern)": 8.1,
+          "Chermside to CBD (Northern)": 10.4,
+          "Indooroopilly to CBD (Western)": 12.9,
+          "Logan Central to CBD (Outer South)": 7.9,
+          "Mt Gravatt to CBD (South-East)": 12.5,
+          "Springwood to Rochedale South (5.2km Local)": 17.6,
+          "Springwood to UQ St Lucia (28.8km University)": 7.1
+        },
+        "Car": {
+          "Carindale to CBD (Eastern)": 28.8,
+          "Chermside to CBD (Northern)": 39.9,
+          "Indooroopilly to CBD (Western)": 29.6,
+          "Logan Central to CBD (Outer South)": 52.7,
+          "Mt Gravatt to CBD (South-East)": 50.0,
+          "Springwood to Rochedale South (5.2km Local)": 61.8,
+          "Springwood to UQ St Lucia (28.8km University)": 56.4
+        },
+        "Transit_Scooter": {
+          "Carindale to CBD (Eastern)": 4.5,
+          "Chermside to CBD (Northern)": 3.4,
+          "Indooroopilly to CBD (Western)": 3.6,
+          "Logan Central to CBD (Outer South)": 3.6,
+          "Mt Gravatt to CBD (South-East)": 4.8,
+          "Springwood to Rochedale South (5.2km Local)": 2.8,
+          "Springwood to UQ St Lucia (28.8km University)": 4.7
+        },
+        "Transit_Walk": {
+          "Carindale to CBD (Eastern)": 58.5,
+          "Chermside to CBD (Northern)": 46.3,
+          "Indooroopilly to CBD (Western)": 53.8,
+          "Logan Central to CBD (Outer South)": 35.8,
+          "Mt Gravatt to CBD (South-East)": 32.7,
+          "Springwood to Rochedale South (5.2km Local)": 17.8,
+          "Springwood to UQ St Lucia (28.8km University)": 31.8
+        }
+      }
+    },
+    "Policy_4_Green_Mobility_All_In": {
+      "transit_fare_aud": 0.5,
+      "transit_speed_factor": 0.7,
+      "bike_effort_discount": 0.4,
+      "weather_heat_index": 0.25,
+      "mode_shares": {
+        "Car": 44.92,
+        "Transit": 42.67,
+        "Bicycle": 12.41
+      },
+      "mode_counts": {
+        "Car": 4492,
+        "Transit_Walk": 3849,
+        "Bicycle": 1241,
+        "Transit_Scooter": 418
+      },
+      "daily_car_vkt": 141178.03999999998,
+      "daily_vkt_saved": 152972.15999999997,
+      "daily_co2_kg": 24141.444839999996,
+      "daily_co2_saved_kg": 26158.239359999996,
+      "archetype_breakdown_pct": {
+        "Bicycle": {
+          "CBD_Professional": 5.2,
+          "Fitness_Enthusiast": 35.5,
+          "Student": 14.9,
+          "Suburban_Worker": 6.6
+        },
+        "Car": {
+          "CBD_Professional": 65.2,
+          "Fitness_Enthusiast": 28.0,
+          "Student": 20.6,
+          "Suburban_Worker": 47.8
+        },
+        "Transit_Scooter": {
+          "CBD_Professional": 3.1,
+          "Fitness_Enthusiast": 3.7,
+          "Student": 7.6,
+          "Suburban_Worker": 2.4
+        },
+        "Transit_Walk": {
+          "CBD_Professional": 26.5,
+          "Fitness_Enthusiast": 32.7,
+          "Student": 56.9,
+          "Suburban_Worker": 43.2
+        }
+      },
+      "corridor_breakdown_pct": {
+        "Bicycle": {
+          "Carindale to CBD (Eastern)": 9.2,
+          "Chermside to CBD (Northern)": 13.3,
+          "Indooroopilly to CBD (Western)": 13.6,
+          "Logan Central to CBD (Outer South)": 8.6,
+          "Mt Gravatt to CBD (South-East)": 14.9,
+          "Springwood to Rochedale South (5.2km Local)": 18.3,
+          "Springwood to UQ St Lucia (28.8km University)": 8.7
+        },
+        "Car": {
+          "Carindale to CBD (Eastern)": 30.3,
+          "Chermside to CBD (Northern)": 35.6,
+          "Indooroopilly to CBD (Western)": 28.8,
+          "Logan Central to CBD (Outer South)": 52.8,
+          "Mt Gravatt to CBD (South-East)": 49.0,
+          "Springwood to Rochedale South (5.2km Local)": 61.6,
+          "Springwood to UQ St Lucia (28.8km University)": 57.0
+        },
+        "Transit_Scooter": {
+          "Carindale to CBD (Eastern)": 4.3,
+          "Chermside to CBD (Northern)": 4.1,
+          "Indooroopilly to CBD (Western)": 4.0,
+          "Logan Central to CBD (Outer South)": 4.6,
+          "Mt Gravatt to CBD (South-East)": 3.7,
+          "Springwood to Rochedale South (5.2km Local)": 3.4,
+          "Springwood to UQ St Lucia (28.8km University)": 5.1
+        },
+        "Transit_Walk": {
+          "Carindale to CBD (Eastern)": 56.2,
+          "Chermside to CBD (Northern)": 47.0,
+          "Indooroopilly to CBD (Western)": 53.6,
+          "Logan Central to CBD (Outer South)": 34.0,
+          "Mt Gravatt to CBD (South-East)": 32.3,
+          "Springwood to Rochedale South (5.2km Local)": 16.6,
+          "Springwood to UQ St Lucia (28.8km University)": 29.2
+        }
+      }
+    }
+  },
+  "fare_sensitivity_sweep": [
+    {
+      "fare_aud": 0.0,
+      "car_share": 50.68,
+      "transit_share": 36.97,
+      "bike_share": 12.35
+    },
+    {
+      "fare_aud": 0.5,
+      "car_share": 50.760000000000005,
+      "transit_share": 36.76,
+      "bike_share": 12.479999999999999
+    },
+    {
+      "fare_aud": 1.0,
+      "car_share": 50.8,
+      "transit_share": 36.230000000000004,
+      "bike_share": 12.97
+    },
+    {
+      "fare_aud": 1.5,
+      "car_share": 51.49,
+      "transit_share": 35.41,
+      "bike_share": 13.100000000000001
+    },
+    {
+      "fare_aud": 2.0,
+      "car_share": 52.849999999999994,
+      "transit_share": 34.230000000000004,
+      "bike_share": 12.920000000000002
+    },
+    {
+      "fare_aud": 2.5,
+      "car_share": 53.410000000000004,
+      "transit_share": 33.620000000000005,
+      "bike_share": 12.97
+    },
+    {
+      "fare_aud": 3.0,
+      "car_share": 53.510000000000005,
+      "transit_share": 33.44,
+      "bike_share": 13.05
+    },
+    {
+      "fare_aud": 3.5,
+      "car_share": 53.39,
+      "transit_share": 33.32,
+      "bike_share": 13.29
+    },
+    {
+      "fare_aud": 4.0,
+      "car_share": 54.04,
+      "transit_share": 32.25,
+      "bike_share": 13.71
+    },
+    {
+      "fare_aud": 4.5,
+      "car_share": 54.71,
+      "transit_share": 31.54,
+      "bike_share": 13.750000000000002
+    },
+    {
+      "fare_aud": 5.0,
+      "car_share": 55.04,
+      "transit_share": 31.409999999999997,
+      "bike_share": 13.55
+    },
+    {
+      "fare_aud": 5.5,
+      "car_share": 54.949999999999996,
+      "transit_share": 31.130000000000003,
+      "bike_share": 13.919999999999998
+    },
+    {
+      "fare_aud": 6.0,
+      "car_share": 56.63,
+      "transit_share": 29.07,
+      "bike_share": 14.299999999999999
+    },
+    {
+      "fare_aud": 6.5,
+      "car_share": 56.57,
+      "transit_share": 29.15,
+      "bike_share": 14.280000000000001
+    },
+    {
+      "fare_aud": 7.0,
+      "car_share": 57.19,
+      "transit_share": 28.69,
+      "bike_share": 14.12
+    },
+    {
+      "fare_aud": 7.5,
+      "car_share": 57.65,
+      "transit_share": 27.65,
+      "bike_share": 14.7
+    },
+    {
+      "fare_aud": 8.0,
+      "car_share": 57.87,
+      "transit_share": 27.4,
+      "bike_share": 14.729999999999999
+    }
+  ]
+}

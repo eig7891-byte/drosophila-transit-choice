@@ -1,0 +1,45 @@
+{
+  "description": "Empirical ground truth targets derived from Translink Go Card and Q2 2025-26 Excel datasets",
+  "sources": [
+    "Translink Origin-Destination Trips (July 2024 vs August 2024)",
+    "Translink PT Performance Dashboard (Q2 2025-26 Excel)"
+  ],
+  "targets": {
+    "Springwood_Route555_Growth": {
+      "value": 11.82,
+      "unit": "percent",
+      "weight": 2.0,
+      "description": "Route 555 Springwood to CBD Express Busway patronage surge (July vs Aug 2024)"
+    },
+    "Woodridge_Route552_Growth": {
+      "value": 17.28,
+      "unit": "percent",
+      "weight": 1.5,
+      "description": "Route 552 Woodridge to Kingston local feeder patronage surge"
+    },
+    "BrownsPlains_Route560_Growth": {
+      "value": 14.64,
+      "unit": "percent",
+      "weight": 1.5,
+      "description": "Route 560 Hyperdome to Browns Plains cross-suburb bus surge"
+    },
+    "Logan_SouthernRegion_Annual_Growth": {
+      "value": 12.49,
+      "unit": "percent",
+      "weight": 2.5,
+      "description": "Logan Southern Region Bus full-year patronage growth (2023-24 to 2024-25)"
+    },
+    "Citytrain_Rail_Annual_Growth": {
+      "value": 17.35,
+      "unit": "percent",
+      "weight": 1.5,
+      "description": "Citytrain (Rail including Beenleigh Line) full-year patronage growth"
+    },
+    "SEQ_Total_Annual_Growth": {
+      "value": 14.96,
+      "unit": "percent",
+      "weight": 1.0,
+      "description": "South East Queensland total public transport patronage growth"
+    }
+  }
+}

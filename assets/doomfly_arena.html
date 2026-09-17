@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  body {
+    margin: 0;
+    padding: 10px;
+    background-color: #0b0e14;
+    color: #e2e8f0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    user-select: none;
+    overflow-x: hidden;
+  }
+  .hud-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(18, 24, 38, 0.95);
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 8px 14px;
+    margin-bottom: 8px;
+    gap: 8px;
+  }
+  .hud-metric {
+    text-align: center;
+    flex: 1;
+  }
+  .hud-title {
+    font-size: 11px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .hud-val {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .val-green { color: #00ff88; }
+  .val-blue { color: #38bdf8; }
+  .val-red { color: #ff3366; }
+  .val-yellow { color: #f59e0b; }
+  .val-purple { color: #c084fc; }
+  .val-teal { color: #2dd4bf; }
+  
+  #canvas-container {
+    position: relative;
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #07090e;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  }
+  canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .controls-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(18, 24, 38, 0.95);
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 8px;
+  }
+  .control-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .btn {
+    background: #1e293b;
+    color: #e2e8f0;
+    border: 1px solid #334155;
+    padding: 5px 11px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .btn:hover {
+    background: #334155;
+    border-color: #38bdf8;
+  }
+  .btn.active {
+    background: #0284c7;
+    border-color: #38bdf8;
+    color: #fff;
+  }
+  .btn.active-scen {
+    background: #0d9488;
+    border-color: #2dd4bf;
+    color: #fff;
+  }
+  .btn.weather-active-rain {
+    background: #e11d48;
+    border-color: #f43f5e;
+    color: #fff;
+  }
+  .slider-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  input[type=range] {
+    accent-color: #38bdf8;
+    cursor: pointer;
+  }
+  .telemetry-box {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .telemetry-card {
+    flex: 1;
+    background: #0f141f;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE INJECTION PLACEHOLDER -->
+<script>
+  const INJECTED_LANG = "___ARENA_LANG___";
+  const isEn = (INJECTED_LANG === "en");
+</script>
+
+<!-- TOP HUD -->
+<div class="hud-container">
+  <div class="hud-metric">
+    <div class="hud-title" id="lbl-hud-scen">當前情境</div>
+    <div class="hud-val val-teal" id="hud-scen-title">5.2km Rochedale</div>
+  </div>
+  <div class="hud-metric">
+    <div class="hud-title" id="lbl-hud-dep">出發時間</div>
+    <div class="hud-val val-blue" id="hud-dep-time">08:00 AM</div>
+  </div>
+  <div class="hud-metric">
+    <div class="hud-title" id="lbl-hud-arr">到達時間</div>
+    <div class="hud-val" id="hud-arr-time">08:42 AM</div>
+  </div>
+  <div class="hud-metric">
+    <div class="hud-title" id="lbl-hud-late">準時／遲到狀態</div>
+    <div class="hud-val val-green" id="hud-lateness">準時抵達</div>
+  </div>
+  <div class="hud-metric">
+    <div class="hud-title" id="lbl-hud-pts">獲得淨點數</div>
+    <div class="hud-val val-yellow" id="hud-points">30.0 點</div>
+  </div>
+  <div class="hud-metric">
+    <div class="hud-title" id="lbl-hud-mode">大腦決定運具</div>
+    <div class="hud-val val-green" id="hud-mode">🛴+🚌 複合接駁</div>
+  </div>
+  <div class="hud-metric">
+    <div class="hud-title" id="lbl-hud-mbon">MBON01 淨放電</div>
+    <div class="hud-val val-purple" id="hud-mbon">58.4 Hz</div>
+  </div>
+</div>
+
+<!-- ANIMATED MAP CANVAS -->
+<div id="canvas-container">
+  <canvas id="simCanvas" width="900" height="420"></canvas>
+</div>
+
+<!-- CONTROLS BAR -->
+<div class="controls-bar">
+  <!-- ROW 1: SCENARIO SELECTOR -->
+  <div class="control-row" style="background: rgba(13, 27, 42, 0.85); padding: 5px 8px; border-radius: 6px; border: 1px solid #1e3a5f;">
+    <span style="font-size: 12px; font-weight: 700; color: #38bdf8;" id="lbl-scen-header">🗺️ 地圖通勤情境：</span>
+    <div style="display: flex; gap: 6px;">
+      <button class="btn active-scen" id="btn-scen-rochedale" onclick="setScenario('ROCHEDALE')">🏫 情境 A: Rochedale South 小學 (5.2 km 郊區丘陵)</button>
+      <button class="btn" id="btn-scen-uq" onclick="setScenario('UQ')">🎓 情境 B: 昆士蘭大學 (28.8 km 跨區 Busway 直達)</button>
+    </div>
+  </div>
+
+  <!-- ROW 2: TIME & WEATHER -->
+  <div class="control-row">
+    <div class="slider-group">
+      <label style="font-size: 12px; font-weight: 600;" id="lbl-ctrl-dep">⏰ 出發時間:</label>
+      <input type="range" id="depTimeSlider" min="450" max="555" value="480" step="5" style="width: 110px;">
+      <span id="sliderTimeLabel" style="font-weight: 700; color: #38bdf8; font-size: 12px;">08:00 AM</span>
+    </div>
+
+    <div class="slider-group">
+      <label style="font-size: 12px; font-weight: 600;" id="lbl-ctrl-speed">🐢 速度:</label>
+      <input type="range" id="speedSlider" min="0.2" max="2.0" value="0.4" step="0.1" style="width: 75px;">
+      <span id="speedLabel" style="font-weight: 700; color: #00ff88; font-size: 12px;">0.4x</span>
+    </div>
+
+    <div style="display: flex; gap: 4px;">
+      <button class="btn active" id="btn-weather-sunny" onclick="setWeather('SUNNY')">☀️ 晴朗舒適 (22°C)</button>
+      <button class="btn" id="btn-weather-rain" onclick="setWeather('RAIN')">🌧️ 暴雨／酷暑 (35°C)</button>
+    </div>
+
+    <div style="display: flex; gap: 6px;">
+      <button class="btn" onclick="togglePlay()" id="btn-play">⏸️ 暫停</button>
+      <button class="btn" onclick="resetAnimation()" id="btn-reset">🔄 重播</button>
+    </div>
+  </div>
+
+  <!-- ROW 3: MODES SELECTOR -->
+  <div class="control-row">
+    <div style="display: flex; flex-wrap: wrap; gap: 4px; align-items: center;">
+      <span style="font-size: 11px; font-weight: 700; color: #94a3b8;" id="lbl-mode-choice">運具模式:</span>
+      <button class="btn active" id="btn-mode-auto" onclick="setModeOverride('AUTO')">🧠 自動決策</button>
+      <button class="btn" id="btn-mode-combo" onclick="setModeOverride('COMBO')">🛴+🚌 複合接駁</button>
+      <button class="btn" id="btn-mode-bus" onclick="setModeOverride('BUS')">🚌 50¢公車</button>
+      <button class="btn" id="btn-mode-scooter" onclick="setModeOverride('SCOOTER')">🛴 e-滑板車</button>
+      <button class="btn" id="btn-mode-bike" onclick="setModeOverride('BIKE')">🚲 騎車</button>
+      <button class="btn" id="btn-mode-car" onclick="setModeOverride('CAR')">🚗 開車</button>
+      <button class="btn" id="btn-mode-ecar" onclick="setModeOverride('ECAR')">🚙 e-租車/Uber</button>
+      <button class="btn" id="btn-mode-walk" onclick="setModeOverride('WALK')">🚶 步行</button>
+      <button class="btn" id="btn-mode-sleep" onclick="setModeOverride('SLEEP')">🛏️ 留在家</button>
+    </div>
+  </div>
+</div>
+
+<!-- DOOMFLY NEURAL TELEMETRY: 3 CHANNELS -->
+<div class="telemetry-box">
+  <div class="telemetry-card">
+    <div style="font-size: 11px; color: #94a3b8; font-weight: 700; display: flex; justify-content: space-between;">
+      <span id="lbl-pam-title">🟢 PAM01 多巴胺獎勵 (REWARD)</span>
+      <span id="pam-val" style="color: #00ff88;">+39.2 Hz</span>
+    </div>
+    <canvas id="pamCanvas" width="280" height="40" style="width:100%; height:40px;"></canvas>
+  </div>
+  <div class="telemetry-card">
+    <div style="font-size: 11px; color: #94a3b8; font-weight: 700; display: flex; justify-content: space-between;">
+      <span id="lbl-ppl-title">🔴 PPL101 痛感/代價 (COST)</span>
+      <span id="ppl-val" style="color: #ff3366;">-8.4 Hz</span>
+    </div>
+    <canvas id="pplCanvas" width="280" height="40" style="width:100%; height:40px;"></canvas>
+  </div>
+  <div class="telemetry-card">
+    <div style="font-size: 11px; color: #94a3b8; font-weight: 700; display: flex; justify-content: space-between;">
+      <span id="lbl-mbon-title">🟣 MBON01 淨放電 (NET VALENCE)</span>
+      <span id="mbon-val" style="color: #c084fc;">58.4 Hz</span>
+    </div>
+    <canvas id="mbonCanvas" width="280" height="40" style="width:100%; height:40px;"></canvas>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('simCanvas');
+const ctx = canvas.getContext('2d');
+const pamCanvas = document.getElementById('pamCanvas');
+const pamCtx = pamCanvas.getContext('2d');
+const pplCanvas = document.getElementById('pplCanvas');
+const pplCtx = pplCanvas.getContext('2d');
+const mbonCanvas = document.getElementById('mbonCanvas');
+const mbonCtx = mbonCanvas.getContext('2d');
+
+let isPlaying = true;
+let animProgress = 0.0;
+let userSpeedScale = 0.4;
+let modeOverride = 'AUTO';
+let currentWeather = 'SUNNY';
+let currentScenario = 'ROCHEDALE';
+
+// Rain particles
+const rainDrops = [];
+for (let i = 0; i < 90; i++) {
+  rainDrops.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    length: Math.random() * 14 + 10,
+    speed: Math.random() * 6 + 10
+  });
+}
+
+// Base animation speeds per mode
+const modeBaseSpeeds = {
+  'WALK':    0.0005,
+  'BIKE':    0.0011,
+  'SCOOTER': 0.0013,
+  'BUS':     0.0010,
+  'COMBO':   0.0012,
+  'CAR':     0.0017,
+  'ECAR':    0.0017,
+  'SLEEP':   0.0
+};
+
+// State variables
+let depTimeMinutes = 480; // 08:00 AM
+let currentMode = 'COMBO';
+let currentPoints = 30.0;
+let latenessMinutes = 0;
+let arrivalTimeMinutes = 497;
+let curPamHz = 39.2;
+let curPplHz = 8.4;
+let curMbonHz = 58.4;
+
+const SCENARIOS = {
+  'ROCHEDALE': {
+    titleZh: '5.2km Rochedale South',
+    titleEn: '5.2km Rochedale South',
+    subheadZh: '~ Springwood Hills (郊區丘陵 5.2 km) ~',
+    subheadEn: '~ Springwood Hills (Undulating 5.2 km) ~',
+    distKm: 5.24,
+    nodes: {
+      home:     { x: 90,  y: 220, labelZh: 'Springwood 住家 (Westgate Ave)', labelEn: 'Home (Westgate Ave, Springwood)' },
+      busStopA: { x: 270, y: 310, labelZh: 'Springwood 總站 / e-租車點',     labelEn: 'Springwood Bus Station / Hub' },
+      busStopB: { x: 650, y: 310, labelZh: 'Rochedale Rd 轉運站',           labelEn: 'Rochedale Rd Hub' },
+      school:   { x: 810, y: 220, labelZh: 'Rochedale South 州立小學',       labelEn: 'Rochedale South State School' }
+    }
+  },
+  'UQ': {
+    titleZh: '28.8km 昆士蘭大學 (UQ)',
+    titleEn: '28.8km Uni of QLD (UQ)',
+    subheadZh: '~ South East Busway 專用道 & Eleanor Schonell 綠橋 (28.8 km) ~',
+    subheadEn: '~ South East Busway Corridor & Eleanor Schonell Green Bridge (28.8 km) ~',
+    distKm: 28.78,
+    nodes: {
+      home:     { x: 90,  y: 220, labelZh: 'Springwood 住家 (Westgate Ave)', labelEn: 'Home (Westgate Ave, Springwood)' },
+      busStopA: { x: 250, y: 320, labelZh: 'Springwood 總站 (Busway 入口)',  labelEn: 'Springwood Station (Busway Entrance)' },
+      busStopB: { x: 500, y: 320, labelZh: 'Eight Mile Plains / PA 醫院樞紐', labelEn: 'Eight Mile Plains / PA Hospital Hub' },
+      school:   { x: 810, y: 190, labelZh: 'UQ Lakes 聖露西亞校區 (經綠橋)',   labelEn: 'UQ Lakes (St Lucia Campus via Green Bridge)' }
+    }
+  }
+};
+
+function getActiveNodes() {
+  return SCENARIOS[currentScenario].nodes;
+}
+
+function setScenario(scen) {
+  currentScenario = scen;
+  let btnRochedale = document.getElementById('btn-scen-rochedale');
+  let btnUq = document.getElementById('btn-scen-uq');
+  if (scen === 'ROCHEDALE') {
+    btnRochedale.classList.add('active-scen');
+    btnUq.classList.remove('active-scen');
+  } else {
+    btnRochedale.classList.remove('active-scen');
+    btnUq.classList.add('active-scen');
+  }
+  updateSimulationParams();
+  resetAnimation();
+}
+
+function applyLanguage() {
+  if (isEn) {
+    document.getElementById('lbl-hud-scen').textContent = "Scenario";
+    document.getElementById('lbl-hud-dep').textContent = "Departure";
+    document.getElementById('lbl-hud-arr').textContent = "Arrival";
+    document.getElementById('lbl-hud-late').textContent = "Lateness Status";
+    document.getElementById('lbl-hud-pts').textContent = "Net Score";
+    document.getElementById('lbl-hud-mode').textContent = "Connectome Choice";
+    document.getElementById('lbl-hud-mbon').textContent = "MBON01 Firing";
+
+    document.getElementById('lbl-scen-header').textContent = "🗺️ Corridor Scenario:";
+    document.getElementById('btn-scen-rochedale').textContent = "🏫 Scenario A: Rochedale South School (5.2 km Suburban)";
+    document.getElementById('btn-scen-uq').textContent = "🎓 Scenario B: Uni of QLD (28.8 km Busway Express)";
+
+    document.getElementById('lbl-ctrl-dep').textContent = "⏰ Departure:";
+    document.getElementById('lbl-ctrl-speed').textContent = "🐢 Speed:";
+
+    document.getElementById('btn-weather-sunny').textContent = "☀️ Pleasant (22°C)";
+    document.getElementById('btn-weather-rain').textContent = "🌧️ Storm/Heat (35°C)";
+
+    document.getElementById('lbl-mode-choice').textContent = "Mode:";
+    document.getElementById('btn-mode-auto').textContent = "🧠 Brain Auto";
+    document.getElementById('btn-mode-combo').textContent = "🛴+🚌 Combo";
+    document.getElementById('btn-mode-bus').textContent = "🚌 Bus (50¢)";
+    document.getElementById('btn-mode-scooter').textContent = "🛴 e-Scooter";
+    document.getElementById('btn-mode-bike').textContent = "🚲 Cycle";
+    document.getElementById('btn-mode-car').textContent = "🚗 Drive";
+    document.getElementById('btn-mode-ecar').textContent = "🚙 e-Car/Uber";
+    document.getElementById('btn-mode-walk').textContent = "🚶 Walk";
+    document.getElementById('btn-mode-sleep').textContent = "🛏️ Stay Home";
+
+    document.getElementById('btn-play').textContent = isPlaying ? "⏸️ Pause" : "▶️ Play";
+    document.getElementById('btn-reset').textContent = "🔄 Reset";
+
+    document.getElementById('lbl-pam-title').textContent = "🟢 PAM01 DOPAMINE REWARD";
+    document.getElementById('lbl-ppl-title').textContent = "🔴 PPL101 AVERSIVE COST";
+    document.getElementById('lbl-mbon-title').textContent = "🟣 MBON01 NET VALENCE";
+  } else {
+    document.getElementById('lbl-hud-scen').textContent = "當前情境";
+    document.getElementById('lbl-hud-dep').textContent = "出發時間";
+    document.getElementById('lbl-hud-arr').textContent = "到達時間";
+    document.getElementById('lbl-hud-late').textContent = "準時／遲到狀態";
+    document.getElementById('lbl-hud-pts').textContent = "獲得淨點數";
+    document.getElementById('lbl-hud-mode').textContent = "大腦決定運具";
+    document.getElementById('lbl-hud-mbon').textContent = "MBON01 淨放電";
+
+    document.getElementById('lbl-scen-header').textContent = "🗺️ 地圖通勤情境：";
+    document.getElementById('btn-scen-rochedale').textContent = "🏫 情境 A: Rochedale South 小學 (5.2 km 郊區丘陵)";
+    document.getElementById('btn-scen-uq').textContent = "🎓 情境 B: 昆士蘭大學 (28.8 km 跨區 Busway 直達)";
+
+    document.getElementById('lbl-ctrl-dep').textContent = "⏰ 出發時間:";
+    document.getElementById('lbl-ctrl-speed').textContent = "🐢 速度:";
+
+    document.getElementById('btn-weather-sunny').textContent = "☀️ 晴朗舒適 (22°C)";
+    document.getElementById('btn-weather-rain').textContent = "🌧️ 暴雨／酷暑 (35°C)";
+
+    document.getElementById('lbl-mode-choice').textContent = "運具模式:";
+    document.getElementById('btn-mode-auto').textContent = "🧠 自動決策";
+    document.getElementById('btn-mode-combo').textContent = "🛴+🚌 複合接駁";
+    document.getElementById('btn-mode-bus').textContent = "🚌 50¢公車";
+    document.getElementById('btn-mode-scooter').textContent = "🛴 e-滑板車";
+    document.getElementById('btn-mode-bike').textContent = "🚲 騎車";
+    document.getElementById('btn-mode-car').textContent = "🚗 開車";
+    document.getElementById('btn-mode-ecar').textContent = "🚙 e-租車/Uber";
+    document.getElementById('btn-mode-walk').textContent = "🚶 步行";
+    document.getElementById('btn-mode-sleep').textContent = "🛏️ 留在家";
+
+    document.getElementById('btn-play').textContent = isPlaying ? "⏸️ 暫停" : "▶️ 播放";
+    document.getElementById('btn-reset').textContent = "🔄 重播";
+
+    document.getElementById('lbl-pam-title').textContent = "🟢 PAM01 多巴胺獎勵";
+    document.getElementById('lbl-ppl-title').textContent = "🔴 PPL101 痛感／代價";
+    document.getElementById('lbl-mbon-title').textContent = "🟣 MBON01 淨放電";
+  }
+}
+
+function formatTime(minPastMidnight) {
+  let h = Math.floor(minPastMidnight / 60);
+  let m = Math.floor(minPastMidnight % 60);
+  let ampm = h >= 12 ? 'PM' : 'AM';
+  let hh = h > 12 ? h - 12 : (h === 0 ? 12 : h);
+  let mm = m < 10 ? '0' + m : m;
+  return `${hh < 10 ? '0' + hh : hh}:${mm} ${ampm}`;
+}
+
+// Drosophila Connectome Autonomous Decision Logic
+function computeDecision(depMinutes) {
+  if (modeOverride !== 'AUTO') {
+    return modeOverride;
+  }
+  if (currentScenario === 'ROCHEDALE') {
+    if (currentWeather === 'SUNNY') {
+      if (depMinutes <= 495) return 'COMBO'; // 17 min, 30.0 pts (Zero sweat, 50c bus)
+      else if (depMinutes <= 510) return 'BUS'; // 20 min, 29.5 pts
+      else if (depMinutes <= 520) return 'SCOOTER'; // 15 min
+      else if (depMinutes <= 530) return 'CAR'; // 8 min (Rush)
+      else return 'SLEEP';
+    } else {
+      if (depMinutes <= 505) return 'BUS';
+      else if (depMinutes <= 522) return 'CAR';
+      else return 'SLEEP';
+    }
+  } else {
+    // 28.8 km UQ St Lucia University Scenario
+    if (currentWeather === 'SUNNY') {
+      if (depMinutes <= 495) return 'COMBO'; // 42 min, 29.3 pts (Express Busway across Green Bridge)
+      else if (depMinutes <= 500) return 'BUS'; // 53 min (15m walk + 38m bus)
+      else if (depMinutes <= 510) return 'CAR'; // 42 min + $21.50 UQ parking/fuel
+      else return 'SLEEP';
+    } else {
+      if (depMinutes <= 498) return 'BUS';
+      else if (depMinutes <= 510) return 'CAR';
+      else return 'SLEEP';
+    }
+  }
+}
+
+function updateSimulationParams() {
+  currentMode = computeDecision(depTimeMinutes);
+  let travelDuration = 0;
+  let modeFee = 0;
+  let fatiguePenalty = 0;
+  let parkingHoldingCost = 0;
+  let weatherPenalty = 0;
+
+  if (currentScenario === 'ROCHEDALE') {
+    // 5.2 km Local Trip
+    if (currentMode === 'WALK') {
+      travelDuration = 60; modeFee = 0.0; fatiguePenalty = 10.0;
+      weatherPenalty = (currentWeather === 'RAIN' ? 12.0 : 0.0);
+    } else if (currentMode === 'BIKE') {
+      travelDuration = 20; modeFee = 2.0; fatiguePenalty = 4.0;
+      weatherPenalty = (currentWeather === 'RAIN' ? 8.0 : 0.0);
+    } else if (currentMode === 'SCOOTER') {
+      travelDuration = 15; modeFee = 4.0; fatiguePenalty = 0.0;
+      weatherPenalty = (currentWeather === 'RAIN' ? 7.0 : 0.0);
+    } else if (currentMode === 'BUS') {
+      travelDuration = 20; modeFee = 0.5; fatiguePenalty = 0.0;
+      weatherPenalty = 0.0;
+    } else if (currentMode === 'COMBO') {
+      travelDuration = 17; modeFee = 1.5; fatiguePenalty = 0.0;
+      weatherPenalty = (currentWeather === 'RAIN' ? 2.0 : 0.0);
+    } else if (currentMode === 'CAR') {
+      travelDuration = 8; modeFee = 2.0; parkingHoldingCost = 10.0; fatiguePenalty = 0.0;
+      weatherPenalty = 0.0;
+    } else if (currentMode === 'ECAR') {
+      travelDuration = 8; modeFee = 7.0; parkingHoldingCost = 0.0; fatiguePenalty = 0.0;
+      weatherPenalty = 0.0;
+    } else if (currentMode === 'SLEEP') {
+      travelDuration = 0; modeFee = 0.0; fatiguePenalty = 0.0;
+    }
+  } else {
+    // 28.8 km UQ St Lucia Trip
+    if (currentMode === 'WALK') {
+      travelDuration = 340; modeFee = 0.0; fatiguePenalty = 100.0;
+      weatherPenalty = (currentWeather === 'RAIN' ? 50.0 : 0.0);
+    } else if (currentMode === 'BIKE') {
+      travelDuration = 85; modeFee = 2.0; fatiguePenalty = 15.0;
+      weatherPenalty = (currentWeather === 'RAIN' ? 15.0 : 0.0);
+    } else if (currentMode === 'SCOOTER') {
+      travelDuration = 90; modeFee = 25.0; fatiguePenalty = 10.0;
+      weatherPenalty = (currentWeather === 'RAIN' ? 15.0 : 0.0);
+    } else if (currentMode === 'BUS') {
+      travelDuration = 53; modeFee = 0.5; fatiguePenalty = 3.0;
+      weatherPenalty = 0.0;
+    } else if (currentMode === 'COMBO') {
+      travelDuration = 42; modeFee = 0.7; fatiguePenalty = 0.0;
+      weatherPenalty = (currentWeather === 'RAIN' ? 1.0 : 0.0);
+    } else if (currentMode === 'CAR') {
+      travelDuration = 42; modeFee = 8.6; parkingHoldingCost = 14.5; fatiguePenalty = 0.0;
+      weatherPenalty = (currentWeather === 'RAIN' ? 4.0 : 0.0);
+    } else if (currentMode === 'ECAR') {
+      travelDuration = 42; modeFee = 55.0; parkingHoldingCost = 0.0; fatiguePenalty = 0.0;
+      weatherPenalty = 0.0;
+    } else if (currentMode === 'SLEEP') {
+      travelDuration = 0; modeFee = 0.0; fatiguePenalty = 0.0;
+    }
+  }
+
+  arrivalTimeMinutes = depTimeMinutes + travelDuration;
+  let deadline = 540; // 09:00 AM
+  latenessMinutes = Math.max(0, arrivalTimeMinutes - deadline);
+
+  if (currentMode === 'SLEEP') {
+    currentPoints = 0.0;
+  } else {
+    let earnedBase = Math.max(0, 30.0 - latenessMinutes);
+    currentPoints = Math.max(0, earnedBase - modeFee - fatiguePenalty - parkingHoldingCost - weatherPenalty);
+  }
+
+  // Drosophila Connectome Neural Valuation (PAM01 dopamine vs PPL101 aversive cost)
+  let pamRaw = 0;
+  let pplRaw = 0;
+
+  if (currentScenario === 'ROCHEDALE') {
+    if (currentMode === 'WALK') {
+      pamRaw = 18.0; pplRaw = 10.0 + fatiguePenalty * 1.5 + latenessMinutes * 1.6;
+    } else if (currentMode === 'BIKE') {
+      pamRaw = 28.0; pplRaw = 8.0 + fatiguePenalty * 1.2 + modeFee * 1.2 + latenessMinutes * 1.5;
+    } else if (currentMode === 'SCOOTER') {
+      pamRaw = 27.0; pplRaw = 6.0 + modeFee * 1.4 + latenessMinutes * 1.5;
+    } else if (currentMode === 'BUS') {
+      pamRaw = 31.0; pplRaw = 4.0 + modeFee * 1.0 + latenessMinutes * 1.5;
+    } else if (currentMode === 'COMBO') {
+      pamRaw = 34.0; pplRaw = 4.0 + modeFee * 0.8 + latenessMinutes * 1.4;
+    } else if (currentMode === 'CAR') {
+      pamRaw = 22.0; pplRaw = 12.0 + parkingHoldingCost * 1.2 + latenessMinutes * 2.0;
+    } else if (currentMode === 'ECAR') {
+      pamRaw = 23.0; pplRaw = 10.0 + modeFee * 1.4 + latenessMinutes * 1.8;
+    } else if (currentMode === 'SLEEP') {
+      pamRaw = 38.0; pplRaw = 0.0;
+    }
+  } else {
+    if (currentMode === 'WALK') {
+      pamRaw = 0.0; pplRaw = 95.0;
+    } else if (currentMode === 'BIKE') {
+      pamRaw = 20.0; pplRaw = 32.0 + fatiguePenalty * 1.5 + latenessMinutes * 1.5;
+    } else if (currentMode === 'SCOOTER') {
+      pamRaw = 12.0; pplRaw = 45.0 + modeFee * 1.2;
+    } else if (currentMode === 'BUS') {
+      pamRaw = 33.0; pplRaw = 6.0 + modeFee * 1.0 + latenessMinutes * 1.4;
+    } else if (currentMode === 'COMBO') {
+      pamRaw = 38.5; pplRaw = 4.0 + modeFee * 0.8 + latenessMinutes * 1.4;
+    } else if (currentMode === 'CAR') {
+      pamRaw = 19.0; pplRaw = 34.0 + parkingHoldingCost * 1.2 + latenessMinutes * 2.2;
+    } else if (currentMode === 'ECAR') {
+      pamRaw = 15.0; pplRaw = 65.0;
+    } else if (currentMode === 'SLEEP') {
+      pamRaw = 35.0; pplRaw = 0.0;
+    }
+  }
+
+  curPamHz = pamRaw;
+  curPplHz = pplRaw;
+  let netDiff = pamRaw - pplRaw;
+  curMbonHz = Math.max(2.0, 25.0 + 38.0 * Math.tanh(0.045 * netDiff));
+
+  let scenData = SCENARIOS[currentScenario];
+  document.getElementById('hud-scen-title').textContent = isEn ? scenData.titleEn : scenData.titleZh;
+  document.getElementById('hud-dep-time').textContent = formatTime(depTimeMinutes);
+  document.getElementById('hud-arr-time').textContent = currentMode === 'SLEEP' ? (isEn ? "Stay Home" : "留在家") : formatTime(arrivalTimeMinutes);
+
+  let lateEl = document.getElementById('hud-lateness');
+  if (currentMode === 'SLEEP') {
+    lateEl.textContent = isEn ? "Forfeited" : "放棄出門";
+    lateEl.className = 'hud-val val-blue';
+  } else if (latenessMinutes === 0) {
+    lateEl.textContent = isEn ? "ON TIME" : "準時抵達";
+    lateEl.className = 'hud-val val-green';
+  } else {
+    lateEl.textContent = isEn ? `Late ${latenessMinutes}m (-${latenessMinutes} pts)` : `遲到 ${latenessMinutes} 分鐘 (-${latenessMinutes} 點)`;
+    lateEl.className = 'hud-val val-red';
+  }
+
+  let ptEl = document.getElementById('hud-points');
+  ptEl.textContent = isEn ? `${currentPoints.toFixed(1)} pts` : `${currentPoints.toFixed(1)} 點`;
+
+  let modeMapEn = {
+    'COMBO':   '🛴+🚌 Micro-mobility Combo',
+    'BUS':     '🚌 Translink Bus (50¢)',
+    'SCOOTER': '🛴 Electric Scooter',
+    'BIKE':    '🚲 Cycling (V1 Veloway)',
+    'CAR':     '🚗 Private Car',
+    'ECAR':    '🚙 e-Rental / Uber',
+    'WALK':    '🚶 Walking',
+    'SLEEP':   '🛏️ Stay Home'
+  };
+  let modeMapZh = {
+    'COMBO':   '🛴+🚌 複合接駁 (首末哩+公車)',
+    'BUS':     '🚌 50¢ 高速公車',
+    'SCOOTER': '🛴 e-滑板車直騎',
+    'BIKE':    '🚲 自行車 (V1 專用道)',
+    'CAR':     '🚗 自駕私家車',
+    'ECAR':    '🚙 e-租車 / Uber',
+    'WALK':    '🚶 步行',
+    'SLEEP':   '🛏️ 留在家中'
+  };
+  let modeEl = document.getElementById('hud-mode');
+  modeEl.textContent = isEn ? modeMapEn[currentMode] : modeMapZh[currentMode];
+  if (currentMode === 'COMBO') modeEl.className = 'hud-val val-green';
+  else if (currentMode === 'BUS') modeEl.className = 'hud-val val-teal';
+  else if (currentMode === 'SCOOTER') modeEl.className = 'hud-val val-yellow';
+  else if (currentMode === 'BIKE') modeEl.className = 'hud-val val-yellow';
+  else if (currentMode === 'CAR') modeEl.className = 'hud-val val-blue';
+  else if (currentMode === 'ECAR') modeEl.className = 'hud-val val-blue';
+  else if (currentMode === 'WALK') modeEl.className = 'hud-val val-red';
+  else modeEl.className = 'hud-val val-purple';
+
+  let mbonEl = document.getElementById('hud-mbon');
+  mbonEl.textContent = `${curMbonHz.toFixed(1)} Hz`;
+  if (curMbonHz >= 45.0) mbonEl.className = 'hud-val val-green';
+  else if (curMbonHz >= 25.0) mbonEl.className = 'hud-val val-purple';
+  else mbonEl.className = 'hud-val val-red';
+
+  document.getElementById('pam-val').textContent = `+${curPamHz.toFixed(1)} Hz`;
+  document.getElementById('ppl-val').textContent = `-${curPplHz.toFixed(1)} Hz`;
+  document.getElementById('mbon-val').textContent = `${curMbonHz.toFixed(1)} Hz`;
+}
+
+// DRAWING HELPERS FOR VEHICLES & FRUIT FLY
+function drawFly(ctx, x, y, angle, mode, scale = 1.0) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(angle);
+  ctx.scale(scale, scale);
+
+  let flapFreq = (mode === 'WALK' || mode === 'SLEEP') ? 0.006 : 0.020;
+  let flapAmp = (mode === 'WALK' || mode === 'SLEEP') ? 0.10 : 0.25;
+  let flap = Math.sin(Date.now() * flapFreq) * flapAmp;
+
+  // Wings
+  ctx.save();
+  ctx.fillStyle = 'rgba(200, 240, 255, 0.45)';
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.ellipse(-6, -16, 16, 7, -0.4 + flap, 0, Math.PI * 2);
+  ctx.fill(); ctx.stroke();
+  ctx.beginPath();
+  ctx.ellipse(6, -16, 16, 7, 0.4 - flap, 0, Math.PI * 2);
+  ctx.fill(); ctx.stroke();
+  ctx.restore();
+
+  // Abdomen
+  ctx.fillStyle = '#d97706';
+  ctx.beginPath();
+  ctx.ellipse(0, 10, 10, 14, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = '#78350f';
+  ctx.lineWidth = 2;
+  for (let offset of [4, 8, 12, 16]) {
+    ctx.beginPath();
+    ctx.moveTo(-7, offset);
+    ctx.lineTo(7, offset);
+    ctx.stroke();
+  }
+
+  // Thorax
+  ctx.fillStyle = '#b45309';
+  ctx.beginPath();
+  ctx.arc(0, -2, 9, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Head
+  ctx.fillStyle = '#78350f';
+  ctx.beginPath();
+  ctx.arc(0, -11, 7, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Red compound eyes
+  ctx.fillStyle = '#ef4444';
+  ctx.beginPath();
+  ctx.arc(-5, -13, 5.5, 0, Math.PI * 2);
+  ctx.arc(5, -13, 5.5, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#fff';
+  ctx.beginPath();
+  ctx.arc(-6, -14.5, 1.8, 0, Math.PI * 2);
+  ctx.arc(4, -14.5, 1.8, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Commuter backpack
+  ctx.fillStyle = '#0284c7';
+  ctx.fillRect(-6, 2, 12, 8);
+  ctx.strokeStyle = '#38bdf8';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(-6, 2, 12, 8);
+
+  // Tiny umbrella in rain for walkers
+  if (currentWeather === 'RAIN' && mode === 'WALK') {
+    ctx.fillStyle = '#f43f5e';
+    ctx.beginPath();
+    ctx.arc(0, -26, 16, Math.PI, 0);
+    ctx.fill();
+    ctx.strokeStyle = '#cbd5e1';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(0, -26);
+    ctx.lineTo(0, -12);
+    ctx.stroke();
+  }
+
+  ctx.restore();
+}
+
+function drawBicycle(ctx, x, y, angle) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(angle);
+
+  ctx.strokeStyle = '#94a3b8';
+  ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.arc(-16, 12, 8, 0, Math.PI * 2); ctx.stroke();
+  ctx.beginPath(); ctx.arc(16, 12, 8, 0, Math.PI * 2); ctx.stroke();
+
+  ctx.strokeStyle = '#10b981';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(-16, 12); ctx.lineTo(-2, 12); ctx.lineTo(6, -2); ctx.lineTo(-6, -2); ctx.lineTo(-16, 12);
+  ctx.moveTo(-2, 12); ctx.lineTo(-6, -2); ctx.moveTo(16, 12); ctx.lineTo(6, -2); ctx.lineTo(10, -8);
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+function drawScooter(ctx, x, y, angle) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(angle);
+
+  // Wheels
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.arc(-14, 12, 5, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(14, 12, 5, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#94a3b8';
+  ctx.beginPath(); ctx.arc(-14, 12, 2, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(14, 12, 2, 0, Math.PI * 2); ctx.fill();
+
+  // Deck
+  ctx.fillStyle = '#06b6d4';
+  ctx.fillRect(-14, 10, 28, 4);
+
+  // Steering column
+  ctx.strokeStyle = '#06b6d4';
+  ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  ctx.moveTo(12, 10);
+  ctx.lineTo(8, -12);
+  ctx.stroke();
+
+  // Handlebars
+  ctx.strokeStyle = '#f8fafc';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(5, -12);
+  ctx.lineTo(11, -12);
+  ctx.stroke();
+
+  // LED Headlight
+  ctx.fillStyle = '#fef08a';
+  ctx.fillRect(9, -11, 3, 3);
+
+  ctx.restore();
+}
+
+function drawCar(ctx, x, y, angle) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(angle);
+
+  ctx.fillStyle = '#0284c7';
+  ctx.beginPath();
+  ctx.roundRect(-24, -8, 48, 18, 6);
+  ctx.fill();
+
+  ctx.fillStyle = '#38bdf8';
+  ctx.beginPath();
+  ctx.roundRect(-10, -18, 22, 12, 4);
+  ctx.fill();
+
+  ctx.fillStyle = '#0f172a';
+  ctx.beginPath(); ctx.arc(-14, 10, 5, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(14, 10, 5, 0, Math.PI * 2); ctx.fill();
+
+  ctx.fillStyle = '#fef08a';
+  ctx.fillRect(20, -4, 4, 6);
+
+  ctx.restore();
+}
+
+function drawECar(ctx, x, y, angle) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(angle);
+
+  ctx.fillStyle = '#0d9488';
+  ctx.beginPath();
+  ctx.roundRect(-24, -8, 48, 18, 6);
+  ctx.fill();
+
+  ctx.fillStyle = '#99f6e4';
+  ctx.beginPath();
+  ctx.roundRect(-10, -18, 22, 12, 4);
+  ctx.fill();
+
+  ctx.fillStyle = '#0f172a';
+  ctx.beginPath(); ctx.arc(-14, 10, 5, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(14, 10, 5, 0, Math.PI * 2); ctx.fill();
+
+  ctx.fillStyle = '#14b8a6';
+  ctx.fillRect(-6, -23, 12, 5);
+  ctx.fillStyle = '#fef08a';
+  ctx.font = 'bold 9px sans-serif';
+  ctx.fillText('⚡', -3, -16);
+
+  ctx.fillStyle = '#fef08a';
+  ctx.fillRect(20, -4, 4, 6);
+
+  ctx.restore();
+}
+
+function drawBus(ctx, x, y) {
+  ctx.save();
+  ctx.translate(x, y);
+
+  ctx.fillStyle = '#10b981';
+  ctx.beginPath();
+  ctx.roundRect(-36, -24, 72, 30, 6);
+  ctx.fill();
+
+  ctx.fillStyle = '#e0f2fe';
+  for (let wx of [-26, -11, 4, 19]) {
+    ctx.fillRect(wx, -20, 10, 10);
+  }
+
+  ctx.fillStyle = '#0f172a';
+  ctx.beginPath(); ctx.arc(-20, 8, 6, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(20, 8, 6, 0, Math.PI * 2); ctx.fill();
+
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 10px sans-serif';
+  ctx.fillText('50¢', -8, -4);
+
+  ctx.restore();
+}
+
+function drawBed(ctx, x, y) {
+  ctx.save();
+  ctx.translate(x, y);
+
+  ctx.fillStyle = '#475569';
+  ctx.fillRect(-26, -10, 52, 20);
+
+  ctx.fillStyle = '#f1f5f9';
+  ctx.fillRect(-22, -8, 14, 10);
+
+  ctx.fillStyle = '#ec4899';
+  ctx.fillRect(-8, -10, 34, 20);
+
+  let t = Date.now() * 0.0015;
+  ctx.fillStyle = 'rgba(236, 72, 153, 0.8)';
+  ctx.font = 'bold 12px sans-serif';
+  let z1 = (t % 2) * 12;
+  ctx.fillText('z', 10, -15 - z1);
+  let z2 = ((t + 0.6) % 2) * 14;
+  ctx.fillText('Z', 18, -20 - z2);
+
+  ctx.restore();
+}
+
+// MAIN RENDER LOOP
+function render() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  if (currentWeather === 'RAIN') {
+    ctx.fillStyle = 'rgba(10, 15, 26, 0.95)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+
+  let nodes = getActiveNodes();
+
+  // 1. Grid
+  ctx.strokeStyle = currentWeather === 'RAIN' ? '#111827' : '#151b28';
+  ctx.lineWidth = 1;
+  for (let x = 0; x < canvas.width; x += 40) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+  }
+  for (let y = 0; y < canvas.height; y += 40) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+  }
+
+  // Brisbane River & Green Bridge
+  ctx.strokeStyle = currentWeather === 'RAIN' ? 'rgba(8, 51, 68, 0.45)' : 'rgba(14, 116, 144, 0.3)';
+  ctx.lineWidth = 42;
+  ctx.beginPath();
+  if (currentScenario === 'UQ') {
+    ctx.moveTo(680, 0);
+    ctx.bezierCurveTo(720, 140, 640, 260, 690, 420);
+  } else {
+    ctx.moveTo(420, 0);
+    ctx.bezierCurveTo(460, 150, 380, 260, 430, 420);
+  }
+  ctx.stroke();
+
+  ctx.fillStyle = 'rgba(56, 189, 248, 0.45)';
+  ctx.font = '11px sans-serif';
+  if (currentScenario === 'UQ') {
+    ctx.fillText('~ Brisbane River (St Lucia Reach) ~', 580, 100);
+    // Green Bridge (Eleanor Schonell Bridge)
+    ctx.strokeStyle = '#10b981';
+    ctx.lineWidth = 7;
+    ctx.beginPath();
+    ctx.moveTo(645, 255);
+    ctx.lineTo(735, 225);
+    ctx.stroke();
+    ctx.fillStyle = '#6ee7b7';
+    ctx.font = 'bold 10px sans-serif';
+    ctx.fillText('Eleanor Schonell Bridge (綠橋/專用道)', 610, 275);
+  } else {
+    ctx.fillText('~ Slacks Creek / Bulimba Corridor ~', 350, 180);
+  }
+
+  // Corridor Subtitle Banner
+  let scenObj = SCENARIOS[currentScenario];
+  ctx.fillStyle = 'rgba(148, 163, 184, 0.6)';
+  ctx.font = 'bold 12px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(isEn ? scenObj.subheadEn : scenObj.subheadZh, canvas.width / 2, 26);
+
+  // 2. Route Paths
+  // Motorway Curve for CAR / ECAR
+  ctx.strokeStyle = (currentMode === 'CAR' || currentMode === 'ECAR') ? '#0284c7' : '#1e293b';
+  ctx.lineWidth = (currentMode === 'CAR' || currentMode === 'ECAR') ? 6 : 2;
+  ctx.beginPath();
+  ctx.moveTo(nodes.home.x, nodes.home.y);
+  ctx.quadraticCurveTo(450, 60, nodes.school.x, nodes.school.y);
+  ctx.stroke();
+
+  // Veloway / Direct Line for BIKE, SCOOTER, WALK
+  let isDirectMode = (currentMode === 'BIKE' || currentMode === 'SCOOTER' || currentMode === 'WALK');
+  ctx.strokeStyle = isDirectMode ? '#10b981' : '#1e293b';
+  ctx.lineWidth = isDirectMode ? 5 : 2;
+  ctx.setLineDash([8, 8]);
+  ctx.beginPath();
+  ctx.moveTo(nodes.home.x, nodes.home.y);
+  ctx.lineTo(nodes.school.x, nodes.school.y);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Dedicated Busway Path for BUS & COMBO
+  let isBusMode = (currentMode === 'BUS' || currentMode === 'COMBO');
+  ctx.strokeStyle = isBusMode ? '#38bdf8' : '#1e293b';
+  ctx.lineWidth = isBusMode ? 6 : 2.5;
+  ctx.beginPath();
+  ctx.moveTo(nodes.home.x, nodes.home.y);
+  ctx.lineTo(nodes.busStopA.x, nodes.busStopA.y);
+  ctx.lineTo(nodes.busStopB.x, nodes.busStopB.y);
+  ctx.lineTo(nodes.school.x, nodes.school.y);
+  ctx.stroke();
+
+  // 3. Station Nodes
+  for (let key in nodes) {
+    let n = nodes[key];
+    ctx.fillStyle = '#0f172a';
+    ctx.strokeStyle = (key === 'school') ? '#10b981' : (key === 'home' ? '#f59e0b' : '#38bdf8');
+    ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.arc(n.x, n.y, 14, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+    ctx.fillStyle = '#f8fafc';
+    ctx.font = 'bold 11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(isEn ? n.labelEn : n.labelZh, n.x, n.y - 18);
+  }
+
+  // 4. Animate and Draw Fruit Fly & Vehicles
+  if (currentMode === 'SLEEP') {
+    drawBed(ctx, nodes.home.x, nodes.home.y + 10);
+    drawFly(ctx, nodes.home.x, nodes.home.y - 8, Math.PI / 2, 'SLEEP', 0.9);
+  } else {
+    let p = animProgress;
+    let flyX = 0, flyY = 0, angle = 0;
+
+    if (currentMode === 'CAR') {
+      let t = p;
+      flyX = (1-t)*(1-t)*nodes.home.x + 2*(1-t)*t*450 + t*t*nodes.school.x;
+      flyY = (1-t)*(1-t)*nodes.home.y + 2*(1-t)*t*60 + t*t*nodes.school.y;
+      angle = Math.atan2((1-t)*(60 - nodes.home.y) + t*(nodes.school.y - 60), (1-t)*(450 - nodes.home.x) + t*(nodes.school.x - 450));
+      drawCar(ctx, flyX, flyY, angle);
+      drawFly(ctx, flyX - 4, flyY - 12, angle, 'CAR', 0.7);
+
+    } else if (currentMode === 'ECAR') {
+      let t = p;
+      flyX = (1-t)*(1-t)*nodes.home.x + 2*(1-t)*t*450 + t*t*nodes.school.x;
+      flyY = (1-t)*(1-t)*nodes.home.y + 2*(1-t)*t*60 + t*t*nodes.school.y;
+      angle = Math.atan2((1-t)*(60 - nodes.home.y) + t*(nodes.school.y - 60), (1-t)*(450 - nodes.home.x) + t*(nodes.school.x - 450));
+      drawECar(ctx, flyX, flyY, angle);
+      drawFly(ctx, flyX - 4, flyY - 12, angle, 'ECAR', 0.7);
+
+    } else if (currentMode === 'BIKE') {
+      flyX = nodes.home.x + (nodes.school.x - nodes.home.x) * p;
+      flyY = nodes.home.y + (nodes.school.y - nodes.home.y) * p;
+      angle = 0;
+      drawBicycle(ctx, flyX, flyY, angle);
+      drawFly(ctx, flyX, flyY - 10, angle, 'BIKE', 0.85);
+
+    } else if (currentMode === 'SCOOTER') {
+      flyX = nodes.home.x + (nodes.school.x - nodes.home.x) * p;
+      flyY = nodes.home.y + (nodes.school.y - nodes.home.y) * p;
+      angle = 0;
+      drawScooter(ctx, flyX, flyY, angle);
+      drawFly(ctx, flyX - 2, flyY - 10, angle, 'SCOOTER', 0.85);
+
+    } else if (currentMode === 'WALK') {
+      flyX = nodes.home.x + (nodes.school.x - nodes.home.x) * p;
+      let stepCycle = p * 120;
+      let stepBob = Math.sin(stepCycle) * 3;
+      flyY = nodes.home.y + 15 + stepBob;
+      angle = 0;
+
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+      ctx.beginPath();
+      ctx.ellipse(flyX, flyY + 22, 10, 3.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      let footPhase = Math.sin(stepCycle);
+      ctx.fillStyle = '#ef4444';
+      ctx.beginPath();
+      ctx.roundRect(flyX - 7 + footPhase * 4, flyY + 18, 6, 4, 2);
+      ctx.roundRect(flyX + 2 - footPhase * 4, flyY + 18, 6, 4, 2);
+      ctx.fill();
+
+      drawFly(ctx, flyX, flyY, angle, 'WALK', 0.9);
+
+    } else if (currentMode === 'BUS') {
+      if (p < 0.20) {
+        let segP = p / 0.20;
+        flyX = nodes.home.x + (nodes.busStopA.x - nodes.home.x) * segP;
+        flyY = nodes.home.y + (nodes.busStopA.y - nodes.home.y) * segP;
+        let stepCycle = segP * 40;
+        drawFly(ctx, flyX, flyY + Math.sin(stepCycle) * 2, 0, 'WALK', 0.8);
+
+      } else if (p < 0.80) {
+        let segP = (p - 0.20) / 0.60;
+        flyX = nodes.busStopA.x + (nodes.busStopB.x - nodes.busStopA.x) * segP;
+        flyY = nodes.busStopA.y + (nodes.busStopB.y - nodes.busStopA.y) * segP;
+        drawBus(ctx, flyX, flyY);
+        drawFly(ctx, flyX - 10, flyY - 5, 0, 'BUS', 0.65);
+
+      } else {
+        let segP = (p - 0.80) / 0.20;
+        flyX = nodes.busStopB.x + (nodes.school.x - nodes.busStopB.x) * segP;
+        flyY = nodes.busStopB.y + (nodes.school.y - nodes.busStopB.y) * segP;
+        let stepCycle = segP * 40;
+        drawFly(ctx, flyX, flyY + Math.sin(stepCycle) * 2, 0, 'WALK', 0.8);
+      }
+
+    } else if (currentMode === 'COMBO') {
+      if (p < 0.22) {
+        let segP = p / 0.22;
+        flyX = nodes.home.x + (nodes.busStopA.x - nodes.home.x) * segP;
+        flyY = nodes.home.y + (nodes.busStopA.y - nodes.home.y) * segP;
+        drawScooter(ctx, flyX, flyY, 0);
+        drawFly(ctx, flyX - 2, flyY - 10, 0, 'SCOOTER', 0.75);
+
+      } else if (p < 0.82) {
+        let segP = (p - 0.22) / 0.60;
+        flyX = nodes.busStopA.x + (nodes.busStopB.x - nodes.busStopA.x) * segP;
+        flyY = nodes.busStopA.y + (nodes.busStopB.y - nodes.busStopA.y) * segP;
+        drawBus(ctx, flyX, flyY);
+        drawFly(ctx, flyX - 10, flyY - 5, 0, 'COMBO', 0.65);
+
+      } else {
+        let segP = (p - 0.82) / 0.18;
+        flyX = nodes.busStopB.x + (nodes.school.x - nodes.busStopB.x) * segP;
+        flyY = nodes.busStopB.y + (nodes.school.y - nodes.busStopB.y) * segP;
+        drawFly(ctx, flyX, flyY + Math.sin(segP * 30) * 2, 0, 'WALK', 0.8);
+      }
+    }
+
+    if (isPlaying) {
+      let speed = (modeBaseSpeeds[currentMode] || 0.0008) * userSpeedScale;
+      animProgress += speed;
+      if (animProgress > 1.0) animProgress = 0.0;
+    }
+  }
+
+  // 5. Rain particles
+  if (currentWeather === 'RAIN') {
+    ctx.strokeStyle = 'rgba(147, 197, 253, 0.45)';
+    ctx.lineWidth = 1.2;
+    for (let drop of rainDrops) {
+      ctx.beginPath();
+      ctx.moveTo(drop.x, drop.y);
+      ctx.lineTo(drop.x - 2, drop.y + drop.length);
+      ctx.stroke();
+
+      drop.y += drop.speed;
+      drop.x -= 1.5;
+      if (drop.y > canvas.height) {
+        drop.y = -10;
+        drop.x = Math.random() * canvas.width;
+      }
+    }
+  }
+
+  drawTelemetryWaves();
+  requestAnimationFrame(render);
+}
+
+// 3-Channel Oscilloscope Waves
+let waveOffset = 0;
+function drawTelemetryWaves() {
+  waveOffset += 0.03 * userSpeedScale;
+
+  // 1. PAM01 Oscilloscope (Green)
+  pamCtx.fillStyle = '#0f141f';
+  pamCtx.fillRect(0, 0, pamCanvas.width, pamCanvas.height);
+  pamCtx.strokeStyle = '#00ff88';
+  pamCtx.lineWidth = 2;
+  pamCtx.beginPath();
+  let pamNorm = Math.min(18, curPamHz * 0.42);
+  for (let x = 0; x < pamCanvas.width; x++) {
+    let y = 20 + Math.sin(x * 0.06 + waveOffset) * pamNorm * Math.sin(x * 0.015);
+    if (x === 0) pamCtx.moveTo(x, y); else pamCtx.lineTo(x, y);
+  }
+  pamCtx.stroke();
+
+  // 2. PPL101 Oscilloscope (Red)
+  pplCtx.fillStyle = '#0f141f';
+  pplCtx.fillRect(0, 0, pplCanvas.width, pplCanvas.height);
+  pplCtx.strokeStyle = '#ff3366';
+  pplCtx.lineWidth = 2;
+  pplCtx.beginPath();
+  let pplNorm = Math.min(18, curPplHz * 0.35);
+  for (let x = 0; x < pplCanvas.width; x++) {
+    let y = 20 + (Math.random() - 0.5) * pplNorm * 0.35 + Math.cos(x * 0.08 + waveOffset * 1.5) * pplNorm;
+    if (x === 0) pplCtx.moveTo(x, y); else pplCtx.lineTo(x, y);
+  }
+  pplCtx.stroke();
+
+  // 3. MBON01 Output Oscilloscope (Purple)
+  mbonCtx.fillStyle = '#0f141f';
+  mbonCtx.fillRect(0, 0, mbonCanvas.width, mbonCanvas.height);
+  mbonCtx.strokeStyle = '#c084fc';
+  mbonCtx.lineWidth = 2;
+  mbonCtx.beginPath();
+  let mbonNorm = Math.min(18, Math.max(2.0, (curMbonHz - 15.0) * 0.45));
+  for (let x = 0; x < mbonCanvas.width; x++) {
+    let y = 20 + Math.sin(x * 0.04 + waveOffset * 1.2) * mbonNorm;
+    if (x === 0) mbonCtx.moveTo(x, y); else mbonCtx.lineTo(x, y);
+  }
+  mbonCtx.stroke();
+}
+
+function togglePlay() {
+  isPlaying = !isPlaying;
+  document.getElementById('btn-play').textContent = isPlaying ? (isEn ? "⏸️ Pause" : "⏸️ 暫停") : (isEn ? "▶️ Play" : "▶️ 播放");
+}
+function resetAnimation() {
+  animProgress = 0.0;
+}
+function setModeOverride(mode) {
+  modeOverride = mode;
+  ['auto', 'combo', 'bus', 'scooter', 'bike', 'car', 'ecar', 'walk', 'sleep'].forEach(m => {
+    let el = document.getElementById(`btn-mode-${m}`);
+    if (el) el.classList.remove('active');
+  });
+  let cur = document.getElementById(`btn-mode-${mode.toLowerCase()}`);
+  if (cur) cur.classList.add('active');
+  updateSimulationParams();
+  resetAnimation();
+}
+
+function setWeather(w) {
+  currentWeather = w;
+  let btnSunny = document.getElementById('btn-weather-sunny');
+  let btnRain = document.getElementById('btn-weather-rain');
+  if (w === 'SUNNY') {
+    btnSunny.classList.add('active');
+    btnRain.classList.remove('weather-active-rain');
+    btnRain.classList.remove('active');
+  } else {
+    btnSunny.classList.remove('active');
+    btnRain.classList.add('weather-active-rain');
+  }
+  updateSimulationParams();
+  resetAnimation();
+}
+
+const slider = document.getElementById('depTimeSlider');
+slider.addEventListener('input', function(e) {
+  depTimeMinutes = parseInt(e.target.value);
+  document.getElementById('sliderTimeLabel').textContent = formatTime(depTimeMinutes);
+  updateSimulationParams();
+});
+
+const speedSlider = document.getElementById('speedSlider');
+if (speedSlider) {
+  speedSlider.addEventListener('input', function(e) {
+    userSpeedScale = parseFloat(e.target.value);
+    let desc = "";
+    if (isEn) {
+      desc = userSpeedScale <= 0.4 ? 'Slow' : (userSpeedScale <= 0.8 ? 'Gentle' : (userSpeedScale <= 1.2 ? 'Standard' : 'Fast'));
+    } else {
+      desc = userSpeedScale <= 0.4 ? '慢步' : (userSpeedScale <= 0.8 ? '悠閒' : (userSpeedScale <= 1.2 ? '標準' : '快步'));
+    }
+    document.getElementById('speedLabel').textContent = `${userSpeedScale.toFixed(1)}x (${desc})`;
+  });
+}
+
+// Initialize Pure Language & Simulator
+applyLanguage();
+updateSimulationParams();
+render();
+</script>
+</body>
+</html>

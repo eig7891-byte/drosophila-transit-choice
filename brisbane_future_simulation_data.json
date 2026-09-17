@@ -1,0 +1,72 @@
+{
+  "2026": {
+    "name_en": "2026: Present Baseline (50¢ Trial)",
+    "name_zh": "2026：現行基準（50¢ 試行政策）",
+    "description_en": "Current mixed-traffic buses, 50¢ flat fare, fragmented suburban bikeways, $28 CBD parking.",
+    "description_zh": "現行混流公車、50¢ 單一票價、外圍斷裂自行車道、CBD 停車費 $28。",
+    "transit_share": 49.5,
+    "car_share": 26.2,
+    "bike_share": 24.3,
+    "avg_pam_reward": 35.1,
+    "avg_ppl1_cost": 9.3,
+    "avg_mbon01_hz": 46.0,
+    "vkt_daily": 37932,
+    "co2_tons_daily": 6.5
+  },
+  "2032": {
+    "name_en": "2032: Olympic Games Transit Legacy",
+    "name_zh": "2032：奧運與帕運遺產期",
+    "description_en": "Cross River Rail (CRR) underground express, Brisbane Metro 1&2 + Chermside extension, Kangaroo Point Green Bridge, 3-min headways.",
+    "description_zh": "Cross River Rail 地底捷運、Brisbane Metro 雙向延伸至 Chermside、袋鼠角綠色天橋、3分鐘尖峰班距。",
+    "transit_share": 59.8,
+    "car_share": 17.0,
+    "bike_share": 23.2,
+    "avg_pam_reward": 38.3,
+    "avg_ppl1_cost": 7.0,
+    "avg_mbon01_hz": 50.3,
+    "vkt_daily": 24621,
+    "co2_tons_daily": 4.2
+  },
+  "2040": {
+    "name_en": "2040: SEQ Regional Transport Plan 2041",
+    "name_zh": "2040：東南昆士蘭區域路網期 (RTP 2041)",
+    "description_en": "100% Zero-Emission Electric Bus fleet (ZEB), 100% continuous PCNP shaded bikeways (50% tree canopy), SEQ Faster Rail, sub-3m turn-up-and-go.",
+    "description_zh": "100% 零排放電動公車、PCNP 全線立體林蔭自行車道 (50% 遮蔭率)、SEQ 提速鐵路、隨到隨走班表。",
+    "transit_share": 60.1,
+    "car_share": 13.5,
+    "bike_share": 26.4,
+    "avg_pam_reward": 39.2,
+    "avg_ppl1_cost": 6.0,
+    "avg_mbon01_hz": 51.9,
+    "vkt_daily": 19517,
+    "co2_tons_daily": 3.3
+  },
+  "2050_Regulated": {
+    "name_en": "2050: Net-Zero Multi-Modal MaaS (Regulated)",
+    "name_zh": "2050：淨零多模態 MaaS（動態道路定價）",
+    "description_en": "Dynamic Road User Charging ($20 congestion fee), 50¢ on-demand autonomous feeder shuttles, seamless zero-wait transfers.",
+    "description_zh": "尖峰動態道路擁擠收費 ($20/趟)、50¢ 隨選自駕微型接駁車、全網零延遲轉乘。",
+    "transit_share": 61.1,
+    "car_share": 12.2,
+    "bike_share": 26.7,
+    "avg_pam_reward": 40.2,
+    "avg_ppl1_cost": 5.6,
+    "avg_mbon01_hz": 52.9,
+    "vkt_daily": 17748,
+    "co2_tons_daily": 3.0
+  },
+  "2050_Unregulated": {
+    "name_en": "2050: Unregulated Autonomous Trap (No Road Pricing)",
+    "name_zh": "2050：無管制自駕車反噬危機（無道路定價）",
+    "description_en": "Autonomous cars allow sleeping & entertainment in transit without road pricing, inducing severe traffic rebound and cannibalizing public transit.",
+    "description_zh": "自駕車可車內補眠放鬆且無擁擠收費，引發報復性自駕反彈，嚴重侵蝕大眾運輸佔比。",
+    "transit_share": 57.4,
+    "car_share": 16.4,
+    "bike_share": 26.2,
+    "avg_pam_reward": 36.3,
+    "avg_ppl1_cost": 5.2,
+    "avg_mbon01_hz": 52.1,
+    "vkt_daily": 23751,
+    "co2_tons_daily": 4.1
+  }
+}
