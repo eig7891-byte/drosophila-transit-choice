@@ -7,7 +7,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 def render_tab3_phenomena(is_en: bool):
-    st.markdown("## " + ("🔍 Curious Phenomena & Neural Discrepancies in Brisbane Transit" if is_en else "🔍 布里斯本大眾交通中的「五大反常神經經濟學現象」"))
+    st.markdown("## " + (" Curious Phenomena & Neural Discrepancies in Brisbane Transit" if is_en else " 布里斯本大眾交通中的「五大反常神經經濟學現象」"))
     st.markdown(
         "Through 10,000 heterogeneous commuter traces computed by the Janelia Drosophila connectome, five distinct non-linear behavioral phenomena emerge across Brisbane corridors. These effects cannot be explained by standard linear Logit models, but align with electrophysiological firing rates in the fruit fly mushroom body."
         if is_en else
@@ -15,7 +15,7 @@ def render_tab3_phenomena(is_en: bool):
     )
 
     # Electrophysiological Summary Benchmark Table
-    st.markdown("### " + ("📊 Connectome Electrophysiological Proof Table Across Brisbane Corridors" if is_en else "📊 果蠅連接體電生理數值佐證總表（布里斯本五大走廊實測）"))
+    st.markdown("### " + (" Connectome Electrophysiological Proof Table Across Brisbane Corridors" if is_en else " 果蠅連接體電生理數值佐證總表（布里斯本五大走廊實測）"))
     if is_en:
         st.markdown("""
         <table class="benchmark-table">
@@ -157,7 +157,7 @@ def render_tab3_phenomena(is_en: bool):
 
     # 1. 50-Cent Paradox
     st.markdown('<div class="phenomenon-card">', unsafe_allow_html=True)
-    st.markdown("### 1. 🪙 " + ("The 50-Cent Paradox in Logan Central (26.5 km): Why Cheap Fares Cannot Kill the Car" if is_en else "Logan Central 走廊 (26.5km) 的 50分錢反常悖論：為什麼超低票價無法消滅私家車？"))
+    st.markdown("### 1.  " + ("The 50-Cent Paradox in Logan Central (26.5 km): Why Cheap Fares Cannot Kill the Car" if is_en else "Logan Central 走廊 (26.5km) 的 50分錢反常悖論：為什麼超低票價無法消滅私家車？"))
 
     col_p1a, col_p1b = st.columns([1, 1])
     with col_p1a:
@@ -201,7 +201,7 @@ def render_tab3_phenomena(is_en: bool):
 
     # 2. Speed-Price Asymmetry
     st.markdown('<div class="phenomenon-card">', unsafe_allow_html=True)
-    st.markdown("### 2. ⚡ " + ("The Speed-Price Asymmetry in Chermside (10.5 km Gympie Rd): Speeding Up Outperforms Subsidies by 4x" if is_en else "Chermside 走廊 (10.5km) 的速度與票價不對稱性：專用路權提速效益約為降價的 4 倍"))
+    st.markdown("### 2.  " + ("The Speed-Price Asymmetry in Chermside (10.5 km Gympie Rd): Speeding Up Outperforms Subsidies by 4x" if is_en else "Chermside 走廊 (10.5km) 的速度與票價不對稱性：專用路權提速效益約為降價的 4 倍"))
 
     col_p2a, col_p2b = st.columns([1, 1])
     with col_p2a:
@@ -248,7 +248,7 @@ def render_tab3_phenomena(is_en: bool):
 
     # 3. 34°C Heatwave Cliff
     st.markdown('<div class="phenomenon-card">', unsafe_allow_html=True)
-    st.markdown("### 3. 🌡️ " + ("The 34°C Subtropical Heatwave Shift in Carindale (11.0 km): Modal Transition from Cycling to Transit" if is_en else "Carindale 走廊 (11.0km) 34°C 亞熱帶氣溫上升：自行車轉移至大眾運輸之分析"))
+    st.markdown("### 3.  " + ("The 34°C Subtropical Heatwave Shift in Carindale (11.0 km): Modal Transition from Cycling to Transit" if is_en else "Carindale 走廊 (11.0km) 34°C 亞熱帶氣溫上升：自行車轉移至大眾運輸之分析"))
 
     col_p3a, col_p3b = st.columns([1, 1])
     with col_p3a:
@@ -298,7 +298,7 @@ def render_tab3_phenomena(is_en: bool):
 
     # 4. The 08:52 AM Give-up Threshold
     st.markdown('<div class="phenomenon-card">', unsafe_allow_html=True)
-    st.markdown("### 4. 🛏️ " + ("The 08:52 AM Decision Threshold in Mt Gravatt (13.8 km): Delayed Drive vs. Staying at Home" if is_en else "Mt Gravatt 走廊 (13.8km) 08:52 AM 出發決策臨界點：延誤自駕與取消行程之分析"))
+    st.markdown("### 4.  " + ("The 08:52 AM Decision Threshold in Mt Gravatt (13.8 km): Delayed Drive vs. Staying at Home" if is_en else "Mt Gravatt 走廊 (13.8km) 08:52 AM 出發決策臨界點：延誤自駕與取消行程之分析"))
 
     col_p4a, col_p4b = st.columns([1, 1])
     with col_p4a:
@@ -350,7 +350,7 @@ def render_tab3_phenomena(is_en: bool):
 
     # 5. Bikeway Disparity
     st.markdown('<div class="phenomenon-card">', unsafe_allow_html=True)
-    st.markdown("### 5. 🚴 " + ("The Infrastructure Gap: Indooroopilly (7.2 km) vs Logan Central (26.5 km)" if is_en else "基礎設施路網落差：Indooroopilly (7.2km) vs Logan Central (26.5km)"))
+    st.markdown("### 5.  " + ("The Infrastructure Gap: Indooroopilly (7.2 km) vs Logan Central (26.5 km)" if is_en else "基礎設施路網落差：Indooroopilly (7.2km) vs Logan Central (26.5km)"))
 
     col_p5a, col_p5b = st.columns([1, 1])
     with col_p5a:
@@ -396,12 +396,12 @@ def render_tab3_phenomena(is_en: bool):
     # HISTORICAL PLANNING FAILURE VALIDATION BENCHMARKS
     # ---------------------------------------------------------
     st.markdown("---")
-    st.markdown("### " + ("🏛️ Historical Transit Empirical Benchmarks: Model Validation Against Published Case Studies" if is_en else "🏛️ 歷史重大交通規劃實證案例檢驗：文獻實證數據與模型比對"))
+    st.markdown("### " + (" Historical Transit Empirical Benchmarks: Model Validation Against Published Case Studies" if is_en else " 歷史重大交通規劃實證案例檢驗：文獻實證數據與模型比對"))
 
     if is_en:
         st.markdown("""
         <div style="background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); border: 1px solid #4338ca; border-left: 5px solid #a855f7; border-radius: 10px; padding: 18px; margin-bottom: 20px;">
-            <h4 style="color: #c084fc; margin-top: 0;">🔬 Scientific Model Validation: Why Traditional Economic Utility Models Failed</h4>
+            <h4 style="color: #c084fc; margin-top: 0;"> Scientific Model Validation: Why Traditional Economic Utility Models Failed</h4>
             <p style="font-size: 0.98rem; line-height: 1.6; color: #e2e8f0; margin-bottom: 6px;">
                 To evaluate external validity and avoid circular reasoning, the <code>DrosophilaCommuteBrain</code> engine was evaluated against three published international transit case studies. In each case, traditional linear utility / 4-step models forecasted high ridership or modal shift, but real commuters acted differently from linear economic assumptions.
             </p>
@@ -416,7 +416,7 @@ def render_tab3_phenomena(is_en: bool):
     else:
         st.markdown("""
         <div style="background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); border: 1px solid #4338ca; border-left: 5px solid #a855f7; border-radius: 10px; padding: 18px; margin-bottom: 20px;">
-            <h4 style="color: #c084fc; margin-top: 0;">🔬 科學驗證：傳統線性效用模型在歷史重大工程中的預測偏差分析</h4>
+            <h4 style="color: #c084fc; margin-top: 0;"> 科學驗證：傳統線性效用模型在歷史重大工程中的預測偏差分析</h4>
             <p style="font-size: 0.98rem; line-height: 1.6; color: #e2e8f0; margin-bottom: 6px;">
                 為檢驗模型的外部有效性，本研究將 <code>DrosophilaCommuteBrain</code> 神經決策架構應用於交通領域三項具代表性的歷史案例。在這些案例中，傳統線性模型預測政策將大幅吸引客流，但實測結果顯示通勤者行為與事前預期存在明顯差距。
             </p>
@@ -445,21 +445,21 @@ def render_tab3_phenomena(is_en: bool):
                 <td>Predicted <b>20%–35% reduction</b> in private car usage via standard price elasticity (-0.3).</td>
                 <td>Car usage <b>did not drop</b> (shifted by ~0% to +4%). Transit users grew by only <b>3%</b> (mostly ex-walkers).</td>
                 <td>Low NPF (0.15) car owners experience PAM money reward of only <b>+1.38</b>, failing to overcome PPL1 delay pain (8.53). <b>Car shift predicted: 2.3%</b>.</td>
-                <td><span style="color: #4ade80; font-weight: bold;">✅ Accurate Prediction</span><br>(Matches 3% reality vs 35% error)</td>
+                <td><span style="color: #4ade80; font-weight: bold;"> Accurate Prediction</span><br>(Matches 3% reality vs 35% error)</td>
             </tr>
             <tr>
                 <td><b>Case 2: Forced Transfer Hub-and-Spoke Backlash</b><br>Guo & Wilson (2011); Currie (2005)</td>
                 <td>Forcing transfers to rail spine assumed to add "only 4 min travel time" with zero mode loss.</td>
                 <td>Commuters showed resistance to transfers. Transfer penalty equals <b>10–15 min in-vehicle time</b>; ridership declined.</td>
                 <td>Forced transfer causes EPG heading reset, spikes PPL1 from 5.53 to <b>7.91</b>, and MBON11 avoidance rises to 0.306. <b>Bus share decreases by 7.8%</b>.</td>
-                <td><span style="color: #4ade80; font-weight: bold;">✅ Accurate Prediction</span><br>(Reflects transfer impedance)</td>
+                <td><span style="color: #4ade80; font-weight: bold;"> Accurate Prediction</span><br>(Reflects transfer impedance)</td>
             </tr>
             <tr>
                 <td><b>Case 3: Global Rail Ridership Overestimation</b><br>Flyvbjerg et al. (2005), <i>JAPA</i></td>
                 <td>Linear utility models predicted 40%–60% transit share across 210 global rail corridors.</td>
                 <td>Actual rail patronage was on average <b>51.4% lower</b> than forecasted; 84% of projects failed ridership targets.</td>
                 <td>10,000 multi-agent simulation with non-linear PDF sleep inertia and PPL1 fatigue predicts <b>72%–78% car dominance</b> in suburbs.</td>
-                <td><span style="color: #4ade80; font-weight: bold;">✅ Accurate Prediction</span><br>(Explains 51.4% global bias)</td>
+                <td><span style="color: #4ade80; font-weight: bold;"> Accurate Prediction</span><br>(Explains 51.4% global bias)</td>
             </tr>
         </table>
         """, unsafe_allow_html=True)
@@ -478,21 +478,21 @@ def render_tab3_phenomena(is_en: bool):
                 <td>依據標準價格彈性 (-0.3)，預測全城自駕車將大幅<b>減少 20%~35%</b>。</td>
                 <td>汽車流量<b>完全未減少</b>（甚至微增 4%），公車運量僅<b>微幅增加 3%</b>（多為前步行/單車族）。</td>
                 <td>有車族 NPF 飢餓度僅 0.15，PAM 省錢多巴胺僅微增 <b>+1.38</b>，無法抵擋 8.53 的 PPL1 延遲痛感。<b>模型計算自駕移轉率僅 2.3%</b>！</td>
-                <td><span style="color: #4ade80; font-weight: bold;">✅ 精準吻合</span><br>（預測 2.3% 吻合實測 3%，修正傳統模型高估）</td>
+                <td><span style="color: #4ade80; font-weight: bold;"> 精準吻合</span><br>（預測 2.3% 吻合實測 3%，修正傳統模型高估）</td>
             </tr>
             <tr>
                 <td><b>案例二：「幹線轉乘樞紐化」強迫轉乘阻抗案</b><br>Guo & Wilson (2011); Currie (2005)</td>
                 <td>取消直達公車、強迫轉乘捷運主軸，模型計算「行程僅增加 4 分鐘」，預測運量維持高檔。</td>
                 <td>通勤者強烈抵制轉乘。研究證實轉乘心理懲罰相當於 <b>10~15 分鐘車內時間</b>，支線客流顯著減少。</td>
                 <td>強迫轉乘中斷 EPG 羅盤向量，PPL1 厭惡放電從 5.53 飆至 <b>7.91</b>，MBON11 迴避門閥上升 40%。<b>公車使用率下降 7.8%</b>。</td>
-                <td><span style="color: #4ade80; font-weight: bold;">✅ 精準吻合</span><br>（成功重現強迫轉乘引發的運具轉移效應）</td>
+                <td><span style="color: #4ade80; font-weight: bold;"> 精準吻合</span><br>（成功重現強迫轉乘引發的運具轉移效應）</td>
             </tr>
             <tr>
                 <td><b>案例三：全球 210 個軌道交通客運量預測過度樂觀案例</b><br>Flyvbjerg et al. (2005), <i>JAPA</i></td>
                 <td>傳統四階段模型在規劃期皆預測軌道運量將達 40%~60%，回本樂觀。</td>
                 <td>全球 210 個軌道項目審計，實際客運量平均比預測<b>低了 51.4%</b>，高達 84% 項目面臨運量赤字。</td>
                 <td>果蠅連接體 10,000 人蒙地卡羅模擬，在生物睡眠負債 (PDF) 與戶外步行抗拒下，<b>精準計算出郊區自駕率堅守 72%~78%</b>。</td>
-                <td><span style="color: #4ade80; font-weight: bold;">✅ 精準吻合</span><br>（反映出全球軌道預測中 51.4% 的系統性高估偏差）</td>
+                <td><span style="color: #4ade80; font-weight: bold;"> 精準吻合</span><br>（反映出全球軌道預測中 51.4% 的系統性高估偏差）</td>
             </tr>
         </table>
         """, unsafe_allow_html=True)

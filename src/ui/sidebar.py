@@ -35,7 +35,7 @@ def render_sidebar() -> SidebarInputs:
     # -------------------------------------------------------------
     # Sidebar Language Toggle (Top of Sidebar)
     # -------------------------------------------------------------
-    st.sidebar.markdown("### 🌐 Language / 語言選擇")
+    st.sidebar.markdown("### Language / 語言選擇")
     lang = st.sidebar.radio(
         "Select Language / 選擇語言",
         ["繁體中文", "English (AU)"],
@@ -48,14 +48,14 @@ def render_sidebar() -> SidebarInputs:
     # Parameters & Presets
     # -------------------------------------------------------------
     st.sidebar.markdown("---")
-    st.sidebar.title("🎛️ " + ("Commuter Control Panel" if is_en else "通勤參數控制台"))
+    st.sidebar.title(" " + ("Commuter Control Panel" if is_en else "通勤參數控制台"))
 
     preset_options = [
         ("Custom Parameters", "自訂參數"),
-        ("🎓 Tertiary / University Student", "🎓 大專院校學生 (學生族群)"),
-        ("💼 CBD Corporate Executive", "💼 CBD 高薪主管"),
-        ("🚴 Fitness Cyclist", "🚴 運動狂熱者"),
-        ("🚌 Suburban Commuter Family", "🚌 郊區通勤家庭")
+        (" Tertiary / University Student", " 大專院校學生 (學生族群)"),
+        (" CBD Corporate Executive", " CBD 高薪主管"),
+        (" Fitness Cyclist", " 運動狂熱者"),
+        (" Suburban Commuter Family", " 郊區通勤家庭")
     ]
     preset_choices = [p[0] if is_en else p[1] for p in preset_options]
     preset = st.sidebar.selectbox(
@@ -74,7 +74,7 @@ def render_sidebar() -> SidebarInputs:
     elif "Suburban" in preset or "郊區" in preset:
         default_npf, default_oa, default_ser, default_pdf = 0.60, 0.35, 0.50, 0.55
 
-    st.sidebar.markdown("### 🧬 " + ("Neuromodulator State" if is_en else "果蠅神經調控劑濃度"))
+    st.sidebar.markdown("### " + ("Neuromodulator State" if is_en else "果蠅神經調控劑濃度"))
     npf_val = st.sidebar.slider(
         "NPF: Budget Pressure & Price Sensitivity" if is_en else "NPF 財務飢餓度 (省錢渴望 / 預算壓力)",
         0.0, 1.0, default_npf, 0.05,
@@ -97,7 +97,7 @@ def render_sidebar() -> SidebarInputs:
     )
 
     st.sidebar.markdown("---")
-    st.sidebar.markdown("### 🏙️ " + ("Brisbane Environment" if is_en else "布里斯本走廊與環境"))
+    st.sidebar.markdown("### " + ("Brisbane Environment" if is_en else "布里斯本走廊與環境"))
     corridor_names = [c.name for c in BRISBANE_CORRIDORS]
     selected_corridor_name = st.sidebar.selectbox("Commuter Corridor:" if is_en else "通勤走廊：", corridor_names, index=0)
     selected_corridor = next(c for c in BRISBANE_CORRIDORS if c.name == selected_corridor_name)

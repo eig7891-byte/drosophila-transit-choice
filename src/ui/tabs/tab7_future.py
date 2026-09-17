@@ -5,19 +5,19 @@ import streamlit as st
 import pandas as pd
 
 def render_tab7_future(is_en: bool):
-    st.markdown("## " + ("🔮 Future Urban Horizons: Multi-Decadal Urban Visions & Engineering Parameters" if is_en else "🔮 未來路網願景規劃：多年代城市規劃與工程參數矩陣"))
+    st.markdown("## " + (" Future Urban Horizons: Multi-Decadal Urban Visions & Engineering Parameters" if is_en else " 未來路網願景規劃：多年代城市規劃與工程參數矩陣"))
     st.markdown(
         "Transportation systems cannot be evaluated solely on current physical constraints. This module incorporates official statutory master plans from the **Queensland Department of Transport and Main Roads (TMR)**, **Translink**, and **Brisbane City Council (BCC)** to establish physical infrastructure parameters across four distinct eras (2026, 2032, 2040, and 2050)."
         if is_en else
         "城市交通決策無法單憑當前既有的物理瓶頸作為終極定論。本模組完整導入**昆士蘭州交通與主幹道部 (TMR)**、**Translink** 及 **布里斯本市政府 (BCC)** 之法定總體規劃，建立橫跨四大年代（2026、2032、2040 與 2050）的實體工程參數矩陣："
     )
 
-    st.markdown("### " + ("🏛️ Statutory Document Foundations & Major Infrastructure Upgrades" if is_en else "🏛️ 法定規劃文件依據與重大工程升級指標"))
+    st.markdown("### " + (" Statutory Document Foundations & Major Infrastructure Upgrades" if is_en else " 法定規劃文件依據與重大工程升級指標"))
 
     col_f1, col_f2, col_f3 = st.columns(3)
     with col_f1:
         st.markdown('<div class="character-card" style="text-align: left; padding: 16px;">', unsafe_allow_html=True)
-        st.markdown('#### 🥇 ' + ("2032 Olympic Games Legacy" if is_en else "2032 奧運與帕運遺產期"))
+        st.markdown('#### ' + ("2032 Olympic Games Legacy" if is_en else "2032 奧運與帕運遺產期"))
         if is_en:
             st.markdown("""
             * **Official Basis**:
@@ -44,7 +44,7 @@ def render_tab7_future(is_en: bool):
 
     with col_f2:
         st.markdown('<div class="character-card" style="text-align: left; padding: 16px;">', unsafe_allow_html=True)
-        st.markdown('#### 🌿 ' + ("2040 SEQ Regional Plan 2041" if is_en else "2040 東南昆士蘭區域路網期"))
+        st.markdown('#### ' + ("2040 SEQ Regional Plan 2041" if is_en else "2040 東南昆士蘭區域路網期"))
         if is_en:
             st.markdown("""
             * **Official Basis**:
@@ -73,7 +73,7 @@ def render_tab7_future(is_en: bool):
 
     with col_f3:
         st.markdown('<div class="character-card" style="text-align: left; padding: 16px;">', unsafe_allow_html=True)
-        st.markdown('#### ⚡ ' + ("2050 Net-Zero Autonomous Mobility" if is_en else "2050 淨零自駕與微移動期"))
+        st.markdown('#### ' + ("2050 Net-Zero Autonomous Mobility" if is_en else "2050 淨零自駕與微移動期"))
         if is_en:
             st.markdown("""
             * **Official Basis**:
@@ -101,7 +101,7 @@ def render_tab7_future(is_en: bool):
     st.markdown("---")
 
     # Multi-Era Corridor Parameter Matrix Table
-    st.markdown("### " + ("📊 Multi-Decadal Physical Corridor Parameter Matrix (2026 vs 2032 vs 2040 vs 2050)" if is_en else "📊 多年代實體走廊參數矩陣對比（2026 vs 2032 vs 2040 vs 2050）"))
+    st.markdown("### " + (" Multi-Decadal Physical Corridor Parameter Matrix (2026 vs 2032 vs 2040 vs 2050)" if is_en else " 多年代實體走廊參數矩陣對比（2026 vs 2032 vs 2040 vs 2050）"))
 
     matrix_df = pd.DataFrame([
         {

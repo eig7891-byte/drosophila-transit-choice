@@ -1,10 +1,10 @@
-# 🧠 Drosophila Connectome Transit Choice Model
+# Drosophila Connectome Transit Choice Model
 
 An Agent-Based Neuromorphic Transit Choice Simulation for South East Queensland (Translink 50-Cent Fare Policy), combining Janelia FlyEM connectome circuit architecture with empirical travel data.
 
 ---
 
-## 🌟 Overview
+## 1. Overview
 
 Standard transportation choice models (such as multinomial logit formulations) assume human commuters act as rational economic agents with linear utility functions. These models often fail to capture non-linear behavioral shifts, such as why an 89% public transit fare reduction (Queensland 50-Cent initiative) leads to only a modest reduction in car dependency across outer suburban areas.
 
@@ -16,40 +16,40 @@ This project implements a **bio-inspired multi-agent transit choice architecture
 
 ---
 
-## 🚀 Quick Start
+## 2. Quick Start
 
-### 1. Installation
+### 2.1 Installation
 ```bash
 git clone https://github.com/eig7891-byte/drosophila-transit-choice.git
 cd drosophila-transit-choice
 pip install -r requirements.txt
 ```
 
-### 2. Run the Interactive Streamlit Dashboard
+### 2.2 Run the Interactive Streamlit Dashboard
 ```bash
 streamlit run app.py
 ```
 *(Or run via the backward-compatible wrapper: `streamlit run app_drosophila_transit.py`)*
 
-### 3. Run Automated Unit Tests
+### 2.3 Run Automated Unit Tests
 ```bash
 pytest tests -v
 ```
 
-### 4. Run Standalone MLE Parameter Calibration
+### 2.4 Run Standalone MLE Parameter Calibration
 ```bash
 python scripts/run_mle_calibration.py
 ```
 
 ---
 
-## 🔬 Project Architecture
+## 3. Project Architecture
 
 The codebase is organized as a modular Python package:
 
 ```text
 drosophila-transit-choice/
-├── app.py                             # Clean Streamlit application entry point
+├── app.py                             # Streamlit application entry point
 ├── app_drosophila_transit.py          # Backward-compatible entry point forwarding to app.py
 ├── src/
 │   ├── core/                          # Neural arbitration engine & calibration state
@@ -96,7 +96,7 @@ drosophila-transit-choice/
 
 ---
 
-## 📊 Empirical Data Sources & Provenance
+## 4. Empirical Data Sources & Provenance
 
 * **Queensland Government Open Data Portal**: Translink Go Card journey transactions (July 2024 baseline vs. August 2024 50-cent onset).
 * **Translink Division (TMR)**: Quarterly Public Transport Performance & Customer Experience Report (Q2 2025-26).

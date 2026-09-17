@@ -4,7 +4,7 @@ Tab 6: Transit Policy and Engineering White Paper.
 import streamlit as st
 
 def render_tab6_whitepaper(is_en: bool):
-    st.markdown("### 🏛️ " + ("Brisbane Transit Policy & Engineering White Paper" if is_en else "布里斯本大眾交通工程規劃建議書"))
+    st.markdown("### " + ("Brisbane Transit Policy & Engineering White Paper" if is_en else "布里斯本大眾交通工程規劃建議書"))
 
     if is_en:
         st.markdown(r"""

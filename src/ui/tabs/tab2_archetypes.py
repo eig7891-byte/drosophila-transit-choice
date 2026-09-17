@@ -8,11 +8,11 @@ import pandas as pd
 import plotly.express as px
 
 def render_tab2_archetypes(is_en: bool):
-    st.markdown("### " + ("🎮 Live Commuter Telemetry Arena (Doomfly Style)" if is_en else "🎮 實時動態果蠅通勤模擬舞台 (Doomfly 遙測風格)"))
+    st.markdown("### " + (" Live Commuter Telemetry Arena (Doomfly Style)" if is_en else " 實時動態果蠅通勤模擬舞台 (Doomfly 遙測風格)"))
     st.info(
-        "💡 **Interactive Canvas**: Real-time 60 FPS HTML5 canvas simulating fruit fly commuters across Brisbane. Use buttons beneath canvas to toggle between **Walk, Cycle, 50c Bus, Drive, Stay Home**, or click **'Brain Auto'** to let the Janelia connectome decide! Supports **☀️ Sunny** vs **🌧️ Severe Storm/Heatwave** weather states."
+        " **Interactive Canvas**: Real-time 60 FPS HTML5 canvas simulating fruit fly commuters across Brisbane. Use buttons beneath canvas to toggle between **Walk, Cycle, 50c Bus, Drive, Stay Home**, or click **'Brain Auto'** to let the Janelia connectome decide! Supports ** Sunny** vs ** Severe Storm/Heatwave** weather states."
         if is_en else
-        "💡 **舞台互動指南**：本動態畫布靈感源自 **Doomfly**。上方即時顯示雙示波器神經電位（PAM 獎勵、PPL1 痛感、時速、淨點數），下方模擬果蠅跨步、踩單車、搭乘冷氣公車與開車。可於下方切換 **晴朗 vs 雨天/高溫**，或點擊 **「自動決策」** 讓 Janelia FlyEM 連接體即時選定運具！"
+        " **舞台互動指南**：本動態畫布靈感源自 **Doomfly**。上方即時顯示雙示波器神經電位（PAM 獎勵、PPL1 痛感、時速、淨點數），下方模擬果蠅跨步、踩單車、搭乘冷氣公車與開車。可於下方切換 **晴朗 vs 雨天/高溫**，或點擊 **「自動決策」** 讓 Janelia FlyEM 連接體即時選定運具！"
     )
 
     _ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
@@ -26,13 +26,13 @@ def render_tab2_archetypes(is_en: bool):
         arena_html = arena_template.replace("___ARENA_LANG___", "en" if is_en else "zh")
         components.html(arena_html, height=800, scrolling=False)
     else:
-        st.warning("⚠️ `assets/doomfly_arena.html` not found.")
+        st.warning(" `assets/doomfly_arena.html` not found.")
 
     st.markdown("---")
-    st.markdown("### " + ("🪰 Multi-Modal Commuter Archetypes & Neural Point Economy" if is_en else "🪰 八大多運具通勤角色圖鑑與真實點數天平"))
+    st.markdown("### " + (" Multi-Modal Commuter Archetypes & Neural Point Economy" if is_en else " 八大多運具通勤角色圖鑑與真實點數天平"))
 
-    subtab_a_title = "🏫 " + ("Scenario A: 5.2 km Suburban Life (Springwood ➔ Rochedale South)" if is_en else "情境 A: 5.2 km 郊區生活圈 (Springwood ➔ Rochedale South 州立小學)")
-    subtab_b_title = "🎓 " + ("Scenario B: 28.8 km University Express (Springwood ➔ UQ St Lucia)" if is_en else "情境 B: 28.8 km 大學通勤走廊 (Springwood ➔ 昆士蘭大學 UQ St Lucia)")
+    subtab_a_title = " " + ("Scenario A: 5.2 km Suburban Life (Springwood -> Rochedale South)" if is_en else "情境 A: 5.2 km 郊區生活圈 (Springwood -> Rochedale South 州立小學)")
+    subtab_b_title = " " + ("Scenario B: 28.8 km University Express (Springwood -> UQ St Lucia)" if is_en else "情境 B: 28.8 km 大學通勤走廊 (Springwood -> 昆士蘭大學 UQ St Lucia)")
 
     subtab_a, subtab_b = st.tabs([subtab_a_title, subtab_b_title])
 
@@ -40,13 +40,13 @@ def render_tab2_archetypes(is_en: bool):
     # SCENARIO A: 5.2 KM SUBURBAN LIFE
     # =========================================================
     with subtab_a:
-        st.markdown("#### 🏫 " + ("Scenario A Archetypes (5.2 km Local Hills)" if is_en else "情境 A 專屬運具角色圖鑑（5.2 km 郊區生活圈）"))
+        st.markdown("#### " + ("Scenario A Archetypes (5.2 km Local Hills)" if is_en else "情境 A 專屬運具角色圖鑑（5.2 km 郊區生活圈）"))
 
         # 4 cols x 2 rows
         r1_c1, r1_c2, r1_c3, r1_c4 = st.columns(4)
         with r1_c1:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #00ff88;">🛴+🚌 ' + ("Combo Multimodal" if is_en else "複合接駁模式") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #00ff88;">Combo (Scooter + Bus) ' + ("Combo Multimodal" if is_en else "複合接駁模式") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 30 min (10m scooter + 20m bus)
@@ -69,7 +69,7 @@ def render_tab2_archetypes(is_en: bool):
 
         with r1_c2:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #38bdf8;">🚌 ' + ("50¢ Busway Commuter" if is_en else "50¢ 公車專用道族") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #38bdf8;"> ' + ("50¢ Busway Commuter" if is_en else "50¢ 公車專用道族") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 46 min (26m walk + 20m bus)
@@ -92,7 +92,7 @@ def render_tab2_archetypes(is_en: bool):
 
         with r1_c3:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #f59e0b;">🚲 ' + ("Bicycle Rider" if is_en else "自行車騎士") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #f59e0b;"> ' + ("Bicycle Rider" if is_en else "自行車騎士") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 20 min (5.2km ride)
@@ -115,7 +115,7 @@ def render_tab2_archetypes(is_en: bool):
 
         with r1_c4:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #e2e8f0;">🛴 ' + ("e-Scooter Direct" if is_en else "微移動滑板客") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #e2e8f0;"> ' + ("e-Scooter Direct" if is_en else "微移動滑板客") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 15 min (Direct ride)
@@ -139,7 +139,7 @@ def render_tab2_archetypes(is_en: bool):
         r2_c1, r2_c2, r2_c3, r2_c4 = st.columns(4)
         with r2_c1:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #60a5fa;">🚗 ' + ("Private Car" if is_en else "自駕私家車") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #60a5fa;"> ' + ("Private Car" if is_en else "自駕私家車") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 8-12 min
@@ -162,7 +162,7 @@ def render_tab2_archetypes(is_en: bool):
 
         with r2_c2:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #2dd4bf;">🚙 ' + ("e-Car / Uber" if is_en else "e-租車 / Uber") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #2dd4bf;"> ' + ("e-Car / Uber" if is_en else "e-租車 / Uber") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 8-12 min
@@ -185,7 +185,7 @@ def render_tab2_archetypes(is_en: bool):
 
         with r2_c3:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #f87171;">🚶 ' + ("Suburban Walker" if is_en else "長程步行者") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #f87171;"> ' + ("Suburban Walker" if is_en else "長程步行者") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 65 min
@@ -208,7 +208,7 @@ def render_tab2_archetypes(is_en: bool):
 
         with r2_c4:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #ec4899;">🛏️ ' + ("Stay Home" if is_en else "取消行程留在家中") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #ec4899;"> ' + ("Stay Home" if is_en else "取消行程留在家中") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 0 min
@@ -233,12 +233,12 @@ def render_tab2_archetypes(is_en: bool):
         # Scenario A Dynamic Animation & Point Economy
         col_ctrl1_a, col_ctrl2_a = st.columns([3, 2])
         with col_ctrl1_a:
-            st.markdown("#### 🎬 " + ("Wake-Up Time Dynamic Point Economy Animation (07:30 ➔ 09:20 AM)" if is_en else "起床與出發時間推移動畫演繹（07:30 ➔ 09:20 AM 點數消長）"))
+            st.markdown("#### " + ("Wake-Up Time Dynamic Point Economy Animation (07:30 -> 09:20 AM)" if is_en else "起床與出發時間推移動畫演繹（07:30 -> 09:20 AM 點數消長）"))
             st.caption("點擊下方動畫圖表中的「▶ Play」或拖曳時間軸，觀察隨出發時間延後，各運具淨得分的即時變化與分流演變。" if not is_en else "Click '▶ Play' or drag the animation slider to watch how each mode's points decay or hold as departure time slips later.")
         with col_ctrl2_a:
             sim_weather_a = st.radio(
-                "🌦️ Weather Condition (Scenario A):" if is_en else "🌦️ 天候環境條件（情境 A）：",
-                ["☀️ Pleasant (22°C)" if is_en else "☀️ 晴朗舒適涼秋 (22°C)", "🌧️ Storm / Heat (35°C)" if is_en else "🌧️ 大雨與高溫氣候 (35°C)"],
+                " Weather Condition (Scenario A):" if is_en else " 天候環境條件（情境 A）：",
+                [" Pleasant (22°C)" if is_en else " 晴朗舒適涼秋 (22°C)", " Storm / Heat (35°C)" if is_en else " 大雨與高溫氣候 (35°C)"],
                 horizontal=True,
                 key="radio_weather_a"
             )
@@ -246,7 +246,7 @@ def render_tab2_archetypes(is_en: bool):
 
         # Build Animation Frames DataFrame
         modes_spec_a = [
-            {"name": "Combo (🛴+🚌)" if is_en else "複合接駁 (🛴+🚌)", "time": 30, "fee": 6.0, "fatigue": 0.0, "parking": 0.0, "weather": 2.0 if is_rain_a else 0.0, "color": "#00ff88"},
+            {"name": "Combo (Combo (Scooter + Bus))" if is_en else "複合接駁 (Combo (Scooter + Bus))", "time": 30, "fee": 6.0, "fatigue": 0.0, "parking": 0.0, "weather": 2.0 if is_rain_a else 0.0, "color": "#00ff88"},
             {"name": "e-Scooter" if is_en else "e-滑板車直騎", "time": 15, "fee": 4.0, "fatigue": 0.0, "parking": 0.0, "weather": 7.0 if is_rain_a else 0.0, "color": "#e2e8f0"},
             {"name": "Bicycle" if is_en else "自行車", "time": 20, "fee": 2.0, "fatigue": 4.0, "parking": 0.0, "weather": 8.0 if is_rain_a else 0.0, "color": "#f59e0b"},
             {"name": "e-Car / Uber" if is_en else "e-租車 / Uber", "time": 12 if is_rain_a else 8, "fee": 7.0, "fatigue": 0.0, "parking": 0.0, "weather": 0.0, "color": "#2dd4bf"},
@@ -290,7 +290,7 @@ def render_tab2_archetypes(is_en: bool):
                 color=mode_col,
                 animation_frame=time_col,
                 range_y=[-25, 32],
-                title="🎬 出發時間推移動畫演繹 (點擊 Play 觀察積分變動)" if not is_en else "🎬 Commute Point Race over Wake-up Time (Click Play)",
+                title=" 出發時間推移動畫演繹 (點擊 Play 觀察積分變動)" if not is_en else " Commute Point Race over Wake-up Time (Click Play)",
                 color_discrete_map={m["name"]: m["color"] for m in modes_spec_a}
             )
             fig_anim_a.update_layout(
@@ -313,7 +313,7 @@ def render_tab2_archetypes(is_en: bool):
                 x=time_col,
                 y=net_col,
                 color=mode_col,
-                title="📈 各運具遲到衰退軌跡 (開車/Uber 之防守緩衝區間)" if not is_en else "📈 Lateness Decay Curves (Car/Uber Buffer Plateau)",
+                title=" 各運具遲到衰退軌跡 (開車/Uber 之防守緩衝區間)" if not is_en else " Lateness Decay Curves (Car/Uber Buffer Plateau)",
                 color_discrete_map={m["name"]: m["color"] for m in modes_spec_a}
             )
             fig_line_a.update_layout(
@@ -330,7 +330,7 @@ def render_tab2_archetypes(is_en: bool):
         # SCENARIO A CONCLUSION CARD
         # -----------------------------------------------------
         st.markdown('<div style="background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); border: 1px solid #4338ca; border-left: 5px solid #38bdf8; border-radius: 10px; padding: 18px; margin-top: 15px;">', unsafe_allow_html=True)
-        st.markdown("### 💡 " + ("Scenario A Engineering Conclusion: The 'Late-Riser Car Dependency Lock-in'" if is_en else "情境 A 核心工程結論：晚起誘發的自駕鎖定效應（The Late-Riser Car Lock-in）"))
+        st.markdown("### " + ("Scenario A Engineering Conclusion: The 'Late-Riser Car Dependency Lock-in'" if is_en else "情境 A 核心工程結論：晚起誘發的自駕鎖定效應（The Late-Riser Car Lock-in）"))
         if is_en:
             st.markdown("""
             * **1. Early-Bird Green Mobility Dominance (07:30 - 08:15 AM)**:
@@ -362,13 +362,13 @@ def render_tab2_archetypes(is_en: bool):
     # SCENARIO B: 28.8 KM UNIVERSITY CORRIDOR (UQ)
     # =========================================================
     with subtab_b:
-        st.markdown("#### 🎓 " + ("Scenario B Archetypes (28.8 km UQ St Lucia Express)" if is_en else "情境 B 專屬運具角色圖鑑（28.8 km 昆士蘭大學長途走廊）"))
+        st.markdown("#### " + ("Scenario B Archetypes (28.8 km UQ St Lucia Express)" if is_en else "情境 B 專屬運具角色圖鑑（28.8 km 昆士蘭大學長途走廊）"))
 
         # 4 cols x 2 rows
         r1_c1_b, r1_c2_b, r1_c3_b, r1_c4_b = st.columns(4)
         with r1_c1_b:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #00ff88;">🛴+🚌 ' + ("Combo Multimodal" if is_en else "複合接駁模式") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #00ff88;">Combo (Scooter + Bus) ' + ("Combo Multimodal" if is_en else "複合接駁模式") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 52 min (10m scooter + 42m bus)
@@ -391,7 +391,7 @@ def render_tab2_archetypes(is_en: bool):
 
         with r1_c2_b:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #38bdf8;">🚌 ' + ("50¢ Busway Commuter" if is_en else "50¢ 公車專用道族") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #38bdf8;"> ' + ("50¢ Busway Commuter" if is_en else "50¢ 公車專用道族") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 68 min (26m walk + 42m bus)
@@ -414,7 +414,7 @@ def render_tab2_archetypes(is_en: bool):
 
         with r1_c3_b:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #f59e0b;">🚲 ' + ("V1 Veloway Cyclist" if is_en else "V1 專用道自行車騎士") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #f59e0b;"> ' + ("V1 Veloway Cyclist" if is_en else "V1 專用道自行車騎士") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 85 min (28.8km ride)
@@ -437,7 +437,7 @@ def render_tab2_archetypes(is_en: bool):
 
         with r1_c4_b:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #e2e8f0;">🛴 ' + ("e-Scooter Direct" if is_en else "e-滑板車長途") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #e2e8f0;"> ' + ("e-Scooter Direct" if is_en else "e-滑板車長途") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 90 min
@@ -461,7 +461,7 @@ def render_tab2_archetypes(is_en: bool):
         r2_c1_b, r2_c2_b, r2_c3_b, r2_c4_b = st.columns(4)
         with r2_c1_b:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #60a5fa;">🚗 ' + ("Private Car" if is_en else "自駕私家車") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #60a5fa;"> ' + ("Private Car" if is_en else "自駕私家車") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 42-50 min (M1 traffic peak)
@@ -484,7 +484,7 @@ def render_tab2_archetypes(is_en: bool):
 
         with r2_c2_b:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #2dd4bf;">🚙 ' + ("e-Car / Uber" if is_en else "e-租車 / Uber") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #2dd4bf;"> ' + ("e-Car / Uber" if is_en else "e-租車 / Uber") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 42-50 min
@@ -507,7 +507,7 @@ def render_tab2_archetypes(is_en: bool):
 
         with r2_c3_b:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #f87171;">🚶 ' + ("Suburban Walker" if is_en else "長程步行者") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #f87171;"> ' + ("Suburban Walker" if is_en else "長程步行者") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 340 min (5.6 hrs)
@@ -530,7 +530,7 @@ def render_tab2_archetypes(is_en: bool):
 
         with r2_c4_b:
             st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #ec4899;">🛏️ ' + ("Stay Home" if is_en else "取消行程留在家中") + '</div>', unsafe_allow_html=True)
+            st.markdown('<div class="character-title" style="color: #ec4899;"> ' + ("Stay Home" if is_en else "取消行程留在家中") + '</div>', unsafe_allow_html=True)
             if is_en:
                 st.markdown("""
                 * **Duration**: 0 min
@@ -555,12 +555,12 @@ def render_tab2_archetypes(is_en: bool):
         # Scenario B Dynamic Animation & Point Economy
         col_ctrl1_b, col_ctrl2_b = st.columns([3, 2])
         with col_ctrl1_b:
-            st.markdown("#### 🎬 " + ("Wake-Up Time Dynamic Point Economy Animation (07:15 ➔ 08:45 AM)" if is_en else "長途通勤時間推移動畫演繹（07:15 ➔ 08:45 AM 點數消長）"))
+            st.markdown("#### " + ("Wake-Up Time Dynamic Point Economy Animation (07:15 -> 08:45 AM)" if is_en else "長途通勤時間推移動畫演繹（07:15 -> 08:45 AM 點數消長）"))
             st.caption("點擊下方動畫圖表中的「▶ Play」或拖曳時間軸，觀察 28.8km 長途走廊隨出發時間延後，綠橋大眾運輸優勢與 08:18 全體行程取消臨界線。" if not is_en else "Click '▶ Play' or drag the slider to watch how 28.8km UQ corridor points evolve and reach the 08:18 AM cancellation cutoff.")
         with col_ctrl2_b:
             sim_weather_b = st.radio(
-                "🌦️ Weather Condition (Scenario B):" if is_en else "🌦️ 天候環境條件（情境 B）：",
-                ["☀️ Pleasant (22°C)" if is_en else "☀️ 晴朗舒適涼秋 (22°C)", "🌧️ Storm / Heat (35°C)" if is_en else "🌧️ 大雨與高溫氣候 (35°C)"],
+                " Weather Condition (Scenario B):" if is_en else " 天候環境條件（情境 B）：",
+                [" Pleasant (22°C)" if is_en else " 晴朗舒適涼秋 (22°C)", " Storm / Heat (35°C)" if is_en else " 大雨與高溫氣候 (35°C)"],
                 horizontal=True,
                 key="radio_weather_b"
             )
@@ -568,7 +568,7 @@ def render_tab2_archetypes(is_en: bool):
 
         # Build Animation Frames DataFrame for Scenario B
         modes_spec_b = [
-            {"name": "Combo (🛴+🚌)" if is_en else "複合接駁 (🛴+🚌)", "time": 52, "fee": 6.0, "fatigue": 0.0, "parking": 0.0, "weather": 1.0 if is_rain_b else 0.0, "color": "#00ff88"},
+            {"name": "Combo (Combo (Scooter + Bus))" if is_en else "複合接駁 (Combo (Scooter + Bus))", "time": 52, "fee": 6.0, "fatigue": 0.0, "parking": 0.0, "weather": 1.0 if is_rain_b else 0.0, "color": "#00ff88"},
             {"name": "Transit (50c)" if is_en else "50c 公車", "time": 68, "fee": 0.5, "fatigue": 15.0, "parking": 0.0, "weather": 10.0 if is_rain_b else 0.0, "color": "#38bdf8"},
             {"name": "Private Car" if is_en else "自駕私家車", "time": 50 if is_rain_b else 42, "fee": 8.6, "fatigue": 0.0, "parking": 14.5, "weather": 4.0 if is_rain_b else 0.0, "color": "#60a5fa"},
             {"name": "Bicycle (V1)" if is_en else "自行車 (V1專用道)", "time": 85, "fee": 2.0, "fatigue": 15.0, "parking": 0.0, "weather": 15.0 if is_rain_b else 0.0, "color": "#f59e0b"},
@@ -612,7 +612,7 @@ def render_tab2_archetypes(is_en: bool):
                 color=mode_col_b,
                 animation_frame=time_col_b,
                 range_y=[-25, 32],
-                title="🎬 28.8km UQ 走廊時間推移動畫 (點擊 Play 觀察積分變動)" if not is_en else "🎬 28.8km UQ Corridor Point Race (Click Play)",
+                title=" 28.8km UQ 走廊時間推移動畫 (點擊 Play 觀察積分變動)" if not is_en else " 28.8km UQ Corridor Point Race (Click Play)",
                 color_discrete_map={m["name"]: m["color"] for m in modes_spec_b}
             )
             fig_anim_b.update_layout(
@@ -634,7 +634,7 @@ def render_tab2_archetypes(is_en: bool):
                 x=time_col_b,
                 y=net_col_b,
                 color=mode_col_b,
-                title="📈 28.8km 各運具遲到衰退軌跡 (08:18 行程取消臨界線)" if not is_en else "📈 28.8km Lateness Decay Curves (08:18 Cancellation Cutoff)",
+                title=" 28.8km 各運具遲到衰退軌跡 (08:18 行程取消臨界線)" if not is_en else " 28.8km Lateness Decay Curves (08:18 Cancellation Cutoff)",
                 color_discrete_map={m["name"]: m["color"] for m in modes_spec_b}
             )
             fig_line_b.update_layout(
@@ -651,7 +651,7 @@ def render_tab2_archetypes(is_en: bool):
         # SCENARIO B CONCLUSION CARD
         # -----------------------------------------------------
         st.markdown('<div style="background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); border: 1px solid #4338ca; border-left: 5px solid #00ff88; border-radius: 10px; padding: 18px; margin-top: 15px;">', unsafe_allow_html=True)
-        st.markdown("### 💡 " + ("Scenario B Engineering Conclusion: Busway Priority & The 08:18 Transit Cutoff" if is_en else "情境 B 核心工程結論：大眾運輸專用道效用優勢與「08:18 決策臨界線」"))
+        st.markdown("### " + ("Scenario B Engineering Conclusion: Busway Priority & The 08:18 Transit Cutoff" if is_en else "情境 B 核心工程結論：大眾運輸專用道效用優勢與「08:18 決策臨界線」"))
         if is_en:
             st.markdown("""
             * **1. Busway & Green Bridge Priority (07:15 - 08:08 AM)**:
@@ -676,7 +676,7 @@ def render_tab2_archetypes(is_en: bool):
             * **3. 「08:18 全體行程取消臨界線」（The 08:18 Cancellation Cutoff）**：
               * 在 28.8km 長途走廊，開車亦需要約 42 分鐘。
               * 只要出發時間越過 **08:18 AM**，**任何運具均無法在 09:00 前抵達昆士蘭大學**。
-              * 所有交通運具之淨得分均受遲到懲罰而轉為負值。此時 **「🛏️ 取消行程留在家中（0.0 點）」成為淨效用最高之選項**。這從決策動力學解釋了：當出發時間延誤過久而無法準時抵達時，通勤者傾向直接取消行程。
+              * 所有交通運具之淨得分均受遲到懲罰而轉為負值。此時 **「 取消行程留在家中（0.0 點）」成為淨效用最高之選項**。這從決策動力學解釋了：當出發時間延誤過久而無法準時抵達時，通勤者傾向直接取消行程。
             """)
         st.markdown('</div>', unsafe_allow_html=True)
     st.markdown("---")

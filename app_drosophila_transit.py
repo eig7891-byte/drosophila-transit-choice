@@ -1,5 +1,5 @@
 """
-🧠 果蠅大腦通勤決策模擬器 (Drosophila-Brain Commute Simulator: Brisbane Transit)
+ 果蠅大腦通勤決策模擬器 (Drosophila-Brain Commute Simulator: Brisbane Transit)
 ---------------------------------------------------------------------------------
 Backward-compatibility entry point forwarding to the modularized app.py.
 """

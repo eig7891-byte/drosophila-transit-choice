@@ -10,7 +10,7 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
     if is_en:
         st.markdown("""
         <div class="intro-banner">
-            <h2 style="color: #00e676; margin-top: 0;">🔬 Project Introduction: Bridging Fruit Fly Neurobiology with Urban Transportation</h2>
+            <h2 style="color: #00e676; margin-top: 0;"> Project Introduction: Bridging Fruit Fly Neurobiology with Urban Transportation</h2>
             <p style="font-size: 1.08rem; line-height: 1.6; color: #cbd5e1;">
                 Traditional transportation planning models (such as multinomial logit models) assume that human commuters are rational economic agents who evaluate travel choices using static, linear utility functions. In real life, however, commuter choices are governed by complex internal physiological states, including financial budget stress, morning fatigue, heat intolerance, and delay anxiety.
             </p>
@@ -22,7 +22,7 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
     else:
         st.markdown("""
         <div class="intro-banner">
-            <h2 style="color: #00e676; margin-top: 0;">🔬 系統核心導論：將果蠅神經生物學與真實城市交通深度結合</h2>
+            <h2 style="color: #00e676; margin-top: 0;"> 系統核心導論：將果蠅神經生物學與真實城市交通深度結合</h2>
             <p style="font-size: 1.08rem; line-height: 1.6; color: #cbd5e1;">
                 傳統交通工程規劃（如 Multinomial Logit 模型）大多假設通勤者是完全理性的經濟人，用靜態的線性效用函數計算時間與票價。然而在真實世界中，通勤者的選擇受到內在生理狀態影響，包括預算負擔、睡眠不足的疲倦、高溫步行的體能消耗，以及塞車等候的時間焦慮。
             </p>
@@ -34,25 +34,25 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
 
     col1, col2 = st.columns([3, 1])
     with col1:
-        st.markdown("### " + ("🔬 Real Janelia FlyEM 3D Spatial Connectome Skeleton" if is_en else "🔬 Janelia FlyEM `male-cns:v1.0` 真實神經元 3D 空間骨架展示"))
+        st.markdown("### " + (" Real Janelia FlyEM 3D Spatial Connectome Skeleton" if is_en else " Janelia FlyEM `male-cns:v1.0` 真實神經元 3D 空間骨架展示"))
         fig_3d = viz.create_3d_connectome_figure(eval_res)
         st.plotly_chart(fig_3d, use_container_width=True)
 
     with col2:
-        st.markdown("#### " + ("🧠 Identified Biological Circuit" if is_en else "🧠 神經元解剖標籤與突觸數據"))
+        st.markdown("#### " + (" Identified Biological Circuit" if is_en else " 神經元解剖標籤與突觸數據"))
         if is_en:
             st.markdown("""
-            * **🟢 MBON01 (Approach Output)**
+            * ** MBON01 (Approach Output)**
               * **Body ID**: 10013
               * **Synapses**: 25,357
               * **Neurotransmitter**: Acetylcholine (Cholinergic)
               * **Role**: Integrates PAM dopamine rewards (money saved, fitness, comfort); drives approach action.
-            * **🔴 PPL101 (Aversive DAN / Punishment)**
+            * ** PPL101 (Aversive DAN / Punishment)**
               * **Body ID**: 11900
               * **Synapses**: 21,518
               * **Neurotransmitter**: Dopamine
               * **Role**: Encodes parking fees, traffic delays, heat, and physical fatigue.
-            * **🟣 MBON11 (Avoidance Output)**
+            * ** MBON11 (Avoidance Output)**
               * **Body ID**: 11402
               * **Synapses**: 28,316
               * **Neurotransmitter**: GABA (Inhibitory)
@@ -60,17 +60,17 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
             """)
         else:
             st.markdown("""
-            * **🟢 MBON01 (Approach / 趨向輸出)**
+            * ** MBON01 (Approach / 趨向輸出)**
               * **Body ID**: 10013
               * **突觸總數**: 25,357 個
               * **遞質**: 乙醯膽鹼 (興奮性)
               * **角色**: 接收 PAM 多巴胺獎勵放電（省錢、運動、舒適），驅動採取該項交通出行。
-            * **🔴 PPL101 (Aversive DAN / 痛感懲罰)**
+            * ** PPL101 (Aversive DAN / 痛感懲罰)**
               * **Body ID**: 11900
               * **突觸總數**: 21,518 個
               * **遞質**: 多巴胺
               * **角色**: 編碼高額停車費、塞車延遲、酷暑高溫與肌肉乳酸疲勞。
-            * **🟣 MBON11 (Avoidance / 避開輸出)**
+            * ** MBON11 (Avoidance / 避開輸出)**
               * **Body ID**: 11402
               * **突觸總數**: 28,316 個
               * **遞質**: GABA (抑制性)
@@ -82,12 +82,12 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
     if is_en:
         st.markdown("""
         <div style="background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%); border: 1px solid #415a77; border-left: 5px solid #38bdf8; border-radius: 10px; padding: 18px; margin-bottom: 20px;">
-            <h3 style="color: #38bdf8; margin-top: 0;">🧬 FlyWire FAFB Whole-Brain Connectome: Real Biological Grounding (Nature 2024 Release v783)</h3>
+            <h3 style="color: #38bdf8; margin-top: 0;"> FlyWire FAFB Whole-Brain Connectome: Real Biological Grounding (Nature 2024 Release v783)</h3>
             <p style="font-size: 1.02rem; line-height: 1.6; color: #e2e8f0; margin-bottom: 8px;">
                 Beyond the male-cns skeleton, the decision framework is grounded in the <b>FlyWire adult female whole-brain connectome (FAFB)</b>, published in <i>Nature</i> (October 2024). This dataset maps all <b>138,327 neurons</b> and over 130 million synapses across the entire central brain.
             </p>
             <p style="font-size: 0.95rem; line-height: 1.5; color: #94a3b8; margin-bottom: 0;">
-                📚 <b>Official Certified References</b>: 
+                 <b>Official Certified References</b>: 
                 <a href="https://doi.org/10.1038/s41586-024-07558-y" target="_blank" style="color: #38bdf8;">Dorkenwald et al., Nature 2024</a> | 
                 <a href="https://doi.org/10.1038/s41586-024-07686-5" target="_blank" style="color: #38bdf8;">Schlegel et al., Nature 2024</a> | 
                 <a href="https://zenodo.org/records/10676866" target="_blank" style="color: #38bdf8;">Zenodo DOI: 10.5281/zenodo.10676866 (CC BY 4.0)</a> | 
@@ -98,12 +98,12 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
     else:
         st.markdown("""
         <div style="background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%); border: 1px solid #415a77; border-left: 5px solid #38bdf8; border-radius: 10px; padding: 18px; margin-bottom: 20px;">
-            <h3 style="color: #38bdf8; margin-top: 0;">🧬 FlyWire FAFB 全腦連接組：真實生物神經元對照庫（Nature 2024 Release v783）</h3>
+            <h3 style="color: #38bdf8; margin-top: 0;"> FlyWire FAFB 全腦連接組：真實生物神經元對照庫（Nature 2024 Release v783）</h3>
             <p style="font-size: 1.02rem; line-height: 1.6; color: #e2e8f0; margin-bottom: 8px;">
                 除了 Janelia 雄性骨架外，本模擬系統之神經元定義直接對照 2024 年 10 月發表於《Nature》的 <b>FlyWire 成人雌性果蠅全腦連接組 (FAFB v783)</b> 官方資料庫。該資料庫完整重建了果蠅大腦全部 <b>138,327 顆神經元</b> 與逾 1.3 億個突觸。
             </p>
             <p style="font-size: 0.95rem; line-height: 1.5; color: #94a3b8; margin-bottom: 0;">
-                📚 <b>官方權威文獻與認證資料庫</b>：
+                 <b>官方權威文獻與認證資料庫</b>：
                 <a href="https://doi.org/10.1038/s41586-024-07558-y" target="_blank" style="color: #38bdf8;">Dorkenwald et al., Nature 2024</a> ｜ 
                 <a href="https://doi.org/10.1038/s41586-024-07686-5" target="_blank" style="color: #38bdf8;">Schlegel et al., Nature 2024</a> ｜ 
                 <a href="https://zenodo.org/records/10676866" target="_blank" style="color: #38bdf8;">Zenodo 官方數據集 DOI: 10.5281/zenodo.10676866</a> ｜ 
@@ -124,13 +124,13 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
         st.metric(
             label="記憶-趨向決策漏斗比 (KC : MBON01)" if is_en else "記憶-趨向決策漏斗比 (KC : MBON01)",
             value="2,588 : 1",
-            delta="5,177 KC ➔ 2 MBON01"
+            delta="5,177 KC -> 2 MBON01"
         )
     with m_col3:
         st.metric(
             label="多巴胺獎懲細胞比 (PAM : PPL1)" if is_en else "多巴胺細胞比 (PAM 獎勵 : PPL1 懲罰)",
             value="19.2 : 1",
-            delta="307 PAM ➔ 16 PPL1"
+            delta="307 PAM -> 16 PPL1"
         )
     with m_col4:
         st.metric(
@@ -140,7 +140,7 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
         )
 
     # Interactive Catalog Browser
-    st.markdown("#### " + ("🔎 Interactive Transit Circuit Catalog (94 Core Decision Neurons)" if is_en else "🔎 仿生交通決策核心神經元互動檢索庫（94 顆核心決策神經元）"))
+    st.markdown("#### " + (" Interactive Transit Circuit Catalog (94 Core Decision Neurons)" if is_en else " 仿生交通決策核心神經元互動檢索庫（94 顆核心決策神經元）"))
 
     catalog_path = os.path.join("data", "flywire_transit_neuron_catalog.csv")
     if os.path.exists(catalog_path):
@@ -148,11 +148,11 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
 
         filter_opts = [
             "全部 (All 94 Neurons)" if not is_en else "All (94 Neurons)",
-            "🟢 MBON01 趨向推進 (Approach Output - 2 cells)" if not is_en else "🟢 MBON01 Approach Output (2 cells)",
-            "🟣 MBON11 迴避否決 (Avoidance Veto - 2 cells)" if not is_en else "🟣 MBON11 Avoidance Veto (2 cells)",
-            "🟡 PAM01 票價補貼獎勵 (50c Fare Incentive - 41 cells)" if not is_en else "🟡 PAM01 Fare Reward (41 cells)",
-            "🔴 PPL101 延遲轉乘懲罰 (Delay/Friction Penalty - 2 cells)" if not is_en else "🔴 PPL101 Aversive Penalty (2 cells)",
-            "🔵 EPG 空間航向羅盤 (Compass Heading - 47 cells)" if not is_en else "🔵 EPG Compass Heading (47 cells)"
+            " MBON01 趨向推進 (Approach Output - 2 cells)" if not is_en else " MBON01 Approach Output (2 cells)",
+            " MBON11 迴避否決 (Avoidance Veto - 2 cells)" if not is_en else " MBON11 Avoidance Veto (2 cells)",
+            " PAM01 票價補貼獎勵 (50c Fare Incentive - 41 cells)" if not is_en else " PAM01 Fare Reward (41 cells)",
+            " PPL101 延遲轉乘懲罰 (Delay/Friction Penalty - 2 cells)" if not is_en else " PPL101 Aversive Penalty (2 cells)",
+            " EPG 空間航向羅盤 (Compass Heading - 47 cells)" if not is_en else " EPG Compass Heading (47 cells)"
         ]
         selected_filter = st.selectbox(
             "選擇神經元功能族群檢視 / Filter Circuit:" if not is_en else "Filter Circuit Archetype:",
@@ -191,7 +191,7 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
 
     st.markdown("---")
     # Section 2: Calibration Standards Table
-    st.markdown("### " + ("🧬 Neuromodulator State Calibration Standards & Demographic Benchmarks" if is_en else "🧬 神經調控劑濃度之客觀量化標準與族群基準"))
+    st.markdown("### " + (" Neuromodulator State Calibration Standards & Demographic Benchmarks" if is_en else " 神經調控劑濃度之客觀量化標準與族群基準"))
     if is_en:
         st.markdown("""
         To avoid arbitrary parameter assignment, neuromodulator levels $[0.0, 1.0]$ are calibrated against physiological baselines from neurobiology literature and official socio-economic data from the **Australian Bureau of Statistics (ABS)**:
@@ -303,7 +303,7 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
 
     st.markdown("---")
     # Section 3: Scientific Methodology & Anti-Bias Statement
-    st.markdown("### " + ("⚖️ Scientific Methodology: How This Model Prevents Confirmation Bias" if is_en else "⚖️ 科學方法論：本模型如何避免確認偏誤與套套邏輯？"))
+    st.markdown("### " + (" Scientific Methodology: How This Model Prevents Confirmation Bias" if is_en else " 科學方法論：本模型如何避免確認偏誤與套套邏輯？"))
     if is_en:
         st.markdown("""
         A core methodological critique in computational transport modeling is **circular reasoning**: *Does the fruit fly connectome model transit behavior, or is it merely fitted to known Brisbane outcomes?*
@@ -337,26 +337,26 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
 
     st.markdown("---")
     # Section 4: Point System Rules
-    st.markdown("### " + ("🎯 The 30-Point Commute Economy" if is_en else "🎯 30 點通勤點數制度與規則"))
+    st.markdown("### " + (" The 30-Point Commute Economy" if is_en else " 30 點通勤點數制度與規則"))
     if is_en:
         st.markdown("""
-        * 🎯 **On-Time Destination Goal**: Arriving at destination by **09:00 AM** yields a baseline **30.0 points**.
-        * ⏱️ **Linear Lateness Decay**: Each minute late after 09:00 AM deducts **1.0 point** until 0.
-        * 🚶 **Walking**: 60 min, fee 0 pts, **+6.0 pts health bonus** (36.0 pts max on sunny days; -8.0 pts in extreme rain/heat).
-        * 🚲 **Bicycle**: 30 min, **-2.0 pts upkeep fee**, **+2.0 pts cardio bonus** (30.0 pts max on sunny days; -5.0 pts in storms).
-        * 🚌 **50c Transit**: 40 min, **-0.5 pt fare**, zero fatigue (29.5 pts max on sunny days; **27.5 pts in rain or heat, becoming the highest utility option**).
-        * 🚗 **Car / Uber**: 10 min (18 min in rain congestion), **-15.0 pts parking fee**, zero fatigue (15.0 pts max).
-        * 🛏️ **Stay Home**: 0 min, 0.0 pts, 100% sleep recovery and complete weather shelter.
+        *  **On-Time Destination Goal**: Arriving at destination by **09:00 AM** yields a baseline **30.0 points**.
+        *  **Linear Lateness Decay**: Each minute late after 09:00 AM deducts **1.0 point** until 0.
+        *  **Walking**: 60 min, fee 0 pts, **+6.0 pts health bonus** (36.0 pts max on sunny days; -8.0 pts in extreme rain/heat).
+        *  **Bicycle**: 30 min, **-2.0 pts upkeep fee**, **+2.0 pts cardio bonus** (30.0 pts max on sunny days; -5.0 pts in storms).
+        *  **50c Transit**: 40 min, **-0.5 pt fare**, zero fatigue (29.5 pts max on sunny days; **27.5 pts in rain or heat, becoming the highest utility option**).
+        *  **Car / Uber**: 10 min (18 min in rain congestion), **-15.0 pts parking fee**, zero fatigue (15.0 pts max).
+        *  **Stay Home**: 0 min, 0.0 pts, 100% sleep recovery and complete weather shelter.
         """)
     else:
         st.markdown("""
-        * 🎯 **目的地準時目標**：通勤者於上午 **09:00** 前抵達，獲得基礎滿額獎勵 **30.0 點**。
-        * ⏱️ **遲到線性扣分**：09:00 之後，**每遲到 1 分鐘扣 1 點**，直到扣完歸零為止。
-        * 🚶 **步行**：耗時 60 分，費用 0 點，享 **+6.0 點萬步健康紅利**（晴天最高 **36.0 點**；雨天/高溫扣 8.0 點）。
-        * 🚲 **腳踏車**：耗時 30 分，**-2.0 點車輛損耗**，享 **+2.0 點有氧鍛鍊紅利**（晴天最高 **30.0 點**；雨天/高溫扣 5.0 點）。
-        * 🚌 **50c 公車**：耗時 40 分，**-0.5 點車資**，零疲勞（晴天 **29.5 點**；**雨天/高溫時以 27.5 點成為最高分運具**）。
-        * 🚗 **開車 / Uber**：耗時 10 分（雨天塞車延至 18 分），**-15.0 點昂貴停車費**，零體能消耗（最高 **15.0 點**）。
-        * 🛏️ **留在家/放棄**：耗時 0 分，獲得 0.0 點，獲得 100% 體力睡眠恢復並完美避開天候風雨。
+        *  **目的地準時目標**：通勤者於上午 **09:00** 前抵達，獲得基礎滿額獎勵 **30.0 點**。
+        *  **遲到線性扣分**：09:00 之後，**每遲到 1 分鐘扣 1 點**，直到扣完歸零為止。
+        *  **步行**：耗時 60 分，費用 0 點，享 **+6.0 點萬步健康紅利**（晴天最高 **36.0 點**；雨天/高溫扣 8.0 點）。
+        *  **腳踏車**：耗時 30 分，**-2.0 點車輛損耗**，享 **+2.0 點有氧鍛鍊紅利**（晴天最高 **30.0 點**；雨天/高溫扣 5.0 點）。
+        *  **50c 公車**：耗時 40 分，**-0.5 點車資**，零疲勞（晴天 **29.5 點**；**雨天/高溫時以 27.5 點成為最高分運具**）。
+        *  **開車 / Uber**：耗時 10 分（雨天塞車延至 18 分），**-15.0 點昂貴停車費**，零體能消耗（最高 **15.0 點**）。
+        *  **留在家/放棄**：耗時 0 分，獲得 0.0 點，獲得 100% 體力睡眠恢復並完美避開天候風雨。
         """)
 
     # -------------------------------------------------------------

@@ -163,7 +163,7 @@
   </div>
   <div class="hud-metric">
     <div class="hud-title" id="lbl-hud-mode">大腦決定運具</div>
-    <div class="hud-val val-green" id="hud-mode">🛴+🚌 複合接駁</div>
+    <div class="hud-val val-green" id="hud-mode">Combo (Scooter + Bus) 複合接駁</div>
   </div>
   <div class="hud-metric">
     <div class="hud-title" id="lbl-hud-mbon">MBON01 淨放電</div>
@@ -180,35 +180,35 @@
 <div class="controls-bar">
   <!-- ROW 1: SCENARIO SELECTOR -->
   <div class="control-row" style="background: rgba(13, 27, 42, 0.85); padding: 5px 8px; border-radius: 6px; border: 1px solid #1e3a5f;">
-    <span style="font-size: 12px; font-weight: 700; color: #38bdf8;" id="lbl-scen-header">🗺️ 地圖通勤情境：</span>
+    <span style="font-size: 12px; font-weight: 700; color: #38bdf8;" id="lbl-scen-header"> 地圖通勤情境：</span>
     <div style="display: flex; gap: 6px;">
-      <button class="btn active-scen" id="btn-scen-rochedale" onclick="setScenario('ROCHEDALE')">🏫 情境 A: Rochedale South 小學 (5.2 km 郊區丘陵)</button>
-      <button class="btn" id="btn-scen-uq" onclick="setScenario('UQ')">🎓 情境 B: 昆士蘭大學 (28.8 km 跨區 Busway 直達)</button>
+      <button class="btn active-scen" id="btn-scen-rochedale" onclick="setScenario('ROCHEDALE')"> 情境 A: Rochedale South 小學 (5.2 km 郊區丘陵)</button>
+      <button class="btn" id="btn-scen-uq" onclick="setScenario('UQ')"> 情境 B: 昆士蘭大學 (28.8 km 跨區 Busway 直達)</button>
     </div>
   </div>
 
   <!-- ROW 2: TIME & WEATHER -->
   <div class="control-row">
     <div class="slider-group">
-      <label style="font-size: 12px; font-weight: 600;" id="lbl-ctrl-dep">⏰ 出發時間:</label>
+      <label style="font-size: 12px; font-weight: 600;" id="lbl-ctrl-dep"> 出發時間:</label>
       <input type="range" id="depTimeSlider" min="450" max="555" value="480" step="5" style="width: 110px;">
       <span id="sliderTimeLabel" style="font-weight: 700; color: #38bdf8; font-size: 12px;">08:00 AM</span>
     </div>
 
     <div class="slider-group">
-      <label style="font-size: 12px; font-weight: 600;" id="lbl-ctrl-speed">🐢 速度:</label>
+      <label style="font-size: 12px; font-weight: 600;" id="lbl-ctrl-speed"> 速度:</label>
       <input type="range" id="speedSlider" min="0.2" max="2.0" value="0.4" step="0.1" style="width: 75px;">
       <span id="speedLabel" style="font-weight: 700; color: #00ff88; font-size: 12px;">0.4x</span>
     </div>
 
     <div style="display: flex; gap: 4px;">
-      <button class="btn active" id="btn-weather-sunny" onclick="setWeather('SUNNY')">☀️ 晴朗舒適 (22°C)</button>
-      <button class="btn" id="btn-weather-rain" onclick="setWeather('RAIN')">🌧️ 暴雨／酷暑 (35°C)</button>
+      <button class="btn active" id="btn-weather-sunny" onclick="setWeather('SUNNY')"> 晴朗舒適 (22°C)</button>
+      <button class="btn" id="btn-weather-rain" onclick="setWeather('RAIN')"> 暴雨／酷暑 (35°C)</button>
     </div>
 
     <div style="display: flex; gap: 6px;">
-      <button class="btn" onclick="togglePlay()" id="btn-play">⏸️ 暫停</button>
-      <button class="btn" onclick="resetAnimation()" id="btn-reset">🔄 重播</button>
+      <button class="btn" onclick="togglePlay()" id="btn-play"> 暫停</button>
+      <button class="btn" onclick="resetAnimation()" id="btn-reset"> 重播</button>
     </div>
   </div>
 
@@ -216,15 +216,15 @@
   <div class="control-row">
     <div style="display: flex; flex-wrap: wrap; gap: 4px; align-items: center;">
       <span style="font-size: 11px; font-weight: 700; color: #94a3b8;" id="lbl-mode-choice">運具模式:</span>
-      <button class="btn active" id="btn-mode-auto" onclick="setModeOverride('AUTO')">🧠 自動決策</button>
-      <button class="btn" id="btn-mode-combo" onclick="setModeOverride('COMBO')">🛴+🚌 複合接駁</button>
-      <button class="btn" id="btn-mode-bus" onclick="setModeOverride('BUS')">🚌 50¢公車</button>
-      <button class="btn" id="btn-mode-scooter" onclick="setModeOverride('SCOOTER')">🛴 e-滑板車</button>
-      <button class="btn" id="btn-mode-bike" onclick="setModeOverride('BIKE')">🚲 騎車</button>
-      <button class="btn" id="btn-mode-car" onclick="setModeOverride('CAR')">🚗 開車</button>
-      <button class="btn" id="btn-mode-ecar" onclick="setModeOverride('ECAR')">🚙 e-租車/Uber</button>
-      <button class="btn" id="btn-mode-walk" onclick="setModeOverride('WALK')">🚶 步行</button>
-      <button class="btn" id="btn-mode-sleep" onclick="setModeOverride('SLEEP')">🛏️ 留在家</button>
+      <button class="btn active" id="btn-mode-auto" onclick="setModeOverride('AUTO')"> 自動決策</button>
+      <button class="btn" id="btn-mode-combo" onclick="setModeOverride('COMBO')">Combo (Scooter + Bus) 複合接駁</button>
+      <button class="btn" id="btn-mode-bus" onclick="setModeOverride('BUS')"> 50¢公車</button>
+      <button class="btn" id="btn-mode-scooter" onclick="setModeOverride('SCOOTER')"> e-滑板車</button>
+      <button class="btn" id="btn-mode-bike" onclick="setModeOverride('BIKE')"> 騎車</button>
+      <button class="btn" id="btn-mode-car" onclick="setModeOverride('CAR')"> 開車</button>
+      <button class="btn" id="btn-mode-ecar" onclick="setModeOverride('ECAR')"> e-租車/Uber</button>
+      <button class="btn" id="btn-mode-walk" onclick="setModeOverride('WALK')"> 步行</button>
+      <button class="btn" id="btn-mode-sleep" onclick="setModeOverride('SLEEP')"> 留在家</button>
     </div>
   </div>
 </div>
@@ -233,21 +233,21 @@
 <div class="telemetry-box">
   <div class="telemetry-card">
     <div style="font-size: 11px; color: #94a3b8; font-weight: 700; display: flex; justify-content: space-between;">
-      <span id="lbl-pam-title">🟢 PAM01 多巴胺獎勵 (REWARD)</span>
+      <span id="lbl-pam-title"> PAM01 多巴胺獎勵 (REWARD)</span>
       <span id="pam-val" style="color: #00ff88;">+39.2 Hz</span>
     </div>
     <canvas id="pamCanvas" width="280" height="40" style="width:100%; height:40px;"></canvas>
   </div>
   <div class="telemetry-card">
     <div style="font-size: 11px; color: #94a3b8; font-weight: 700; display: flex; justify-content: space-between;">
-      <span id="lbl-ppl-title">🔴 PPL101 痛感/代價 (COST)</span>
+      <span id="lbl-ppl-title"> PPL101 痛感/代價 (COST)</span>
       <span id="ppl-val" style="color: #ff3366;">-8.4 Hz</span>
     </div>
     <canvas id="pplCanvas" width="280" height="40" style="width:100%; height:40px;"></canvas>
   </div>
   <div class="telemetry-card">
     <div style="font-size: 11px; color: #94a3b8; font-weight: 700; display: flex; justify-content: space-between;">
-      <span id="lbl-mbon-title">🟣 MBON01 淨放電 (NET VALENCE)</span>
+      <span id="lbl-mbon-title"> MBON01 淨放電 (NET VALENCE)</span>
       <span id="mbon-val" style="color: #c084fc;">58.4 Hz</span>
     </div>
     <canvas id="mbonCanvas" width="280" height="40" style="width:100%; height:40px;"></canvas>
@@ -362,33 +362,33 @@ function applyLanguage() {
     document.getElementById('lbl-hud-mode').textContent = "Connectome Choice";
     document.getElementById('lbl-hud-mbon').textContent = "MBON01 Firing";
 
-    document.getElementById('lbl-scen-header').textContent = "🗺️ Corridor Scenario:";
-    document.getElementById('btn-scen-rochedale').textContent = "🏫 Scenario A: Rochedale South School (5.2 km Suburban)";
-    document.getElementById('btn-scen-uq').textContent = "🎓 Scenario B: Uni of QLD (28.8 km Busway Express)";
+    document.getElementById('lbl-scen-header').textContent = " Corridor Scenario:";
+    document.getElementById('btn-scen-rochedale').textContent = " Scenario A: Rochedale South School (5.2 km Suburban)";
+    document.getElementById('btn-scen-uq').textContent = " Scenario B: Uni of QLD (28.8 km Busway Express)";
 
-    document.getElementById('lbl-ctrl-dep').textContent = "⏰ Departure:";
-    document.getElementById('lbl-ctrl-speed').textContent = "🐢 Speed:";
+    document.getElementById('lbl-ctrl-dep').textContent = " Departure:";
+    document.getElementById('lbl-ctrl-speed').textContent = " Speed:";
 
-    document.getElementById('btn-weather-sunny').textContent = "☀️ Pleasant (22°C)";
-    document.getElementById('btn-weather-rain').textContent = "🌧️ Storm/Heat (35°C)";
+    document.getElementById('btn-weather-sunny').textContent = " Pleasant (22°C)";
+    document.getElementById('btn-weather-rain').textContent = " Storm/Heat (35°C)";
 
     document.getElementById('lbl-mode-choice').textContent = "Mode:";
-    document.getElementById('btn-mode-auto').textContent = "🧠 Brain Auto";
-    document.getElementById('btn-mode-combo').textContent = "🛴+🚌 Combo";
-    document.getElementById('btn-mode-bus').textContent = "🚌 Bus (50¢)";
-    document.getElementById('btn-mode-scooter').textContent = "🛴 e-Scooter";
-    document.getElementById('btn-mode-bike').textContent = "🚲 Cycle";
-    document.getElementById('btn-mode-car').textContent = "🚗 Drive";
-    document.getElementById('btn-mode-ecar').textContent = "🚙 e-Car/Uber";
-    document.getElementById('btn-mode-walk').textContent = "🚶 Walk";
-    document.getElementById('btn-mode-sleep').textContent = "🛏️ Stay Home";
+    document.getElementById('btn-mode-auto').textContent = " Brain Auto";
+    document.getElementById('btn-mode-combo').textContent = "Combo (Scooter + Bus) Combo";
+    document.getElementById('btn-mode-bus').textContent = " Bus (50¢)";
+    document.getElementById('btn-mode-scooter').textContent = " e-Scooter";
+    document.getElementById('btn-mode-bike').textContent = " Cycle";
+    document.getElementById('btn-mode-car').textContent = " Drive";
+    document.getElementById('btn-mode-ecar').textContent = " e-Car/Uber";
+    document.getElementById('btn-mode-walk').textContent = " Walk";
+    document.getElementById('btn-mode-sleep').textContent = " Stay Home";
 
-    document.getElementById('btn-play').textContent = isPlaying ? "⏸️ Pause" : "▶️ Play";
-    document.getElementById('btn-reset').textContent = "🔄 Reset";
+    document.getElementById('btn-play').textContent = isPlaying ? " Pause" : "▶ Play";
+    document.getElementById('btn-reset').textContent = " Reset";
 
-    document.getElementById('lbl-pam-title').textContent = "🟢 PAM01 DOPAMINE REWARD";
-    document.getElementById('lbl-ppl-title').textContent = "🔴 PPL101 AVERSIVE COST";
-    document.getElementById('lbl-mbon-title').textContent = "🟣 MBON01 NET VALENCE";
+    document.getElementById('lbl-pam-title').textContent = " PAM01 DOPAMINE REWARD";
+    document.getElementById('lbl-ppl-title').textContent = " PPL101 AVERSIVE COST";
+    document.getElementById('lbl-mbon-title').textContent = " MBON01 NET VALENCE";
   } else {
     document.getElementById('lbl-hud-scen').textContent = "當前情境";
     document.getElementById('lbl-hud-dep').textContent = "出發時間";
@@ -398,33 +398,33 @@ function applyLanguage() {
     document.getElementById('lbl-hud-mode').textContent = "大腦決定運具";
     document.getElementById('lbl-hud-mbon').textContent = "MBON01 淨放電";
 
-    document.getElementById('lbl-scen-header').textContent = "🗺️ 地圖通勤情境：";
-    document.getElementById('btn-scen-rochedale').textContent = "🏫 情境 A: Rochedale South 小學 (5.2 km 郊區丘陵)";
-    document.getElementById('btn-scen-uq').textContent = "🎓 情境 B: 昆士蘭大學 (28.8 km 跨區 Busway 直達)";
+    document.getElementById('lbl-scen-header').textContent = " 地圖通勤情境：";
+    document.getElementById('btn-scen-rochedale').textContent = " 情境 A: Rochedale South 小學 (5.2 km 郊區丘陵)";
+    document.getElementById('btn-scen-uq').textContent = " 情境 B: 昆士蘭大學 (28.8 km 跨區 Busway 直達)";
 
-    document.getElementById('lbl-ctrl-dep').textContent = "⏰ 出發時間:";
-    document.getElementById('lbl-ctrl-speed').textContent = "🐢 速度:";
+    document.getElementById('lbl-ctrl-dep').textContent = " 出發時間:";
+    document.getElementById('lbl-ctrl-speed').textContent = " 速度:";
 
-    document.getElementById('btn-weather-sunny').textContent = "☀️ 晴朗舒適 (22°C)";
-    document.getElementById('btn-weather-rain').textContent = "🌧️ 暴雨／酷暑 (35°C)";
+    document.getElementById('btn-weather-sunny').textContent = " 晴朗舒適 (22°C)";
+    document.getElementById('btn-weather-rain').textContent = " 暴雨／酷暑 (35°C)";
 
     document.getElementById('lbl-mode-choice').textContent = "運具模式:";
-    document.getElementById('btn-mode-auto').textContent = "🧠 自動決策";
-    document.getElementById('btn-mode-combo').textContent = "🛴+🚌 複合接駁";
-    document.getElementById('btn-mode-bus').textContent = "🚌 50¢公車";
-    document.getElementById('btn-mode-scooter').textContent = "🛴 e-滑板車";
-    document.getElementById('btn-mode-bike').textContent = "🚲 騎車";
-    document.getElementById('btn-mode-car').textContent = "🚗 開車";
-    document.getElementById('btn-mode-ecar').textContent = "🚙 e-租車/Uber";
-    document.getElementById('btn-mode-walk').textContent = "🚶 步行";
-    document.getElementById('btn-mode-sleep').textContent = "🛏️ 留在家";
+    document.getElementById('btn-mode-auto').textContent = " 自動決策";
+    document.getElementById('btn-mode-combo').textContent = "Combo (Scooter + Bus) 複合接駁";
+    document.getElementById('btn-mode-bus').textContent = " 50¢公車";
+    document.getElementById('btn-mode-scooter').textContent = " e-滑板車";
+    document.getElementById('btn-mode-bike').textContent = " 騎車";
+    document.getElementById('btn-mode-car').textContent = " 開車";
+    document.getElementById('btn-mode-ecar').textContent = " e-租車/Uber";
+    document.getElementById('btn-mode-walk').textContent = " 步行";
+    document.getElementById('btn-mode-sleep').textContent = " 留在家";
 
-    document.getElementById('btn-play').textContent = isPlaying ? "⏸️ 暫停" : "▶️ 播放";
-    document.getElementById('btn-reset').textContent = "🔄 重播";
+    document.getElementById('btn-play').textContent = isPlaying ? " 暫停" : "▶ 播放";
+    document.getElementById('btn-reset').textContent = " 重播";
 
-    document.getElementById('lbl-pam-title').textContent = "🟢 PAM01 多巴胺獎勵";
-    document.getElementById('lbl-ppl-title').textContent = "🔴 PPL101 痛感／代價";
-    document.getElementById('lbl-mbon-title').textContent = "🟣 MBON01 淨放電";
+    document.getElementById('lbl-pam-title').textContent = " PAM01 多巴胺獎勵";
+    document.getElementById('lbl-ppl-title').textContent = " PPL101 痛感／代價";
+    document.getElementById('lbl-mbon-title').textContent = " MBON01 淨放電";
   }
 }
 
@@ -610,24 +610,24 @@ function updateSimulationParams() {
   ptEl.textContent = isEn ? `${currentPoints.toFixed(1)} pts` : `${currentPoints.toFixed(1)} 點`;
 
   let modeMapEn = {
-    'COMBO':   '🛴+🚌 Micro-mobility Combo',
-    'BUS':     '🚌 Translink Bus (50¢)',
-    'SCOOTER': '🛴 Electric Scooter',
-    'BIKE':    '🚲 Cycling (V1 Veloway)',
-    'CAR':     '🚗 Private Car',
-    'ECAR':    '🚙 e-Rental / Uber',
-    'WALK':    '🚶 Walking',
-    'SLEEP':   '🛏️ Stay Home'
+    'COMBO':   'Combo (Scooter + Bus) Micro-mobility Combo',
+    'BUS':     ' Translink Bus (50¢)',
+    'SCOOTER': ' Electric Scooter',
+    'BIKE':    ' Cycling (V1 Veloway)',
+    'CAR':     ' Private Car',
+    'ECAR':    ' e-Rental / Uber',
+    'WALK':    ' Walking',
+    'SLEEP':   ' Stay Home'
   };
   let modeMapZh = {
-    'COMBO':   '🛴+🚌 複合接駁 (首末哩+公車)',
-    'BUS':     '🚌 50¢ 高速公車',
-    'SCOOTER': '🛴 e-滑板車直騎',
-    'BIKE':    '🚲 自行車 (V1 專用道)',
-    'CAR':     '🚗 自駕私家車',
-    'ECAR':    '🚙 e-租車 / Uber',
-    'WALK':    '🚶 步行',
-    'SLEEP':   '🛏️ 留在家中'
+    'COMBO':   'Combo (Scooter + Bus) 複合接駁 (首末哩+公車)',
+    'BUS':     ' 50¢ 高速公車',
+    'SCOOTER': ' e-滑板車直騎',
+    'BIKE':    ' 自行車 (V1 專用道)',
+    'CAR':     ' 自駕私家車',
+    'ECAR':    ' e-租車 / Uber',
+    'WALK':    ' 步行',
+    'SLEEP':   ' 留在家中'
   };
   let modeEl = document.getElementById('hud-mode');
   modeEl.textContent = isEn ? modeMapEn[currentMode] : modeMapZh[currentMode];
@@ -845,7 +845,7 @@ function drawECar(ctx, x, y, angle) {
   ctx.fillRect(-6, -23, 12, 5);
   ctx.fillStyle = '#fef08a';
   ctx.font = 'bold 9px sans-serif';
-  ctx.fillText('⚡', -3, -16);
+  ctx.fillText('', -3, -16);
 
   ctx.fillStyle = '#fef08a';
   ctx.fillRect(20, -4, 4, 6);
@@ -1188,7 +1188,7 @@ function drawTelemetryWaves() {
 
 function togglePlay() {
   isPlaying = !isPlaying;
-  document.getElementById('btn-play').textContent = isPlaying ? (isEn ? "⏸️ Pause" : "⏸️ 暫停") : (isEn ? "▶️ Play" : "▶️ 播放");
+  document.getElementById('btn-play').textContent = isPlaying ? (isEn ? " Pause" : " 暫停") : (isEn ? "▶ Play" : "▶ 播放");
 }
 function resetAnimation() {
   animProgress = 0.0;

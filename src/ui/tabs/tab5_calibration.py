@@ -8,7 +8,7 @@ from src.core import get_calibration_provenance
 from src.simulation import BRISBANE_CORRIDORS
 
 def render_tab5_calibration(study_data: dict, is_en: bool):
-    st.markdown("## " + ("📊 10,000-Commuter Simulation Results & Policy Verification" if is_en else "📊 萬人微型社會模擬結果與政策驗證"))
+    st.markdown("## " + (" 10,000-Commuter Simulation Results & Policy Verification" if is_en else " 萬人微型社會模擬結果與政策驗證"))
     st.markdown(
         "Synthesizing the demographic asset gating rules and the 7 spatial corridor catchments, this page reports the full 10,000-agent Monte Carlo simulation results across four major Queensland transit policy scenarios."
         if is_en else
@@ -41,27 +41,27 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
                 <h4 style="margin: 0; color: #fff;">{title}</h4>
                 <p style="margin: 0.2rem 0; color: #94a3b8; font-size: 0.85rem;">{"Fare" if is_en else "單程票價"}: <b>${data['transit_fare_aud']:.2f} AUD</b></p>
                 <hr style="margin: 0.4rem 0; border-color: #334155;">
-                <p style="margin: 0;">🚗 <b>{"Car" if is_en else "自駕車"}: {shares['Car']:.1f}%</b> ({m_counts.get('Car', 0)}人)</p>
-                <p style="margin: 0;">🚌 <b>{"Transit" if is_en else "大眾運輸"}: {shares['Transit']:.1f}%</b> ({m_counts.get('Transit_Walk', 0) + m_counts.get('Transit_Scooter', 0)}人)</p>
-                <p style="margin: 0; padding-left: 14px; font-size: 0.8rem; color: #94a3b8;">• 🚶 徒步接駁: {m_counts.get('Transit_Walk', 0)/100:.1f}%<br>• 🛴 滑板接駁: {m_counts.get('Transit_Scooter', 0)/100:.1f}%</p>
-                <p style="margin: 0;">🚲 <b>{"Bicycle" if is_en else "自行車"}: {shares['Bicycle']:.1f}%</b> ({m_counts.get('Bicycle', 0)}人)</p>
-                <p style="margin: 0.4rem 0 0 0; color: #38bdf8; font-size: 0.85rem;">🌱 {"Daily CO2 Saved" if is_en else "每日減碳"}: <b>{data['daily_co2_saved_kg']/1000:.1f} {"t" if is_en else "噸"}</b></p>
+                <p style="margin: 0;"> <b>{"Car" if is_en else "自駕車"}: {shares['Car']:.1f}%</b> ({m_counts.get('Car', 0)}人)</p>
+                <p style="margin: 0;"> <b>{"Transit" if is_en else "大眾運輸"}: {shares['Transit']:.1f}%</b> ({m_counts.get('Transit_Walk', 0) + m_counts.get('Transit_Scooter', 0)}人)</p>
+                <p style="margin: 0; padding-left: 14px; font-size: 0.8rem; color: #94a3b8;">•  徒步接駁: {m_counts.get('Transit_Walk', 0)/100:.1f}%<br>•  滑板接駁: {m_counts.get('Transit_Scooter', 0)/100:.1f}%</p>
+                <p style="margin: 0;"> <b>{"Bicycle" if is_en else "自行車"}: {shares['Bicycle']:.1f}%</b> ({m_counts.get('Bicycle', 0)}人)</p>
+                <p style="margin: 0.4rem 0 0 0; color: #38bdf8; font-size: 0.85rem;"> {"Daily CO2 Saved" if is_en else "每日減碳"}: <b>{data['daily_co2_saved_kg']/1000:.1f} {"t" if is_en else "噸"}</b></p>
             </div>
             """, unsafe_allow_html=True)
 
     c_plot1, c_plot2 = st.columns([1, 1])
     with c_plot1:
-        st.markdown("#### 📈 " + ("Detailed Modal Split (Walk vs Scooter Gating)" if is_en else "四大情境運具細分流率 (真實滑板車約束)"))
+        st.markdown("#### " + ("Detailed Modal Split (Walk vs Scooter Gating)" if is_en else "四大情境運具細分流率 (真實滑板車約束)"))
         sc_plot_data = []
         for title, key, _ in titles_to_use:
             m_counts = scenarios[key].get('mode_counts', {})
             total_sc = sum(m_counts.values()) or 10000
             for m_name, count in m_counts.items():
                 label_map = {
-                    'Car': '🚗 Car (自駕車)',
-                    'Transit_Walk': '🚶+🚌 Transit Walk (徒步公車)',
-                    'Transit_Scooter': '🛴+🚌 Transit Scooter (滑板公車)',
-                    'Bicycle': '🚲 Bicycle (自行車)'
+                    'Car': ' Car (自駕車)',
+                    'Transit_Walk': '+ Transit Walk (徒步公車)',
+                    'Transit_Scooter': 'Combo (Scooter + Bus) Transit Scooter (滑板公車)',
+                    'Bicycle': ' Bicycle (自行車)'
                 }
                 sc_plot_data.append({
                     'Scenario' if is_en else '政策情境': title,
@@ -73,10 +73,10 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
             sc_df, x='Scenario' if is_en else '政策情境', y='Share (%)' if is_en else '分流率 (%)',
             color='Mode' if is_en else '運具細項', barmode='stack',
             color_discrete_map={
-                '🚗 Car (自駕車)': '#38bdf8',
-                '🚶+🚌 Transit Walk (徒步公車)': '#00e676',
-                '🛴+🚌 Transit Scooter (滑板公車)': '#2dd4bf',
-                '🚲 Bicycle (自行車)': '#f59e0b'
+                ' Car (自駕車)': '#38bdf8',
+                '+ Transit Walk (徒步公車)': '#00e676',
+                'Combo (Scooter + Bus) Transit Scooter (滑板公車)': '#2dd4bf',
+                ' Bicycle (自行車)': '#f59e0b'
             },
             title="Commute Modal Stack by Policy Scenario" if is_en else "四大政策全運具堆疊佔比圖"
         )
@@ -84,7 +84,7 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
         st.plotly_chart(fig_bar, use_container_width=True)
 
     with c_plot2:
-        st.markdown("#### 🎯 " + ("Fare Sensitivity & Elasticity Sweep" if is_en else "票價敏感度與天平臨界翻轉曲線 ($0.0 - $8.0 AUD)"))
+        st.markdown("#### " + ("Fare Sensitivity & Elasticity Sweep" if is_en else "票價敏感度與天平臨界翻轉曲線 ($0.0 - $8.0 AUD)"))
         sweep = study_data['fare_sensitivity_sweep']
         sweep_df = pd.DataFrame(sweep)
         fig_line = px.line(
@@ -100,7 +100,7 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
 
     # Section 3: Corridor Spatial Breakdown
     st.markdown("---")
-    st.markdown("### 🗺️ " + ("Corridor-by-Corridor Spatial Cross-Validation" if is_en else "七大走廊空間分流交叉驗證（第一哩距離決定論）"))
+    st.markdown("### " + ("Corridor-by-Corridor Spatial Cross-Validation" if is_en else "七大走廊空間分流交叉驗證（第一哩距離決定論）"))
     st.markdown(
         "Validating mode choices across the 7 corridors demonstrates how first-mile station walking distance directly dictates commuter car reliance:"
         if is_en else
@@ -120,35 +120,35 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
         corr_rows.append({
             '通勤走廊 (Corridor)': c_name.split(' (')[0],
             '到站步行 (Walk Distance)': f"{c_obj.distance_to_transit_m:.0f} m",
-            '🚗 開車 (Car)': f"{c_car:.1f}%",
-            '🚶+🚌 徒步搭車 (Transit Walk)': f"{c_twalk:.1f}%",
-            '🛴+🚌 滑板搭車 (Transit Scooter)': f"{c_tscoot:.1f}%",
+            ' 開車 (Car)': f"{c_car:.1f}%",
+            '+ 徒步搭車 (Transit Walk)': f"{c_twalk:.1f}%",
+            'Combo (Scooter + Bus) 滑板搭車 (Transit Scooter)': f"{c_tscoot:.1f}%",
             '總大眾運輸 (Total Transit)': f"{c_twalk + c_tscoot:.1f}%",
-            '🚲 自行車 (Bicycle)': f"{c_bike:.1f}%"
+            ' 自行車 (Bicycle)': f"{c_bike:.1f}%"
         })
     st.dataframe(pd.DataFrame(corr_rows), use_container_width=True, hide_index=True)
 
     # Section 4: Archetype Modal Breakdown Matrix
     st.markdown("---")
-    st.markdown("### 🔬 " + ("Archetype Decision Breakdown under Current 50c Policy" if is_en else "現行 50c 政策下四大群體運具抉擇交叉分析"))
+    st.markdown("### " + ("Archetype Decision Breakdown under Current 50c Policy" if is_en else "現行 50c 政策下四大群體運具抉擇交叉分析"))
 
     arch_breakdown = p1_data.get('archetype_breakdown_pct', {})
     modes = ['Car', 'Transit_Walk', 'Transit_Scooter', 'Bicycle']
     table_rows = []
     for arch_k, arch_name_zh in [
-        ('Student', '🎓 大學生 (Student)'),
-        ('CBD_Professional', '💼 CBD 高薪專員 (CBD Professional)'),
-        ('Suburban_Worker', '🚌 郊區家庭勞工 (Suburban Worker)'),
-        ('Fitness_Enthusiast', '🚴 運動狂熱者 (Fitness Enthusiast)')
+        ('Student', ' 大學生 (Student)'),
+        ('CBD_Professional', ' CBD 高薪專員 (CBD Professional)'),
+        ('Suburban_Worker', ' 郊區家庭勞工 (Suburban Worker)'),
+        ('Fitness_Enthusiast', ' 運動狂熱者 (Fitness Enthusiast)')
     ]:
         row_dict = {'群體' if not is_en else 'Archetype': arch_name_zh if not is_en else arch_k}
         for m in modes:
             pct_val = arch_breakdown.get(m, {}).get(arch_k, 0.0)
             col_header = {
-                'Car': '🚗 自駕車 (%)' if not is_en else 'Car (%)',
-                'Transit_Walk': '🚶+🚌 徒步公車 (%)' if not is_en else 'Transit Walk (%)',
-                'Transit_Scooter': '🛴+🚌 滑板公車 (%)' if not is_en else 'Transit Scooter (%)',
-                'Bicycle': '🚲 自行車 (%)' if not is_en else 'Bicycle (%)'
+                'Car': ' 自駕車 (%)' if not is_en else 'Car (%)',
+                'Transit_Walk': '+ 徒步公車 (%)' if not is_en else 'Transit Walk (%)',
+                'Transit_Scooter': 'Combo (Scooter + Bus) 滑板公車 (%)' if not is_en else 'Transit Scooter (%)',
+                'Bicycle': ' 自行車 (%)' if not is_en else 'Bicycle (%)'
             }[m]
             row_dict[col_header] = f"{pct_val:.1f}%"
         table_rows.append(row_dict)
@@ -157,7 +157,7 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
 
     st.markdown(f"""
     <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid #10b981; border-radius: 8px; padding: 16px 20px; margin-top: 16px;">
-        <h4 style="color: #10b981; margin: 0 0 8px 0;">🏛️ {"Transportation Engineering Policy Insights" if is_en else "交通工程專業核心洞見：低票價無法根治第一哩赤字"}</h4>
+        <h4 style="color: #10b981; margin: 0 0 8px 0;"> {"Transportation Engineering Policy Insights" if is_en else "交通工程專業核心洞見：低票價無法根治第一哩赤字"}</h4>
         <p style="color: #cbd5e1; margin: 0; line-height: 1.7; font-size: 0.96rem;">
             {"1. <b>Spatial Gradient Dictates Modal Split</b>: In inner suburbs with short walks (Indooroopilly 600m, Carindale 400m), transit capture reaches 51–52% and car reliance is low (33–35%). However, in outer suburbs with walking distances exceeding 1.8 km (Springwood, Logan), car mode share increases to 54–58% despite the 50-cent fare.<br>"
              "2. <b>The First-Mile Deficit</b>: Because 90.5% of outer suburban residents lack e-scooters, forcing long walks under subtropical heat triggers prohibitive PPL1 fatigue penalties.<br>"
@@ -173,12 +173,12 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
     # Section 5: Data Layer: Empirical Parameter Calibration via Translink Big Data
     # -------------------------------------------------------------
     st.markdown("---")
-    st.markdown("### 🎯 5. " + ("Data Layer: Empirical Inverse Calibration via Translink Big Data (MLE/MAP)" if is_en else "數據層：Translink Go Card 刷卡大數據與神經參數反向校準 (MLE/MAP)"))
+    st.markdown("### 5. " + ("Data Layer: Empirical Inverse Calibration via Translink Big Data (MLE/MAP)" if is_en else "數據層：Translink Go Card 刷卡大數據與神經參數反向校準 (MLE/MAP)"))
 
     if is_en:
         st.markdown("""
         <div style="background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%); border: 1px solid #059669; border-left: 5px solid #10b981; border-radius: 10px; padding: 18px; margin-bottom: 20px;">
-            <h4 style="color: #34d399; margin-top: 0;">🔬 Scientific Provenance: From Theoretical Heuristics to Big Data Ground Truth</h4>
+            <h4 style="color: #34d399; margin-top: 0;"> Scientific Provenance: From Theoretical Heuristics to Big Data Ground Truth</h4>
             <p style="font-size: 0.98rem; line-height: 1.6; color: #e2e8f0; margin-bottom: 6px;">
                 Initial decision weights (e.g., price sensitivity 0.25, time delay sensitivity 0.30) were behavioral economics priors based on literature.
                 To eliminate heuristic assumptions, this project ingested <b>24,772,971 real tap-on / tap-off transactions</b> from the <b>Queensland Open Data Portal</b> (July 2024 pre-50c baseline vs August 2024 50c implementation) alongside the official <b>Translink Quarterly Patronage Report (Q2 2025-26)</b>.
@@ -191,7 +191,7 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
     else:
         st.markdown("""
         <div style="background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%); border: 1px solid #059669; border-left: 5px solid #10b981; border-radius: 10px; padding: 18px; margin-bottom: 20px;">
-            <h4 style="color: #34d399; margin-top: 0;">🔬 科學溯源：從經驗先驗值到真實數千萬筆刷卡大數據驗證</h4>
+            <h4 style="color: #34d399; margin-top: 0;"> 科學溯源：從經驗先驗值到真實數千萬筆刷卡大數據驗證</h4>
             <p style="font-size: 0.98rem; line-height: 1.6; color: #e2e8f0; margin-bottom: 6px;">
                 在初始模型中，神經決策權重（如票價敏感度 0.25、時間敏感度 0.20）是依據行為經濟學文獻設定的先驗值。
                 為確保本模型具備真實工程預測力，本專案自<b>昆士蘭政府開放資料庫（Queensland Open Data）</b>下載並解析了 <b>2,477 萬筆真實 Translink Go Card 每日刷卡與起訖站交易紀錄（2024 年 7 月舊制 vs 8 月 50 Cent 上路首月）</b>，並交叉比對最新官方 <b>Translink Q2 2025-26 季報 (Excel 實時數據)</b>。
@@ -205,7 +205,7 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
     calib_meta = get_calibration_provenance()
     col_c1, col_c2 = st.columns([1.1, 0.9])
     with col_c1:
-        st.markdown("#### 📊 " + ("Empirical Ground Truth vs Model Prediction (RMSE: 1.99%)" if is_en else "真實刷卡激增率 vs 模型預測比對（RMSE: 1.99%）"))
+        st.markdown("#### " + ("Empirical Ground Truth vs Model Prediction (RMSE: 1.99%)" if is_en else "真實刷卡激增率 vs 模型預測比對（RMSE: 1.99%）"))
         comp_df = pd.DataFrame(calib_meta.get("targets_comparison", []))
         if not comp_df.empty:
             comp_display = comp_df.copy()
@@ -228,7 +228,7 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
             st.dataframe(comp_display.round(2), use_container_width=True, hide_index=True)
 
     with col_c2:
-        st.markdown("#### ⚙️ " + ("Synaptic Weight Shift & Neuro-Economic Insights" if is_en else "神經突觸權重位移與行為經濟學意義"))
+        st.markdown("#### " + ("Synaptic Weight Shift & Neuro-Economic Insights" if is_en else "神經突觸權重位移與行為經濟學意義"))
         param_table = [
             {"權重變數 (Parameter)": "w_pam_money (省錢多巴胺)", "先驗值 (Prior)": "0.2500", "校準後 (Calibrated)": "0.1497", "變動": "-40.1%", "行為學機制": "邊際金錢多巴胺遞減"},
             {"權重變數 (Parameter)": "w_pam_speed (時間多巴胺)", "先驗值 (Prior)": "0.2000", "校準後 (Calibrated)": "0.1912", "變動": "-4.4%", "行為學機制": "省時誘因穩定維持"},
@@ -246,7 +246,7 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
         ]
         st.dataframe(pd.DataFrame(param_table), use_container_width=True, hide_index=True)
 
-    with st.expander("📐 " + ("View Mathematical Calibration Formulation & Data Pipeline Details" if is_en else "檢視數學反向校準公式與大數據處理流水線")):
+    with st.expander(" " + ("View Mathematical Calibration Formulation & Data Pipeline Details" if is_en else "檢視數學反向校準公式與大數據處理流水線")):
         st.markdown(r"""
         **1. 損失函數公式 (Objective Loss Function Formulation)**:
         $$\min_{\boldsymbol{\theta}} \mathcal{L}(\boldsymbol{\theta}) = \sum_{k=1}^{K} w_k \cdot \left[ Y_k^{\text{empirical}} - \hat{Y}_k(\boldsymbol{\theta}) \right]^2 + \lambda \sum_{j} \left( \frac{\theta_j - \theta_{j,0}}{\sigma_{j,0}} \right)^2$$

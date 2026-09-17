@@ -7,7 +7,7 @@ import plotly.express as px
 from src.simulation import BRISBANE_CORRIDORS
 
 def render_tab4_society_setup(study_data: dict, is_en: bool):
-    st.markdown("## " + ("👥 10,000-Commuter Population & Spatial Setup" if is_en else "👥 萬人群體架構、載具持有與空間佈局設定"))
+    st.markdown("## " + (" 10,000-Commuter Population & Spatial Setup" if is_en else " 萬人群體架構、載具持有與空間佈局設定"))
     st.markdown(
         "Standard transportation planning models assume unconstrained access to all travel modes. In reality, commuter choices are strictly governed by household vehicle availability and physical urban geography. "
         "Grounded in **Australian Bureau of Statistics (ABS 2021 Census QuickStats: SAL32626)** and **Queensland Department of Transport and Main Roads (TMR)** empirical datasets, "
@@ -27,7 +27,7 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
     # -------------------------------------------------------------
     # 1. 角色設定 (Archetype Profiles & Demographics)
     # -------------------------------------------------------------
-    st.markdown("### 🧬 1. " + ("Archetype Demographics & Physiological Neuromodulators" if is_en else "角色設定：四大通勤原型與神經調控劑初始濃度"))
+    st.markdown("### 1. " + ("Archetype Demographics & Physiological Neuromodulators" if is_en else "角色設定：四大通勤原型與神經調控劑初始濃度"))
     st.markdown(
         "10,000 synthetic commuters are drawn from four empirical Brisbane commuter archetypes, each governed by distinct internal neuromodulator concentrations:"
         if is_en else
@@ -38,7 +38,7 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
     with col_a1:
         st.markdown(f"""
         <div style="background: rgba(15, 23, 42, 0.85); border-left: 4px solid #38bdf8; padding: 12px 14px; border-radius: 6px; height: 100%;">
-            <h4 style="margin: 0; color: #fff;">💼 {"CBD Corporate Executive" if is_en else "CBD 高薪專員"}</h4>
+            <h4 style="margin: 0; color: #fff;"> {"CBD Corporate Executive" if is_en else "CBD 高薪專員"}</h4>
             <h2 style="margin: 0.2rem 0; color: #38bdf8;">{arch_counts.get('CBD_Professional', 3998)} {"ppl" if is_en else "人"}</h2>
             <p style="color: #94a3b8; font-size: 0.85rem; margin: 0;">{"Share: 40.0% of population" if is_en else "佔比：全體人口 40.0%"}</p>
             <hr style="margin: 0.4rem 0; border-color: #334155;">
@@ -53,7 +53,7 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
     with col_a2:
         st.markdown(f"""
         <div style="background: rgba(15, 23, 42, 0.85); border-left: 4px solid #00e676; padding: 12px 14px; border-radius: 6px; height: 100%;">
-            <h4 style="margin: 0; color: #fff;">🎓 {"Tertiary Student" if is_en else "大專院校學生"}</h4>
+            <h4 style="margin: 0; color: #fff;"> {"Tertiary Student" if is_en else "大專院校學生"}</h4>
             <h2 style="margin: 0.2rem 0; color: #00e676;">{arch_counts.get('Student', 2545)} {"ppl" if is_en else "人"}</h2>
             <p style="color: #94a3b8; font-size: 0.85rem; margin: 0;">{"Share: 25.5% of population" if is_en else "佔比：全體人口 25.5%"}</p>
             <hr style="margin: 0.4rem 0; border-color: #334155;">
@@ -68,7 +68,7 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
     with col_a3:
         st.markdown(f"""
         <div style="background: rgba(15, 23, 42, 0.85); border-left: 4px solid #f59e0b; padding: 12px 14px; border-radius: 6px; height: 100%;">
-            <h4 style="margin: 0; color: #fff;">🚌 {"Suburban Worker Family" if is_en else "外圍郊區家庭勞工"}</h4>
+            <h4 style="margin: 0; color: #fff;"> {"Suburban Worker Family" if is_en else "外圍郊區家庭勞工"}</h4>
             <h2 style="margin: 0.2rem 0; color: #f59e0b;">{arch_counts.get('Suburban_Worker', 1982)} {"ppl" if is_en else "人"}</h2>
             <p style="color: #94a3b8; font-size: 0.85rem; margin: 0;">{"Share: 19.8% of population" if is_en else "佔比：全體人口 19.8%"}</p>
             <hr style="margin: 0.4rem 0; border-color: #334155;">
@@ -83,7 +83,7 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
     with col_a4:
         st.markdown(f"""
         <div style="background: rgba(15, 23, 42, 0.85); border-left: 4px solid #a855f7; padding: 12px 14px; border-radius: 6px; height: 100%;">
-            <h4 style="margin: 0; color: #fff;">🚴 {"Fitness Active Cyclist" if is_en else "運動狂熱騎士"}</h4>
+            <h4 style="margin: 0; color: #fff;"> {"Fitness Active Cyclist" if is_en else "運動狂熱騎士"}</h4>
             <h2 style="margin: 0.2rem 0; color: #a855f7;">{arch_counts.get('Fitness_Enthusiast', 1475)} {"ppl" if is_en else "人"}</h2>
             <p style="color: #94a3b8; font-size: 0.85rem; margin: 0;">{"Share: 14.8% of population" if is_en else "佔比：全體人口 14.8%"}</p>
             <hr style="margin: 0.4rem 0; border-color: #334155;">
@@ -100,13 +100,13 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
     # 2. 數據設定 (Asset Ownership & Choice Set Gating)
     # -------------------------------------------------------------
     st.markdown("---")
-    st.markdown("### 📊 2. " + ("Data Settings: Asset Ownership Benchmarks & Choice Set Gating" if is_en else "數據設定：載具持有率基準與選擇集合閘控規則"))
+    st.markdown("### 2. " + ("Data Settings: Asset Ownership Benchmarks & Choice Set Gating" if is_en else "數據設定：載具持有率基準與選擇集合閘控規則"))
 
     col_m1, col_m2, col_m3 = st.columns(3)
     with col_m1:
         st.markdown(f"""
         <div class="metric-box" style="border-left-color: #38bdf8;">
-            <h4 style="margin: 0; color: #fff;">🚗 {"Car Ownership Access" if is_en else "私家車全境可用率"}</h4>
+            <h4 style="margin: 0; color: #fff;"> {"Car Ownership Access" if is_en else "私家車全境可用率"}</h4>
             <h2 style="margin: 0.3rem 0; color: #38bdf8;">{overall_own.get('car', 87.8):.1f}%</h2>
             <p style="margin: 0; color: #94a3b8; font-size: 0.85rem;">{"ABS Census 2021 (Springwood: 2.2 cars/dwelling)" if is_en else "ABS 2021 人口普查 (Springwood 平均每戶 2.2 輛車)"}</p>
         </div>
@@ -114,7 +114,7 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
     with col_m2:
         st.markdown(f"""
         <div class="metric-box" style="border-left-color: #f59e0b;">
-            <h4 style="margin: 0; color: #fff;">🚲 {"Bicycle Ownership Rate" if is_en else "自行車活躍持有率"}</h4>
+            <h4 style="margin: 0; color: #fff;"> {"Bicycle Ownership Rate" if is_en else "自行車活躍持有率"}</h4>
             <h2 style="margin: 0.3rem 0; color: #f59e0b;">{overall_own.get('bike', 32.9):.1f}%</h2>
             <p style="margin: 0; color: #94a3b8; font-size: 0.85rem;">{"Austroads QLD Survey (Fitness 91.7%, Suburban 17.2%)" if is_en else "Austroads 昆士蘭報告 (運動族 91.7%，郊區勞工僅 17.2%)"}</p>
         </div>
@@ -122,7 +122,7 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
     with col_m3:
         st.markdown(f"""
         <div class="metric-box" style="border-left-color: #2dd4bf;">
-            <h4 style="margin: 0; color: #fff;">🛴 {"E-Scooter Ownership Rate" if is_en else "私人電動滑板車持有率"}</h4>
+            <h4 style="margin: 0; color: #fff;"> {"E-Scooter Ownership Rate" if is_en else "私人電動滑板車持有率"}</h4>
             <h2 style="margin: 0.3rem 0; color: #2dd4bf;">{overall_own.get('scooter', 9.5):.1f}%</h2>
             <p style="margin: 0; color: #94a3b8; font-size: 0.85rem;">{"TMR E-mobility Report (No shared fleets in outer suburbs)" if is_en else "TMR 微移動評估 (外圍郊區無商業共享滑板車租賃站)"}</p>
         </div>
@@ -131,7 +131,7 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
     col_own_chart, col_gating_box = st.columns([1.1, 0.9])
     with col_own_chart:
         arch_names = ['Student', 'CBD_Professional', 'Suburban_Worker', 'Fitness_Enthusiast']
-        arch_labels = ['🎓 大學生', '💼 CBD 白領', '🚌 郊區勞工', '🚴 運動狂熱者'] if not is_en else ['🎓 Student', '💼 CBD Exec', '🚌 Suburban', '🚴 Cyclist']
+        arch_labels = [' 大學生', ' CBD 白領', ' 郊區勞工', ' 運動狂熱者'] if not is_en else [' Student', ' CBD Exec', ' Suburban', ' Cyclist']
         car_rates = [arch_own.get('has_car', {}).get(a, 0.0) for a in arch_names]
         bike_rates = [arch_own.get('has_bike', {}).get(a, 0.0) for a in arch_names]
         scooter_rates = [arch_own.get('has_scooter', {}).get(a, 0.0) for a in arch_names]
@@ -139,15 +139,15 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
         df_own = pd.DataFrame({
             'Archetype' if is_en else '通勤群體': arch_labels * 3,
             'Rate (%)' if is_en else '持有率 (%)': car_rates + bike_rates + scooter_rates,
-            'Asset' if is_en else '載具類型': (['🚗 Car' if is_en else '🚗 私家車'] * 4) + (['🚲 Bicycle' if is_en else '🚲 自行車'] * 4) + (['🛴 E-Scooter' if is_en else '🛴 電動滑板車'] * 4)
+            'Asset' if is_en else '載具類型': ([' Car' if is_en else ' 私家車'] * 4) + ([' Bicycle' if is_en else ' 自行車'] * 4) + ([' E-Scooter' if is_en else ' 電動滑板車'] * 4)
         })
         fig_own = px.bar(
             df_own, x='Archetype' if is_en else '通勤群體', y='Rate (%)' if is_en else '持有率 (%)',
             color='Asset' if is_en else '載具類型', barmode='group',
             color_discrete_map={
-                '🚗 Car': '#38bdf8', '🚗 私家車': '#38bdf8',
-                '🚲 Bicycle': '#f59e0b', '🚲 自行車': '#f59e0b',
-                '🛴 E-Scooter': '#2dd4bf', '🛴 電動滑板車': '#2dd4bf'
+                ' Car': '#38bdf8', ' 私家車': '#38bdf8',
+                ' Bicycle': '#f59e0b', ' 自行車': '#f59e0b',
+                ' E-Scooter': '#2dd4bf', ' 電動滑板車': '#2dd4bf'
             },
             title="Asset Ownership Rate by Commuter Archetype" if is_en else "四大通勤群體載具持有率分佈矩陣"
         )
@@ -157,7 +157,7 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
     with col_gating_box:
         st.markdown(f"""
         <div style="background: rgba(30, 41, 59, 0.75); border: 1px solid #38bdf8; border-radius: 8px; padding: 16px; height: 100%;">
-            <h5 style="color: #38bdf8; margin: 0 0 8px 0;">⚖️ {"Choice Set Availability Gating Protocol" if is_en else "選擇集合可用性閘控規則 (Availability Gating)"}</h5>
+            <h5 style="color: #38bdf8; margin: 0 0 8px 0;"> {"Choice Set Availability Gating Protocol" if is_en else "選擇集合可用性閘控規則 (Availability Gating)"}</h5>
             <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; margin: 0;">
                 {"1. <b>Car Gating</b>: Commuters without car ownership cannot select <code>Car</code>.<br>"
                  "2. <b>Micro-Mobility Gating</b>: 90.5% without e-scooters have <code>Transit_Scooter</code> purged from their menu. Their sole transit choice is <code>Transit_Walk</code> (walking up to 2.2 km to the station).<br>"
@@ -175,7 +175,7 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
     # 3. 位置設定 (Spatial Locations & 7 Corridors)
     # -------------------------------------------------------------
     st.markdown("---")
-    st.markdown("### 🗺️ 3. " + ("Spatial Settings: 7 Representative Greater Brisbane Commute Corridors" if is_en else "位置設定：大布里斯本都會區七大代表性通勤走廊佈局"))
+    st.markdown("### 3. " + ("Spatial Settings: 7 Representative Greater Brisbane Commute Corridors" if is_en else "位置設定：大布里斯本都會區七大代表性通勤走廊佈局"))
     st.markdown(
         "To capture urban spatial heterogeneity, the 10,000 commuters are distributed across seven real-world corridors covering inner-ring, middle-ring, and outer-suburban catchments:"
         if is_en else

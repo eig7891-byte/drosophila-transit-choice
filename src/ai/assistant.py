@@ -83,7 +83,7 @@ def generate_ai_response(user_question: str, is_en: bool, is_eli5: bool, context
     """Generate concise grounded answer using Gemini 3.8 Flash (with fallback to Gemini 3.6 Flash)."""
     client = get_gemini_client()
     if not client:
-        return "⚠️ Gemini API Key not configured. Please check `.streamlit/secrets.toml`."
+        return " Gemini API Key not configured. Please check `.streamlit/secrets.toml`."
 
     context_str = ""
     if context_dict:
@@ -96,8 +96,8 @@ def generate_ai_response(user_question: str, is_en: bool, is_eli5: bool, context
             mode_inst = """
 [MODE: Ultra-Simple English (ELI5)]
 - Explain like I am 5 years old! Zero academic jargon.
-- Cute fruit fly tone with yellow helmet ⛑️.
-- Fun analogies: MBON01 = 'ouch alarm' 🚨, Dopamine = 'candy reward' 🍬, Summer sun = 'giant air fryer' 🔥.
+- Cute fruit fly tone with yellow helmet .
+- Fun analogies: MBON01 = 'ouch alarm' , Dopamine = 'candy reward' , Summer sun = 'giant air fryer' .
 - Exactly 2 short punchy sentences! Under 45 words!
 """
         else:
@@ -110,9 +110,9 @@ def generate_ai_response(user_question: str, is_en: bool, is_eli5: bool, context
     else:
         if is_eli5:
             mode_inst = """
-[MODE: 👶 超簡單白話解說 (ELI5)]
-- 角色：頭戴黃色安全帽的果蠅工程師！⛑️
-- 徹底不用專業術語。把 MBON01 比喻成「痛痛警報器」🚨，多巴胺比喻成「糖果獎勵」🍬，夏天比喻成「大氣炸鍋」🔥。
+[MODE:  超簡單白話解說 (ELI5)]
+- 角色：頭戴黃色安全帽的果蠅工程師！
+- 徹底不用專業術語。把 MBON01 比喻成「痛痛警報器」，多巴胺比喻成「糖果獎勵」，夏天比喻成「大氣炸鍋」。
 - 嚴格限制在 2 句短句內講完，可愛幽默、秒懂（60 字以內）！
 """
         else:
@@ -138,7 +138,7 @@ def generate_ai_response(user_question: str, is_en: bool, is_eli5: bool, context
             time.sleep(1)
             continue
 
-    return "⚠️ 系統目前繁忙，請稍候片刻再試一次。"
+    return " 系統目前繁忙，請稍候片刻再試一次。"
 
 def inject_fly_engineer_floating_widget(is_en: bool, context_dict: dict = None):
     """
@@ -155,8 +155,8 @@ def inject_fly_engineer_floating_widget(is_en: bool, context_dict: dict = None):
     if "fly_ai_history" not in st.session_state:
         st.session_state.fly_ai_history = []
 
-    speech_text = "💬 Have a question? Ask me!" if is_en else "💬 想問什麼嗎？問我吧！"
-    header_title = "👷‍♂️ Drosophila Transit AI Guide" if is_en else "👷‍♂️ 果蠅工程師 AI 解說員"
+    speech_text = " Have a question? Ask me!" if is_en else " 想問什麼嗎？問我吧！"
+    header_title = "‍ Drosophila Transit AI Guide" if is_en else "‍ 果蠅工程師 AI 解說員"
     header_sub = "Janelia FlyWire × Brisbane Transit Copilot" if is_en else "Janelia FlyWire × 布里斯本交通決策夥伴"
     close_hint = "[Click outside or avatar to close]" if is_en else "[點擊外部或頭像關閉]"
 
@@ -292,35 +292,35 @@ def inject_fly_engineer_floating_widget(is_en: bool, context_dict: dict = None):
         if is_en:
             style_choice = st.radio(
                 "Mode:",
-                ["📘 Professional Engineering", "🐣 Ultra-Simple Plain Language (ELI5)"],
+                [" Professional Engineering", " Ultra-Simple Plain Language (ELI5)"],
                 index=0,
                 horizontal=True,
                 key="fly_ai_pop_style_en"
             )
-            is_eli5 = (style_choice == "🐣 Ultra-Simple Plain Language (ELI5)")
+            is_eli5 = (style_choice == " Ultra-Simple Plain Language (ELI5)")
         else:
             style_choice = st.radio(
                 "解說模式：",
-                ["📘 專業工程分析", "👶 超簡單白話解說 (ELI5)"],
+                [" 專業工程分析", " 超簡單白話解說 (ELI5)"],
                 index=0,
                 horizontal=True,
                 key="fly_ai_pop_style_zh"
             )
-            is_eli5 = (style_choice == "👶 超簡單白話解說 (ELI5)")
+            is_eli5 = (style_choice == " 超簡單白話解說 (ELI5)")
 
         # 4 Quick Question Buttons in 2 columns
-        st.markdown("##### ⚡ " + ("Quick Questions:" if is_en else "常用問題快速提問："))
+        st.markdown("##### " + ("Quick Questions:" if is_en else "常用問題快速提問："))
         q_col1, q_col2 = st.columns(2)
         quick_q = None
         with q_col1:
-            if st.button("💡 系統在算什麼？" if not is_en else "💡 What is this simulation?", key="pop_qq_1", use_container_width=True):
+            if st.button(" 系統在算什麼？" if not is_en else " What is this simulation?", key="pop_qq_1", use_container_width=True):
                 quick_q = "請用簡短一句話說明這套模擬系統在算什麼？" if not is_en else "Explain this simulation in simple words"
-            if st.button("🚨 什麼是 MBON01？" if not is_en else "🚨 What is MBON01?", key="pop_qq_2", use_container_width=True):
+            if st.button(" 什麼是 MBON01？" if not is_en else " What is MBON01?", key="pop_qq_2", use_container_width=True):
                 quick_q = "什麼是 MBON01 避障痛感？" if not is_en else "What is MBON01 pain potential?"
         with q_col2:
-            if st.button("🎟️ 50c 票價影響" if not is_en else "🎟️ 50c Fare Impact", key="pop_qq_3", use_container_width=True):
+            if st.button(" 50c 票價影響" if not is_en else " 50c Fare Impact", key="pop_qq_3", use_container_width=True):
                 quick_q = "50 Cent 單程票價如何改變通勤選擇？" if not is_en else "How does the 50c fare affect commute choices?"
-            if st.button("🔮 2032 奧運願景" if not is_en else "🔮 2032 Olympics", key="pop_qq_4", use_container_width=True):
+            if st.button(" 2032 奧運願景" if not is_en else " 2032 Olympics", key="pop_qq_4", use_container_width=True):
                 quick_q = "2032 奧運完工後布里斯本交通會發生什麼？" if not is_en else "What will happen in Brisbane 2032 Olympics?"
 
         # Chat History Container (inside popover)
@@ -329,8 +329,8 @@ def inject_fly_engineer_floating_widget(is_en: bool, context_dict: dict = None):
         with hist_box:
             if not st.session_state.fly_ai_history:
                 st.caption(
-                    "👋 Hello! Ask any question about the data or models." if is_en 
-                    else "👋 您好！點選上方快捷按鈕或在下方輸入，隨時提問！"
+                    " Hello! Ask any question about the data or models." if is_en 
+                    else " 您好！點選上方快捷按鈕或在下方輸入，隨時提問！"
                 )
             for msg in st.session_state.fly_ai_history:
                 if msg["role"] == "user":
@@ -338,7 +338,7 @@ def inject_fly_engineer_floating_widget(is_en: bool, context_dict: dict = None):
                         st.write(msg["content"])
                 else:
                     target_img = THUMB_AVATAR_PATH if os.path.exists(THUMB_AVATAR_PATH) else ORIG_AVATAR_PATH
-                    with st.chat_message("assistant", avatar=target_img if os.path.exists(target_img) else "👷‍♂️"):
+                    with st.chat_message("assistant", avatar=target_img if os.path.exists(target_img) else "‍"):
                         st.markdown(msg["content"])
 
         # Input Form inside popover (NO bottom bar across main screen!)
@@ -351,9 +351,9 @@ def inject_fly_engineer_floating_widget(is_en: bool, context_dict: dict = None):
             )
             c_sub1, c_sub2 = st.columns([3, 1])
             with c_sub1:
-                submitted = st.form_submit_button("🚀 " + ("Ask" if is_en else "送出提問"), use_container_width=True)
+                submitted = st.form_submit_button(" " + ("Ask" if is_en else "送出提問"), use_container_width=True)
             with c_sub2:
-                cleared = st.form_submit_button("🗑️", use_container_width=True, help="Clear / 清除")
+                cleared = st.form_submit_button("", use_container_width=True, help="Clear / 清除")
 
         if cleared:
             st.session_state.fly_ai_history = []
