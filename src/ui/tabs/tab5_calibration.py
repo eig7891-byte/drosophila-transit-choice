@@ -195,10 +195,10 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
         <p style="color: #cbd5e1; margin: 0; line-height: 1.7; font-size: 0.96rem;">
             {"1. <b>Spatial Gradient Dictates Modal Split</b>: In inner suburbs with short walks (Indooroopilly 600m, Carindale 400m), transit capture reaches 51–52% and car reliance is low (33–35%). However, in outer suburbs with walking distances exceeding 1.8 km (Springwood, Logan), car mode share increases to 54–58% despite the 50-cent fare.<br>"
              "2. <b>The First-Mile Deficit</b>: Because 90.5% of outer suburban residents lack e-scooters, forcing long walks under subtropical heat triggers prohibitive PPL1 fatigue penalties.<br>"
-             "3. <b>Speed Outperforms Subsidies</b>: Accelerating trunk transit by 30% via Brisbane Metro (Policy 3) reduces city-wide car reliance to 41.8%, demonstrating that eliminating travel delay produces greater mode-shift impact." if is_en else
+             "3. <b>Speed Outperforms Subsidies</b>: Accelerating trunk transit by 30% via Brisbane Metro (Policy 3) reduces city-wide car reliance from 51.4% to 45.6% and raises transit to 43.5%, demonstrating that eliminating travel delay produces greater mode-shift impact." if is_en else
              "1. <b>空間梯度直接決定分流率</b>：在近站內郊（Indooroopilly 步行 600m、Carindale 步行 400m），公車搭乘率高達 51%–52%，自駕車低至 33%–35%。然而在外圍郊區（Springwood 與 Logan 步行長達 1.8–2.2 公里），即使票價只要 50 Cent，開車率依然高達 54%–58%。<br>"
              "2. <b>第一哩微移動服務缺口</b>：外圍郊區有超過 90% 的居民未配置電動滑板車。在亞熱帶氣候下步行 2.2 公里，其步行之體能負擔高於 50 Cent 票價之誘因。<br>"
-             "3. <b>專用路權提速效益高於單純票價補貼</b>：藉由 Brisbane Metro 專用路權提速 30%（Policy 3），都會區自駕率降至 41.8%，大眾運輸提升至 46.6%，證實縮短行程時間具備更高的工程效益。"}
+             "3. <b>專用路權提速效益高於單純票價補貼</b>：藉由 Brisbane Metro 專用路權提速 30%（Policy 3），都會區自駕率由 51.4% 降至 45.6%，大眾運輸顯著提升至 43.5%，證實縮短行程時間具備更高的工程效益。"}
         </p>
     </div>
     """, unsafe_allow_html=True)

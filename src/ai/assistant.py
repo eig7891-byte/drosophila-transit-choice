@@ -60,30 +60,42 @@ def get_gemini_client():
         return None
     return genai.Client(api_key=api_key)
 
-SYSTEM_KNOWLEDGE_PROMPT = """You are the 'Drosophila Transit AI Guide' (果蠅交通工程師解說員), an adorable fruit fly (Drosophila melanogaster) wearing a bright yellow civil engineer construction safety helmet.
+SYSTEM_KNOWLEDGE_PROMPT = """You are the 'Drosophila Transit AI Guide' (果蠅交通工程師解說員), an objective engineering assistant representing a Master's student researcher in computational transport engineering.
 You explain the Brisbane Transit & FlyWire connectome simulation dashboard.
 
-STRICT CONCISENESS & CLARITY RULES (簡單明瞭):
+STRICT CONCISENESS & CLARITY RULES:
 - ALL ANSWERS MUST BE ULTRA-CONCISE, ACCURATE, AND DIRECT TO THE POINT.
 - Maximum 2 to 3 short sentences, or 3 brief bullet points.
 - Strictly under 60 words (English) or 75 characters (Chinese).
 - Absolutely NO filler, NO preamble, and NO repeating the question.
 - DO NOT MENTION ANY AI MODEL NAMES (never say Gemini, Flash, etc.).
+- ZERO EMOJIS. Never use emojis anywhere in the response.
 
-SYSTEM FACTS:
-- Connectome: FlyWire (Schlegel et al., Nature 2023: 139,255 neurons, 54.5M synapses).
-- Kenyon Cells (KC): encode delay, heat, fare, walking fatigue, and crowding.
-- MBON01: Avoidance / negative valence (Transit Pain Potential). Drives people to drive cars.
-- DAN / PAM-01: Approach / positive reward dopamine signal.
-- 4 Corridors: Chermside (Gympie Rd), Indooroopilly (UQ), Eight Mile Plains (SE Busway/Metro), Carindale.
-- Key policies: TransLink 50c flat fare, Brisbane 2032 Olympic Metro/Cross River Rail, BCC 2040 Strategy.
+SYSTEM FACTS & RESEARCH GROUNDING:
+- Biological Connectome: HHMI Janelia male-cns:v1.0 3D skeleton points coupled with the FlyWire whole-brain connectome (Dorkenwald et al. / Schlegel et al., Nature 2024: 138,327 neurons, >130M synapses).
+- Neural Decision Architecture:
+  * Kenyon Cells (KC): Sparse multimodal encoding of transit cost, delay, walking fatigue, and heat.
+  * PAM Dopamine (PAM01): Positive reward signal encoding monetary savings, travel speed, and comfort.
+  * PPL1 Dopamine (PPL101): Aversive punishment signal encoding parking fees, in-transit delays, and physical walking fatigue.
+  * MBON01 (Cholinergic): Approach output neuron driving selection of transit or active transport when reward exceeds pain.
+  * MBON11 (GABAergic): Avoidance output neuron providing lateral inhibition to veto unfavorable choices.
+  * Neuromodulators: NPF (budget urgency), Octopamine (vigor/fitness), Serotonin (delay patience), PDF (circadian sleep debt).
+- 7 Greater Brisbane Corridors: Springwood local (5.2 km), Springwood UQ (28.8 km), Chermside (10.5 km), Indooroopilly (7.2 km), Mt Gravatt (13.8 km), Logan Central (26.5 km), Carindale (11.0 km).
+- Empirical Calibration Provenance: Ingested 24,772,971 real Translink Go Card transactions (July vs August 2024, Queensland Open Data) and Q2 2025-26 Report. SciPy MLE/MAP optimization reduced loss by 72.5% (114.86 to 31.60) and RMSE to 1.99% (SEQ total transit error 0.54%).
+- 10,000-Commuter Simulation Results:
+  * Policy 1 (Current 50c): Car 51.4%, Transit 36.0%, Bike 12.6%. Subsidies alone leave outer car reliance at 54–58% because 1.8–2.2 km walks under subtropical heat trigger severe PPL1 fatigue.
+  * Policy 2 (Old Fare $4.50): Car 53.8%, Transit 32.6%, Bike 13.6%.
+  * Policy 3 (50c + Brisbane Metro +30% speed boost): Car drops to 45.6%, Transit rises to 43.5% (Speed beats subsidies).
+  * Policy 4 (Green Mobility All-In): Car 44.9%, Transit 42.7%, Bike 12.4%.
+  * First-Mile Deficit: 90.5% in outer suburbs lack e-scooters. Providing feeder micro-mobility raises outer transit capture from 6.2% to 17.5%.
+  * Climate Barrier: Temperatures >34°C activate TRP channels, cutting active travel by 38.5% with 85% diverting to transit.
 """
 
 def generate_ai_response(user_question: str, is_en: bool, is_eli5: bool, context_dict: dict = None) -> str:
-    """Generate concise grounded answer using Gemini 3.8 Flash (with fallback to Gemini 3.6 Flash)."""
+    """Generate concise grounded answer using Gemini Flash."""
     client = get_gemini_client()
     if not client:
-        return " Gemini API Key not configured. Please check `.streamlit/secrets.toml`."
+        return "Gemini API Key not configured. Please check `.streamlit/secrets.toml`."
 
     context_str = ""
     if context_dict:
@@ -95,30 +107,29 @@ def generate_ai_response(user_question: str, is_en: bool, is_eli5: bool, context
         if is_eli5:
             mode_inst = """
 [MODE: Ultra-Simple English (ELI5)]
-- Explain like I am 5 years old! Zero academic jargon.
-- Cute fruit fly tone with yellow helmet .
-- Fun analogies: MBON01 = 'ouch alarm' , Dopamine = 'candy reward' , Summer sun = 'giant air fryer' .
-- Exactly 2 short punchy sentences! Under 45 words!
+- Explain in plain everyday language. Zero academic jargon. Zero emojis.
+- Simple analogies: MBON01 = approach accelerator, PPL1 = friction brake, Dopamine = reward incentive, Summer sun = heat barrier.
+- Exactly 2 short punchy sentences. Under 45 words.
 """
         else:
             mode_inst = """
 [MODE: Professional Academic English]
-- Tone: Master's level engineering student. Simple concrete verbs.
+- Tone: Master's level engineering student. Simple concrete verbs. Zero emojis.
 - Strictly NO first-person pronouns ('I', 'we', 'our'). No AI buzzwords.
 - 2 to 3 concise, punchy sentences stating data and mechanism directly (under 55 words).
 """
     else:
         if is_eli5:
             mode_inst = """
-[MODE:  超簡單白話解說 (ELI5)]
-- 角色：頭戴黃色安全帽的果蠅工程師！
-- 徹底不用專業術語。把 MBON01 比喻成「痛痛警報器」，多巴胺比喻成「糖果獎勵」，夏天比喻成「大氣炸鍋」。
-- 嚴格限制在 2 句短句內講完，可愛幽默、秒懂（60 字以內）！
+[MODE: 超簡單白話解說 (ELI5)]
+- 徹底不用艱深術語，嚴禁任何表情符號 (No emojis)。
+- 用直觀比喻：MBON01 是「前進油門」，PPL1 是「摩擦剎車」，多巴胺是「獎勵誘因」，夏日高溫是「體能路障」。
+- 嚴格限制在 2 句短句內講完，秒懂明瞭（60 字以內）。
 """
         else:
             mode_inst = """
 [MODE: 繁體中文 - 專業工程分析]
-- 嚴謹客觀的交通與神經工程分析。
+- 嚴謹客觀的交通與神經工程分析，嚴禁任何表情符號 (No emojis)。
 - 嚴格不使用第一人稱（絕不使用「我」、「我們」）。
 - 以 2 到 3 句短句直接給出數據結論與神經機轉，精準明瞭（75 字內）。
 """
@@ -138,7 +149,7 @@ def generate_ai_response(user_question: str, is_en: bool, is_eli5: bool, context
             time.sleep(1)
             continue
 
-    return " 系統目前繁忙，請稍候片刻再試一次。"
+    return "System is currently busy. Please try again in a moment." if is_en else "系統目前繁忙，請稍候片刻再試一次。"
 
 def inject_fly_engineer_floating_widget(is_en: bool, context_dict: dict = None):
     """
@@ -155,9 +166,9 @@ def inject_fly_engineer_floating_widget(is_en: bool, context_dict: dict = None):
     if "fly_ai_history" not in st.session_state:
         st.session_state.fly_ai_history = []
 
-    speech_text = " Have a question? Ask me!" if is_en else " 想問什麼嗎？問我吧！"
-    header_title = "‍ Drosophila Transit AI Guide" if is_en else "‍ 果蠅工程師 AI 解說員"
-    header_sub = "Janelia FlyWire × Brisbane Transit Copilot" if is_en else "Janelia FlyWire × 布里斯本交通決策夥伴"
+    speech_text = "Have a question? Ask me!" if is_en else "想問什麼嗎？問我吧！"
+    header_title = "Drosophila Transit AI Guide" if is_en else "果蠅工程師 AI 解說員"
+    header_sub = "Janelia FlyWire x Brisbane Transit Copilot" if is_en else "Janelia FlyWire x 布里斯本交通決策夥伴"
     close_hint = "[Click outside or avatar to close]" if is_en else "[點擊外部或頭像關閉]"
 
     # 1. CSS with ROBUST selectors (matching Streamlit 1.55+ DOM structure)
@@ -313,14 +324,14 @@ def inject_fly_engineer_floating_widget(is_en: bool, context_dict: dict = None):
         q_col1, q_col2 = st.columns(2)
         quick_q = None
         with q_col1:
-            if st.button(" 系統在算什麼？" if not is_en else " What is this simulation?", key="pop_qq_1", use_container_width=True):
+            if st.button("系統在算什麼？" if not is_en else "What is this simulation?", key="pop_qq_1", use_container_width=True):
                 quick_q = "請用簡短一句話說明這套模擬系統在算什麼？" if not is_en else "Explain this simulation in simple words"
-            if st.button(" 什麼是 MBON01？" if not is_en else " What is MBON01?", key="pop_qq_2", use_container_width=True):
-                quick_q = "什麼是 MBON01 避障痛感？" if not is_en else "What is MBON01 pain potential?"
+            if st.button("什麼是 MBON01？" if not is_en else "What is MBON01?", key="pop_qq_2", use_container_width=True):
+                quick_q = "什麼是 MBON01 趨向輸出神經元？" if not is_en else "What is the MBON01 approach output neuron?"
         with q_col2:
-            if st.button(" 50c 票價影響" if not is_en else " 50c Fare Impact", key="pop_qq_3", use_container_width=True):
+            if st.button("50c 票價影響" if not is_en else "50c Fare Impact", key="pop_qq_3", use_container_width=True):
                 quick_q = "50 Cent 單程票價如何改變通勤選擇？" if not is_en else "How does the 50c fare affect commute choices?"
-            if st.button(" 2032 奧運願景" if not is_en else " 2032 Olympics", key="pop_qq_4", use_container_width=True):
+            if st.button("2032 奧運願景" if not is_en else "2032 Olympics", key="pop_qq_4", use_container_width=True):
                 quick_q = "2032 奧運完工後布里斯本交通會發生什麼？" if not is_en else "What will happen in Brisbane 2032 Olympics?"
 
         # Chat History Container (inside popover)
@@ -329,8 +340,8 @@ def inject_fly_engineer_floating_widget(is_en: bool, context_dict: dict = None):
         with hist_box:
             if not st.session_state.fly_ai_history:
                 st.caption(
-                    " Hello! Ask any question about the data or models." if is_en 
-                    else " 您好！點選上方快捷按鈕或在下方輸入，隨時提問！"
+                    "Hello! Ask any question about the data or models." if is_en 
+                    else "您好！點選上方快捷按鈕或在下方輸入，隨時提問！"
                 )
             for msg in st.session_state.fly_ai_history:
                 if msg["role"] == "user":
@@ -338,7 +349,7 @@ def inject_fly_engineer_floating_widget(is_en: bool, context_dict: dict = None):
                         st.write(msg["content"])
                 else:
                     target_img = THUMB_AVATAR_PATH if os.path.exists(THUMB_AVATAR_PATH) else ORIG_AVATAR_PATH
-                    with st.chat_message("assistant", avatar=target_img if os.path.exists(target_img) else "‍"):
+                    with st.chat_message("assistant", avatar=target_img if os.path.exists(target_img) else None):
                         st.markdown(msg["content"])
 
         # Input Form inside popover (NO bottom bar across main screen!)
@@ -351,9 +362,9 @@ def inject_fly_engineer_floating_widget(is_en: bool, context_dict: dict = None):
             )
             c_sub1, c_sub2 = st.columns([3, 1])
             with c_sub1:
-                submitted = st.form_submit_button(" " + ("Ask" if is_en else "送出提問"), use_container_width=True)
+                submitted = st.form_submit_button("Ask" if is_en else "送出提問", use_container_width=True)
             with c_sub2:
-                cleared = st.form_submit_button("", use_container_width=True, help="Clear / 清除")
+                cleared = st.form_submit_button("Clear" if is_en else "清除", use_container_width=True, help="Clear / 清除")
 
         if cleared:
             st.session_state.fly_ai_history = []

@@ -16,9 +16,9 @@ def render_tab6_whitepaper(is_en: bool):
 
         #### 1. Mobility (Speed Optimization): Mitigating Travel Delay via Dedicated Busways
         * **Simulation Findings**:
-          * Dropping fare from $4.50 to $0.50 increases transit mode share from **35.1% to 39.6%**, but leaves **47.3% of commuters driving** due to high suburban car ownership and lack of first-mile feeder assets.
+          * Dropping fare from $4.50 (Policy 2) to $0.50 (Policy 1) increases transit mode share from **32.6% to 36.0%**, but leaves **51.4% of commuters driving** due to high suburban car ownership (87.8% overall, 95.6% in outer suburbs) and lack of first-mile feeder assets.
           * High-income corporate commuters have low NPF levels and show low price sensitivity. Their modal choice is largely governed by travel time delay.
-          * When transit speed increases by 30% via Brisbane Metro (Policy 3), transit mode share climbs to **46.6%**, reducing car use down to **41.8%**.
+          * When transit speed increases by 30% via Brisbane Metro (Policy 3), transit mode share climbs to **43.5%**, reducing car use down to **45.6%** and saving 26.0 tons of CO2 daily.
         * **Connectome Neurological Mechanism**:
           * In the fruit fly brain, delay punishment scales non-linearly: $PPL1_{delay} \propto (T_{transit})^{1.3}$.
           * Cutting 15–20 minutes of travel delay removes the steepest gradient of the PPL1 aversion curve, increasing MBON01 approach firing by **+17.5 Hz**.
@@ -65,9 +65,9 @@ def render_tab6_whitepaper(is_en: bool):
 
         #### 1. Mobility（速度提升）：消滅「PPL1 延遲之痛」—— 加速布里斯本 Metro 專用路權
         * **模擬數據發現**：
-          * 票價由舊制 $4.50 降至 $0.50 時，大眾運輸佔比從 **35.1% 提升至 39.6%**，但仍有 **47.3% 的通勤者堅持自駕開車**（主因外圍郊區高達 95% 擁車率，且缺乏第一哩微移動工具）。
+          * 票價由舊制 $4.50（Policy 2）降至 $0.50（Policy 1）時，大眾運輸佔比由 **32.6% 提升至 36.0%**，但仍有 **51.4% 的通勤者堅持自駕開車**（主因外圍郊區高達 95.6% 擁車率，且缺乏第一哩微移動接駁工具）。
           * 高薪自駕群體體內 NPF 濃度低，對票價降幅鈍化；其行為完全由旅行時間延遲所主導。
-          * 當結合專用路權使公車**提速 30%** (Policy 3) 時，大眾運輸佔比提升至 **46.6%**，自駕開車率顯著壓制至 **41.8%**！
+          * 當結合專用路權使公車**提速 30%** (Policy 3) 時，大眾運輸佔比顯著提升至 **43.5%**，自駕開車率有效壓制至 **45.6%**，每日減碳達 26.0 噸！
         * **果蠅連接體神經機制**：
           * 在果蠅評價迴路中，時間延遲懲罰呈非線性指數增長：$PPL1_{delay} \propto (T_{transit})^{1.3}$。
           * 消滅 15 至 20 分鐘的壅塞延誤，直接截斷了 PPL1 痛感曲線最陡峭的區段，使 MBON01 放電增加 **+17.5 Hz**。

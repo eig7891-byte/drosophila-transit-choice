@@ -313,7 +313,7 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
 
         This research strictly adheres to an **Agent-Based Neuromorphic Simulation** paradigm that separates inputs, mechanisms, and emergent outcomes:
         1. **Objective Boundary Conditions (Inputs)**:
-           * Corridor lengths (Indooroopilly 7.2km, Logan 26.5km), Translink timetables, and CBD parking tariffs ($24–$34/day) are physical inputs from the real world.
+           * All 7 representative corridor lengths (Indooroopilly 7.2km, Logan 26.5km, Springwood 28.8km), Translink timetables, and CBD parking tariffs ($24–$34/day) are physical inputs from the real world.
         2. **Biological Mechanism (Unchanged Connectome Circuit)**:
            * The synaptic wiring from Kenyon Cells to Mushroom Body Output Neurons (MBONs) and Central Complex ring attractors is fixed by HHMI Janelia anatomical data. The model is **not** fitted with arbitrary regression weights.
         3. **Emergent Phenomena (True Discoveries)**:
@@ -328,7 +328,7 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
 
         本研究嚴格遵循 **「類腦神經多代理人模擬 (Neuromorphic Agent-Based Modeling)」** 之科學方法論，嚴格切分輸入邊界、生物機制與湧現結論：
         1. **客觀邊界條件 (客觀物理輸入)**：
-           * 布里斯本 5 大走廊的真實距離（Indooroopilly 7.2km、Logan 26.5km）、Translink 公車真實班表、尖峰路況時間與 CBD 停車費 ($24~$34/day)，皆為客觀物理輸入，任何交通模型均以此為基準。
+           * 布里斯本 7 大代表性走廊的真實距離（Indooroopilly 7.2km、Logan 26.5km、Springwood 28.8km 等）、Translink 公車真實班表、尖峰路況時間與 CBD 停車費 ($24~$34/day)，皆為客觀物理輸入，任何交通模型均以此為基準。
         2. **不可更動的生物突觸結構 (神經黑盒子)**：
            * 肯揚細胞、蕈狀體輸出神經元 (MBON01/11) 與多巴胺叢集 (PAM/PPL1) 的突觸權重架構源自美國 Janelia FlyEM 之真實解剖資料，絕無人為線性迴歸湊數。
         3. **非套套邏輯之「湧現發現 (Emergent Discoveries)」**：
