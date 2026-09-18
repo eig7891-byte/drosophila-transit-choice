@@ -220,6 +220,15 @@ CUSTOM_CSS = """
     .benchmark-table tr:hover td {
         background-color: #1e293b !important;
     }
+    code, span.code-badge {
+        background-color: #1e293b !important;
+        color: #38bdf8 !important;
+        border: 1px solid #334155 !important;
+        border-radius: 4px !important;
+        padding: 2px 6px !important;
+        font-family: monospace !important;
+        font-size: 0.85rem !important;
+    }
 
     /* Global High Contrast Enhancements */
     label, [data-testid="stWidgetLabel"] p, [data-testid="stWidgetLabel"] span {

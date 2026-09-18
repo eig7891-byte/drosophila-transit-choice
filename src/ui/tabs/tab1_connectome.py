@@ -179,7 +179,7 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
         row_html_list = []
         for _, r in filtered_df.iterrows():
             link_html = f"<a href='{r['codex_url']}' target='_blank' style='color: #00e676; text-decoration: underline; font-weight: 600;'>Open 3D</a>"
-            row_html_list.append(f"""<tr><td><b style='color: #38bdf8;'>{r['primary_type']}</b></td><td>{r['transit_role']}</td><td>{r['side']}</td><td><code style='color: #cbd5e1; font-size: 0.85rem;'>{r['root_id']}</code></td><td>{r['class']}</td><td>{r['hemilineage']}</td><td>{link_html}</td></tr>""")
+            row_html_list.append(f"""<tr><td><b style='color: #38bdf8;'>{r['primary_type']}</b></td><td>{r['transit_role']}</td><td>{r['side']}</td><td><span class='code-badge' style='background-color: #1e293b !important; color: #38bdf8 !important; border: 1px solid #334155 !important; border-radius: 4px; padding: 2px 6px; font-family: monospace; font-size: 0.84rem; display: inline-block;'>{r['root_id']}</span></td><td>{r['class']}</td><td>{r['hemilineage']}</td><td>{link_html}</td></tr>""")
         tbody_html = "".join(row_html_list)
         
         st.markdown(f"""

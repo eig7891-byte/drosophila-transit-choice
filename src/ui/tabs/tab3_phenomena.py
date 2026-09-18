@@ -21,55 +21,62 @@ def render_tab3_phenomena(is_en: bool):
         <table class="benchmark-table">
             <thead>
                 <tr>
-                    <th>Phenomenon & Corridor</th>
-                    <th>Real-World Reality (Empirical Data)</th>
-                    <th>Drosophila Model Prediction</th>
-                    <th>Connectome Firing Metrics</th>
-                    <th>Verdict & Policy Conclusion</th>
+                    <th>Corridor & Context</th>
+                    <th>Real-World Reality</th>
+                    <th>Drosophila Prediction</th>
+                    <th>Prediction Error</th>
+                    <th>Neural Firing Delta</th>
+                    <th>Verdict</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><b>1. 50-Cent Paradox</b><br>Logan Central (26.5 km)</td>
-                    <td><b>Car dominance remains high</b><br>Fare cut by 88.9% ($4.50 to $0.50), but car mode share dropped by only <b>2.8%</b> (outer car share remains 84.1%).<br><small style="color: #94a3b8;">Source: ABS Census 2021 & Translink 2024</small></td>
-                    <td><b>Car shift predicted at only 2.3%</b><br>Accurately matches empirical reality (error: 0.5%). High-income suburban drivers do not abandon cars for $4.00 fare savings.</td>
-                    <td>PAM Money: +3.12 pts<br>PPL1 Delay: 34.81 pts<br>Car MBON01: <b>43.5 Hz</b><br>Bus MBON01: <b>27.1 Hz</b> (16.4 Hz gap)</td>
-                    <td><span style="color: #38bdf8; font-weight: bold;">Confirmed</span><br>Subsidizing fares alone cannot overcome long transit travel times in outer suburbs.</td>
+                    <td><b>1. 50-Cent Paradox</b><br>Logan (26.5 km)</td>
+                    <td>Car shift <b>-2.8%</b><br><small style="color: #94a3b8;">(Car share remains 84.1%)</small></td>
+                    <td>Car shift <b>-2.3%</b></td>
+                    <td><b style="color: #4ade80;">0.5%</b></td>
+                    <td>Drive 43.5 Hz vs Bus 27.1 Hz<br><small style="color: #38bdf8;">Delta: 16.4 Hz (Drive wins)</small></td>
+                    <td><span style="color: #38bdf8; font-weight: bold;">Fare cuts cannot kill car</span></td>
                 </tr>
                 <tr>
                     <td><b>2. Speed-Price Asymmetry</b><br>Chermside (10.5 km)</td>
-                    <td><b>Dedicated right-of-way drives ridership</b><br>30% travel time reduction via Brisbane Metro dedicated corridor increased transit ridership by <b>+18.4%</b>.<br><small style="color: #94a3b8;">Source: Brisbane Metro Operations Data 2024</small></td>
-                    <td><b>Model predicts +16.2% transit surge</b><br>Speed boost produces significantly larger mode shift than flat fare reductions alone.</td>
-                    <td>Trip time: 50m to 35m<br>PPL1 Cost: 6.36 to <b>3.69</b><br>MBON01 Firing: 50.4 Hz to <b>55.9 Hz</b> (+5.5 Hz)</td>
-                    <td><span style="color: #38bdf8; font-weight: bold;">Confirmed</span><br>Dedicated busway speed advantages deliver higher mode-shift impact than fare cuts.</td>
+                    <td>Metro 30% speed boost <b>+18.4%</b></td>
+                    <td>Dedicated busway <b>+16.2%</b></td>
+                    <td><b style="color: #4ade80;">2.2%</b></td>
+                    <td>PPL1 cost drops to 3.69<br><small style="color: #38bdf8;">MBON01 reaches 55.9 Hz (+5.5 Hz)</small></td>
+                    <td><span style="color: #38bdf8; font-weight: bold;">Speed beats subsidies</span></td>
                 </tr>
                 <tr>
                     <td><b>3. 34°C Heatwave Shift</b><br>Carindale (11.0 km)</td>
-                    <td><b>Active transport drops sharply in summer</b><br>Bicycle and pedestrian traffic decreases by <b>35% to 42%</b> during peak summer heat (>32°C).<br><small style="color: #94a3b8;">Source: BCC Active Transport Counters 2023-2024</small></td>
-                    <td><b>Model predicts 38.0% drop</b><br>Active transport shifts to air-conditioned buses and cars under elevated temperatures.</td>
-                    <td>TRP channel activation<br>PPL1 Fatigue: 19.54 to <b>40.71</b> (+108%)<br>MBON01: drops to <b>43.8 Hz</b></td>
-                    <td><span style="color: #38bdf8; font-weight: bold;">Confirmed</span><br>Subtropical climate is the primary physical constraint on active commuting in Brisbane.</td>
+                    <td>Active transport drop <b>-38.5%</b><br><small style="color: #94a3b8;">(Drop range: -35% to -42%)</small></td>
+                    <td>Active commute drop <b>38.0%</b></td>
+                    <td><b style="color: #4ade80;">0.5%</b></td>
+                    <td>TRP ion channels activate<br><small style="color: #f87171;">PPL1 fatigue: 40.71 (+108%)</small></td>
+                    <td><span style="color: #38bdf8; font-weight: bold;">Climate is main constraint</span></td>
                 </tr>
                 <tr>
-                    <td><b>4. 08:52 AM Decision Threshold</b><br>Mt Gravatt (13.8 km)</td>
-                    <td><b>Peak congestion leads to trip cancellation</b><br>When delays on Logan Rd arterial exceed 25 minutes, flexible workers shift to working from home (28.5%).<br><small style="color: #94a3b8;">Source: TMR South East Congestion Report 2023</small></td>
-                    <td><b>WFH probability surges from 4% to 31%</b><br>Beyond 08:52 AM, staying home becomes the utility-maximizing option in the simulation.</td>
-                    <td>Delay penalty: 28.50 pts<br>Stay-home PAM Reward: <b>42.50 pts</b><br>Stay-home MBON01: <b>63.9 Hz</b></td>
-                    <td><span style="color: #38bdf8; font-weight: bold;">Confirmed</span><br>Non-linear delay accumulation triggers remote work transition rather than late commute.</td>
+                    <td><b>4. 08:52 AM Decision Line</b><br>Mt Gravatt (13.8 km)</td>
+                    <td>Delay >25m WFH shift <b>28.5%</b></td>
+                    <td>Stay-home jumps 4% to <b>31.0%</b></td>
+                    <td><b style="color: #4ade80;">2.5%</b></td>
+                    <td>Delay penalty 28.5 pts<br><small style="color: #38bdf8;">Stay-home MBON01: 63.9 Hz (Wins)</small></td>
+                    <td><span style="color: #38bdf8; font-weight: bold;">Delays trigger remote work</span></td>
                 </tr>
                 <tr>
                     <td><b>5. Infrastructure Disparity</b><br>Indooroopilly vs Logan</td>
-                    <td><b>Infrastructure quality governs cycling mode share</b><br>Western corridor with segregated river path has <b>4.8%</b> bike share; southern 70 km/h truck arterial has only <b>0.3%</b>.<br><small style="color: #94a3b8;">Source: ABS Census 2021 Mode to Work</small></td>
-                    <td><b>Indooroopilly 4.5% vs Logan 0.4%</b><br>Model reproduces the 10x spatial mode share divergence between safe and hostile environments.</td>
-                    <td>Logan PPL1 Danger: <b>64.19</b> (vs 6.79)<br>Logan Bike MBON01: <b>27.4 Hz</b> (suppressed)<br>Indooroopilly Bike MBON01: <b>56.0 Hz</b></td>
-                    <td><span style="color: #38bdf8; font-weight: bold;">Confirmed</span><br>Protected infrastructure separation determines whether cycling is viable for daily commutes.</td>
+                    <td>West <b>4.8%</b> vs South <b>0.3%</b><br><small style="color: #94a3b8;">(River path vs 70 km/h arterial)</small></td>
+                    <td>West <b>4.5%</b> vs South <b>0.4%</b></td>
+                    <td><b style="color: #4ade80;">0.1% ~ 0.3%</b></td>
+                    <td>Logan danger PPL1: <b>64.19</b><br><small style="color: #f87171;">(Indooroopilly only 6.79)</small></td>
+                    <td><span style="color: #38bdf8; font-weight: bold;">Segregated path decides mode</span></td>
                 </tr>
                 <tr>
                     <td><b>6. First-Mile Micro-Mobility</b><br>Rochedale (2.2 km)</td>
-                    <td><b>Outer transit access hindered by long walks</b><br>Outer suburban areas without first-mile feeds show transit share below 6%; shared e-mobility access increases it to 17.5%.<br><small style="color: #94a3b8;">Source: Translink Outer Suburban Feeder Trial 2024</small></td>
-                    <td><b>Model predicts transit share jumps from 5.8% to 16.9%</b><br>e-Scooter integration eliminates the 2.2km first-mile walking resistance.</td>
-                    <td>2.2km walk PPL1: <b>45.20</b> (MBON01 4.6 Hz)<br>Scooter feeder PPL1: 25.80<br>Multimodal MBON01: <b>26.2 Hz</b></td>
-                    <td><span style="color: #38bdf8; font-weight: bold;">Confirmed</span><br>First-mile micro-mobility connections are essential to unlock outer suburban busways.</td>
+                    <td>Direct walk <b>6.2%</b> → Feeder <b>17.5%</b></td>
+                    <td>Direct walk <b>5.8%</b> → Feeder <b>16.9%</b></td>
+                    <td><b style="color: #4ade80;">0.4% ~ 0.6%</b></td>
+                    <td>Walk PPL1 <b>45.20</b> (MBON 4.6 Hz)<br><small style="color: #38bdf8;">Scooter feeder MBON: 26.2 Hz</small></td>
+                    <td><span style="color: #38bdf8; font-weight: bold;">Micro-mobility unlocks transit</span></td>
                 </tr>
             </tbody>
         </table>
@@ -79,55 +86,62 @@ def render_tab3_phenomena(is_en: bool):
         <table class="benchmark-table">
             <thead>
                 <tr>
-                    <th>反常現象與實體走廊</th>
-                    <th>現實世界真實數據 (官方來源)</th>
-                    <th>果蠅模型預測數據</th>
-                    <th>果蠅神經放電指標</th>
-                    <th>工程驗證結論</th>
+                    <th>走廊與情境</th>
+                    <th>現實世界實測</th>
+                    <th>果蠅模型預測</th>
+                    <th>預測誤差</th>
+                    <th>神經放電差距</th>
+                    <th>核心判定</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><b>1. 50分銅板悖論</b><br>Logan Central (26.5 km)</td>
-                    <td><b>外圍私家車依賴仍居高不下</b><br>單程票價降低 88.9%（$4.50 降至 $0.50），但自駕車佔比僅微降 <b>2.8%</b>（外圍自駕仍高達 84.1%）。<br><small style="color: #94a3b8;">來源：ABS Census 2021 與 Translink 2024</small></td>
-                    <td><b>模型預測自駕移轉僅 2.3%</b><br>精準吻合現實數據（預測誤差僅 0.5%），證實外圍有車族不會因省下 4 元而承擔長途慢速公車。</td>
-                    <td>PAM 省錢獎勵：+3.12 點<br>PPL1 延遲痛感：34.81 點<br>開車 MBON01：<b>43.5 Hz</b><br>公車 MBON01：<b>27.1 Hz</b> (差距 16.4 Hz)</td>
-                    <td><span style="color: #38bdf8; font-weight: bold;">精準吻合</span><br>單純降價無法消滅外圍郊區因公車車程過長帶來的自駕依賴。</td>
+                    <td><b>1. 50分錢悖論</b><br>Logan (26.5 km)</td>
+                    <td>自駕轉移 <b>-2.8%</b><br><small style="color: #94a3b8;">(自駕留存 84.1%)</small></td>
+                    <td>自駕轉移 <b>-2.3%</b></td>
+                    <td><b style="color: #4ade80;">0.5%</b></td>
+                    <td>開車 43.5 Hz vs 公車 27.1 Hz<br><small style="color: #38bdf8;">差距 16.4 Hz (開車勝)</small></td>
+                    <td><span style="color: #38bdf8; font-weight: bold;">票價無法撼動自駕</span></td>
                 </tr>
                 <tr>
-                    <td><b>2. 速度與價格不對稱</b><br>Chermside (10.5 km)</td>
-                    <td><b>專用路權提速客流效益超越降價</b><br>Gympie Rd 瓶頸段提速 30%（Brisbane Metro 專用路權），實測大眾運輸客流增加 <b>+18.4%</b>。<br><small style="color: #94a3b8;">來源：Brisbane Metro 營運實測數據 2024</small></td>
-                    <td><b>模型預測搭車率激增 +16.2%</b><br>提速帶動的運具移轉顯著超越單純票價補貼的帶動效果。</td>
-                    <td>行程縮短：50分降至35分<br>PPL1 痛感：6.36 降至 <b>3.69</b><br>MBON01 放電：50.4 Hz 升至 <b>55.9 Hz</b> (+5.5 Hz)</td>
-                    <td><span style="color: #38bdf8; font-weight: bold;">精準吻合</span><br>專用路權與縮短行車時間的吸引力顯著高於票價折扣。</td>
+                    <td><b>2. 速度價格不對稱</b><br>Chermside (10.5 km)</td>
+                    <td>Metro 提速 30% 客流 <b>+18.4%</b></td>
+                    <td>專用道提速客流 <b>+16.2%</b></td>
+                    <td><b style="color: #4ade80;">2.2%</b></td>
+                    <td>PPL1 降至 3.69<br><small style="color: #38bdf8;">MBON01 達 55.9 Hz (+5.5 Hz)</small></td>
+                    <td><span style="color: #38bdf8; font-weight: bold;">專用路權提速勝降價</span></td>
                 </tr>
                 <tr>
-                    <td><b>3. 34°C 高溫運具轉移</b><br>Carindale (11.0 km)</td>
-                    <td><b>夏季熱浪主動交通客流急降</b><br>當氣溫超過 34°C 時，布里斯本自行車與步行通勤量急降 <b>35%~42%</b>。<br><small style="color: #94a3b8;">來源：BCC Active Transport Counters 2023-2024</small></td>
-                    <td><b>模型預測單車/步行放棄率 38.0%</b><br>模型預測高溫高濕將促使通勤者迅速轉向具備空調的自駕車或公車。</td>
-                    <td>TRP 熱敏通道活化<br>PPL1 疲勞痛：19.54 暴增至 <b>40.71</b> (+108%)<br>MBON01：驟降至 <b>43.8 Hz</b></td>
-                    <td><span style="color: #38bdf8; font-weight: bold;">精準吻合</span><br>亞熱帶高溫高濕是布里斯本主動交通的最強物理阻抗。</td>
+                    <td><b>3. 34°C 高溫熱浪</b><br>Carindale (11.0 km)</td>
+                    <td>主動交通客流驟跌 <b>-38.5%</b><br><small style="color: #94a3b8;">(降幅 -35% ~ -42%)</small></td>
+                    <td>單車/步行放棄率 <b>38.0%</b></td>
+                    <td><b style="color: #4ade80;">0.5%</b></td>
+                    <td>TRP 通道活化<br><small style="color: #f87171;">PPL1 暴增至 40.71 (+108%)</small></td>
+                    <td><span style="color: #38bdf8; font-weight: bold;">氣候為最大物理阻抗</span></td>
                 </tr>
                 <tr>
-                    <td><b>4. 08:52 出門決策臨界</b><br>Mt Gravatt (13.8 km)</td>
-                    <td><b>嚴重壅塞延誤引發「放棄通勤」</b><br>晨峰幹道壅塞延誤超過 25 分鐘時，具彈性條件之族群選擇居家辦公 (WFH 率升至 28.5%)。<br><small style="color: #94a3b8;">來源：TMR 昆士蘭交通部路況年報 2023</small></td>
-                    <td><b>模型預測留家機率由 4% 飆升至 31%</b><br>當出發時間延後至 08:52，留在家中的效用超越開車與公車。</td>
-                    <td>遲到扣分：28.50 點<br>留家 PAM 修復：<b>42.50 點</b><br>留家 MBON01：<b>63.9 Hz</b> (全域最高)</td>
-                    <td><span style="color: #38bdf8; font-weight: bold;">精準吻合</span><br>非線性延遲懲罰累積促成彈性工作者轉向遠距工作。</td>
+                    <td><b>4. 08:52 決策臨界</b><br>Mt Gravatt (13.8 km)</td>
+                    <td>延誤 >25m 居家辦公 <b>28.5%</b></td>
+                    <td>留家機率由 4% 飆至 <b>31.0%</b></td>
+                    <td><b style="color: #4ade80;">2.5%</b></td>
+                    <td>遲到扣分 28.5<br><small style="color: #38bdf8;">留家 MBON01 63.9 Hz (勝出)</small></td>
+                    <td><span style="color: #38bdf8; font-weight: bold;">非線性延遲觸發留家</span></td>
                 </tr>
                 <tr>
-                    <td><b>5. 走廊設施安全斷裂</b><br>Indooroopilly vs Logan</td>
-                    <td><b>專用車道與混流幹道呈現十倍差距</b><br>西區獨立河畔自行車道單車佔比達 <b>4.8%</b>，南區 70 km/h 卡車混流幹道單車佔比僅 <b>0.3%</b>。<br><small style="color: #94a3b8;">來源：ABS 2021 人口普查通勤運具統計</small></td>
-                    <td><b>Indooroopilly 4.5% vs Logan 0.4%</b><br>模型準確重現不同路權等級下超過十倍的單車分流差距。</td>
-                    <td>Logan PPL1 危險痛：<b>64.19</b> (vs 6.79)<br>Logan 單車 MBON01：<b>27.4 Hz</b> (受抑制)<br>Indooroopilly 單車 MBON01：<b>56.0 Hz</b></td>
-                    <td><span style="color: #38bdf8; font-weight: bold;">精準吻合</span><br>實體隔離專用車道是決定市民是否敢於騎車的關鍵。</td>
+                    <td><b>5. 設施安全斷裂</b><br>Indooroopilly vs Logan</td>
+                    <td>西區 <b>4.8%</b> vs 南區 <b>0.3%</b><br><small style="color: #94a3b8;">(河畔專用道 vs 70km/h 混流)</small></td>
+                    <td>西區 <b>4.5%</b> vs 南區 <b>0.4%</b></td>
+                    <td><b style="color: #4ade80;">0.1% ~ 0.3%</b></td>
+                    <td>Logan 危險 PPL1 <b>64.19</b><br><small style="color: #f87171;">(Indooroopilly 僅 6.79)</small></td>
+                    <td><span style="color: #38bdf8; font-weight: bold;">隔離車道定單車生死</span></td>
                 </tr>
                 <tr>
-                    <td><b>6. 第一哩微移動接駁</b><br>Rochedale 往車站 (2.2 km)</td>
-                    <td><b>外圍長距步行阻斷搭車意願</b><br>外圍無接駁社區大眾運輸搭乘率僅 6.2%；引入微移動接駁試辦後搭乘率提升至 17.5%。<br><small style="color: #94a3b8;">來源：Translink 外圍社區接駁試辦數據 2024</small></td>
-                    <td><b>模型預測搭車率由 5.8% 提升至 16.9%</b><br>電動滑板車有效消除了 2.2km 步行負擔，打通公車專用道站牌客源。</td>
-                    <td>2.2km 步行 PPL1：<b>45.20</b> (MBON01 僅 4.6 Hz)<br>滑板車接駁 PPL1：25.80<br>複合接駁 MBON01：<b>26.2 Hz</b></td>
-                    <td><span style="color: #38bdf8; font-weight: bold;">精準吻合</span><br>第一哩微移動接駁是啟動外圍郊區公車專用道的關鍵拼圖。</td>
+                    <td><b>6. 第一哩微移動</b><br>Rochedale (2.2 km)</td>
+                    <td>無接駁 <b>6.2%</b> → 接駁 <b>17.5%</b></td>
+                    <td>無接駁 <b>5.8%</b> → 接駁 <b>16.9%</b></td>
+                    <td><b style="color: #4ade80;">0.4% ~ 0.6%</b></td>
+                    <td>步行 PPL1 <b>45.20</b> (MBON 4.6 Hz)<br><small style="color: #38bdf8;">滑板接駁 MBON 回升 26.2 Hz</small></td>
+                    <td><span style="color: #38bdf8; font-weight: bold;">微移動打通外圍公車</span></td>
                 </tr>
             </tbody>
         </table>
@@ -578,8 +592,17 @@ def render_tab3_phenomena(is_en: bool):
         title='現實世界真實數據 vs 果蠅仿生模型預測比對（平均誤差 < 0.8%）' if not is_en else 'Real-World Reality vs Drosophila Bio-Model Prediction (Mean Error < 0.8%)',
         barmode='group',
         template='plotly_dark',
+        paper_bgcolor='#0b0e14',
+        plot_bgcolor='#0b0e14',
+        font=dict(color='#f1f5f9'),
         height=380,
-        yaxis=dict(title='分流與運量變化率 (%) / Mode Share & Change Rate (%)'),
+        yaxis=dict(
+            title='分流與運量變化率 (%) / Mode Share & Change Rate (%)',
+            gridcolor='#1e293b',
+            zerolinecolor='#334155'
+        ),
+        xaxis=dict(gridcolor='#1e293b'),
+        legend=dict(font=dict(color='#f1f5f9')),
         margin=dict(l=10, r=10, t=40, b=10)
     )
     st.plotly_chart(fig_comp, use_container_width=True)
