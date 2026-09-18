@@ -8,12 +8,16 @@ import pandas as pd
 import plotly.express as px
 
 def render_tab2_archetypes(is_en: bool):
-    st.markdown("### " + (" Live Commuter Telemetry Arena (Doomfly Style)" if is_en else " 實時動態果蠅通勤模擬舞台 (Doomfly 遙測風格)"))
-    st.info(
-        " **Interactive Canvas**: Real-time 60 FPS HTML5 canvas simulating fruit fly commuters across Brisbane. Use buttons beneath canvas to toggle between **Walk, Cycle, 50c Bus, Drive, Stay Home**, or click **'Brain Auto'** to let the Janelia connectome decide! Supports ** Sunny** vs ** Severe Storm/Heatwave** weather states."
+    banner_text = (
+        "<b>Interactive Canvas</b>: Real-time 60 FPS HTML5 canvas simulating fruit fly commuters across Brisbane. Use buttons beneath canvas to toggle between <b>Walk, Cycle, 50c Bus, Drive, Stay Home</b>, or click <b>'Brain Auto'</b> to let the Janelia connectome decide. Supports <b>Sunny</b> vs <b>Severe Storm/Heatwave</b> weather states."
         if is_en else
-        " **舞台互動指南**：本動態畫布靈感源自 **Doomfly**。上方即時顯示雙示波器神經電位（PAM 獎勵、PPL1 痛感、時速、淨點數），下方模擬果蠅跨步、踩單車、搭乘冷氣公車與開車。可於下方切換 **晴朗 vs 雨天/高溫**，或點擊 **「自動決策」** 讓 Janelia FlyEM 連接體即時選定運具！"
+        "<b>舞台互動指南</b>：本動態畫布靈感源自 <b>Doomfly</b>。上方即時顯示雙示波器神經電位（PAM 獎勵、PPL1 痛感、時速、淨點數），下方模擬果蠅跨步、踩單車、搭乘冷氣公車與開車。可於下方切換 <b>晴朗 vs 雨天/高溫</b>，或點擊 <b>「自動決策」</b> 讓 Janelia FlyEM 連接體即時選定運具！"
     )
+    st.markdown(f"""
+    <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid #1e3a8a; border-left: 5px solid #38bdf8; border-radius: 8px; padding: 14px 18px; margin-bottom: 16px;">
+        <div style="color: #f1f5f9; font-size: 0.95rem; line-height: 1.6;">{banner_text}</div>
+    </div>
+    """, unsafe_allow_html=True)
 
     _ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
     arena_path = os.path.join(_ROOT, "assets", "doomfly_arena.html")
@@ -313,16 +317,20 @@ def render_tab2_archetypes(is_en: bool):
                 x=time_col,
                 y=net_col,
                 color=mode_col,
-                title=" 各運具遲到衰退軌跡 (開車/Uber 之防守緩衝區間)" if not is_en else " Lateness Decay Curves (Car/Uber Buffer Plateau)",
+                labels={time_col: "Departure Time" if is_en else "出發時間", net_col: "Net Valence / Utility" if is_en else "淨效用點數", mode_col: "Mode" if is_en else "運具模式"},
+                title="各運具遲到衰退軌跡 (開車/Uber 之防守緩衝區間)" if not is_en else "Lateness Decay Curves (Car/Uber Buffer Plateau)",
                 color_discrete_map={m["name"]: m["color"] for m in modes_spec_a}
             )
             fig_line_a.update_layout(
+                template="plotly_dark",
                 paper_bgcolor="#0e1117",
                 plot_bgcolor="#161b22",
-                font=dict(color="#e0e0e0"),
+                font=dict(color="#f8fafc"),
                 height=360,
                 margin=dict(l=10, r=10, t=40, b=10),
-                legend=dict(orientation="h", yanchor="bottom", y=-0.4, xanchor="center", x=0.5, font=dict(size=10))
+                legend=dict(orientation="h", yanchor="bottom", y=-0.45, xanchor="center", x=0.5, font=dict(size=11, color="#f8fafc")),
+                xaxis=dict(title_font=dict(color="#f8fafc"), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b"),
+                yaxis=dict(title_font=dict(color="#f8fafc"), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b")
             )
             st.plotly_chart(fig_line_a, use_container_width=True)
 
@@ -634,16 +642,20 @@ def render_tab2_archetypes(is_en: bool):
                 x=time_col_b,
                 y=net_col_b,
                 color=mode_col_b,
-                title=" 28.8km 各運具遲到衰退軌跡 (08:18 行程取消臨界線)" if not is_en else " 28.8km Lateness Decay Curves (08:18 Cancellation Cutoff)",
+                labels={time_col_b: "Departure Time" if is_en else "出發時間", net_col_b: "Net Valence / Utility" if is_en else "淨效用點數", mode_col_b: "Mode" if is_en else "運具模式"},
+                title="28.8km 各運具遲到衰退軌跡 (08:18 行程取消臨界線)" if not is_en else "28.8km Lateness Decay Curves (08:18 Cancellation Cutoff)",
                 color_discrete_map={m["name"]: m["color"] for m in modes_spec_b}
             )
             fig_line_b.update_layout(
+                template="plotly_dark",
                 paper_bgcolor="#0e1117",
                 plot_bgcolor="#161b22",
-                font=dict(color="#e0e0e0"),
+                font=dict(color="#f8fafc"),
                 height=360,
                 margin=dict(l=10, r=10, t=40, b=10),
-                legend=dict(orientation="h", yanchor="bottom", y=-0.4, xanchor="center", x=0.5, font=dict(size=10))
+                legend=dict(orientation="h", yanchor="bottom", y=-0.45, xanchor="center", x=0.5, font=dict(size=11, color="#f8fafc")),
+                xaxis=dict(title_font=dict(color="#f8fafc"), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b"),
+                yaxis=dict(title_font=dict(color="#f8fafc"), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b")
             )
             st.plotly_chart(fig_line_b, use_container_width=True)
 

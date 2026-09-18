@@ -48,14 +48,14 @@ def render_sidebar() -> SidebarInputs:
     # Parameters & Presets
     # -------------------------------------------------------------
     st.sidebar.markdown("---")
-    st.sidebar.title(" " + ("Commuter Control Panel" if is_en else "通勤參數控制台"))
+    st.sidebar.title("Commuter Control Panel" if is_en else "通勤參數控制台")
 
     preset_options = [
         ("Custom Parameters", "自訂參數"),
-        (" Tertiary / University Student", " 大專院校學生 (學生族群)"),
-        (" CBD Corporate Executive", " CBD 高薪主管"),
-        (" Fitness Cyclist", " 運動狂熱者"),
-        (" Suburban Commuter Family", " 郊區通勤家庭")
+        ("Tertiary / University Student", "大專院校學生 (學生族群)"),
+        ("CBD Corporate Executive", "CBD 高薪主管"),
+        ("Fitness Cyclist", "運動狂熱者"),
+        ("Suburban Commuter Family", "郊區通勤家庭")
     ]
     preset_choices = [p[0] if is_en else p[1] for p in preset_options]
     preset = st.sidebar.selectbox(

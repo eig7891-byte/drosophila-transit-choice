@@ -192,10 +192,25 @@ def render_tab3_phenomena(is_en: bool):
         fig_p1 = px.bar(
             df_p1, x="Metric", y=["Transit Share (%)", "Car Share (%)"],
             barmode="group",
+            labels={"value": "Mode Share (%)" if is_en else "運具分流佔比 (%)", "variable": "Mode" if is_en else "運具類別", "Metric": "Fare Scenario" if is_en else "票價情境"},
             title="Logan Corridor Mode Split: Old vs 50¢ Fare" if is_en else "Logan 走廊運具分流：舊票價 vs 50¢ 票價",
             color_discrete_map={"Transit Share (%)": "#00e676", "Car Share (%)": "#38bdf8"}
         )
-        fig_p1.update_layout(paper_bgcolor="#0b0e14", plot_bgcolor="#161b22", font=dict(color="#e2e8f0"))
+        fig_p1.update_layout(
+            template="plotly_dark",
+            paper_bgcolor="#0b0e14",
+            plot_bgcolor="#161b22",
+            font=dict(color="#f8fafc"),
+            legend=dict(
+                title=dict(text="Mode" if is_en else "運具類別", font=dict(color="#f8fafc", size=12)),
+                font=dict(color="#f8fafc", size=12),
+                bgcolor="rgba(15, 23, 42, 0.85)",
+                bordercolor="#334155",
+                borderwidth=1
+            ),
+            xaxis=dict(title=dict(text="Fare Scenario" if is_en else "票價情境", font=dict(color="#f8fafc")), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b"),
+            yaxis=dict(title=dict(text="Mode Share (%)" if is_en else "運具分流佔比 (%)", font=dict(color="#f8fafc")), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b")
+        )
         st.plotly_chart(fig_p1, use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -239,10 +254,25 @@ def render_tab3_phenomena(is_en: bool):
         fig_p2 = px.line(
             df_p2, x="Scenario", y=["Transit (%)", "Car (%)"],
             markers=True,
+            labels={"value": "Mode Share (%)" if is_en else "運具分流佔比 (%)", "variable": "Mode" if is_en else "運具類別", "Scenario": "Scenario" if is_en else "政策情境"},
             title="Transit Share Growth under Metro Speed Increase" if is_en else "Metro 提速帶來的大眾運輸分流曲線",
             color_discrete_map={"Transit (%)": "#00e676", "Car (%)": "#38bdf8"}
         )
-        fig_p2.update_layout(paper_bgcolor="#0b0e14", plot_bgcolor="#161b22", font=dict(color="#e2e8f0"))
+        fig_p2.update_layout(
+            template="plotly_dark",
+            paper_bgcolor="#0b0e14",
+            plot_bgcolor="#161b22",
+            font=dict(color="#f8fafc"),
+            legend=dict(
+                title=dict(text="Mode" if is_en else "運具類別", font=dict(color="#f8fafc", size=12)),
+                font=dict(color="#f8fafc", size=12),
+                bgcolor="rgba(15, 23, 42, 0.85)",
+                bordercolor="#334155",
+                borderwidth=1
+            ),
+            xaxis=dict(title=dict(text="Scenario" if is_en else "政策情境", font=dict(color="#f8fafc")), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b"),
+            yaxis=dict(title=dict(text="Mode Share (%)" if is_en else "運具分流佔比 (%)", font=dict(color="#f8fafc")), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b")
+        )
         st.plotly_chart(fig_p2, use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -289,10 +319,25 @@ def render_tab3_phenomena(is_en: bool):
         fig_p3 = px.line(
             df_p3, x="Temp (°C)" if is_en else "氣溫 (°C)", y=["Cycling (%)" if is_en else "自行車佔比 (%)", "Transit (%)" if is_en else "大眾運輸佔比 (%)"],
             markers=True,
+            labels={"value": "Mode Share (%)" if is_en else "運具分流佔比 (%)", "variable": "Mode" if is_en else "運具類別", "Temp (°C)": "Temperature (°C)"},
             title="Modal Shift Under Rising Temperature" if is_en else "氣溫上升引發之主動交通轉移曲線",
             color_discrete_map={"Cycling (%)": "#f59e0b", "Transit (%)": "#00e676", "自行車佔比 (%)": "#f59e0b", "大眾運輸佔比 (%)": "#00e676"}
         )
-        fig_p3.update_layout(paper_bgcolor="#0b0e14", plot_bgcolor="#161b22", font=dict(color="#e2e8f0"))
+        fig_p3.update_layout(
+            template="plotly_dark",
+            paper_bgcolor="#0b0e14",
+            plot_bgcolor="#161b22",
+            font=dict(color="#f8fafc"),
+            legend=dict(
+                title=dict(text="Mode" if is_en else "運具類別", font=dict(color="#f8fafc", size=12)),
+                font=dict(color="#f8fafc", size=12),
+                bgcolor="rgba(15, 23, 42, 0.85)",
+                bordercolor="#334155",
+                borderwidth=1
+            ),
+            xaxis=dict(title=dict(text="Temperature (°C)" if is_en else "氣溫 (°C)", font=dict(color="#f8fafc")), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b"),
+            yaxis=dict(title=dict(text="Mode Share (%)" if is_en else "運具分流佔比 (%)", font=dict(color="#f8fafc")), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b")
+        )
         st.plotly_chart(fig_p3, use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -341,10 +386,25 @@ def render_tab3_phenomena(is_en: bool):
         fig_p4 = px.line(
             df_p4, x="Departure", y=["Walking" if is_en else "步行", "Driving" if is_en else "開車", "Stay Home" if is_en else "留在家"],
             markers=True,
+            labels={"value": "Net Utility (Points)" if is_en else "淨效用點數", "variable": "Choice" if is_en else "運具選項", "Departure": "Departure Time" if is_en else "出發時間"},
             title="Lateness Decay & Cancellation Horizon" if is_en else "出發延遲點數衰退與取消臨界線",
             color_discrete_map={"Walking": "#00e676", "Driving": "#38bdf8", "Stay Home": "#ec4899", "步行": "#00e676", "開車": "#38bdf8", "留在家": "#ec4899"}
         )
-        fig_p4.update_layout(paper_bgcolor="#0b0e14", plot_bgcolor="#161b22", font=dict(color="#e2e8f0"))
+        fig_p4.update_layout(
+            template="plotly_dark",
+            paper_bgcolor="#0b0e14",
+            plot_bgcolor="#161b22",
+            font=dict(color="#f8fafc"),
+            legend=dict(
+                title=dict(text="Choice" if is_en else "運具選項", font=dict(color="#f8fafc", size=12)),
+                font=dict(color="#f8fafc", size=12),
+                bgcolor="rgba(15, 23, 42, 0.85)",
+                bordercolor="#334155",
+                borderwidth=1
+            ),
+            xaxis=dict(title=dict(text="Departure Time" if is_en else "出發時間", font=dict(color="#f8fafc")), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b"),
+            yaxis=dict(title=dict(text="Net Utility (Points)" if is_en else "淨效用點數", font=dict(color="#f8fafc")), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b")
+        )
         st.plotly_chart(fig_p4, use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -385,10 +445,25 @@ def render_tab3_phenomena(is_en: bool):
         fig_p5 = px.bar(
             df_p5, x="Corridor", y=["Cycling (%)", "Car (%)"],
             barmode="group",
+            labels={"value": "Mode Share (%)" if is_en else "運具分流佔比 (%)", "variable": "Mode" if is_en else "運具類別", "Corridor": "Corridor" if is_en else "通勤走廊"},
             title="Active Commute: Western vs Southern Corridors" if is_en else "西區與南區運動族群運具選擇對比",
             color_discrete_map={"Cycling (%)": "#f59e0b", "Car (%)": "#38bdf8"}
         )
-        fig_p5.update_layout(paper_bgcolor="#0b0e14", plot_bgcolor="#161b22", font=dict(color="#e2e8f0"))
+        fig_p5.update_layout(
+            template="plotly_dark",
+            paper_bgcolor="#0b0e14",
+            plot_bgcolor="#161b22",
+            font=dict(color="#f8fafc"),
+            legend=dict(
+                title=dict(text="Mode" if is_en else "運具類別", font=dict(color="#f8fafc", size=12)),
+                font=dict(color="#f8fafc", size=12),
+                bgcolor="rgba(15, 23, 42, 0.85)",
+                bordercolor="#334155",
+                borderwidth=1
+            ),
+            xaxis=dict(title=dict(text="Corridor" if is_en else "通勤走廊", font=dict(color="#f8fafc")), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b"),
+            yaxis=dict(title=dict(text="Mode Share (%)" if is_en else "運具分流佔比 (%)", font=dict(color="#f8fafc")), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b")
+        )
         st.plotly_chart(fig_p5, use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -405,7 +480,7 @@ def render_tab3_phenomena(is_en: bool):
             <p style="font-size: 0.98rem; line-height: 1.6; color: #e2e8f0; margin-bottom: 6px;">
                 To evaluate external validity and avoid circular reasoning, the <code>DrosophilaCommuteBrain</code> engine was evaluated against three published international transit case studies. In each case, traditional linear utility / 4-step models forecasted high ridership or modal shift, but real commuters acted differently from linear economic assumptions.
             </p>
-            <p style="font-size: 0.92rem; color: #94a3b8; margin-bottom: 0;">
+            <p style="font-size: 0.92rem; color: #cbd5e1; margin-bottom: 0;">
                 All cases are validated with peer-reviewed literature: 
                 <a href="https://doi.org/10.1007/s11116-016-9695-5" target="_blank" style="color: #c084fc;">Cats et al. (2017) <i>Transportation</i></a> | 
                 <a href="https://doi.org/10.1016/j.tra.2010.11.002" target="_blank" style="color: #c084fc;">Guo & Wilson (2011) <i>Transp. Res. Part A</i></a> | 
@@ -420,7 +495,7 @@ def render_tab3_phenomena(is_en: bool):
             <p style="font-size: 0.98rem; line-height: 1.6; color: #e2e8f0; margin-bottom: 6px;">
                 為檢驗模型的外部有效性，本研究將 <code>DrosophilaCommuteBrain</code> 神經決策架構應用於交通領域三項具代表性的歷史案例。在這些案例中，傳統線性模型預測政策將大幅吸引客流，但實測結果顯示通勤者行為與事前預期存在明顯差距。
             </p>
-            <p style="font-size: 0.92rem; color: #94a3b8; margin-bottom: 0;">
+            <p style="font-size: 0.92rem; color: #cbd5e1; margin-bottom: 0;">
                 所有案例皆有正式同儕審查文獻與 DOI 溯源：
                 <a href="https://doi.org/10.1007/s11116-016-9695-5" target="_blank" style="color: #c084fc;">Cats et al. (2017) <i>Transportation</i></a> ｜ 
                 <a href="https://doi.org/10.1016/j.tra.2010.11.002" target="_blank" style="color: #c084fc;">Guo & Wilson (2011) <i>Transp. Res. Part A</i></a> ｜ 

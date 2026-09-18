@@ -39,11 +39,11 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
             st.markdown(f"""
             <div class="metric-box" style="border-left-color: {color};">
                 <h4 style="margin: 0; color: #fff;">{title}</h4>
-                <p style="margin: 0.2rem 0; color: #94a3b8; font-size: 0.85rem;">{"Fare" if is_en else "單程票價"}: <b>${data['transit_fare_aud']:.2f} AUD</b></p>
+                <p style="margin: 0.2rem 0; color: #cbd5e1; font-size: 0.85rem;">{"Fare" if is_en else "單程票價"}: <b>${data['transit_fare_aud']:.2f} AUD</b></p>
                 <hr style="margin: 0.4rem 0; border-color: #334155;">
                 <p style="margin: 0;"> <b>{"Car" if is_en else "自駕車"}: {shares['Car']:.1f}%</b> ({m_counts.get('Car', 0)}{" commuters" if is_en else "人"})</p>
                 <p style="margin: 0;"> <b>{"Transit" if is_en else "大眾運輸"}: {shares['Transit']:.1f}%</b> ({m_counts.get('Transit_Walk', 0) + m_counts.get('Transit_Scooter', 0)}{" commuters" if is_en else "人"})</p>
-                <p style="margin: 0; padding-left: 14px; font-size: 0.8rem; color: #94a3b8;">•  {"Walk Transfer" if is_en else "徒步接駁"}: {m_counts.get('Transit_Walk', 0)/100:.1f}%<br>•  {"Scooter Transfer" if is_en else "滑板接駁"}: {m_counts.get('Transit_Scooter', 0)/100:.1f}%</p>
+                <p style="margin: 0; padding-left: 14px; font-size: 0.82rem; color: #cbd5e1;">•  {"Walk Transfer" if is_en else "徒步接駁"}: {m_counts.get('Transit_Walk', 0)/100:.1f}%<br>•  {"Scooter Transfer" if is_en else "滑板接駁"}: {m_counts.get('Transit_Scooter', 0)/100:.1f}%</p>
                 <p style="margin: 0;"> <b>{"Bicycle" if is_en else "自行車"}: {shares['Bicycle']:.1f}%</b> ({m_counts.get('Bicycle', 0)}{" commuters" if is_en else "人"})</p>
                 <p style="margin: 0.4rem 0 0 0; color: #38bdf8; font-size: 0.85rem;"> {"Daily CO2 Saved" if is_en else "每日減碳"}: <b>{data['daily_co2_saved_kg']/1000:.1f} {"t" if is_en else "噸"}</b></p>
             </div>
@@ -85,7 +85,21 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
             },
             title="Commute Modal Stack by Policy Scenario" if is_en else "四大政策全運具堆疊佔比圖"
         )
-        fig_bar.update_layout(paper_bgcolor='#0e1117', plot_bgcolor='#161b22', font=dict(color='#e0e0e0'))
+        fig_bar.update_layout(
+            template="plotly_dark",
+            paper_bgcolor='#0e1117',
+            plot_bgcolor='#161b22',
+            font=dict(color='#f8fafc'),
+            legend=dict(
+                title=dict(font=dict(color="#f8fafc")),
+                font=dict(color="#f8fafc", size=11),
+                bgcolor="rgba(15, 23, 42, 0.85)",
+                bordercolor="#334155",
+                borderwidth=1
+            ),
+            xaxis=dict(title_font=dict(color="#f8fafc"), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b"),
+            yaxis=dict(title_font=dict(color="#f8fafc"), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b")
+        )
         st.plotly_chart(fig_bar, use_container_width=True)
 
     with c_plot2:
@@ -100,7 +114,21 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
         )
         fig_line.add_vline(x=0.50, line_dash="dash", line_color="#00e676", annotation_text="50c Policy" if is_en else "現行 50 Cent 政策")
         fig_line.add_vline(x=4.50, line_dash="dash", line_color="#ff5252", annotation_text="Old Fare Threshold" if is_en else "舊制票價門檻")
-        fig_line.update_layout(paper_bgcolor='#0e1117', plot_bgcolor='#161b22', font=dict(color='#e0e0e0'))
+        fig_line.update_layout(
+            template="plotly_dark",
+            paper_bgcolor='#0e1117',
+            plot_bgcolor='#161b22',
+            font=dict(color='#f8fafc'),
+            legend=dict(
+                title=dict(font=dict(color="#f8fafc")),
+                font=dict(color="#f8fafc", size=11),
+                bgcolor="rgba(15, 23, 42, 0.85)",
+                bordercolor="#334155",
+                borderwidth=1
+            ),
+            xaxis=dict(title_font=dict(color="#f8fafc"), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b"),
+            yaxis=dict(title_font=dict(color="#f8fafc"), tickfont=dict(color="#cbd5e1"), gridcolor="#1e293b")
+        )
         st.plotly_chart(fig_line, use_container_width=True)
 
     # Section 3: Corridor Spatial Breakdown
@@ -189,7 +217,7 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
                 Initial decision weights (e.g., price sensitivity 0.25, time delay sensitivity 0.30) were behavioral economics priors based on literature.
                 To eliminate heuristic assumptions, this project ingested <b>24,772,971 real tap-on / tap-off transactions</b> from the <b>Queensland Open Data Portal</b> (July 2024 pre-50c baseline vs August 2024 50c implementation) alongside the official <b>Translink Quarterly Patronage Report (Q2 2025-26)</b>.
             </p>
-            <p style="font-size: 0.92rem; color: #94a3b8; margin-bottom: 0;">
+            <p style="font-size: 0.92rem; color: #cbd5e1; margin-bottom: 0;">
                 Using <b>Constrained Maximum Likelihood Estimation (MLE) / MAP Bayesian Calibration</b> via SciPy L-BFGS-B numerical optimization, the 10,000-agent Drosophila brain weights were fitted against empirical route-level ridership growth. The objective loss function dropped from 114.86 to 31.60 (<b>72.5% error reduction</b>), and prediction RMSE was halved from <b>3.92% to 1.99%</b>.
             </p>
         </div>
@@ -202,7 +230,7 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
                 在初始模型中，神經決策權重（如票價敏感度 0.25、時間敏感度 0.20）是依據行為經濟學文獻設定的先驗值。
                 為確保本模型具備真實工程預測力，本專案自<b>昆士蘭政府開放資料庫（Queensland Open Data）</b>下載並解析了 <b>2,477 萬筆真實 Translink Go Card 每日刷卡與起訖站交易紀錄（2024 年 7 月舊制 vs 8 月 50 Cent 上路首月）</b>，並交叉比對最新官方 <b>Translink Q2 2025-26 季報 (Excel 實時數據)</b>。
             </p>
-            <p style="font-size: 0.92rem; color: #94a3b8; margin-bottom: 0;">
+            <p style="font-size: 0.92rem; color: #cbd5e1; margin-bottom: 0;">
                 透過 <b>最大概似估計（MLE）與貝氏最大後驗估計（MAP）數值優化（SciPy L-BFGS-B）</b>，演算法自動微調果蠅大腦 PAM/PPL1 各神經元突觸權重。回測目標損失函數（Loss）由 114.86 降至 31.60（<b>誤差縮減 72.5%</b>），均方根誤差（RMSE）自 <b>3.92% 降至 1.99%</b>。
             </p>
         </div>

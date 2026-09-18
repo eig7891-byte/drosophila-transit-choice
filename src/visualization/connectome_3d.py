@@ -153,20 +153,22 @@ class DrosophilaConnectomeVisualizer:
 
         # Style dark theme matching Janelia NeuPrint WebGL aesthetic
         fig.update_layout(
+            template='plotly_dark',
             scene=dict(
-                xaxis=dict(title='Lateral (μm)', showbackground=False, zeroline=False),
-                yaxis=dict(title='Anterior-Posterior (μm)', showbackground=False, zeroline=False),
-                zaxis=dict(title='Dorsoventral (μm)', showbackground=False, zeroline=False),
+                xaxis=dict(title='Lateral (μm)', showbackground=False, zeroline=False, color='#cbd5e1'),
+                yaxis=dict(title='Anterior-Posterior (μm)', showbackground=False, zeroline=False, color='#cbd5e1'),
+                zaxis=dict(title='Dorsoventral (μm)', showbackground=False, zeroline=False, color='#cbd5e1'),
                 bgcolor='#0e1117'
             ),
             paper_bgcolor='#0e1117',
-            font=dict(color='#e0e0e0'),
+            font=dict(color='#f8fafc'),
             margin=dict(l=0, r=0, b=0, t=30),
             legend=dict(
                 x=0.02, y=0.98,
-                bgcolor='rgba(20,24,35,0.8)',
-                bordercolor='#333',
-                borderwidth=1
+                bgcolor='rgba(20,24,35,0.85)',
+                bordercolor='#334155',
+                borderwidth=1,
+                font=dict(color='#f8fafc', size=11)
             )
         )
         return fig
@@ -184,12 +186,19 @@ class DrosophilaConnectomeVisualizer:
             go.Bar(name='Action Firing Rate (Hz)', x=modes, y=firing_rates, marker_color='#448aff')
         ])
         fig.update_layout(
+            template='plotly_dark',
             barmode='group',
             title='Mushroom Body Firing Rates & Neuromodulator Balance per Mode',
             paper_bgcolor='#0e1117',
             plot_bgcolor='#161b22',
-            font=dict(color='#e0e0e0'),
-            yaxis=dict(title='Signal Intensity / Hz', gridcolor='#2d333b'),
-            legend=dict(bgcolor='rgba(20,24,35,0.8)')
+            font=dict(color='#f8fafc'),
+            xaxis=dict(title_font=dict(color='#f8fafc'), tickfont=dict(color='#cbd5e1'), gridcolor='#1e293b'),
+            yaxis=dict(title='Signal Intensity / Hz', title_font=dict(color='#f8fafc'), tickfont=dict(color='#cbd5e1'), gridcolor='#1e293b'),
+            legend=dict(
+                font=dict(color='#f8fafc', size=11),
+                bgcolor='rgba(20,24,35,0.85)',
+                bordercolor='#334155',
+                borderwidth=1
+            )
         )
         return fig

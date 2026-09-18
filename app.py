@@ -32,7 +32,7 @@ from src.ui.tabs import (
 st.set_page_config(
     page_title="Drosophila Connectome Transit Simulator | Brisbane AI",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
 # Custom Styling

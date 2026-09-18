@@ -100,8 +100,7 @@ def render_tab7_future(is_en: bool):
 
     st.markdown("---")
 
-    # Multi-Era Corridor Parameter Matrix Table
-    st.markdown("### " + (" Multi-Decadal Physical Corridor Parameter Matrix (2026 vs 2032 vs 2040 vs 2050)" if is_en else " 多年代實體走廊參數矩陣對比（2026 vs 2032 vs 2040 vs 2050）"))
+    st.markdown("### " + ("Multi-Decadal Physical Corridor Parameter Matrix (2026 vs 2032 vs 2040 vs 2050)" if is_en else "多年代實體走廊參數矩陣對比（2026 vs 2032 vs 2040 vs 2050）"))
 
     matrix_df = pd.DataFrame([
         {

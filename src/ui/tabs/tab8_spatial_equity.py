@@ -24,7 +24,7 @@ def render_tab8_spatial_equity(is_en: bool):
                 Instead of testing a single household, this sandbox evaluates an <b>entire suburb / residential catchment</b> using the <b>Queensland Department of Transport and Main Roads (TMR)</b> official travel demand classifications:
                 <b>(1) CBD Commuters</b>, <b>(2) Non-CBD Suburban Workers</b> (70%+ of QLD jobs), <b>(3) Tertiary Students</b>, and <b>(4) Family Escort / School Run Trips</b> (Trip Chaining).
             </p>
-            <p style="font-size: 0.90rem; color: #94a3b8; margin-bottom: 0;">
+            <p style="font-size: 0.90rem; color: #cbd5e1; margin-bottom: 0;">
                 The Drosophila connectome engine (empirically calibrated against 24.7M Translink Go Card transactions) runs 500 multi-agent synthetic commuters to compute the area's <b>public transit share</b>, <b>road space footprint (FIFA soccer fields occupied)</b>, <b>first-mile access deficit</b>, and <b>primary travel impedances</b>.
             </p>
         </div>
@@ -37,7 +37,7 @@ def render_tab8_spatial_equity(is_en: bool):
                 本模組不再局限於單一家庭，而是評估<b>「整個生活圈／行政社區」</b>的總體交通健康度。系統嚴格對標昆士蘭 TMR 官方家戶旅次調查（HTS）四大分類：
                 <b>(1) CBD 白領通勤族</b>、<b>(2) 跨郊區在地工薪族</b>（佔昆士蘭工作大宗 70% 以上）、<b>(3) 大專與青年學生</b>、以及<b>(4) 家庭育兒接送族（School Run 旅次鏈）</b>。
             </p>
-            <p style="font-size: 0.90rem; color: #94a3b8; margin-bottom: 0;">
+            <p style="font-size: 0.90rem; color: #cbd5e1; margin-bottom: 0;">
                 透過由 2,477 萬筆 Translink Go Card 刷卡大數據反向校準之果蠅連接體決策大腦，即時蒙地卡羅模擬 500 名虛擬市民，精確產出該區域之<b>大眾運輸市占率</b>、<b>尖峰道路空間佔用量（等效國際足球場）</b>、<b>第一哩步行可及性赤字</b>與<b>三大主要阻抗來源</b>。
             </p>
         </div>
@@ -134,7 +134,12 @@ def render_tab8_spatial_equity(is_en: bool):
         index=0
     )
     cur_p = preset_data[selected_suburb_key]
-    st.info(f"**{cur_p['en_name'] if is_en else selected_suburb_key}**: {cur_p['desc_en'] if is_en else cur_p['desc_zh']}")
+    st.markdown(f"""
+    <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid #1e3a8a; border-left: 5px solid #38bdf8; border-radius: 8px; padding: 12px 16px; margin: 10px 0 16px 0;">
+        <span style="color: #38bdf8; font-weight: 700; font-size: 0.96rem;">{cur_p['en_name'] if is_en else selected_suburb_key}:</span>
+        <span style="color: #f1f5f9; font-size: 0.94rem; margin-left: 6px;">{cur_p['desc_en'] if is_en else cur_p['desc_zh']}</span>
+    </div>
+    """, unsafe_allow_html=True)
 
     # Sliders and Control Panels
     with st.expander("Fine-Tune Area Demographic & Spatial Indicators" if is_en else "微調該區域人口組成與空間指標", expanded=(selected_suburb_key.startswith("Custom"))):
@@ -318,7 +323,7 @@ def render_tab8_spatial_equity(is_en: bool):
             <h4 style="margin: 0; color: #fff;">{"Public Transit Mode Share" if is_en else "全區大眾運輸市占率"}</h4>
             <h2 style="margin: 0.3rem 0; color: {transit_color};">{transit_total_pct:.1f}%</h2>
             <p style="margin: 0; color: {transit_color}; font-size: 0.82rem; font-weight: 600;">{transit_status}</p>
-            <p style="margin: 0.2rem 0 0 0; color: #94a3b8; font-size: 0.80rem;">{"Walk: " if is_en else "徒步: "}{transit_walk_pct:.1f}% | {"Scooter: " if is_en else "滑板: "}{transit_scoot_pct:.1f}%</p>
+            <p style="margin: 0.2rem 0 0 0; color: #cbd5e1; font-size: 0.85rem;">{"Walk: " if is_en else "徒步: "}{transit_walk_pct:.1f}% | {"Scooter: " if is_en else "滑板: "}{transit_scoot_pct:.1f}%</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -337,7 +342,7 @@ def render_tab8_spatial_equity(is_en: bool):
             <h4 style="margin: 0; color: #fff;">{"Private Car Mode Share" if is_en else "私家車自駕依賴率"}</h4>
             <h2 style="margin: 0.3rem 0; color: {car_color};">{car_pct:.1f}%</h2>
             <p style="margin: 0; color: {car_color}; font-size: 0.82rem; font-weight: 600;">{car_status}</p>
-            <p style="margin: 0.2rem 0 0 0; color: #94a3b8; font-size: 0.80rem;">{"Equivalent Fleet: " if is_en else "尖峰自駕車隊: "}{int(suburb_pop * car_pct / 100):,} {"Vehicles" if is_en else "輛"}</p>
+            <p style="margin: 0.2rem 0 0 0; color: #cbd5e1; font-size: 0.85rem;">{"Equivalent Fleet: " if is_en else "尖峰自駕車隊: "}{int(suburb_pop * car_pct / 100):,} {"Vehicles" if is_en else "輛"}</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -348,7 +353,7 @@ def render_tab8_spatial_equity(is_en: bool):
             <h4 style="margin: 0; color: #fff;">{"Peak Road Space Occupied" if is_en else "尖峰道路空間佔用量"}</h4>
             <h2 style="margin: 0.3rem 0; color: #a855f7;">{fifa_soccer_fields:.1f} <span style="font-size: 0.95rem; color: #cbd5e1;">{"Fields" if is_en else "座足球場"}</span></h2>
             <p style="margin: 0; color: #a855f7; font-size: 0.82rem; font-weight: 600;">{"Car 35m² vs Bus 1.4m² (25x)" if is_en else "自駕 35m² vs 公車 1.4m² (25倍)"}</p>
-            <p style="margin: 0.2rem 0 0 0; color: #94a3b8; font-size: 0.80rem;">{"Total road space: " if is_en else "總佔用 "}{total_road_m2/10000:.1f}{"0k m² lanes" if is_en else " 萬 m² 瀝青車道"}</p>
+            <p style="margin: 0.2rem 0 0 0; color: #cbd5e1; font-size: 0.85rem;">{"Total road space: " if is_en else "總佔用 "}{total_road_m2/10000:.1f}{"0k m² lanes" if is_en else " 萬 m² 瀝青車道"}</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -369,7 +374,7 @@ def render_tab8_spatial_equity(is_en: bool):
             <h4 style="margin: 0; color: #fff;">{"First-Mile Access Deficit" if is_en else "第一哩可及性赤字"}</h4>
             <h2 style="margin: 0.3rem 0; color: {walk_color};">{eff_walk_m:.0f} <span style="font-size: 0.95rem; color: #cbd5e1;">m</span></h2>
             <p style="margin: 0; color: {walk_color}; font-size: 0.82rem; font-weight: 600;">{walk_status}</p>
-            <p style="margin: 0.2rem 0 0 0; color: #94a3b8; font-size: 0.80rem;">{"Walk: " if is_en else "徒步 "}{eff_walk_m/84.0:.1f}{" min | 400m Cov: " if is_en else " 分鐘 ｜ 400m 覆蓋: "}{in_cov}%</p>
+            <p style="margin: 0.2rem 0 0 0; color: #cbd5e1; font-size: 0.85rem;">{"Walk: " if is_en else "徒步 "}{eff_walk_m/84.0:.1f}{" min | 400m Cov: " if is_en else " 分鐘 ｜ 400m 覆蓋: "}{in_cov}%</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -398,7 +403,14 @@ def render_tab8_spatial_equity(is_en: bool):
                 bike_lbl: "#f59e0b"
             }
         )
-        fig_donut.update_layout(paper_bgcolor="#0b0e14", plot_bgcolor="#161b22", font=dict(color="#e2e8f0"), margin=dict(t=20, b=20, l=20, r=20))
+        fig_donut.update_layout(
+            template="plotly_dark",
+            paper_bgcolor="#0b0e14",
+            plot_bgcolor="#161b22",
+            font=dict(color="#f8fafc"),
+            legend=dict(font=dict(color="#f8fafc", size=12)),
+            margin=dict(t=20, b=20, l=20, r=20)
+        )
         st.plotly_chart(fig_donut, use_container_width=True)
 
     with col_g2:
@@ -428,12 +440,13 @@ def render_tab8_spatial_equity(is_en: bool):
             name="Pain Level"
         ))
         fig_radar.update_layout(
+            template="plotly_dark",
             polar=dict(
-                radialaxis=dict(visible=True, range=[0, 100], color="#94a3b8"),
+                radialaxis=dict(visible=True, range=[0, 100], color="#cbd5e1", gridcolor="#334155", linecolor="#475569"),
                 bgcolor="#161b22"
             ),
             paper_bgcolor="#0b0e14",
-            font=dict(color="#e2e8f0"),
+            font=dict(color="#f8fafc"),
             showlegend=False,
             margin=dict(t=25, b=25, l=25, r=25)
         )
@@ -525,7 +538,7 @@ def render_tab8_spatial_equity(is_en: bool):
             <p style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.6; margin: 0 0 10px 0;">
                 {area_status_en}
             </p>
-            <p style="color: #94a3b8; font-size: 0.90rem; line-height: 1.6; margin: 0;">
+            <p style="color: #cbd5e1; font-size: 0.90rem; line-height: 1.6; margin: 0;">
                 • <b>Road Space Load</b>: Morning peak drivers ({car_users_count:,} cars) occupy about <b>{fifa_soccer_fields:.1f} FIFA soccer fields</b> of roadway.<br>
                 • <b>Primary Issue</b>: The main friction is <b>{top_pain_str_en}</b>.<br>
                 • <b>Next Steps</b>: Recommended improvement is <b>{rx_suggestion_en}</b>.
@@ -538,7 +551,7 @@ def render_tab8_spatial_equity(is_en: bool):
             <p style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.6; margin: 0 0 10px 0;">
                 {area_status_zh}
             </p>
-            <p style="color: #94a3b8; font-size: 0.90rem; line-height: 1.6; margin: 0;">
+            <p style="color: #cbd5e1; font-size: 0.90rem; line-height: 1.6; margin: 0;">
                 • <b>道路負擔</b>：早晨 {car_users_count:,} 輛自駕車約佔用 <b>{fifa_soccer_fields:.1f} 座足球場</b> 的車道空間。<br>
                 • <b>主要阻抗</b>：居民目前面臨的最大交通阻力為<b>【{top_pain_str_zh}】</b>。<br>
                 • <b>改善建議</b>：建議之工程對策為<b>【{rx_suggestion_zh}】</b>。

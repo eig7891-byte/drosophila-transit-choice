@@ -86,7 +86,7 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
             <p style="font-size: 1.02rem; line-height: 1.6; color: #e2e8f0; margin-bottom: 8px;">
                 Beyond the male-cns skeleton, the decision framework is grounded in the <b>FlyWire adult female whole-brain connectome (FAFB)</b>, published in <i>Nature</i> (October 2024). This dataset maps all <b>138,327 neurons</b> and over 130 million synapses across the entire central brain.
             </p>
-            <p style="font-size: 0.95rem; line-height: 1.5; color: #94a3b8; margin-bottom: 0;">
+            <p style="font-size: 0.95rem; line-height: 1.5; color: #cbd5e1; margin-bottom: 0;">
                  <b>Official Certified References</b>: 
                 <a href="https://doi.org/10.1038/s41586-024-07558-y" target="_blank" style="color: #38bdf8;">Dorkenwald et al., Nature 2024</a> | 
                 <a href="https://doi.org/10.1038/s41586-024-07686-5" target="_blank" style="color: #38bdf8;">Schlegel et al., Nature 2024</a> | 
@@ -102,7 +102,7 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
             <p style="font-size: 1.02rem; line-height: 1.6; color: #e2e8f0; margin-bottom: 8px;">
                 除了 Janelia 雄性骨架外，本模擬系統之神經元定義直接對照 2024 年 10 月發表於《Nature》的 <b>FlyWire 成人雌性果蠅全腦連接組 (FAFB v783)</b> 官方資料庫。該資料庫完整重建了果蠅大腦全部 <b>138,327 顆神經元</b> 與逾 1.3 億個突觸。
             </p>
-            <p style="font-size: 0.95rem; line-height: 1.5; color: #94a3b8; margin-bottom: 0;">
+            <p style="font-size: 0.95rem; line-height: 1.5; color: #cbd5e1; margin-bottom: 0;">
                  <b>官方權威文獻與認證資料庫</b>：
                 <a href="https://doi.org/10.1038/s41586-024-07558-y" target="_blank" style="color: #38bdf8;">Dorkenwald et al., Nature 2024</a> ｜ 
                 <a href="https://doi.org/10.1038/s41586-024-07686-5" target="_blank" style="color: #38bdf8;">Schlegel et al., Nature 2024</a> ｜ 
