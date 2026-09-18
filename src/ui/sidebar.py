@@ -38,7 +38,7 @@ def render_sidebar() -> SidebarInputs:
     st.sidebar.markdown("### Language / 語言選擇")
     lang = st.sidebar.radio(
         "Select Language / 選擇語言",
-        ["繁體中文", "English (AU)"],
+        ["English (AU)", "繁體中文"],
         index=0,
         label_visibility="collapsed"
     )
