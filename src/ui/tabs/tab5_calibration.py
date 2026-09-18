@@ -41,10 +41,10 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
                 <h4 style="margin: 0; color: #fff;">{title}</h4>
                 <p style="margin: 0.2rem 0; color: #94a3b8; font-size: 0.85rem;">{"Fare" if is_en else "單程票價"}: <b>${data['transit_fare_aud']:.2f} AUD</b></p>
                 <hr style="margin: 0.4rem 0; border-color: #334155;">
-                <p style="margin: 0;"> <b>{"Car" if is_en else "自駕車"}: {shares['Car']:.1f}%</b> ({m_counts.get('Car', 0)}人)</p>
-                <p style="margin: 0;"> <b>{"Transit" if is_en else "大眾運輸"}: {shares['Transit']:.1f}%</b> ({m_counts.get('Transit_Walk', 0) + m_counts.get('Transit_Scooter', 0)}人)</p>
-                <p style="margin: 0; padding-left: 14px; font-size: 0.8rem; color: #94a3b8;">•  徒步接駁: {m_counts.get('Transit_Walk', 0)/100:.1f}%<br>•  滑板接駁: {m_counts.get('Transit_Scooter', 0)/100:.1f}%</p>
-                <p style="margin: 0;"> <b>{"Bicycle" if is_en else "自行車"}: {shares['Bicycle']:.1f}%</b> ({m_counts.get('Bicycle', 0)}人)</p>
+                <p style="margin: 0;"> <b>{"Car" if is_en else "自駕車"}: {shares['Car']:.1f}%</b> ({m_counts.get('Car', 0)}{" commuters" if is_en else "人"})</p>
+                <p style="margin: 0;"> <b>{"Transit" if is_en else "大眾運輸"}: {shares['Transit']:.1f}%</b> ({m_counts.get('Transit_Walk', 0) + m_counts.get('Transit_Scooter', 0)}{" commuters" if is_en else "人"})</p>
+                <p style="margin: 0; padding-left: 14px; font-size: 0.8rem; color: #94a3b8;">•  {"Walk Transfer" if is_en else "徒步接駁"}: {m_counts.get('Transit_Walk', 0)/100:.1f}%<br>•  {"Scooter Transfer" if is_en else "滑板接駁"}: {m_counts.get('Transit_Scooter', 0)/100:.1f}%</p>
+                <p style="margin: 0;"> <b>{"Bicycle" if is_en else "自行車"}: {shares['Bicycle']:.1f}%</b> ({m_counts.get('Bicycle', 0)}{" commuters" if is_en else "人"})</p>
                 <p style="margin: 0.4rem 0 0 0; color: #38bdf8; font-size: 0.85rem;"> {"Daily CO2 Saved" if is_en else "每日減碳"}: <b>{data['daily_co2_saved_kg']/1000:.1f} {"t" if is_en else "噸"}</b></p>
             </div>
             """, unsafe_allow_html=True)
@@ -53,16 +53,21 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
     with c_plot1:
         st.markdown("#### " + ("Detailed Modal Split (Walk vs Scooter Gating)" if is_en else "四大情境運具細分流率 (真實滑板車約束)"))
         sc_plot_data = []
+        car_lbl = "Private Car" if is_en else "私家車 (Car)"
+        twalk_lbl = "Transit (Walk)" if is_en else "徒步公車 (Transit Walk)"
+        tscoot_lbl = "Transit (E-Scooter)" if is_en else "滑板公車 (Transit Scooter)"
+        bike_lbl = "Bicycle" if is_en else "自行車 (Bicycle)"
+
+        label_map = {
+            'Car': car_lbl,
+            'Transit_Walk': twalk_lbl,
+            'Transit_Scooter': tscoot_lbl,
+            'Bicycle': bike_lbl
+        }
         for title, key, _ in titles_to_use:
             m_counts = scenarios[key].get('mode_counts', {})
             total_sc = sum(m_counts.values()) or 10000
             for m_name, count in m_counts.items():
-                label_map = {
-                    'Car': ' Car (自駕車)',
-                    'Transit_Walk': '+ Transit Walk (徒步公車)',
-                    'Transit_Scooter': 'Combo (Scooter + Bus) Transit Scooter (滑板公車)',
-                    'Bicycle': ' Bicycle (自行車)'
-                }
                 sc_plot_data.append({
                     'Scenario' if is_en else '政策情境': title,
                     'Mode' if is_en else '運具細項': label_map.get(m_name, m_name),
@@ -73,10 +78,10 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
             sc_df, x='Scenario' if is_en else '政策情境', y='Share (%)' if is_en else '分流率 (%)',
             color='Mode' if is_en else '運具細項', barmode='stack',
             color_discrete_map={
-                ' Car (自駕車)': '#38bdf8',
-                '+ Transit Walk (徒步公車)': '#00e676',
-                'Combo (Scooter + Bus) Transit Scooter (滑板公車)': '#2dd4bf',
-                ' Bicycle (自行車)': '#f59e0b'
+                car_lbl: '#38bdf8',
+                twalk_lbl: '#00e676',
+                tscoot_lbl: '#2dd4bf',
+                bike_lbl: '#f59e0b'
             },
             title="Commute Modal Stack by Policy Scenario" if is_en else "四大政策全運具堆疊佔比圖"
         )
@@ -118,13 +123,13 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
         c_tscoot = corr_breakdown.get('Transit_Scooter', {}).get(c_name, 0.0)
         c_bike = corr_breakdown.get('Bicycle', {}).get(c_name, 0.0)
         corr_rows.append({
-            '通勤走廊 (Corridor)': c_name.split(' (')[0],
-            '到站步行 (Walk Distance)': f"{c_obj.distance_to_transit_m:.0f} m",
-            ' 開車 (Car)': f"{c_car:.1f}%",
-            '+ 徒步搭車 (Transit Walk)': f"{c_twalk:.1f}%",
-            'Combo (Scooter + Bus) 滑板搭車 (Transit Scooter)': f"{c_tscoot:.1f}%",
-            '總大眾運輸 (Total Transit)': f"{c_twalk + c_tscoot:.1f}%",
-            ' 自行車 (Bicycle)': f"{c_bike:.1f}%"
+            'Corridor' if is_en else '通勤走廊': c_name.split(' (')[0],
+            'Walk to Stop' if is_en else '到站步行': f"{c_obj.distance_to_transit_m:.0f} m",
+            'Car (%)' if is_en else '開車 (%)': f"{c_car:.1f}%",
+            'Transit Walk (%)' if is_en else '徒步搭車 (%)': f"{c_twalk:.1f}%",
+            'Transit Scooter (%)' if is_en else '滑板搭車 (%)': f"{c_tscoot:.1f}%",
+            'Total Transit (%)' if is_en else '總大眾運輸 (%)': f"{c_twalk + c_tscoot:.1f}%",
+            'Bicycle (%)' if is_en else '自行車 (%)': f"{c_bike:.1f}%"
         })
     st.dataframe(pd.DataFrame(corr_rows), use_container_width=True, hide_index=True)
 
@@ -135,20 +140,21 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
     arch_breakdown = p1_data.get('archetype_breakdown_pct', {})
     modes = ['Car', 'Transit_Walk', 'Transit_Scooter', 'Bicycle']
     table_rows = []
-    for arch_k, arch_name_zh in [
-        ('Student', ' 大學生 (Student)'),
-        ('CBD_Professional', ' CBD 高薪專員 (CBD Professional)'),
-        ('Suburban_Worker', ' 郊區家庭勞工 (Suburban Worker)'),
-        ('Fitness_Enthusiast', ' 運動狂熱者 (Fitness Enthusiast)')
-    ]:
-        row_dict = {'群體' if not is_en else 'Archetype': arch_name_zh if not is_en else arch_k}
+    arch_display = {
+        'Student': ('大學生 (Student)', 'Student'),
+        'CBD_Professional': ('CBD 高薪專員 (CBD Professional)', 'CBD Professional'),
+        'Suburban_Worker': ('郊區家庭勞工 (Suburban Worker)', 'Suburban Worker'),
+        'Fitness_Enthusiast': ('運動狂熱者 (Fitness Enthusiast)', 'Fitness Enthusiast')
+    }
+    for arch_k, (arch_zh, arch_en) in arch_display.items():
+        row_dict = {'Archetype' if is_en else '群體': arch_en if is_en else arch_zh}
         for m in modes:
             pct_val = arch_breakdown.get(m, {}).get(arch_k, 0.0)
             col_header = {
-                'Car': ' 自駕車 (%)' if not is_en else 'Car (%)',
-                'Transit_Walk': '+ 徒步公車 (%)' if not is_en else 'Transit Walk (%)',
-                'Transit_Scooter': 'Combo (Scooter + Bus) 滑板公車 (%)' if not is_en else 'Transit Scooter (%)',
-                'Bicycle': ' 自行車 (%)' if not is_en else 'Bicycle (%)'
+                'Car': 'Car (%)' if is_en else '自駕車 (%)',
+                'Transit_Walk': 'Transit Walk (%)' if is_en else '徒步公車 (%)',
+                'Transit_Scooter': 'Transit Scooter (%)' if is_en else '滑板公車 (%)',
+                'Bicycle': 'Bicycle (%)' if is_en else '自行車 (%)'
             }[m]
             row_dict[col_header] = f"{pct_val:.1f}%"
         table_rows.append(row_dict)

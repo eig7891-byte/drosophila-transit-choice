@@ -28,7 +28,6 @@ from src.ui.tabs import (
     render_tab7_future,
     render_tab8_spatial_equity,
 )
-from src.ai import inject_fly_engineer_floating_widget
 
 st.set_page_config(
     page_title="Drosophila Connectome Transit Simulator | Brisbane AI",
@@ -81,44 +80,44 @@ def main():
 
     # Main Header
     if sb.is_en:
-        st.markdown('<div class="main-header"> Drosophila Connectome Commute Simulator | Brisbane Transit AI</div>', unsafe_allow_html=True)
+        st.markdown('<div class="main-header">Drosophila Connectome Commute Simulator | Brisbane Transit AI</div>', unsafe_allow_html=True)
         st.markdown('<div class="sub-header">Grounding Real Janelia FlyEM (male-cns:v1.0) Neuronal Connectome into Urban Transit Choice & Queensland 50-Cent Policy Analysis</div>', unsafe_allow_html=True)
         st.markdown("""
-        <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid #10b981; border-radius: 8px; padding: 10px 16px; margin-bottom: 14px;">
-            <span style="color: #10b981; font-weight: 700;"> Model Provenance:</span>
-            <span style="color: #e2e8f0; font-size: 0.92rem;"> Neural decision weights empirically calibrated via SciPy MLE against <b>24.7M Translink Go Card transactions</b> (Queensland Open Data Jul–Aug 2024) & <b>Q2 2025-26 Patronage Report</b> (RMSE: 3.92% -> <b>1.99%</b>, Loss <b>-72.5%</b>).</span>
+        <div style="background: #11221f; border: 1px solid #10b981; border-radius: 8px; padding: 12px 16px; margin-bottom: 14px;">
+            <span style="color: #00e676; font-weight: 700;">Model Provenance:</span>
+            <span style="color: #f1f5f9; font-size: 0.92rem;"> Neural decision weights empirically calibrated via SciPy MLE against <strong style="color: #ffffff;">24.7M Translink Go Card transactions</strong> (Queensland Open Data Jul–Aug 2024) &amp; <strong style="color: #ffffff;">Q2 2025-26 Patronage Report</strong> (RMSE: 3.92% -&gt; <strong style="color: #00e676;">1.99%</strong>, Loss <strong style="color: #00e676;">-72.5%</strong>).</span>
         </div>
         """, unsafe_allow_html=True)
     else:
-        st.markdown('<div class="main-header"> 果蠅大腦通勤決策模擬器 (Brisbane Transit)</div>', unsafe_allow_html=True)
+        st.markdown('<div class="main-header">果蠅大腦通勤決策模擬器 (Brisbane Transit)</div>', unsafe_allow_html=True)
         st.markdown('<div class="sub-header">整合美國 Janelia FlyEM 真實雄性果蠅中樞神經連接體 (male-cns:v1.0) 與昆士蘭 50-Cent 大眾交通博弈決策</div>', unsafe_allow_html=True)
         st.markdown("""
-        <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid #10b981; border-radius: 8px; padding: 10px 16px; margin-bottom: 14px;">
-            <span style="color: #10b981; font-weight: 700;"> 數據層科學校準：</span>
-            <span style="color: #e2e8f0; font-size: 0.92rem;"> 神經權重已透過 <b>昆士蘭開放資料庫 2,477 萬筆 Translink Go Card 刷卡大數據 (2024 年 7-8 月)</b> 與 <b>Q2 2025-26 季報</b> 完成 SciPy MLE/MAP 反向校準（RMSE: 3.92% -> <b>1.99%</b>，擬合誤差縮減 <b>72.5%</b>）。</span>
+        <div style="background: #11221f; border: 1px solid #10b981; border-radius: 8px; padding: 12px 16px; margin-bottom: 14px;">
+            <span style="color: #00e676; font-weight: 700;">數據層科學校準：</span>
+            <span style="color: #f1f5f9; font-size: 0.92rem;"> 神經權重已透過 <strong style="color: #ffffff;">昆士蘭開放資料庫 2,477 萬筆 Translink Go Card 刷卡大數據 (2024 年 7-8 月)</strong> 與 <strong style="color: #ffffff;">Q2 2025-26 季報</strong> 完成 SciPy MLE/MAP 反向校準（RMSE: 3.92% -&gt; <strong style="color: #00e676;">1.99%</strong>，擬合誤差縮減 <strong style="color: #00e676;">72.5%</strong>）。</span>
         </div>
         """, unsafe_allow_html=True)
 
     # Tabs definition
     tab_titles_en = [
-        " 3D Connectome & System Intro",
-        " Doomfly Telemetry Arena",
-        " Curious Phenomena & Insights",
-        " 10,000-Commuter Population Setup",
-        " 10,000-Commuter Simulation Results",
-        " Policy & Engineering White Paper",
-        " Future Urban Horizons (2032/2040/2050)",
-        " Suburb Transit & Spatial Equity"
+        "1. 3D Connectome",
+        "2. Telemetry Arena",
+        "3. Curious Phenomena",
+        "4. Population Setup",
+        "5. Simulation Results",
+        "6. Policy White Paper",
+        "7. Future Horizons",
+        "8. Suburb Spatial Equity"
     ]
     tab_titles_zh = [
-        " 果蠅神經 3D 解剖與系統導論",
-        " 果蠅通勤動態舞台 (Doomfly Arena)",
-        " 有趣的現象與反常數據",
-        " 萬人群體設定與空間佈局",
-        " 萬人模擬結果與政策驗證",
-        " 布里斯本交通工程規劃建言",
-        " 未來路網願景規劃 (2032/2040/2050)",
-        " 區域生活圈大眾運輸與路權診斷室"
+        "1. 3D 神經解剖",
+        "2. 動態遙測舞台",
+        "3. 反常現象洞察",
+        "4. 萬人群體設定",
+        "5. 萬人模擬結果",
+        "6. 交通政策白皮書",
+        "7. 未來路網願景",
+        "8. 生活圈路權診斷"
     ]
 
     t_home, t_arena, t_phenom, t_pop_setup, t_pop_results, t_whitepaper, t_future, t_equity = st.tabs(
@@ -151,10 +150,8 @@ def main():
 
     # Footer
     st.markdown("---")
-    st.caption(" Bio-Inspired Transit Choice Model | Powered by Streamlit, Plotly & Janelia FlyEM Connectome Dataset")
-
-    # Fly Engineer Floating AI Assistant
-    inject_fly_engineer_floating_widget(sb.is_en)
+    st.caption("Bio-Inspired Transit Choice Model | Powered by Streamlit, Plotly & Janelia FlyEM Connectome Dataset")
 
 if __name__ == "__main__":
     main()
+

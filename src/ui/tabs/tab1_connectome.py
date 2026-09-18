@@ -116,46 +116,46 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
     m_col1, m_col2, m_col3, m_col4 = st.columns(4)
     with m_col1:
         st.metric(
-            label="全腦重構神經元 (Total Neurons)" if is_en else "全腦完整重構神經元總數",
+            label="Total Reconstructed Neurons" if is_en else "全腦完整重構神經元總數",
             value="138,327",
             delta="100% Whole Brain" if is_en else "100% 完整全腦"
         )
     with m_col2:
         st.metric(
-            label="記憶-趨向決策漏斗比 (KC : MBON01)" if is_en else "記憶-趨向決策漏斗比 (KC : MBON01)",
+            label="Memory-Approach Ratio (KC : MBON01)" if is_en else "記憶-趨向決策漏斗比 (KC : MBON01)",
             value="2,588 : 1",
             delta="5,177 KC -> 2 MBON01"
         )
     with m_col3:
         st.metric(
-            label="多巴胺獎懲細胞比 (PAM : PPL1)" if is_en else "多巴胺細胞比 (PAM 獎勵 : PPL1 懲罰)",
+            label="Dopamine Ratio (PAM : PPL1)" if is_en else "多巴胺細胞比 (PAM 獎勵 : PPL1 懲罰)",
             value="19.2 : 1",
             delta="307 PAM -> 16 PPL1"
         )
     with m_col4:
         st.metric(
-            label="中央羅盤導航神經元 (EPG)" if is_en else "中央羅盤環形吸子神經元",
-            value="47 顆",
-            delta="Continuous Heading" if is_en else "連續前進向量鎖定"
+            label="Compass Heading Neurons (EPG)" if is_en else "中央羅盤環形吸子神經元",
+            value="47 Cells" if is_en else "47 顆",
+            delta="Continuous Heading Lock" if is_en else "連續前進向量鎖定"
         )
 
     # Interactive Catalog Browser
-    st.markdown("#### " + (" Interactive Transit Circuit Catalog (94 Core Decision Neurons)" if is_en else " 仿生交通決策核心神經元互動檢索庫（94 顆核心決策神經元）"))
+    st.markdown("#### " + ("Interactive Transit Circuit Catalog (94 Core Decision Neurons)" if is_en else "仿生交通決策核心神經元互動檢索庫（94 顆核心決策神經元）"))
 
     catalog_path = os.path.join("data", "flywire_transit_neuron_catalog.csv")
     if os.path.exists(catalog_path):
         df_catalog = pd.read_csv(catalog_path)
 
         filter_opts = [
-            "全部 (All 94 Neurons)" if not is_en else "All (94 Neurons)",
-            " MBON01 趨向推進 (Approach Output - 2 cells)" if not is_en else " MBON01 Approach Output (2 cells)",
-            " MBON11 迴避否決 (Avoidance Veto - 2 cells)" if not is_en else " MBON11 Avoidance Veto (2 cells)",
-            " PAM01 票價補貼獎勵 (50c Fare Incentive - 41 cells)" if not is_en else " PAM01 Fare Reward (41 cells)",
-            " PPL101 延遲轉乘懲罰 (Delay/Friction Penalty - 2 cells)" if not is_en else " PPL101 Aversive Penalty (2 cells)",
-            " EPG 空間航向羅盤 (Compass Heading - 47 cells)" if not is_en else " EPG Compass Heading (47 cells)"
+            "All (94 Neurons)" if is_en else "全部 (All 94 Neurons)",
+            "MBON01 Approach Output (2 cells)" if is_en else "MBON01 趨向推進 (Approach Output - 2 cells)",
+            "MBON11 Avoidance Veto (2 cells)" if is_en else "MBON11 迴避否決 (Avoidance Veto - 2 cells)",
+            "PAM01 Fare Reward (41 cells)" if is_en else "PAM01 票價補貼獎勵 (50c Fare Incentive - 41 cells)",
+            "PPL101 Aversive Penalty (2 cells)" if is_en else "PPL101 延遲轉乘懲罰 (Delay/Friction Penalty - 2 cells)",
+            "EPG Compass Heading (47 cells)" if is_en else "EPG 空間航向羅盤 (Compass Heading - 47 cells)"
         ]
         selected_filter = st.selectbox(
-            "選擇神經元功能族群檢視 / Filter Circuit:" if not is_en else "Filter Circuit Archetype:",
+            "Filter Circuit Archetype:" if is_en else "選擇神經元功能族群檢視 / Filter Circuit:",
             filter_opts,
             index=0,
             key="flywire_catalog_filter"
@@ -176,13 +176,13 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
         st.dataframe(
             filtered_df[['primary_type', 'transit_role', 'side', 'root_id', 'class', 'hemilineage', 'codex_url']],
             column_config={
-                "primary_type": st.column_config.TextColumn("細胞類型 / Cell Type", width="small"),
-                "transit_role": st.column_config.TextColumn("交通決策功能對應 / Transit Function", width="medium"),
-                "side": st.column_config.TextColumn("腦半球 / Hemisphere", width="small"),
+                "primary_type": st.column_config.TextColumn("Cell Type" if is_en else "細胞類型 / Cell Type", width="small"),
+                "transit_role": st.column_config.TextColumn("Transit Function" if is_en else "交通決策功能對應 / Transit Function", width="medium"),
+                "side": st.column_config.TextColumn("Hemisphere" if is_en else "腦半球 / Hemisphere", width="small"),
                 "root_id": st.column_config.TextColumn("FlyWire 64-bit Root ID", width="medium"),
-                "class": st.column_config.TextColumn("解剖分類 / Class", width="small"),
-                "hemilineage": st.column_config.TextColumn("發育譜系 / Lineage", width="medium"),
-                "codex_url": st.column_config.LinkColumn("官方 3D 檢視 / Codex 3D View", display_text="Open 3D")
+                "class": st.column_config.TextColumn("Class" if is_en else "解剖分類 / Class", width="small"),
+                "hemilineage": st.column_config.TextColumn("Lineage" if is_en else "發育譜系 / Lineage", width="medium"),
+                "codex_url": st.column_config.LinkColumn("Codex 3D View" if is_en else "官方 3D 檢視 / Codex 3D View", display_text="Open 3D")
             },
             use_container_width=True,
             hide_index=True
@@ -191,7 +191,7 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
 
     st.markdown("---")
     # Section 2: Calibration Standards Table
-    st.markdown("### " + (" Neuromodulator State Calibration Standards & Demographic Benchmarks" if is_en else " 神經調控劑濃度之客觀量化標準與族群基準"))
+    st.markdown("### " + ("Neuromodulator State Calibration Standards & Demographic Benchmarks" if is_en else "神經調控劑濃度之客觀量化標準與族群基準"))
     if is_en:
         st.markdown("""
         To avoid arbitrary parameter assignment, neuromodulator levels $[0.0, 1.0]$ are calibrated against physiological baselines from neurobiology literature and official socio-economic data from the **Australian Bureau of Statistics (ABS)**:

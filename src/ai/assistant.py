@@ -346,7 +346,7 @@ def inject_fly_engineer_floating_widget(is_en: bool, context_dict: dict = None):
             user_text = st.text_input(
                 "Ask a question:" if is_en else "輸入問題：",
                 key="fly_ai_input_text",
-                placeholder="Ask about this page / 提問..." if is_en else "想問什麼嗎？問我吧！",
+                placeholder="Ask about this page..." if is_en else "想問什麼嗎？問我吧！",
                 label_visibility="collapsed"
             )
             c_sub1, c_sub2 = st.columns([3, 1])

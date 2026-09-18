@@ -5,6 +5,10 @@ import streamlit as st
 
 CUSTOM_CSS = """
 <style>
+    .stApp {
+        background-color: #0e131f !important;
+        color: #f1f5f9 !important;
+    }
     .main-header {
         font-size: 2.2rem;
         font-weight: 700;
@@ -13,7 +17,7 @@ CUSTOM_CSS = """
     }
     .sub-header {
         font-size: 1.05rem;
-        color: #94a3b8;
+        color: #cbd5e1;
         margin-bottom: 1.2rem;
     }
     .intro-banner {
@@ -58,23 +62,41 @@ CUSTOM_CSS = """
         margin-top: 8px;
         margin-bottom: 4px;
     }
-    /* Multi-row wrapping for tab bar to eliminate tiny arrows */
+    /* Multi-column / clean flex layout for tab bar, eliminating scroll arrows */
+    button[data-testid="stTabScrollLeft"],
+    button[data-testid="stTabScrollRight"] {
+        display: none !important;
+    }
+    div[data-testid="stTabs"] > div:first-child {
+        overflow: visible !important;
+    }
     div[data-baseweb="tab-list"] {
+        display: flex !important;
         flex-wrap: wrap !important;
+        width: 100% !important;
+        overflow: visible !important;
         gap: 6px !important;
         border-bottom: 2px solid #1e293b !important;
         padding-bottom: 8px !important;
         margin-bottom: 12px !important;
     }
+    div[data-baseweb="tab-highlight"],
+    div[data-baseweb="tab-border"] {
+        display: none !important;
+    }
     button[data-baseweb="tab"] {
-        white-space: normal !important;
-        padding: 8px 16px !important;
+        white-space: nowrap !important;
+        padding: 8px 12px !important;
         border-radius: 8px !important;
         background-color: #131926 !important;
         border: 1px solid #1e293b !important;
         margin-bottom: 4px !important;
         font-weight: 600 !important;
-        font-size: 0.95rem !important;
+        font-size: 0.88rem !important;
+        flex: 1 1 auto !important;
+        min-width: 110px !important;
+        text-align: center !important;
+        justify-content: center !important;
     }
     button[data-baseweb="tab"]:hover {
         border-color: #38bdf8 !important;

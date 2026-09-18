@@ -128,45 +128,46 @@ def render_tab8_spatial_equity(is_en: bool):
     st.markdown("### 1. " + ("Select a Suburb Preset or Customize" if is_en else "選擇生活圈模板或自訂區域參數"))
     suburb_choice_keys = list(preset_data.keys())
     selected_suburb_key = st.selectbox(
-        "Choose an Area Benchmark / 選擇區域生活圈標竿：" if not is_en else "Choose an Area Benchmark:",
+        "Choose an Area Benchmark:" if is_en else "選擇區域生活圈標竿：",
         suburb_choice_keys,
+        format_func=lambda k: preset_data[k]["en_name"] if is_en else k,
         index=0
     )
     cur_p = preset_data[selected_suburb_key]
-    st.info(f" **{cur_p['en_name'] if is_en else selected_suburb_key}**: {cur_p['desc_en'] if is_en else cur_p['desc_zh']}")
+    st.info(f"**{cur_p['en_name'] if is_en else selected_suburb_key}**: {cur_p['desc_en'] if is_en else cur_p['desc_zh']}")
 
     # Sliders and Control Panels
-    with st.expander(" " + ("Fine-Tune Area Demographic & Spatial Indicators" if is_en else "微調該區域人口組成與空間指標"), expanded=(selected_suburb_key.startswith("Custom"))):
+    with st.expander("Fine-Tune Area Demographic & Spatial Indicators" if is_en else "微調該區域人口組成與空間指標", expanded=(selected_suburb_key.startswith("Custom"))):
         col_ctl1, col_ctl2, col_ctl3 = st.columns(3)
         with col_ctl1:
             st.markdown("##### " + ("TMR 4 Commuter Segments (%)" if is_en else "昆士蘭 TMR 四大通勤族群佔比 (%)"))
-            in_cbd = st.slider(" CBD 白領族 (CBD Commuters):" if not is_en else " CBD Commuters (%):", 0, 100, cur_p["pct_cbd"], 5)
-            in_suburban = st.slider(" 跨郊區工薪 (Non-CBD Workers):" if not is_en else " Non-CBD Workers (%):", 0, 100, cur_p["pct_suburban"], 5)
-            in_student = st.slider(" 大專青年學生 (Tertiary Students):" if not is_en else " Tertiary Students (%):", 0, 100, cur_p["pct_student"], 5)
-            in_family = st.slider("‍‍ 育兒接送家庭 (Family Escort):" if not is_en else "‍‍ Family Escort (%):", 0, 100, cur_p["pct_family"], 5)
+            in_cbd = st.slider("CBD Commuters (%):" if is_en else "CBD 白領族佔比 (%):", 0, 100, cur_p["pct_cbd"], 5)
+            in_suburban = st.slider("Non-CBD Workers (%):" if is_en else "跨郊區工薪佔比 (%):", 0, 100, cur_p["pct_suburban"], 5)
+            in_student = st.slider("Tertiary Students (%):" if is_en else "大專青年學生佔比 (%):", 0, 100, cur_p["pct_student"], 5)
+            in_family = st.slider("Family Escort (%):" if is_en else "育兒接送家庭佔比 (%):", 0, 100, cur_p["pct_family"], 5)
 
         with col_ctl2:
             st.markdown("##### " + ("Spatial & Transit Catchment (TMR PTIM)" if is_en else "空間覆蓋與站點距離 (TMR PTIM 標準)"))
-            in_walk = st.slider(" 平均到站步行距離 (Walk to Stop, m):" if not is_en else " Walk Distance to Stop (m):", 100, 2500, int(cur_p["walk_m"]), 50)
-            in_cov = st.slider(" 400m 站點人口舒適覆蓋率 (%):" if not is_en else " Pop. within 400m Coverage (%):", 10, 100, int(cur_p["within_400m"]), 5)
-            in_headway = st.slider(" 公車服務班距 (Headway, min):" if not is_en else " Bus Headway (min):", 5, 60, int(cur_p["headway"]), 5)
-            in_cars = st.slider(" 每戶平均擁車數 (Cars/Dwelling):" if not is_en else " Cars per Dwelling:", 0.5, 3.0, float(cur_p["cars"]), 0.1)
+            in_walk = st.slider("Walk Distance to Stop (m):" if is_en else "平均到站步行距離 (m):", 100, 2500, int(cur_p["walk_m"]), 50)
+            in_cov = st.slider("Pop. within 400m Coverage (%):" if is_en else "400m 站點人口覆蓋率 (%):", 10, 100, int(cur_p["within_400m"]), 5)
+            in_headway = st.slider("Bus Headway (min):" if is_en else "公車服務班距 (分鐘):", 5, 60, int(cur_p["headway"]), 5)
+            in_cars = st.slider("Cars per Dwelling:" if is_en else "每戶平均擁車數:", 0.5, 3.0, float(cur_p["cars"]), 0.1)
 
         with col_ctl3:
             st.markdown("##### " + ("Policy, Asset & Climate Context" if is_en else "票價補貼、微移動與天氣情境"))
-            in_fare = st.slider(" 單程大眾運輸票價 (Transit Fare AUD):" if not is_en else " Transit Fare (AUD):", 0.0, 6.0, 0.50, 0.50)
-            in_scooter = st.slider(" 私人滑板車持有率 (%):" if not is_en else " E-Scooter Ownership (%):", 2, 50, int(cur_p["scooter"]), 2)
-            in_heat = st.slider(" 夏季高溫熱浪指數 (Heat Index):" if not is_en else " Weather Heat Index:", 0.0, 1.0, 0.25, 0.05, help="0.0=20°C, 1.0=36°C humid summer storm")
+            in_fare = st.slider("Transit Fare (AUD):" if is_en else "單程大眾運輸票價 (AUD):", 0.0, 6.0, 0.50, 0.50)
+            in_scooter = st.slider("E-Scooter Ownership (%):" if is_en else "私人滑板車持有率 (%):", 2, 50, int(cur_p["scooter"]), 2)
+            in_heat = st.slider("Weather Heat Index:" if is_en else "夏季高溫熱浪指數:", 0.0, 1.0, 0.25, 0.05, help="0.0=20°C, 1.0=36°C humid summer storm" if is_en else "0.0=20°C 晴朗舒適, 1.0=36°C 酷暑暴雨")
 
     # Policy Intervention Toggles
-    st.markdown("### 2. " + ("Interactive Planning Interventions (What-If Engineering Prescriptions)" if is_en else "互動式都市交通工程處方箋（即時沙盒試算）"))
+    st.markdown("### 2. " + ("Interactive Planning Interventions (What-If Prescriptions)" if is_en else "互動式都市交通工程處方箋（即時沙盒試算）"))
     col_rx1, col_rx2, col_rx3 = st.columns(3)
     with col_rx1:
-        rx_stops = st.checkbox(" " + ("Prescription 1: Dense Feeder Stops" if is_en else "處方一：增設公車支線站牌"), value=False, help="Reduces average walking distance to 400m PTIM standard / 將全區平均步行距離壓縮至 400m")
+        rx_stops = st.checkbox("Prescription 1: Dense Feeder Stops" if is_en else "處方一：增設公車支線站牌", value=False, help="Reduces average walking distance to 400m PTIM standard" if is_en else "將全區平均步行距離壓縮至 400m 標準")
     with col_rx2:
-        rx_scooters = st.checkbox(" " + ("Prescription 2: Shared E-Scooter Hubs" if is_en else "處方二：廣設公共微移動租借站"), value=False, help="Elevates first-mile micro-mobility access to 75% / 解決第一哩接駁，滑板車可用度提升至 75%")
+        rx_scooters = st.checkbox("Prescription 2: Shared E-Scooter Hubs" if is_en else "處方二：廣設公共微移動租借站", value=False, help="Elevates first-mile micro-mobility access to 75%" if is_en else "解決第一哩接駁，滑板車可用度提升至 75%")
     with col_rx3:
-        rx_metro = st.checkbox(" " + ("Prescription 3: Dedicated Transit Speedup" if is_en else "處方三：專用路權／Brisbane Metro 提速 30%"), value=False, help="Accelerates trunk transit travel time by 30% / 幹線專用道提速 30%，消滅行車延遲")
+        rx_metro = st.checkbox("Prescription 3: Dedicated Transit Speedup" if is_en else "處方三：專用路權／Brisbane Metro 提速 30%", value=False, help="Accelerates trunk transit travel time by 30%" if is_en else "幹線專用道提速 30%，消滅行車延遲")
 
     # ---------------------------------------------------------
     # Run Connectome Simulation for this Suburb
@@ -306,10 +307,10 @@ def render_tab8_spatial_equity(is_en: bool):
         transit_status = " 高眾運主導生活圈" if not is_en else " High Transit Integration"
     elif transit_total_pct >= 35.0:
         transit_color = "#f59e0b"
-        transit_status = " 多模態過渡生活圈" if not is_en else " Moderate Transit Share"
+        transit_status = "Moderate Transit Share" if is_en else "多模態過渡生活圈"
     else:
         transit_color = "#ff3366"
-        transit_status = " 嚴重自駕單一依賴" if not is_en else " High Car Captivity"
+        transit_status = "High Car Captivity" if is_en else "嚴重自駕單一依賴"
 
     with col_k1:
         st.markdown(f"""
@@ -317,18 +318,18 @@ def render_tab8_spatial_equity(is_en: bool):
             <h4 style="margin: 0; color: #fff;">{"Public Transit Mode Share" if is_en else "全區大眾運輸市占率"}</h4>
             <h2 style="margin: 0.3rem 0; color: {transit_color};">{transit_total_pct:.1f}%</h2>
             <p style="margin: 0; color: {transit_color}; font-size: 0.82rem; font-weight: 600;">{transit_status}</p>
-            <p style="margin: 0.2rem 0 0 0; color: #94a3b8; font-size: 0.80rem;"> 徒步: {transit_walk_pct:.1f}% ｜  滑板: {transit_scoot_pct:.1f}%</p>
+            <p style="margin: 0.2rem 0 0 0; color: #94a3b8; font-size: 0.80rem;">{"Walk: " if is_en else "徒步: "}{transit_walk_pct:.1f}% | {"Scooter: " if is_en else "滑板: "}{transit_scoot_pct:.1f}%</p>
         </div>
         """, unsafe_allow_html=True)
 
     # 2. Car Share & Congestion Load
     car_color = "#38bdf8"
     if car_pct > 70.0:
-        car_status = " 幹道容量極度吃緊" if not is_en else " Arterial Near Capacity"
+        car_status = "Arterial Near Capacity" if is_en else "幹道容量極度吃緊"
     elif car_pct < 45.0:
-        car_status = " 幹道車流負荷可控" if not is_en else " Sustainable Car Load"
+        car_status = "Sustainable Car Load" if is_en else "幹道車流負荷可控"
     else:
-        car_status = " 輕度尖峰壅塞風險" if not is_en else " Moderate Congestion"
+        car_status = "Moderate Congestion" if is_en else "輕度尖峰壅塞風險"
 
     with col_k2:
         st.markdown(f"""
@@ -336,7 +337,7 @@ def render_tab8_spatial_equity(is_en: bool):
             <h4 style="margin: 0; color: #fff;">{"Private Car Mode Share" if is_en else "私家車自駕依賴率"}</h4>
             <h2 style="margin: 0.3rem 0; color: {car_color};">{car_pct:.1f}%</h2>
             <p style="margin: 0; color: {car_color}; font-size: 0.82rem; font-weight: 600;">{car_status}</p>
-            <p style="margin: 0.2rem 0 0 0; color: #94a3b8; font-size: 0.80rem;">{"Equivalent Fleet" if is_en else "尖峰自駕車隊"}: {int(suburb_pop * car_pct / 100):,} 輛</p>
+            <p style="margin: 0.2rem 0 0 0; color: #94a3b8; font-size: 0.80rem;">{"Equivalent Fleet: " if is_en else "尖峰自駕車隊: "}{int(suburb_pop * car_pct / 100):,} {"Vehicles" if is_en else "輛"}</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -346,21 +347,21 @@ def render_tab8_spatial_equity(is_en: bool):
         <div class="metric-box" style="border-left-color: #a855f7;">
             <h4 style="margin: 0; color: #fff;">{"Peak Road Space Occupied" if is_en else "尖峰道路空間佔用量"}</h4>
             <h2 style="margin: 0.3rem 0; color: #a855f7;">{fifa_soccer_fields:.1f} <span style="font-size: 0.95rem; color: #cbd5e1;">{"Fields" if is_en else "座足球場"}</span></h2>
-            <p style="margin: 0; color: #a855f7; font-size: 0.82rem; font-weight: 600;">自駕 35m² vs 公車 1.4m² (25倍)</p>
-            <p style="margin: 0.2rem 0 0 0; color: #94a3b8; font-size: 0.80rem;">總佔用 {total_road_m2/10000:.1f} 萬 m² 瀝青車道</p>
+            <p style="margin: 0; color: #a855f7; font-size: 0.82rem; font-weight: 600;">{"Car 35m² vs Bus 1.4m² (25x)" if is_en else "自駕 35m² vs 公車 1.4m² (25倍)"}</p>
+            <p style="margin: 0.2rem 0 0 0; color: #94a3b8; font-size: 0.80rem;">{"Total road space: " if is_en else "總佔用 "}{total_road_m2/10000:.1f}{"0k m² lanes" if is_en else " 萬 m² 瀝青車道"}</p>
         </div>
         """, unsafe_allow_html=True)
 
     # 4. First-Mile Access & Equity Deficit
     if eff_walk_m <= 450.0:
         walk_color = "#00e676"
-        walk_status = " 符合 TMR PTIM 400m 標準" if not is_en else " Meets TMR PTIM 400m Std"
+        walk_status = "Meets TMR PTIM 400m Std" if is_en else "符合 TMR PTIM 400m 標準"
     elif eff_walk_m <= 800.0:
         walk_color = "#f59e0b"
-        walk_status = " 接近 800m 站點極限" if not is_en else " Near 800m Catchment Limit"
+        walk_status = "Near 800m Catchment Limit" if is_en else "接近 800m 站點極限"
     else:
         walk_color = "#ff3366"
-        walk_status = " 嚴重第一哩赤字 (交通沙漠)" if not is_en else " Severe First-Mile Deficit"
+        walk_status = "Severe First-Mile Deficit" if is_en else "嚴重第一哩赤字 (交通沙漠)"
 
     with col_k4:
         st.markdown(f"""
@@ -368,7 +369,7 @@ def render_tab8_spatial_equity(is_en: bool):
             <h4 style="margin: 0; color: #fff;">{"First-Mile Access Deficit" if is_en else "第一哩可及性赤字"}</h4>
             <h2 style="margin: 0.3rem 0; color: {walk_color};">{eff_walk_m:.0f} <span style="font-size: 0.95rem; color: #cbd5e1;">m</span></h2>
             <p style="margin: 0; color: {walk_color}; font-size: 0.82rem; font-weight: 600;">{walk_status}</p>
-            <p style="margin: 0.2rem 0 0 0; color: #94a3b8; font-size: 0.80rem;">徒步 {eff_walk_m/84.0:.1f} 分鐘 ｜ 400m 覆蓋: {in_cov}%</p>
+            <p style="margin: 0.2rem 0 0 0; color: #94a3b8; font-size: 0.80rem;">{"Walk: " if is_en else "徒步 "}{eff_walk_m/84.0:.1f}{" min | 400m Cov: " if is_en else " 分鐘 ｜ 400m 覆蓋: "}{in_cov}%</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -377,13 +378,13 @@ def render_tab8_spatial_equity(is_en: bool):
     with col_g1:
         st.markdown("#### " + ("Predicted Commuter Modal Split" if is_en else "全區預測運具分流堆疊分佈"))
         mode_counts = df_sim_res['chosen_mode'].value_counts()
+        car_lbl = "Private Car" if is_en else "私家車 (Car)"
+        transit_walk_lbl = "Transit (Walk)" if is_en else "徒步公車 (Transit Walk)"
+        transit_scoot_lbl = "Transit (E-Scooter)" if is_en else "滑板公車 (Transit Scooter)"
+        bike_lbl = "Bicycle" if is_en else "自行車 (Bicycle)"
+
         df_modes_plot = pd.DataFrame({
-            "Mode" if is_en else "運具模式": [
-                " Car (自駕車)" if not is_en else " Private Car",
-                "+ Transit Walk (徒步公車)" if not is_en else "+ Transit (Walk)",
-                "Combo (Scooter + Bus) Transit Scooter (滑板公車)" if not is_en else "Combo (Scooter + Bus) Transit (E-Scooter)",
-                " Bicycle (自行車)" if not is_en else " Bicycle"
-            ],
+            "Mode" if is_en else "運具模式": [car_lbl, transit_walk_lbl, transit_scoot_lbl, bike_lbl],
             "Share (%)" if is_en else "分流佔比 (%)": [car_pct, transit_walk_pct, transit_scoot_pct, bike_pct]
         })
         fig_donut = px.pie(
@@ -391,10 +392,10 @@ def render_tab8_spatial_equity(is_en: bool):
             hole=0.45,
             color="Mode" if is_en else "運具模式",
             color_discrete_map={
-                " Car (自駕車)": "#38bdf8", " Private Car": "#38bdf8",
-                "+ Transit Walk (徒步公車)": "#00e676", "+ Transit (Walk)": "#00e676",
-                "Combo (Scooter + Bus) Transit Scooter (滑板公車)": "#2dd4bf", "Combo (Scooter + Bus) Transit (E-Scooter)": "#2dd4bf",
-                " Bicycle (自行車)": "#f59e0b", " Bicycle": "#f59e0b"
+                car_lbl: "#38bdf8",
+                transit_walk_lbl: "#00e676",
+                transit_scoot_lbl: "#2dd4bf",
+                bike_lbl: "#f59e0b"
             }
         )
         fig_donut.update_layout(paper_bgcolor="#0b0e14", plot_bgcolor="#161b22", font=dict(color="#e2e8f0"), margin=dict(t=20, b=20, l=20, r=20))
@@ -412,9 +413,9 @@ def render_tab8_spatial_equity(is_en: bool):
         cost_idx = min(100.0, mean_cost * 6.5)
 
         pain_categories = [
-            "第一哩步行疲勞 (PPL1 Fatigue)" if not is_en else "First-Mile Fatigue",
-            "行車停站延遲 (PPL1 Delay)" if not is_en else "Travel Delay & Waiting",
-            "購票與養車成本 (PPL1 Cost)" if not is_en else "Out-of-Pocket Expense"
+            "First-Mile Fatigue" if is_en else "第一哩步行疲勞 (PPL1 Fatigue)",
+            "Travel Delay & Waiting" if is_en else "行車停站延遲 (PPL1 Delay)",
+            "Out-of-Pocket Expense" if is_en else "購票與養車成本 (PPL1 Cost)"
         ]
 
         fig_radar = go.Figure()
@@ -442,10 +443,10 @@ def render_tab8_spatial_equity(is_en: bool):
     st.markdown("#### " + ("Breakdown by Queensland TMR 4 Commuter Segments" if is_en else "昆士蘭 TMR 四大通勤族群細部決策透視表"))
     seg_breakdown_rows = []
     seg_labels = {
-        'CBD': (' CBD 白領族 (CBD Commuters)', ' CBD Commuters'),
-        'Suburban': (' 跨郊區工薪 (Non-CBD Workers)', ' Non-CBD Workers'),
-        'Student': (' 大專青年學生 (Tertiary Students)', ' Tertiary Students'),
-        'Family': ('‍‍ 育兒接送家庭 (Family Escort)', '‍‍ Family Escort')
+        'CBD': ('CBD 白領族 (CBD Commuters)', 'CBD Commuters'),
+        'Suburban': ('跨郊區工薪 (Non-CBD Workers)', 'Non-CBD Workers'),
+        'Student': ('大專青年學生 (Tertiary Students)', 'Tertiary Students'),
+        'Family': ('育兒接送家庭 (Family Escort)', 'Family Escort')
     }
 
     for s_code in ['CBD', 'Suburban', 'Student', 'Family']:
@@ -458,26 +459,26 @@ def render_tab8_spatial_equity(is_en: bool):
         top_mode = sub_df['chosen_mode'].mode()[0] if not sub_df.empty else 'Car'
 
         mode_clean = {
-            'Car': ' 私家車' if not is_en else ' Car',
-            'Transit_Walk': '+ 徒步公車' if not is_en else '+ Transit Walk',
-            'Transit_Scooter': 'Combo (Scooter + Bus) 滑板公車' if not is_en else 'Combo (Scooter + Bus) Transit Scooter',
-            'Bicycle': ' 自行車' if not is_en else ' Bicycle'
+            'Car': 'Private Car' if is_en else '私家車',
+            'Transit_Walk': 'Transit (Walk)' if is_en else '徒步公車',
+            'Transit_Scooter': 'Transit (E-Scooter)' if is_en else '滑板公車',
+            'Bicycle': 'Bicycle' if is_en else '自行車'
         }.get(top_mode, top_mode)
 
         # Main Pain
         f_p = sub_df['fatigue_pain'].mean()
         d_p = sub_df['delay_pain'].mean()
         c_p = sub_df['cost_pain'].mean()
-        max_p = max([('步行疲勞', f_p), ('行車延遲', d_p), ('金錢花費', c_p)], key=lambda x: x[1])[0] if not is_en else max([('Fatigue', f_p), ('Delay', d_p), ('Cost', c_p)], key=lambda x: x[1])[0]
+        max_p = max([('Walking Fatigue', f_p), ('Transit Delay', d_p), ('Financial Cost', c_p)], key=lambda x: x[1])[0] if is_en else max([('步行疲勞', f_p), ('行車延遲', d_p), ('金錢花費', c_p)], key=lambda x: x[1])[0]
 
         seg_breakdown_rows.append({
-            "TMR 通勤族群" if not is_en else "TMR Segment": seg_labels[s_code][1 if is_en else 0],
-            "樣本佔比" if not is_en else "Pop. Share": f"{len(sub_df)/len(df_sim_res)*100:.1f}%",
-            "首選運具模式" if not is_en else "Dominant Mode": mode_clean,
-            "自駕率 (%)" if not is_en else "Car Share (%)": f"{s_car_share:.1f}%",
-            "大眾運輸 (%)" if not is_en else "Transit Share (%)": f"{s_transit_share:.1f}%",
-            "神經淨效用 (Net Valence)" if not is_en else "Net Valence (PAM-PPL1)": f"{s_net_val:+.3f}",
-            "主要嫌惡阻抗" if not is_en else "Primary Impedance": max_p
+            "TMR Segment" if is_en else "TMR 通勤族群": seg_labels[s_code][1 if is_en else 0],
+            "Pop. Share" if is_en else "樣本佔比": f"{len(sub_df)/len(df_sim_res)*100:.1f}%",
+            "Dominant Mode" if is_en else "首選運具模式": mode_clean,
+            "Car Share (%)" if is_en else "自駕率 (%)": f"{s_car_share:.1f}%",
+            "Transit Share (%)" if is_en else "大眾運輸 (%)": f"{s_transit_share:.1f}%",
+            "Net Valence (PAM-PPL1)" if is_en else "神經淨效用 (Net Valence)": f"{s_net_val:+.3f}",
+            "Primary Impedance" if is_en else "主要嫌惡阻抗": max_p
         })
 
     st.dataframe(pd.DataFrame(seg_breakdown_rows), use_container_width=True, hide_index=True)
