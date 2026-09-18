@@ -217,7 +217,7 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
             {"走廊名稱 (Corridor)": "Springwood to Rochedale South", "區位 (Sector)": "外圍短途生活圈 (Scenario A)", "單程里程": "5.2 km", "第一哩步行": "2,200 m", "自駕時間": "8.5 min", "公車時間": "20 min", "主要大眾運輸路網": "郊區接駁公車 (574, 575 路)"},
             {"走廊名稱 (Corridor)": "Springwood to UQ St Lucia", "區位 (Sector)": "外圍跨區通學 (Scenario B)", "單程里程": "28.8 km", "第一哩步行": "2,200 m", "自駕時間": "38 min", "公車時間": "42 min", "主要大眾運輸路網": "555 快速公車轉 66 路 Eleanor Schonell Bridge"}
         ]
-    st.dataframe(pd.DataFrame(corridor_data), use_container_width=True, hide_index=True)
+    st.table(pd.DataFrame(corridor_data))
 
     # Visualizing the distance to transit gradient
     df_corr_plot = pd.DataFrame([

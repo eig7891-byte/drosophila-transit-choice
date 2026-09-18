@@ -194,19 +194,31 @@ CUSTOM_CSS = """
         border-collapse: collapse;
         margin: 15px 0;
         font-size: 0.95rem;
+        background-color: #0f172a !important;
+        border-radius: 8px;
+        overflow: hidden;
     }
     .benchmark-table th, .benchmark-table td {
-        border: 1px solid #334155;
-        padding: 10px 12px;
+        border: 1px solid #1e293b !important;
+        padding: 10px 14px;
         text-align: left;
     }
     .benchmark-table th {
-        background-color: #1e293b;
-        color: #38bdf8;
+        background-color: #1e293b !important;
+        color: #38bdf8 !important;
         font-weight: 700;
+        font-size: 0.94rem;
     }
     .benchmark-table td {
+        background-color: #0f172a !important;
         color: #f1f5f9 !important;
+        font-size: 0.92rem;
+    }
+    .benchmark-table tr:nth-child(even) td {
+        background-color: #131e33 !important;
+    }
+    .benchmark-table tr:hover td {
+        background-color: #1e293b !important;
     }
 
     /* Global High Contrast Enhancements */

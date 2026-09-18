@@ -40,6 +40,16 @@ def render_tab2_archetypes(is_en: bool):
 
     subtab_a, subtab_b = st.tabs([subtab_a_title, subtab_b_title])
 
+    def _render_character_card(title: str, color: str, items: list[str]) -> None:
+        lis = "".join(f"<li style='margin-bottom: 4px;'>{item}</li>" for item in items)
+        card_html = f"""<div class="character-card">
+<div class="character-title" style="color: {color};">{title}</div>
+<ul style="text-align: left; margin: 8px 0 4px 0; padding-left: 18px; font-size: 0.88rem; line-height: 1.55; color: #cbd5e1;">
+{lis}
+</ul>
+</div>"""
+        st.markdown(card_html, unsafe_allow_html=True)
+
     # =========================================================
     # SCENARIO A: 5.2 KM SUBURBAN LIFE
     # =========================================================
@@ -49,189 +59,173 @@ def render_tab2_archetypes(is_en: bool):
         # 4 cols x 2 rows
         r1_c1, r1_c2, r1_c3, r1_c4 = st.columns(4)
         with r1_c1:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #00ff88;">Combo (Scooter + Bus) ' + ("Combo Multimodal" if is_en else "複合接駁模式") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 30 min (10m scooter + 20m bus)
-                * **Net Score**: **24.0 pts**
-                * **Cost**: $0.50 Bus + $5.50 Scooter = **$6.00**
-                * **First-Mile**: Avoids 26-min walk in heat
-                * **Traffic**: Bypasses local school rush
-                * **Connectome**: High comfort, moderate fare penalty
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 30 分鐘 (10分滑板車 + 20分公車)
-                * **最終得分**: **24.0 點**
-                * **花費**: $0.50 票價 + $5.50 滑板車 = **$6.00**
-                * **首哩路**: 避開 26 分鐘步行與上坡體力負擔
-                * **路況**: 專用路線免受接送塞車之苦
-                * **神經判定**: 高舒適度，滑板車租金適度折減
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                "Combo (Scooter + Bus) " + ("Combo Multimodal" if is_en else "複合接駁模式"),
+                "#00ff88",
+                [
+                    "<b>Duration</b>: 30 min (10m scooter + 20m bus)",
+                    "<b>Net Score</b>: <b>24.0 pts</b>",
+                    "<b>Cost</b>: $0.50 Bus + $5.50 Scooter = <b>$6.00</b>",
+                    "<b>First-Mile</b>: Avoids 26-min walk in heat",
+                    "<b>Traffic</b>: Bypasses local school rush",
+                    "<b>Connectome</b>: High comfort, moderate fare penalty"
+                ] if is_en else [
+                    "<b>耗時</b>: 30 分鐘 (10分滑板車 + 20分公車)",
+                    "<b>最終得分</b>: <b>24.0 點</b>",
+                    "<b>花費</b>: $0.50 票價 + $5.50 滑板車 = <b>$6.00</b>",
+                    "<b>首哩路</b>: 避開 26 分鐘步行與上坡體力負擔",
+                    "<b>路況</b>: 專用路線免受接送塞車之苦",
+                    "<b>神經判定</b>: 高舒適度，滑板車租金適度折減"
+                ]
+            )
 
         with r1_c2:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #38bdf8;"> ' + ("50¢ Busway Commuter" if is_en else "50¢ 公車專用道族") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 46 min (26m walk + 20m bus)
-                * **Net Score**: **14.5 pts**
-                * **Cost**: **$0.50** AUD flat fare
-                * **First-Mile Walk**: -15.0 pts (2.2km walk)
-                * **Weather Protection**: 100% covered in bus
-                * **Connectome**: PPL1 rises from walking fatigue
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 46 分鐘 (26分步行 + 20分公車)
-                * **最終得分**: **14.5 點**
-                * **花費**: **$0.50** 單程超低票價
-                * **首哩路**: -15.0 點 (步行 2.2km 到站)
-                * **車廂遮蔽**: 車內空調完全防曬避雨
-                * **神經判定**: 票價誘因顯著，但受限於第一哩步行阻抗
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                ("50¢ Busway Commuter" if is_en else "50¢ 公車專用道族"),
+                "#38bdf8",
+                [
+                    "<b>Duration</b>: 46 min (26m walk + 20m bus)",
+                    "<b>Net Score</b>: <b>14.5 pts</b>",
+                    "<b>Cost</b>: <b>$0.50</b> AUD flat fare",
+                    "<b>First-Mile Walk</b>: -15.0 pts (2.2km walk)",
+                    "<b>Weather Protection</b>: 100% covered in bus",
+                    "<b>Connectome</b>: PPL1 rises from walking fatigue"
+                ] if is_en else [
+                    "<b>耗時</b>: 46 分鐘 (26分步行 + 20分公車)",
+                    "<b>最終得分</b>: <b>14.5 點</b>",
+                    "<b>花費</b>: <b>$0.50</b> 單程超低票價",
+                    "<b>首哩路</b>: -15.0 點 (步行 2.2km 到站)",
+                    "<b>車廂遮蔽</b>: 車內空調完全防曬避雨",
+                    "<b>神經判定</b>: 票價誘因顯著，但受限於第一哩步行阻抗"
+                ]
+            )
 
         with r1_c3:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #f59e0b;"> ' + ("Bicycle Rider" if is_en else "自行車騎士") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 20 min (5.2km ride)
-                * **Net Score**: **24.0 pts**
-                * **Cost**: -$2.00 (Gear wear & maintenance)
-                * **Effort**: Moderate hill climb (-4.0 pts)
-                * **Flexibility**: Door-to-door, zero waiting
-                * **Connectome**: High Octopamine motor reward
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 20 分鐘 (5.2km 直騎)
-                * **最終得分**: **24.0 點**
-                * **花費**: -$2.00 (車輛保養磨損)
-                * **體力負擔**: 郊區丘陵爬坡 (-4.0 點)
-                * **機動性**: 門到門零等待時間
-                * **神經判定**: Octopamine 辛弗林維持正向運動放電
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                ("Bicycle Rider" if is_en else "自行車騎士"),
+                "#f59e0b",
+                [
+                    "<b>Duration</b>: 20 min (5.2km ride)",
+                    "<b>Net Score</b>: <b>24.0 pts</b>",
+                    "<b>Cost</b>: -$2.00 (Gear wear & maintenance)",
+                    "<b>Effort</b>: Moderate hill climb (-4.0 pts)",
+                    "<b>Flexibility</b>: Door-to-door, zero waiting",
+                    "<b>Connectome</b>: High Octopamine motor reward"
+                ] if is_en else [
+                    "<b>耗時</b>: 20 分鐘 (5.2km 直騎)",
+                    "<b>最終得分</b>: <b>24.0 點</b>",
+                    "<b>花費</b>: -$2.00 (車輛保養磨損)",
+                    "<b>體力負擔</b>: 郊區丘陵爬坡 (-4.0 點)",
+                    "<b>機動性</b>: 門到門零等待時間",
+                    "<b>神經判定</b>: Octopamine 辛弗林維持正向運動放電"
+                ]
+            )
 
         with r1_c4:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #e2e8f0;"> ' + ("e-Scooter Direct" if is_en else "微移動滑板客") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 15 min (Direct ride)
-                * **Net Score**: **26.0 pts**
-                * **Cost**: **$4.00** (15-min rental)
-                * **Fatigue**: 0 pts (Effortless breeze)
-                * **Suitability**: High efficiency for 5.2km trip
-                * **Connectome**: MBON01 **54.2 Hz** (High utility)
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 15 分鐘 (門到門直達)
-                * **最終得分**: **26.0 點**
-                * **花費**: **$4.00** (15分鐘租金)
-                * **體力負擔**: 0 點 (省力便捷)
-                * **短途效益**: 5.2km 短程高效接駁選擇
-                * **神經判定**: MBON01 **54.2 Hz** (短途淨得分最高)
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                ("e-Scooter Direct" if is_en else "微移動滑板客"),
+                "#e2e8f0",
+                [
+                    "<b>Duration</b>: 15 min (Direct ride)",
+                    "<b>Net Score</b>: <b>26.0 pts</b>",
+                    "<b>Cost</b>: <b>$4.00</b> (15-min rental)",
+                    "<b>Fatigue</b>: 0 pts (Effortless breeze)",
+                    "<b>Suitability</b>: High efficiency for 5.2km trip",
+                    "<b>Connectome</b>: MBON01 <b>54.2 Hz</b> (High utility)"
+                ] if is_en else [
+                    "<b>耗時</b>: 15 分鐘 (門到門直達)",
+                    "<b>最終得分</b>: <b>26.0 點</b>",
+                    "<b>花費</b>: <b>$4.00</b> (15分鐘租金)",
+                    "<b>體力負擔</b>: 0 點 (省力便捷)",
+                    "<b>短途效益</b>: 5.2km 短程高效接駁選擇",
+                    "<b>神經判定</b>: MBON01 <b>54.2 Hz</b> (短途淨得分最高)"
+                ]
+            )
 
         r2_c1, r2_c2, r2_c3, r2_c4 = st.columns(4)
         with r2_c1:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #60a5fa;"> ' + ("Private Car" if is_en else "自駕私家車") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 8-12 min
-                * **Net Score**: **18.0 pts**
-                * **Holding Cost**: -$10.0 (Daily capital/insurance)
-                * **Fuel**: -$2.00 (Short distance)
-                * **Parking**: Free parking at school zone
-                * **Connectome**: Fast trip penalized by holding cost
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 8-12 分鐘
-                * **最終得分**: **18.0 點**
-                * **持車成本**: -$10.0 (折舊、牌照與保險分攤)
-                * **燃油**: -$2.00 (短途油耗低)
-                * **停車費**: 學校區域免費停車
-                * **神經判定**: 速度快但受持車固定成本折減
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                ("Private Car" if is_en else "自駕私家車"),
+                "#60a5fa",
+                [
+                    "<b>Duration</b>: 8-12 min",
+                    "<b>Net Score</b>: <b>18.0 pts</b>",
+                    "<b>Holding Cost</b>: -$10.0 (Daily capital/insurance)",
+                    "<b>Fuel</b>: -$2.00 (Short distance)",
+                    "<b>Parking</b>: Free parking at school zone",
+                    "<b>Connectome</b>: Fast trip penalized by holding cost"
+                ] if is_en else [
+                    "<b>耗時</b>: 8-12 分鐘",
+                    "<b>最終得分</b>: <b>18.0 點</b>",
+                    "<b>持車成本</b>: -$10.0 (折舊、牌照與保險分攤)",
+                    "<b>燃油</b>: -$2.00 (短途油耗低)",
+                    "<b>停車費</b>: 學校區域免費停車",
+                    "<b>神經判定</b>: 速度快但受持車固定成本折減"
+                ]
+            )
 
         with r2_c2:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #2dd4bf;"> ' + ("e-Car / Uber" if is_en else "e-租車 / Uber") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 8-12 min
-                * **Net Score**: **23.0 pts**
-                * **Cost**: **$7.00** (Short-trip on-demand fare)
-                * **Zero Ownership**: No insurance, no rego
-                * **Role**: Flexible trip option
-                * **Connectome**: PPL1 low due to small fare
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 8-12 分鐘
-                * **最終得分**: **23.0 點**
-                * **花費**: **$7.00** (短途即時車資)
-                * **零持有負擔**: 免牌照稅、免保養保險
-                * **定位效益**: 短程靈活應急運具
-                * **神經判定**: 費用適中，無長期折舊負擔
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                ("e-Car / Uber" if is_en else "e-租車 / Uber"),
+                "#2dd4bf",
+                [
+                    "<b>Duration</b>: 8-12 min",
+                    "<b>Net Score</b>: <b>23.0 pts</b>",
+                    "<b>Cost</b>: <b>$7.00</b> (Short-trip on-demand fare)",
+                    "<b>Zero Ownership</b>: No insurance, no rego",
+                    "<b>Role</b>: Flexible trip option",
+                    "<b>Connectome</b>: PPL1 low due to small fare"
+                ] if is_en else [
+                    "<b>耗時</b>: 8-12 分鐘",
+                    "<b>最終得分</b>: <b>23.0 點</b>",
+                    "<b>花費</b>: <b>$7.00</b> (短途即時車資)",
+                    "<b>零持有負擔</b>: 免牌照稅、免保養保險",
+                    "<b>定位效益</b>: 短程靈活應急運具",
+                    "<b>神經判定</b>: 費用適中，無長期折舊負擔"
+                ]
+            )
 
         with r2_c3:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #f87171;"> ' + ("Suburban Walker" if is_en else "長程步行者") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 65 min
-                * **Net Score**: **-5.0 pts** (Fatigue penalty)
-                * **Cost**: $0.00
-                * **Fatigue**: -35.0 pts (5.2km uphill walking)
-                * **Summer Heat**: TRP channels depolarize
-                * **Connectome**: MBON01 suppressed by fatigue
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 65 分鐘
-                * **最終得分**: **-5.0 點** (高體能負擔)
-                * **花費**: $0.00
-                * **步行體能負擔**: -35.0 點 (5.2km 丘陵步行)
-                * **氣候效應**: TRP 熱敏離子通道活化
-                * **神經判定**: PPL1 負向活化過高，模型抑制此選項
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                ("Suburban Walker" if is_en else "長程步行者"),
+                "#f87171",
+                [
+                    "<b>Duration</b>: 65 min",
+                    "<b>Net Score</b>: <b>-5.0 pts</b> (Fatigue penalty)",
+                    "<b>Cost</b>: $0.00",
+                    "<b>Fatigue</b>: -35.0 pts (5.2km uphill walking)",
+                    "<b>Summer Heat</b>: TRP channels depolarize",
+                    "<b>Connectome</b>: MBON01 suppressed by fatigue"
+                ] if is_en else [
+                    "<b>耗時</b>: 65 分鐘",
+                    "<b>最終得分</b>: <b>-5.0 點</b> (高體能負擔)",
+                    "<b>花費</b>: $0.00",
+                    "<b>步行體能負擔</b>: -35.0 點 (5.2km 丘陵步行)",
+                    "<b>氣候效應</b>: TRP 熱敏離子通道活化",
+                    "<b>神經判定</b>: PPL1 負向活化過高，模型抑制此選項"
+                ]
+            )
 
         with r2_c4:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #ec4899;"> ' + ("Stay Home" if is_en else "取消行程留在家中") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 0 min
-                * **Net Score**: **0.0 pts**
-                * **Restoration**: +100% Energy & sleep recovery
-                * **Zero Risk**: 0 fatigue, 0 parking, 0 fare
-                * **Role**: Default alternative when travel costs exceed benefits
-                * **Connectome**: PAM baseline resting state
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 0 分鐘 (取消行程)
-                * **最終得分**: **0.0 點**
-                * **修復效益**: +100% 精力與睡眠回補
-                * **零風險**: 0 疲勞、0 停車、0 車資
-                * **定位效益**: 當所有運具淨效用均為負時的替代選擇
-                * **神經判定**: PAM 基準靜止放電
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                ("Stay Home" if is_en else "取消行程留在家中"),
+                "#ec4899",
+                [
+                    "<b>Duration</b>: 0 min",
+                    "<b>Net Score</b>: <b>0.0 pts</b>",
+                    "<b>Restoration</b>: +100% Energy & sleep recovery",
+                    "<b>Zero Risk</b>: 0 fatigue, 0 parking, 0 fare",
+                    "<b>Role</b>: Default alternative when travel costs exceed benefits",
+                    "<b>Connectome</b>: PAM baseline resting state"
+                ] if is_en else [
+                    "<b>耗時</b>: 0 分鐘 (取消行程)",
+                    "<b>最終得分</b>: <b>0.0 點</b>",
+                    "<b>修復效益</b>: +100% 精力與睡眠回補",
+                    "<b>零風險</b>: 0 疲勞、0 停車、0 車資",
+                    "<b>定位效益</b>: 當所有運具淨效用均為負時的替代選擇",
+                    "<b>神經判定</b>: PAM 基準靜止放電"
+                ]
+            )
 
         st.markdown("---")
         # Scenario A Dynamic Animation & Point Economy
@@ -375,189 +369,173 @@ def render_tab2_archetypes(is_en: bool):
         # 4 cols x 2 rows
         r1_c1_b, r1_c2_b, r1_c3_b, r1_c4_b = st.columns(4)
         with r1_c1_b:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #00ff88;">Combo (Scooter + Bus) ' + ("Combo Multimodal" if is_en else "複合接駁模式") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 52 min (10m scooter + 42m bus)
-                * **Net Score**: **24.0 pts**
-                * **Cost**: $0.50 Bus + $5.50 Scooter = **$6.00**
-                * **Busway Direct**: Crosses Eleanor Schonell Bridge
-                * **Traffic Advantage**: Avoids M1 motorway peak delays
-                * **Connectome**: High approach response for UQ
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 52 分鐘 (10分滑板車 + 42分公車)
-                * **最終得分**: **24.0 點**
-                * **花費**: $0.50 票價 + $5.50 滑板車 = **$6.00**
-                * **專用橋梁**: 直通 Eleanor Schonell 綠橋
-                * **專用道優勢**: 避開 M1 高速早晨壅塞
-                * **神經判定**: 跨區長途高淨效用選項
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                "Combo (Scooter + Bus) " + ("Combo Multimodal" if is_en else "複合接駁模式"),
+                "#00ff88",
+                [
+                    "<b>Duration</b>: 52 min (10m scooter + 42m bus)",
+                    "<b>Net Score</b>: <b>24.0 pts</b>",
+                    "<b>Cost</b>: $0.50 Bus + $5.50 Scooter = <b>$6.00</b>",
+                    "<b>Busway Direct</b>: Crosses Eleanor Schonell Bridge",
+                    "<b>Traffic Advantage</b>: Avoids M1 motorway peak delays",
+                    "<b>Connectome</b>: High approach response for UQ"
+                ] if is_en else [
+                    "<b>耗時</b>: 52 分鐘 (10分滑板車 + 42分公車)",
+                    "<b>最終得分</b>: <b>24.0 點</b>",
+                    "<b>花費</b>: $0.50 票價 + $5.50 滑板車 = <b>$6.00</b>",
+                    "<b>專用橋梁</b>: 直通 Eleanor Schonell 綠橋",
+                    "<b>專用道優勢</b>: 避開 M1 高速早晨壅塞",
+                    "<b>神經判定</b>: 跨區長途高淨效用選項"
+                ]
+            )
 
         with r1_c2_b:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #38bdf8;"> ' + ("50¢ Busway Commuter" if is_en else "50¢ 公車專用道族") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 68 min (26m walk + 42m bus)
-                * **Net Score**: **11.5 pts**
-                * **Cost**: **$0.50** AUD flat fare
-                * **Walking Burden**: -15.0 pts (2.2km morning walk)
-                * **Cost-Effective**: Highly beneficial for budget-conscious students
-                * **Connectome**: High NPF (budget constraint) offsets fatigue
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 68 分鐘 (26分步行 + 42分公車)
-                * **最終得分**: **11.5 點**
-                * **花費**: **$0.50** 超低單程票價
-                * **第一哩路**: -15.0 點 (步行 2.2km 到站牌)
-                * **經濟性**: 大專學生（高 NPF 預算約束）優選
-                * **神經判定**: 票價獎勵抵銷部分步行阻抗
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                ("50¢ Busway Commuter" if is_en else "50¢ 公車專用道族"),
+                "#38bdf8",
+                [
+                    "<b>Duration</b>: 68 min (26m walk + 42m bus)",
+                    "<b>Net Score</b>: <b>11.5 pts</b>",
+                    "<b>Cost</b>: <b>$0.50</b> AUD flat fare",
+                    "<b>Walking Burden</b>: -15.0 pts (2.2km morning walk)",
+                    "<b>Cost-Effective</b>: Highly beneficial for budget-conscious students",
+                    "<b>Connectome</b>: High NPF (budget constraint) offsets fatigue"
+                ] if is_en else [
+                    "<b>耗時</b>: 68 分鐘 (26分步行 + 42分公車)",
+                    "<b>最終得分</b>: <b>11.5 點</b>",
+                    "<b>花費</b>: <b>$0.50</b> 超低單程票價",
+                    "<b>第一哩路</b>: -15.0 點 (步行 2.2km 到站牌)",
+                    "<b>經濟性</b>: 大專學生（高 NPF 預算約束）優選",
+                    "<b>神經判定</b>: 票價獎勵抵銷部分步行阻抗"
+                ]
+            )
 
         with r1_c3_b:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #f59e0b;"> ' + ("V1 Veloway Cyclist" if is_en else "V1 專用道自行車騎士") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 85 min (28.8km ride)
-                * **Net Score**: **13.0 pts**
-                * **Cost**: -$2.00 (Tire & chain wear)
-                * **Physical Exertion**: -15.0 pts (58km round trip)
-                * **End of Trip**: Requires shower facilities
-                * **Connectome**: Requires Octopamine > 0.85
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 85 分鐘 (28.8km 專用道)
-                * **最終得分**: **13.0 點**
-                * **花費**: -$2.00 (輪胎與鏈條消耗)
-                * **體能消耗**: -15.0 點 (來回 58km 體力需求高)
-                * **旅程終點設施**: 需使用到站梳洗淋浴設施
-                * **神經判定**: 需較高體力耐受度 (Octopamine > 0.85)
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                ("V1 Veloway Cyclist" if is_en else "V1 專用道自行車騎士"),
+                "#f59e0b",
+                [
+                    "<b>Duration</b>: 85 min (28.8km ride)",
+                    "<b>Net Score</b>: <b>13.0 pts</b>",
+                    "<b>Cost</b>: -$2.00 (Tire & chain wear)",
+                    "<b>Physical Exertion</b>: -15.0 pts (58km round trip)",
+                    "<b>End of Trip</b>: Requires shower facilities",
+                    "<b>Connectome</b>: Requires Octopamine > 0.85"
+                ] if is_en else [
+                    "<b>耗時</b>: 85 分鐘 (28.8km 專用道)",
+                    "<b>最終得分</b>: <b>13.0 點</b>",
+                    "<b>花費</b>: -$2.00 (輪胎與鏈條消耗)",
+                    "<b>體能消耗</b>: -15.0 點 (來回 58km 體力需求高)",
+                    "<b>旅程終點設施</b>: 需使用到站梳洗淋浴設施",
+                    "<b>神經判定</b>: 需較高體力耐受度 (Octopamine > 0.85)"
+                ]
+            )
 
         with r1_c4_b:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #e2e8f0;"> ' + ("e-Scooter Direct" if is_en else "e-滑板車長途") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 90 min
-                * **Net Score**: **-5.0 pts**
-                * **Rental Cost**: **$25.00** (High duration-based rental)
-                * **Battery Limit**: Exceeds practical range of shared fleets
-                * **Feasibility**: Low practicality for 28.8km
-                * **Connectome**: High PPL1 cost and delay penalties
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 90 分鐘
-                * **最終得分**: **-5.0 點**
-                * **租金成本**: **$25.00** (時租費用偏高)
-                * **電量上限**: 超出多數共享滑板車實用續航
-                * **可行性**: 跨區長途實用性較低
-                * **神經判定**: 高額費用與行車時間引發較高 PPL1 負向活化
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                ("e-Scooter Direct" if is_en else "e-滑板車長途"),
+                "#e2e8f0",
+                [
+                    "<b>Duration</b>: 90 min",
+                    "<b>Net Score</b>: <b>-5.0 pts</b>",
+                    "<b>Rental Cost</b>: <b>$25.00</b> (High duration-based rental)",
+                    "<b>Battery Limit</b>: Exceeds practical range of shared fleets",
+                    "<b>Feasibility</b>: Low practicality for 28.8km",
+                    "<b>Connectome</b>: High PPL1 cost and delay penalties"
+                ] if is_en else [
+                    "<b>耗時</b>: 90 分鐘",
+                    "<b>最終得分</b>: <b>-5.0 點</b>",
+                    "<b>租金成本</b>: <b>$25.00</b> (時租費用偏高)",
+                    "<b>電量上限</b>: 超出多數共享滑板車實用續航",
+                    "<b>可行性</b>: 跨區長途實用性較低",
+                    "<b>神經判定</b>: 高額費用與行車時間引發較高 PPL1 負向活化"
+                ]
+            )
 
         r2_c1_b, r2_c2_b, r2_c3_b, r2_c4_b = st.columns(4)
         with r2_c1_b:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #60a5fa;"> ' + ("Private Car" if is_en else "自駕私家車") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 42-50 min (M1 traffic peak)
-                * **Net Score**: **12.5 pts**
-                * **Daily Cost**: $8.60 Fuel + $14.50 UQ Parking = **$23.10**
-                * **Green Bridge Barred**: Must detour via city arterials
-                * **Parking**: Requires campus parking search
-                * **Connectome**: PPL1 cost penalty suppresses choice
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 42-50 分鐘 (M1 尖峰壅塞)
-                * **最終得分**: **12.5 點**
-                * **每日開銷**: 油耗 $8.60 + UQ 停車 $14.50 = **$23.10**
-                * **綠橋禁行**: 私家車需繞行市區幹道
-                * **停車搜尋**: 尖峰校內尋找車位耗時
-                * **神經判定**: 高額停車與油費帶來顯著 PPL1 成本折減
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                ("Private Car" if is_en else "自駕私家車"),
+                "#60a5fa",
+                [
+                    "<b>Duration</b>: 42-50 min (M1 traffic peak)",
+                    "<b>Net Score</b>: <b>12.5 pts</b>",
+                    "<b>Daily Cost</b>: $8.60 Fuel + $14.50 UQ Parking = <b>$23.10</b>",
+                    "<b>Green Bridge Barred</b>: Must detour via city arterials",
+                    "<b>Parking</b>: Requires campus parking search",
+                    "<b>Connectome</b>: PPL1 cost penalty suppresses choice"
+                ] if is_en else [
+                    "<b>耗時</b>: 42-50 分鐘 (M1 尖峰壅塞)",
+                    "<b>最終得分</b>: <b>12.5 點</b>",
+                    "<b>每日開銷</b>: 油耗 $8.60 + UQ 停車 $14.50 = <b>$23.10</b>",
+                    "<b>綠橋禁行</b>: 私家車需繞行市區幹道",
+                    "<b>停車搜尋</b>: 尖峰校內尋找車位耗時",
+                    "<b>神經判定</b>: 高額停車與油費帶來顯著 PPL1 成本折減"
+                ]
+            )
 
         with r2_c2_b:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #2dd4bf;"> ' + ("e-Car / Uber" if is_en else "e-租車 / Uber") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 42-50 min
-                * **Net Score**: **0.0 pts** (High fare penalty)
-                * **Cost**: **$55.00+** single trip
-                * **Barrier**: High expense for regular commutes
-                * **Role**: Occasional urgent travel only
-                * **Connectome**: PPL1 **65.0 Hz** (High cost penalty)
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 42-50 分鐘
-                * **最終得分**: **0.0 點** (高額車資扣分)
-                * **單趟車資**: **$55.00+**
-                * **族群門檻**: 日常通勤成本過高
-                * **定位效益**: 僅適合偶發緊急出行需求
-                * **神經判定**: PPL1 負向活化達 65.0 Hz (高額乘車開銷)
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                ("e-Car / Uber" if is_en else "e-租車 / Uber"),
+                "#2dd4bf",
+                [
+                    "<b>Duration</b>: 42-50 min",
+                    "<b>Net Score</b>: <b>0.0 pts</b> (High fare penalty)",
+                    "<b>Cost</b>: <b>$55.00+</b> single trip",
+                    "<b>Barrier</b>: High expense for regular commutes",
+                    "<b>Role</b>: Occasional urgent travel only",
+                    "<b>Connectome</b>: PPL1 <b>65.0 Hz</b> (High cost penalty)"
+                ] if is_en else [
+                    "<b>耗時</b>: 42-50 分鐘",
+                    "<b>最終得分</b>: <b>0.0 點</b> (高額車資扣分)",
+                    "<b>單趟車資</b>: <b>$55.00+</b>",
+                    "<b>族群門檻</b>: 日常通勤成本過高",
+                    "<b>定位效益</b>: 僅適合偶發緊急出行需求",
+                    "<b>神經判定</b>: PPL1 負向活化達 65.0 Hz (高額乘車開銷)"
+                ]
+            )
 
         with r2_c3_b:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #f87171;"> ' + ("Suburban Walker" if is_en else "長程步行者") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 340 min (5.6 hrs)
-                * **Net Score**: **0.0 pts** (Arrival delay)
-                * **Arrival**: Arrives at 1:40 PM (Exceeds morning window)
-                * **Distance**: Unrealistic walking distance
-                * **Feasibility**: Beyond human walking threshold
-                * **Connectome**: MBON01 **5.0 Hz** (Suppressed)
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 340 分鐘 (5.6 小時)
-                * **最終得分**: **0.0 點** (遲到扣分歸零)
-                * **抵達時刻**: 下午 1:40 (超出早晨時段)
-                * **體能限制**: 步行距離超出合理範圍
-                * **可行性**: 超出日常通勤可行臨界
-                * **神經判定**: MBON01 **5.0 Hz** (極度抑制)
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                ("Suburban Walker" if is_en else "長程步行者"),
+                "#f87171",
+                [
+                    "<b>Duration</b>: 340 min (5.6 hrs)",
+                    "<b>Net Score</b>: <b>0.0 pts</b> (Arrival delay)",
+                    "<b>Arrival</b>: Arrives at 1:40 PM (Exceeds morning window)",
+                    "<b>Distance</b>: Unrealistic walking distance",
+                    "<b>Feasibility</b>: Beyond human walking threshold",
+                    "<b>Connectome</b>: MBON01 <b>5.0 Hz</b> (Suppressed)"
+                ] if is_en else [
+                    "<b>耗時</b>: 340 分鐘 (5.6 小時)",
+                    "<b>最終得分</b>: <b>0.0 點</b> (遲到扣分歸零)",
+                    "<b>抵達時刻</b>: 下午 1:40 (超出早晨時段)",
+                    "<b>體能限制</b>: 步行距離超出合理範圍",
+                    "<b>可行性</b>: 超出日常通勤可行臨界",
+                    "<b>神經判定</b>: MBON01 <b>5.0 Hz</b> (極度抑制)"
+                ]
+            )
 
         with r2_c4_b:
-            st.markdown('<div class="character-card">', unsafe_allow_html=True)
-            st.markdown('<div class="character-title" style="color: #ec4899;"> ' + ("Stay Home" if is_en else "取消行程留在家中") + '</div>', unsafe_allow_html=True)
-            if is_en:
-                st.markdown("""
-                * **Duration**: 0 min
-                * **Net Score**: **0.0 pts** (Remote study / rest)
-                * **Restoration**: +100% sleep restoration
-                * **Late Threshold**: Preferred option when waking past 08:30 AM
-                * **Role**: Commute cancellation when delay penalty exceeds utility
-                * **Connectome**: Avoids all travel stress
-                """)
-            else:
-                st.markdown("""
-                * **耗時**: 0 分鐘 (線上學習 / 休息)
-                * **最終得分**: **0.0 點**
-                * **睡眠恢復**: +100% 體力精力儲備
-                * **遲到門檻**: 超過 08:30 起床時之最高效用選項
-                * **角色**: 當通勤延誤折減超過出行效用時的取消選擇
-                * **神經判定**: 完全規避所有通勤阻抗
-                """)
-            st.markdown('</div>', unsafe_allow_html=True)
+            _render_character_card(
+                ("Stay Home" if is_en else "取消行程留在家中"),
+                "#ec4899",
+                [
+                    "<b>Duration</b>: 0 min",
+                    "<b>Net Score</b>: <b>0.0 pts</b> (Remote study / rest)",
+                    "<b>Restoration</b>: +100% sleep restoration",
+                    "<b>Late Threshold</b>: Preferred option when waking past 08:30 AM",
+                    "<b>Role</b>: Commute cancellation when delay penalty exceeds utility",
+                    "<b>Connectome</b>: Avoids all travel stress"
+                ] if is_en else [
+                    "<b>耗時</b>: 0 分鐘 (線上學習 / 休息)",
+                    "<b>最終得分</b>: <b>0.0 點</b>",
+                    "<b>睡眠恢復</b>: +100% 體力精力儲備",
+                    "<b>遲到門檻</b>: 超過 08:30 起床時之最高效用選項",
+                    "<b>角色</b>: 當通勤延誤折減超過出行效用時的取消選擇",
+                    "<b>神經判定</b>: 完全規避所有通勤阻抗"
+                ]
+            )
 
         st.markdown("---")
         # Scenario B Dynamic Animation & Point Economy

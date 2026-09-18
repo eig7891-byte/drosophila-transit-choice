@@ -173,20 +173,23 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
         elif "EPG" in selected_filter:
             filtered_df = filtered_df[filtered_df['primary_type'] == 'EPG']
 
-        st.dataframe(
-            filtered_df[['primary_type', 'transit_role', 'side', 'root_id', 'class', 'hemilineage', 'codex_url']],
-            column_config={
-                "primary_type": st.column_config.TextColumn("Cell Type" if is_en else "細胞類型 / Cell Type", width="small"),
-                "transit_role": st.column_config.TextColumn("Transit Function" if is_en else "交通決策功能對應 / Transit Function", width="medium"),
-                "side": st.column_config.TextColumn("Hemisphere" if is_en else "腦半球 / Hemisphere", width="small"),
-                "root_id": st.column_config.TextColumn("FlyWire 64-bit Root ID", width="medium"),
-                "class": st.column_config.TextColumn("Class" if is_en else "解剖分類 / Class", width="small"),
-                "hemilineage": st.column_config.TextColumn("Lineage" if is_en else "發育譜系 / Lineage", width="medium"),
-                "codex_url": st.column_config.LinkColumn("Codex 3D View" if is_en else "官方 3D 檢視 / Codex 3D View", display_text="Open 3D")
-            },
-            use_container_width=True,
-            hide_index=True
-        )
+        headers = ["Cell Type", "Transit Function", "Hemisphere", "FlyWire Root ID", "Class", "Lineage", "3D View"] if is_en else ["細胞類型", "交通決策功能對應", "腦半球", "FlyWire Root ID", "解剖分類", "發育譜系", "3D 檢視"]
+        th_html = "".join([f"<th>{h}</th>" for h in headers])
+        
+        row_html_list = []
+        for _, r in filtered_df.iterrows():
+            link_html = f"<a href='{r['codex_url']}' target='_blank' style='color: #00e676; text-decoration: underline; font-weight: 600;'>Open 3D</a>"
+            row_html_list.append(f"""<tr><td><b style='color: #38bdf8;'>{r['primary_type']}</b></td><td>{r['transit_role']}</td><td>{r['side']}</td><td><code style='color: #cbd5e1; font-size: 0.85rem;'>{r['root_id']}</code></td><td>{r['class']}</td><td>{r['hemilineage']}</td><td>{link_html}</td></tr>""")
+        tbody_html = "".join(row_html_list)
+        
+        st.markdown(f"""
+        <div style="max-height: 420px; overflow-y: auto; border: 1px solid #1e293b; border-radius: 8px; margin-bottom: 20px;">
+            <table class="benchmark-table" style="margin: 0; width: 100%;">
+                <thead><tr>{th_html}</tr></thead>
+                <tbody>{tbody_html}</tbody>
+            </table>
+        </div>
+        """, unsafe_allow_html=True)
 
 
     st.markdown("---")

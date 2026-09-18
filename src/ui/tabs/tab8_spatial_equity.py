@@ -494,7 +494,7 @@ def render_tab8_spatial_equity(is_en: bool):
             "Primary Impedance" if is_en else "主要嫌惡阻抗": max_p
         })
 
-    st.dataframe(pd.DataFrame(seg_breakdown_rows), use_container_width=True, hide_index=True)
+    st.table(pd.DataFrame(seg_breakdown_rows))
 
     # Row 4: Area Diagnostic Summary & Practical Feedback
     st.markdown("#### " + ("Area Diagnostic Summary & Feedback" if is_en else "該區域交通診斷評語"))
