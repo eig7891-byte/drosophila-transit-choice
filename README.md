@@ -1,10 +1,5 @@
 # Drosophila Connectome Transit Choice Model
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10676866.svg)](https://doi.org/10.5281/zenodo.10676866)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Tests](https://img.shields.io/badge/tests-20%20passed-brightgreen.svg)](tests/)
-
 An Agent-Based Neuromorphic Transit Choice Simulation for South East Queensland (Translink 50-Cent Fare Policy), combining Janelia FlyEM connectome circuit architecture with empirical travel data.
 
 ---
