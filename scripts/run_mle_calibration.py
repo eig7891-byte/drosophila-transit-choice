@@ -261,15 +261,11 @@ def main():
         "targets_comparison": comp_df.to_dict(orient='records')
     }
 
-    out_paths = [
-        os.path.join(ROOT_DIR, "data", "parameters", "calibrated_brain_parameters.json"),
-        os.path.join(ROOT_DIR, "calibrated_brain_parameters.json")
-    ]
-    for outp in out_paths:
-        os.makedirs(os.path.dirname(outp), exist_ok=True)
-        with open(outp, "w", encoding="utf-8") as f:
-            json.dump(save_dict, f, indent=2, ensure_ascii=False)
-        print(f"Calibrated brain parameters saved to: {outp}")
+    out_path = os.path.join(ROOT_DIR, "data", "parameters", "calibrated_brain_parameters.json")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(save_dict, f, indent=2, ensure_ascii=False)
+    print(f"Calibrated brain parameters saved to: {out_path}")
 
 if __name__ == "__main__":
     main()
