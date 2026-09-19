@@ -25,7 +25,9 @@ def test_calibration_targets_alignment():
     assert any('SEQ' in k for k in targets)
 
 def test_statistical_report_scenarios():
-    path = os.path.join('brisbane_transit_statistical_report.json')
+    path = os.path.join('data', 'parameters', 'brisbane_transit_statistical_report.json')
+    if not os.path.exists(path):
+        path = os.path.join('brisbane_transit_statistical_report.json')
     with open(path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
