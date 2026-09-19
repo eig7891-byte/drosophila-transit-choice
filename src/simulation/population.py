@@ -297,10 +297,12 @@ if __name__ == '__main__':
     print("Running 10,000 Commuter Simulation across 4 Brisbane Policies...")
     study = sim.run_comparative_policy_study(10000)
     
-    with open('brisbane_transit_statistical_report.json', 'w', encoding='utf-8') as f:
+    out_dir = os.path.join('data', 'parameters')
+    out_path = os.path.join(out_dir, 'brisbane_transit_statistical_report.json') if os.path.exists(out_dir) else 'brisbane_transit_statistical_report.json'
+    with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(study, f, indent=2)
         
-    print("Simulation complete! Results written to brisbane_transit_statistical_report.json")
+    print(f"Simulation complete! Results written to {out_path}")
     for sc, data in study['scenarios'].items():
         print(f"\n--- {sc} ---")
         print(f"  Mode Split: Car {data['mode_shares']['Car']:.1f}%, Transit {data['mode_shares']['Transit']:.1f}%, Bike {data['mode_shares']['Bicycle']:.1f}%")

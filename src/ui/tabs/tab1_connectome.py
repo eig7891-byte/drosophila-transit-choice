@@ -142,7 +142,9 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
     # Interactive Catalog Browser
     st.markdown("#### " + ("Interactive Transit Circuit Catalog (94 Core Decision Neurons)" if is_en else "仿生交通決策核心神經元互動檢索庫（94 顆核心決策神經元）"))
 
-    catalog_path = os.path.join("data", "flywire_transit_neuron_catalog.csv")
+    catalog_path = os.path.join("data", "metadata", "flywire_transit_neuron_catalog.csv")
+    if not os.path.exists(catalog_path):
+        catalog_path = os.path.join("data", "flywire_transit_neuron_catalog.csv")
     if os.path.exists(catalog_path):
         df_catalog = pd.read_csv(catalog_path)
 
