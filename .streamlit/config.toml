@@ -1,4 +1,4 @@
-﻿[theme]
+[theme]
 base = "dark"
 primaryColor = "#00e676"
 backgroundColor = "#0e131f"
@@ -8,5 +8,5 @@ font = "sans serif"
 
 [server]
 headless = true
-enableCORS = false
+enableCORS = true
 enableXsrfProtection = true
