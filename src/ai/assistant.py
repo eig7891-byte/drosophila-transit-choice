@@ -50,11 +50,21 @@ def get_gemini_client():
     elif "GEMINI_API_KEY" in os.environ:
         api_key = os.environ["GEMINI_API_KEY"]
     else:
-        import toml
-        secrets_file = os.path.join(r"c:\Users\eig78\Desktop\UNISQ\Side Project\.streamlit\secrets.toml")
-        if os.path.exists(secrets_file):
-            data = toml.load(secrets_file)
-            api_key = data.get("gemini", {}).get("api_key")
+        try:
+            import toml
+            candidate_secrets = [
+                os.path.join(_ROOT, ".streamlit", "secrets.toml"),
+                os.path.join(r"c:\Users\eig78\Desktop\UNISQ\Side Project\.streamlit\secrets.toml"),
+                os.path.join(os.path.expanduser("~"), ".streamlit", "secrets.toml"),
+            ]
+            for sf in candidate_secrets:
+                if os.path.exists(sf):
+                    data = toml.load(sf)
+                    api_key = data.get("gemini", {}).get("api_key")
+                    if api_key:
+                        break
+        except Exception:
+            pass
 
     if not api_key:
         return None

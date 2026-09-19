@@ -5,9 +5,10 @@ Powered by the Drosophila-Inspired Commute Decision Engine.
 Simulates 10,000 heterogeneous commuters across Brisbane corridors.
 """
 
+import os
+import json
 import numpy as np
 import pandas as pd
-import json
 from dataclasses import dataclass
 from typing import Dict, List, Any
 from src.core import DrosophilaCommuteBrain, CommuteOption, InternalNeuromodulatorState, BrainWeights
