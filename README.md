@@ -75,12 +75,13 @@ drosophila-transit-choice/
 │           └── tab8_spatial_equity.py # Suburb-level modal split & spatial equity sandbox
 ├── scripts/
 │   └── run_mle_calibration.py         # Standalone SciPy MLE inverse calibration pipeline
-├── tests/                             # Comprehensive pytest test suite (20 tests)
+├── tests/                             # Comprehensive pytest test suite (24 tests)
 │   ├── conftest.py                    # Pytest fixtures
 │   ├── test_drosophila_engine.py      # Core neural engine tests
 │   ├── test_corridor_simulation.py    # Spatial corridor & demographic tests
 │   ├── test_calibration_pipeline.py   # Empirical calibration & target validation tests
 │   ├── test_data_consistency.py       # Data integrity, corridor attributes & zero-emoji tests
+│   ├── test_system_integration.py     # End-to-end data loading & headless tab rendering tests
 │   └── test_ui_modules.py             # UI components, tabs, and visualizer tests
 ├── data/
 │   ├── connectome/                    # Janelia FlyEM 3D morphology nodes (MBON01, MBON11, PPL101)
