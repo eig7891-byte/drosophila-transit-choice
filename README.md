@@ -29,7 +29,6 @@ pip install -r requirements.txt
 ```bash
 streamlit run app.py
 ```
-*(Or run via the backward-compatible wrapper: `streamlit run app_drosophila_transit.py`)*
 
 ### 2.3 Run Automated Unit Tests
 ```bash
@@ -50,7 +49,6 @@ The codebase is organized as a modular Python package:
 ```text
 drosophila-transit-choice/
 ├── app.py                             # Streamlit application entry point
-├── app_drosophila_transit.py          # Backward-compatible entry point forwarding to app.py
 ├── src/
 │   ├── core/                          # Neural arbitration engine & calibration state
 │   │   ├── engine.py                  # DrosophilaCommuteBrain & CommuteOption
