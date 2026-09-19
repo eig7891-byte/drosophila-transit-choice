@@ -1,16 +1,22 @@
-# Python cache
+# Python cache and bytecode
 __pycache__/
 *.py[cod]
 *$py.class
+.pytest_cache/
 
-# Environments
+# Virtual environments
 venv/
 env/
 .venv/
 
-# Temporary and local IDE settings
+# IDE and OS artifacts
 .vscode/
 .idea/
 .DS_Store
+Thumbs.db
+
+# Large data archives and temporary logs
 *.csv.gz
+*.log
+scratch/
 scratch_*.txt
