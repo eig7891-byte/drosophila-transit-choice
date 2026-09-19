@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software in your research, please cite it as below."
+authors:
+  - family-names: "Lin"
+    given-names: "Eric"
+    affiliation: "University of Southern Queensland"
+title: "Drosophila Connectome Transit Choice Model: An Agent-Based Neuromorphic Simulation for South East Queensland"
+version: 1.0.0
+doi: 10.5281/zenodo.10676866
+date-released: 2026-09-18
+url: "https://github.com/eig7891-byte/drosophila-transit-choice"
+keywords:
+  - "drosophila-melanogaster"
+  - "connectome"
+  - "agent-based-modeling"
+  - "urban-transit"
+  - "translink-50c"
+  - "maximum-likelihood-estimation"
+  - "neuromorphic-computing"
+license: "MIT"
