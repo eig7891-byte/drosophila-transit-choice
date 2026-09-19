@@ -1,0 +1,20 @@
+# Auto detect text files and perform LF normalization on checkout/commit
+* text=auto
+
+# Source code and documentation - enforce LF line endings
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.cff text eol=lf
+*.txt text eol=lf
+*.html text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+
+# Binary files - preserve exact byte structure
+*.xlsx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
