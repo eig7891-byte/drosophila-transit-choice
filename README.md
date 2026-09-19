@@ -1,5 +1,10 @@
 # Drosophila Connectome Transit Choice Model
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10676866.svg)](https://doi.org/10.5281/zenodo.10676866)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Tests](https://img.shields.io/badge/tests-20%20passed-brightgreen.svg)](tests/)
+
 An Agent-Based Neuromorphic Transit Choice Simulation for South East Queensland (Translink 50-Cent Fare Policy), combining Janelia FlyEM connectome circuit architecture with empirical travel data.
 
 ---
@@ -77,11 +82,12 @@ drosophila-transit-choice/
 │           └── tab8_spatial_equity.py # Suburb-level modal split & spatial equity sandbox
 ├── scripts/
 │   └── run_mle_calibration.py         # Standalone SciPy MLE inverse calibration pipeline
-├── tests/                             # Comprehensive pytest test suite (16 tests)
+├── tests/                             # Comprehensive pytest test suite (20 tests)
 │   ├── conftest.py                    # Pytest fixtures
 │   ├── test_drosophila_engine.py      # Core neural engine tests
 │   ├── test_corridor_simulation.py    # Spatial corridor & demographic tests
 │   ├── test_calibration_pipeline.py   # Empirical calibration & target validation tests
+│   ├── test_data_consistency.py       # Data integrity, corridor attributes & zero-emoji tests
 │   └── test_ui_modules.py             # UI components, tabs, and visualizer tests
 ├── data/
 │   ├── connectome/                    # Janelia FlyEM 3D morphology nodes (MBON01, MBON11, PPL101)
@@ -90,6 +96,10 @@ drosophila-transit-choice/
 │   └── parameters/                    # Calibrated brain weights and precomputed simulation data
 ├── assets/                            # Doomfly HTML5 interactive canvas and avatar media
 ├── reports/                           # Academic & technical synthesis reports
+├── .gitattributes                     # Git line ending normalization & binary tracking
+├── .gitignore                         # Ignore Python bytecode, virtualenv & test caches
+├── CITATION.cff                       # Machine-readable academic citation metadata (Zenodo/GitHub)
+├── LICENSE                            # MIT open-source license
 ├── requirements.txt                   # Project dependencies
 └── README.md                          # Research overview and documentation
 ```
