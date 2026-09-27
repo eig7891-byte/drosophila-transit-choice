@@ -16,7 +16,7 @@ class CommuteCorridor:
     distance_to_transit_m: float = 400.0
 
 BRISBANE_CORRIDORS: List[CommuteCorridor] = [
-    CommuteCorridor("Springwood to Rochedale South (5.2km Local)", 5.24, 8.5, 20.0, 18.0, 12.0, 2200.0),
+    CommuteCorridor("Springwood to CBD (21.5km City Express)", 21.5, 32.0, 36.0, 70.0, 30.0, 1800.0),
     CommuteCorridor("Springwood to UQ St Lucia (28.8km University)", 28.78, 38.0, 42.0, 85.0, 26.5, 2200.0),
     CommuteCorridor("Chermside to CBD (Northern)", 10.5, 30.0, 50.0, 45.0, 26.0, 800.0),
     CommuteCorridor("Indooroopilly to CBD (Western)", 7.2, 22.0, 35.0, 32.0, 24.0, 600.0),
