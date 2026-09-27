@@ -57,10 +57,38 @@ def render_tab5_validation_routes(is_en: bool):
         """, unsafe_allow_html=True)
 
         r60_table = [
-            {"Evaluation Metric" if is_en else "評估指標": "Pre-Policy Base Transit Share" if is_en else "政策前基準分流率 (P_pre)", "Real-World Data" if is_en else "1. 真實世界實測 (官方聲明)": "~50.0% (50.13%)", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "50.13%", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "50.13% (樞紐基準)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-"},
-            {"Evaluation Metric" if is_en else "評估指標": "Post-Policy Transit Share" if is_en else "50c 實施後分流率 (P_post)", "Real-World Data" if is_en else "1. 真實世界實測 (官方聲明)": "62.50%", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "61.64%", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "55.70% (約束) / 58.70% (未約束)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-0.86 pp", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-3.8 to -6.8 pp"},
-            {"Evaluation Metric" if is_en else "評估指標": "Absolute Mode Shift" if is_en else "絕對轉移百分點 (pp)", "Real-World Data" if is_en else "1. 真實世界實測 (官方聲明)": "+12.50 pp", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+11.51 pp", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+5.57 pp (約束) / +8.57 pp (未約束)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-0.99 pp", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-3.9 to -6.9 pp (嚴重低估)"},
-            {"Evaluation Metric" if is_en else "評估指標": "Relative Patronage Growth" if is_en else "相對客運增長率 (%)", "Real-World Data" if is_en else "1. 真實世界實測 (官方聲明)": "+25.00% (+36.7萬人次)", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+22.96%", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+11.12% (約束) / +17.10% (未約束)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-2.04% (高精準擬合)", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-7.9% to -13.9% (嚴重漏算客流)"}
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Pre-Policy Base Transit Share" if is_en else "政策前基準分流率 (P_pre)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (官方聲明)": "~50.0% (50.13%)",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "50.13%",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "50.13% (Pivot Base)" if is_en else "50.13% (樞紐基準)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-"
+            },
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Post-Policy Transit Share" if is_en else "50c 實施後分流率 (P_post)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (官方聲明)": "62.50%",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "61.64%",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "55.70% (Constrained) / 58.70% (Unconstrained)" if is_en else "55.70% (約束) / 58.70% (未約束)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-0.86 pp",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-3.8 to -6.8 pp"
+            },
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Absolute Mode Shift" if is_en else "絕對轉移百分點 (pp)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (官方聲明)": "+12.50 pp",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+11.51 pp",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+5.57 pp (Constrained) / +8.57 pp (Unconstrained)" if is_en else "+5.57 pp (約束) / +8.57 pp (未約束)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-0.99 pp",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-3.9 to -6.9 pp (Severe Underprediction)" if is_en else "-3.9 to -6.9 pp (嚴重低估)"
+            },
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Relative Patronage Growth" if is_en else "相對客運增長率 (%)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (官方聲明)": "+25.00% (+367k trips)" if is_en else "+25.00% (+36.7萬人次)",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+22.96%",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+11.12% (Constrained) / +17.10% (Unconstrained)" if is_en else "+11.12% (約束) / +17.10% (未約束)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-2.04% (High Accuracy Fit)" if is_en else "-2.04% (高精準擬合)",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-7.9% to -13.9% (Severe Flow Underestimate)" if is_en else "-7.9% to -13.9% (嚴重漏算客流)"
+            }
         ]
         st.table(pd.DataFrame(r60_table))
 
@@ -97,10 +125,38 @@ def render_tab5_validation_routes(is_en: bool):
         """, unsafe_allow_html=True)
 
         r66_table = [
-            {"Evaluation Metric" if is_en else "評估指標": "Pre-Policy Base Transit Share" if is_en else "政策前基準分流率 (P_pre)", "Real-World Data" if is_en else "1. 真實世界實測 (市議會會議記錄)": "~53.0% (53.25%)", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "53.25%", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "53.25% (樞紐基準)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-"},
-            {"Evaluation Metric" if is_en else "評估指標": "AM Peak Mode Shift (Commuters)" if is_en else "早尖峰通勤增幅 (通勤分流)", "Real-World Data" if is_en else "1. 真實世界實測 (市議會會議記錄)": "~+28.0% to +32.0% (+14 pp)", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+25.70% (+13.68 pp)", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+31.27% (約束) / +36.78% (未約束)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-2.3% to -6.3% (符合座位極限)", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "過度分配尖峰車主"},
-            {"Evaluation Metric" if is_en else "評估指標": "Weekend Night Shift (Leisure)" if is_en else "週末夜間狂潮 (休閒社交)", "Real-World Data" if is_en else "1. 真實世界實測 (市議會會議記錄)": "週五六夜間暴增 > +160%", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "夜間激增 +105% to +160%", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "無離峰差異 (+36.78% 扁平預測)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "精準捕捉深夜休閒潮", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "完全漏算夜間狂潮 (-23.9 pp)"},
-            {"Evaluation Metric" if is_en else "評估指標": "Gross Annual Patronage Growth" if is_en else "全年營運總客運增幅 (總客量)", "Real-World Data" if is_en else "1. 真實世界實測 (市議會會議記錄)": "+60.71% (官方實績)", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+58.40% (時段加權預測)", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+36.78% (單一彈性膨脹)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-2.31% (精準命中)", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-23.93% (嚴重低估全年客量)"}
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Pre-Policy Base Transit Share" if is_en else "政策前基準分流率 (P_pre)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (市議會會議記錄)": "~53.0% (53.25%)",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "53.25%",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "53.25% (Pivot Base)" if is_en else "53.25% (樞紐基準)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-"
+            },
+            {
+                "Evaluation Metric" if is_en else "評估指標": "AM Peak Mode Shift (Commuters)" if is_en else "早尖峰通勤增幅 (通勤分流)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (市議會會議記錄)": "~+28.0% to +32.0% (+14 pp)",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+25.70% (+13.68 pp)",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+31.27% (Constrained) / +36.78% (Unconstrained)" if is_en else "+31.27% (約束) / +36.78% (未約束)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-2.3% to -6.3% (Matches Seating Limit)" if is_en else "-2.3% to -6.3% (符合座位極限)",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "Overallocated Peak Drivers" if is_en else "過度分配尖峰車主"
+            },
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Weekend Night Shift (Leisure)" if is_en else "週末夜間狂潮 (休閒社交)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (市議會會議記錄)": "Fri/Sat Night Surge > +160%" if is_en else "週五六夜間暴增 > +160%",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "Night Surge +105% to +160%" if is_en else "夜間激增 +105% to +160%",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "No Off-Peak Variance (+36.78% Flat)" if is_en else "無離峰差異 (+36.78% 扁平預測)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "Accurately Captures Late-Night Surge" if is_en else "精準捕捉深夜休閒潮",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "Completely Missed Night Surge (-23.9 pp)" if is_en else "完全漏算夜間狂潮 (-23.9 pp)"
+            },
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Gross Annual Patronage Growth" if is_en else "全年營運總客運增幅 (總客量)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (市議會會議記錄)": "+60.71% (Official Council Record)" if is_en else "+60.71% (官方實績)",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+58.40% (Period-Weighted Forecast)" if is_en else "+58.40% (時段加權預測)",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+36.78% (Single Elasticity Inflation)" if is_en else "+36.78% (單一彈性膨脹)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-2.31% (Exact Match)" if is_en else "-2.31% (精準命中)",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-23.93% (Severe Annual Underestimate)" if is_en else "-23.93% (嚴重低估全年客量)"
+            }
         ]
         st.table(pd.DataFrame(r66_table))
 

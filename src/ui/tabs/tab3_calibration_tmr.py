@@ -63,11 +63,17 @@ def render_tab3_calibration_tmr(is_en: bool):
     with col_p1:
         st.markdown("#### " + ("Category B: 5 Commuter Archetypes" if is_en else "類別 B：五大市民通勤族群設定"))
         archetypes_table = [
-            {"族群 (Archetype)": "CBD White-Collar" if is_en else "CBD 白領上班族", "人口佔比": "30%", "車輛持有": "88.0%", "NPF (預算痛感)": "0.10 - 0.40 (低)", "時間敏感度": "極高 (重度依賴專用道)"},
-            {"族群 (Archetype)": "Budget Students" if is_en else "預算約束學生族", "人口佔比": "20%", "車輛持有": "22.5%", "NPF (預算痛感)": "0.75 - 0.95 (極高)", "時間敏感度": "低 (對 50c 狂熱)"},
-            {"族群 (Archetype)": "Shift Workers" if is_en else "非尖峰輪班勞工", "人口佔比": "15%", "車輛持有": "85.0%", "NPF (預算痛感)": "0.50 - 0.80 (中高)", "時間敏感度": "中等 (受限夜間班次)"},
-            {"族群 (Archetype)": "Suburban Families" if is_en else "外環郊區家庭", "人口佔比": "20%", "車輛持有": "95.6%", "NPF (預算痛感)": "0.40 - 0.70 (中等)", "時間敏感度": "中等 (拒絕長途步行)"},
-            {"族群 (Archetype)": "Fitness Commuters" if is_en else "健康自行車族", "人口佔比": "15%", "車輛持有": "88.0%", "NPF (預算痛感)": "0.20 - 0.60 (中等)", "時間敏感度": "高辛弗林 (天候良好即騎車)"}
+            {"Archetype": "CBD White-Collar", "Population Share": "30%", "Vehicle Ownership": "88.0%", "NPF (Budget Pain)": "0.10 - 0.40 (Low)", "Time Sensitivity": "Extreme (Busway Dependent)"},
+            {"Archetype": "Budget Students", "Population Share": "20%", "Vehicle Ownership": "22.5%", "NPF (Budget Pain)": "0.75 - 0.95 (Very High)", "Time Sensitivity": "Low (Enthusiastic for 50c)"},
+            {"Archetype": "Shift Workers", "Population Share": "15%", "Vehicle Ownership": "85.0%", "NPF (Budget Pain)": "0.50 - 0.80 (Moderate-High)", "Time Sensitivity": "Moderate (Night Timetable Constrained)"},
+            {"Archetype": "Suburban Families", "Population Share": "20%", "Vehicle Ownership": "95.6%", "NPF (Budget Pain)": "0.40 - 0.70 (Moderate)", "Time Sensitivity": "Moderate (Refuses Long Walks)"},
+            {"Archetype": "Fitness Commuters", "Population Share": "15%", "Vehicle Ownership": "88.0%", "NPF (Budget Pain)": "0.20 - 0.60 (Moderate)", "Time Sensitivity": "High Octopamine (Cycles when fine)"}
+        ] if is_en else [
+            {"族群 (Archetype)": "CBD 白領上班族", "人口佔比": "30%", "車輛持有": "88.0%", "NPF (預算痛感)": "0.10 - 0.40 (低)", "時間敏感度": "極高 (重度依賴專用道)"},
+            {"族群 (Archetype)": "預算約束學生族", "人口佔比": "20%", "車輛持有": "22.5%", "NPF (預算痛感)": "0.75 - 0.95 (極高)", "時間敏感度": "低 (對 50c 狂熱)"},
+            {"族群 (Archetype)": "非尖峰輪班勞工", "人口佔比": "15%", "車輛持有": "85.0%", "NPF (預算痛感)": "0.50 - 0.80 (中高)", "時間敏感度": "中等 (受限夜間班次)"},
+            {"族群 (Archetype)": "外環郊區家庭", "人口佔比": "20%", "車輛持有": "95.6%", "NPF (預算痛感)": "0.40 - 0.70 (中等)", "時間敏感度": "中等 (拒絕長途步行)"},
+            {"族群 (Archetype)": "健康自行車族", "人口佔比": "15%", "車輛持有": "88.0%", "NPF (預算痛感)": "0.20 - 0.60 (中等)", "時間敏感度": "高辛弗林 (天候良好即騎車)"}
         ]
         st.table(pd.DataFrame(archetypes_table))
 

@@ -51,10 +51,38 @@ def render_tab4_core_corridors(is_en: bool):
         """, unsafe_allow_html=True)
 
         c1_table = [
-            {"Evaluation Metric" if is_en else "評估指標": "Baseline Transit Share (P_pre)" if is_en else "政策前基準分流率 (P_pre)", "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "~17.5% (17.45%)", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "17.45%", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "17.45% (樞紐基準)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-"},
-            {"Evaluation Metric" if is_en else "評估指標": "Policy Transit Share (P_post)" if is_en else "50c 實施後分流率 (P_post)", "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "~18.0% - 18.3%", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "18.11%", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "21.07% (約束) / 23.02% (未約束)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "±0.00 pp", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "+2.8 to +4.8 pp"},
-            {"Evaluation Metric" if is_en else "評估指標": "Absolute Mode Shift" if is_en else "絕對轉移百分點 (pp)", "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "+0.5 to +0.8 pp", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+0.66 pp", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+3.62 pp (約束) / +5.57 pp (未約束)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "±0.1 pp", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "+2.8 to +4.8 pp"},
-            {"Evaluation Metric" if is_en else "評估指標": "Relative Patronage Growth" if is_en else "相對客運增長率 (%)", "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "+3.0% to +5.0%", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+3.75%", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+20.72% (約束) / +31.88% (未約束)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-0.25% (捕捉自駕抗拒)", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "+15.7% to +26.9% (嚴重高估)"}
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Baseline Transit Share (P_pre)" if is_en else "政策前基準分流率 (P_pre)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "~17.5% (17.45%)",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "17.45%",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "17.45% (Pivot Base)" if is_en else "17.45% (樞紐基準)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-"
+            },
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Policy Transit Share (P_post)" if is_en else "50c 實施後分流率 (P_post)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "~18.0% - 18.3%",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "18.11%",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "21.07% (Constrained) / 23.02% (Unconstrained)" if is_en else "21.07% (約束) / 23.02% (未約束)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "±0.00 pp",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "+2.8 to +4.8 pp"
+            },
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Absolute Mode Shift" if is_en else "絕對轉移百分點 (pp)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "+0.5 to +0.8 pp",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+0.66 pp",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+3.62 pp (Constrained) / +5.57 pp (Unconstrained)" if is_en else "+3.62 pp (約束) / +5.57 pp (未約束)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "±0.1 pp",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "+2.8 to +4.8 pp"
+            },
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Relative Patronage Growth" if is_en else "相對客運增長率 (%)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "+3.0% to +5.0%",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+3.75%",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+20.72% (Constrained) / +31.88% (Unconstrained)" if is_en else "+20.72% (約束) / +31.88% (未約束)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-0.25% (Captures Car Resistance)" if is_en else "-0.25% (捕捉自駕抗拒)",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "+15.7% to +26.9% (Severe Overprediction)" if is_en else "+15.7% to +26.9% (嚴重高估)"
+            }
         ]
         st.table(pd.DataFrame(c1_table))
 
@@ -91,10 +119,38 @@ def render_tab4_core_corridors(is_en: bool):
         """, unsafe_allow_html=True)
 
         c2_table = [
-            {"Evaluation Metric" if is_en else "評估指標": "Baseline Transit Share (P_pre)" if is_en else "政策前基準分流率 (P_pre)", "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "~26.5% (26.37%)", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "26.37%", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "26.37% (樞紐基準)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-"},
-            {"Evaluation Metric" if is_en else "評估指標": "Policy Transit Share (P_post)" if is_en else "50c 實施後分流率 (P_post)", "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "~35.0% (34.90%)", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "34.90%", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "35.21% (約束) / 41.10% (未約束)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "0.00 pp", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "+0.31 to +6.20 pp"},
-            {"Evaluation Metric" if is_en else "評估指標": "Absolute Mode Shift" if is_en else "絕對轉移百分點 (pp)", "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "+8.50 pp", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+8.53 pp", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+8.84 pp (約束) / +14.73 pp (未約束)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "+0.03 pp (極度精準)", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "+0.34 to +6.23 pp"},
-            {"Evaluation Metric" if is_en else "評估指標": "Relative Patronage Growth" if is_en else "相對客運增長率 (%)", "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "+32.0%", "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+32.35%", "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+33.51% (約束) / +55.85% (未約束)", "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "+0.35% (極致吻合)", "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "+1.5% to +23.9% (未約束失真)"}
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Baseline Transit Share (P_pre)" if is_en else "政策前基準分流率 (P_pre)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "~26.5% (26.37%)",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "26.37%",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "26.37% (Pivot Base)" if is_en else "26.37% (樞紐基準)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "-",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "-"
+            },
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Policy Transit Share (P_post)" if is_en else "50c 實施後分流率 (P_post)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "~35.0% (34.90%)",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "34.90%",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "35.21% (Constrained) / 41.10% (Unconstrained)" if is_en else "35.21% (約束) / 41.10% (未約束)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "0.00 pp",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "+0.31 to +6.20 pp"
+            },
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Absolute Mode Shift" if is_en else "絕對轉移百分點 (pp)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "+8.50 pp",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+8.53 pp",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+8.84 pp (Constrained) / +14.73 pp (Unconstrained)" if is_en else "+8.84 pp (約束) / +14.73 pp (未約束)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "+0.03 pp (Exact Match)" if is_en else "+0.03 pp (極度精準)",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "+0.34 to +6.23 pp"
+            },
+            {
+                "Evaluation Metric" if is_en else "評估指標": "Relative Patronage Growth" if is_en else "相對客運增長率 (%)",
+                "Real-World Data" if is_en else "1. 真實世界實測 (TransLink)": "+32.0%",
+                "Drosophila Model" if is_en else "2. 果蠅大腦模型 (凍結權重)": "+32.35%",
+                "TMR Official Forecast" if is_en else "3. 昆士蘭交通局預測 (BSTM-MM)": "+33.51% (Constrained) / +55.85% (Unconstrained)" if is_en else "+33.51% (約束) / +55.85% (未約束)",
+                "Delta: Model vs Real" if is_en else "果蠅 vs 真實誤差": "+0.35% (Close Fit)" if is_en else "+0.35% (極致吻合)",
+                "Delta: TMR vs Real" if is_en else "TMR vs 真實誤差": "+1.5% to +23.9% (Unconstrained Distortion)" if is_en else "+1.5% to +23.9% (未約束失真)"
+            }
         ]
         st.table(pd.DataFrame(c2_table))
 
