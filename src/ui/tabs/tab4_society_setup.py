@@ -204,7 +204,7 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
             {"Corridor": "Chermside to CBD", "Sector": "Northern", "Trip Distance": "10.5 km", "First-Mile Walk": "800 m", "Car Time": "30 min", "Transit Time": "50 min", "Key Transit Spine": "Northern Busway / Gympie Rd (Routes 333, 340)"},
             {"Corridor": "Mt Gravatt to CBD", "Sector": "South-East Core", "Trip Distance": "13.8 km", "First-Mile Walk": "1,500 m", "Car Time": "35 min", "Transit Time": "55 min", "Key Transit Spine": "South East Busway (Routes 111, 150)"},
             {"Corridor": "Logan Central to CBD", "Sector": "Outer South", "Trip Distance": "26.5 km", "First-Mile Walk": "1,800 m", "Car Time": "45 min", "Transit Time": "85 min", "Key Transit Spine": "Beenleigh Rail Line / Route 555 Express Bus"},
-            {"Corridor": "Springwood to CBD", "Sector": "Outer City Express (Scenario A)", "Trip Distance": "21.5 km", "First-Mile Walk": "1,800 m", "Car Time": "32 min", "Transit Time": "36 min", "Key Transit Spine": "South East Busway Direct (Route 555 Express)"},
+            {"Corridor": "Springwood to Rochedale South", "Sector": "Outer Local School Catchment (Scenario A)", "Trip Distance": "5.2 km", "First-Mile Walk": "2,200 m", "Car Time": "8.5 min", "Transit Time": "20 min", "Key Transit Spine": "Suburban Feeder Bus (Routes 574, 575)"},
             {"Corridor": "Springwood to UQ St Lucia", "Sector": "Outer University Corridor (Scenario B)", "Trip Distance": "28.8 km", "First-Mile Walk": "2,200 m", "Car Time": "38 min", "Transit Time": "42 min", "Key Transit Spine": "555 Express Bus to 66 via Eleanor Schonell Bridge"}
         ]
     else:
@@ -214,8 +214,8 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
             {"走廊名稱 (Corridor)": "Chermside to CBD", "區位 (Sector)": "北區 (Northern)", "單程里程": "10.5 km", "第一哩步行": "800 m", "自駕時間": "30 min", "公車時間": "50 min", "主要大眾運輸路網": "Northern Busway / Gympie Rd (333, 340 路)"},
             {"走廊名稱 (Corridor)": "Mt Gravatt to CBD", "區位 (Sector)": "南區核心 (South-East)", "單程里程": "13.8 km", "第一哩步行": "1,500 m", "自駕時間": "35 min", "公車時間": "55 min", "主要大眾運輸路網": "South East Busway (111, 150 路)"},
             {"走廊名稱 (Corridor)": "Logan Central to CBD", "區位 (Sector)": "外圍深南區 (Outer South)", "單程里程": "26.5 km", "第一哩步行": "1,800 m", "自駕時間": "45 min", "公車時間": "85 min", "主要大眾運輸路網": "Beenleigh 鐵路支線 / 555 快速公車"},
-            {"走廊名稱 (Corridor)": "Springwood to CBD", "區位 (Sector)": "外圍市區通勤 (Scenario A)", "單程里程": "21.5 km", "第一哩步行": "1,800 m", "自駕時間": "32 min", "公車時間": "36 min", "主要大眾運輸路網": "South East Busway 直達 (555 快速公車)"},
-            {"走廊名稱 (Corridor)": "Springwood to UQ St Lucia", "區位 (Sector)": "外圍跨區通學 (Scenario B)", "單程里程": "28.8 km", "第一哩步行": "2,200 m", "自駕時間": "38 min", "公車時間": "42 min", "主要大眾運輸路網": "555 快速公車轉 66 路 Eleanor Schonell Bridge"}
+            {"走廊名稱 (Corridor)": "Springwood to Rochedale South", "區位 (Sector)": "外圍附近學校 (Scenario A)", "單程里程": "5.2 km", "第一哩步行": "2,200 m", "自駕時間": "8.5 min", "公車時間": "20 min", "主要大眾運輸路網": "郊區接駁公車 (574, 575 路)"},
+            {"走廊名稱 (Corridor)": "Springwood to UQ St Lucia", "區位 (Sector)": "外圍跨區大學通學 (Scenario B)", "單程里程": "28.8 km", "第一哩步行": "2,200 m", "自駕時間": "38 min", "公車時間": "42 min", "主要大眾運輸路網": "555 快速公車轉 66 路 Eleanor Schonell Bridge"}
         ]
     st.table(pd.DataFrame(corridor_data))
 
