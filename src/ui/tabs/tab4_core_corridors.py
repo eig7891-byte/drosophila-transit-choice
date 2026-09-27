@@ -131,7 +131,12 @@ def render_tab4_core_corridors(is_en: bool):
         )
 
         brain = DrosophilaCommuteBrain(weights=CALIBRATED_BRAIN_WEIGHTS)
-        state = InternalNeuromodulatorState(npf=0.5, octopamine=0.5, serotonin=0.5, circadian_phase=9.0)
+        state = InternalNeuromodulatorState(
+            npf_hunger=0.5,
+            octopamine_vigor=0.5,
+            serotonin_patience=0.5,
+            pdf_sleep_debt=0.5
+        )
 
         # Quick simulated shares
         sim_res = []
@@ -139,19 +144,19 @@ def render_tab4_core_corridors(is_en: bool):
             ("Springwood to Rochedale (5.2km Feeder)", 5.24, 8.5, 20.0 * test_speed, 18.0, 12.0, 2200.0),
             ("Springwood to UQ (28.8km Express)", 28.78, 38.0, 42.0 * test_speed, 85.0, 26.5, 2200.0)
         ]:
+            effort_walk = min(1.0, 0.15 + (walk_d / 2500.0) * 0.45)
             opts = [
-                CommuteOption("Car", car_t, park_c + dist * 0.25, 0.0, 0.0, 0.0),
-                CommuteOption("Transit", tr_t, test_fare, 5.0, walk_d, 28.0),
-                CommuteOption("Bicycle", bk_t, 0.0, 0.0, dist * 1000.0, 28.0)
+                CommuteOption("Car", car_t, park_c + dist * 0.25, 0.05, 8.5, 0.9),
+                CommuteOption("Transit", tr_t, test_fare, effort_walk, 8.2, 0.65),
+                CommuteOption("Bicycle", bk_t, 0.0, 0.85, 8.0, 0.3)
             ]
-            eval_dict = brain.evaluate_options(opts, state)
-            tr_score = eval_dict["Transit"].net_valence
-            car_score = eval_dict["Car"].net_valence
-            bk_score = eval_dict["Bicycle"].net_valence
-            
-            import numpy as np
-            exps = np.exp([car_score, tr_score, bk_score])
-            probs = exps / np.sum(exps)
-            sim_res.append({"走廊 (Corridor)": c_name, "自駕車 (Car)": f"{probs[0]*100:.1f}%", "大眾運輸 (Transit)": f"{probs[1]*100:.1f}%", "自行車 (Bicycle)": f"{probs[2]*100:.1f}%"})
+            dec_res = brain.decide_commute(opts, state)
+            probs = dec_res.get("probabilities", {})
+            sim_res.append({
+                "Corridor" if is_en else "走廊 (Corridor)": c_name,
+                "Car" if is_en else "自駕車 (Car)": f"{probs.get('Car', 0.0)*100:.1f}%",
+                "Transit" if is_en else "大眾運輸 (Transit)": f"{probs.get('Transit', 0.0)*100:.1f}%",
+                "Bicycle" if is_en else "自行車 (Bicycle)": f"{probs.get('Bicycle', 0.0)*100:.1f}%"
+            })
 
         st.table(pd.DataFrame(sim_res))

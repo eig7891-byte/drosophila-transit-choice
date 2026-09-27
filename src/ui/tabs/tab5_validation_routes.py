@@ -23,7 +23,7 @@ def render_tab5_validation_routes(is_en: bool):
     # -------------------------------------------------------------------------
     # 5.1 The Skeptic's Question & Protocol
     # -------------------------------------------------------------------------
-    st.markdown("""
+    st.markdown(f"""
     <div style="background: rgba(15, 23, 42, 0.95); border: 1px solid #38bdf8; border-left: 5px solid #0284c7; border-radius: 8px; padding: 14px 18px; margin-bottom: 16px;">
         <h4 style="margin: 0 0 6px 0; color: #38bdf8;">
             {'Strict Out-of-Sample Protocol' if is_en else '嚴格的樣本外盲測三大鐵律'}
