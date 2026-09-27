@@ -1,0 +1,425 @@
+Network,Mode,Year,Quarter,Patronage,Data_Source,Policy_Era
+Brisbane Region,Bus,2014-15,Q1,20240110,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2014-15,Q2,18850230,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2014-15,Q3,19530100,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2014-15,Q4,20012340,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2015-16,Q1,20612450,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2015-16,Q2,19120380,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2015-16,Q3,19840290,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2015-16,Q4,20432110,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2016-17,Q1,20530120,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2016-17,Q2,19340560,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2016-17,Q3,19910240,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2016-17,Q4,19890300,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2017-18,Q1,20480210,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2017-18,Q2,19020350,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2017-18,Q3,19750420,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2017-18,Q4,20312500,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Brisbane Region,Bus,2018-19,Q1,20744198,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Brisbane Region,Bus,2018-19,Q2,19065183,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Brisbane Region,Bus,2018-19,Q3,19695230,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Brisbane Region,Bus,2018-19,Q4,20471108,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Brisbane Region,Bus,2019-20,Q1,21505805,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Brisbane Region,Bus,2019-20,Q2,19082206,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Brisbane Region,Bus,2019-20,Q3,16822267,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Brisbane Region,Bus,2019-20,Q4,6217197,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Brisbane Region,Bus,2020-21,Q1,11278707,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Brisbane Region,Bus,2020-21,Q2,12084461,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Brisbane Region,Bus,2020-21,Q3,12320870,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Brisbane Region,Bus,2020-21,Q4,12944282,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Brisbane Region,Bus,2021-22,Q1,11491615,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Brisbane Region,Bus,2021-22,Q2,11649092,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Brisbane Region,Bus,2021-22,Q3,9525651,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Brisbane Region,Bus,2021-22,Q4,13428837,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Brisbane Region,Bus,2022-23,Q1,14817605,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Brisbane Region,Bus,2022-23,Q2,14944371,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Brisbane Region,Bus,2022-23,Q3,16623639,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Brisbane Region,Bus,2022-23,Q4,16778030,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Brisbane Region,Bus,2023-24,Q1,18482542,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Brisbane Region,Bus,2023-24,Q2,16960481,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Brisbane Region,Bus,2023-24,Q3,17912322,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Brisbane Region,Bus,2023-24,Q4,18118142,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Brisbane Region,Bus,2024-25,Q1,20697222,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Brisbane Region,Bus,2024-25,Q2,19738711,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Brisbane Region,Bus,2024-25,Q3,19067615,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Brisbane Region,Bus,2024-25,Q4,21244055,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Brisbane Region,Bus,2025-26,Q1,23110896,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Brisbane Region,Bus,2025-26,Q2,21542957,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Citytrain Network,Train,2014-15,Q1,13780500,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2014-15,Q2,13240100,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2014-15,Q3,13410200,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2014-15,Q4,13769200,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2015-16,Q1,14090200,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2015-16,Q2,13510400,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2015-16,Q3,13680100,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2015-16,Q4,13819300,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2016-17,Q1,13880400,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2016-17,Q2,13120300,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2016-17,Q3,13240100,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2016-17,Q4,13559200,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2017-18,Q1,14010200,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2017-18,Q2,13340500,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2017-18,Q3,13410200,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2017-18,Q4,13739100,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Citytrain Network,Train,2018-19,Q1,14400413,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Citytrain Network,Train,2018-19,Q2,13173669,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Citytrain Network,Train,2018-19,Q3,13546934,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Citytrain Network,Train,2018-19,Q4,13885553,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Citytrain Network,Train,2019-20,Q1,15072792,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Citytrain Network,Train,2019-20,Q2,12701338,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Citytrain Network,Train,2019-20,Q3,12111404,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Citytrain Network,Train,2019-20,Q4,3805134,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Citytrain Network,Train,2020-21,Q1,7249536,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Citytrain Network,Train,2020-21,Q2,7920585,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Citytrain Network,Train,2020-21,Q3,8337582,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Citytrain Network,Train,2020-21,Q4,9145310,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Citytrain Network,Train,2021-22,Q1,8089424,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Citytrain Network,Train,2021-22,Q2,8442875,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Citytrain Network,Train,2021-22,Q3,5871708,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Citytrain Network,Train,2021-22,Q4,8821200,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Citytrain Network,Train,2022-23,Q1,9999529,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Citytrain Network,Train,2022-23,Q2,9743556,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Citytrain Network,Train,2022-23,Q3,10799394,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Citytrain Network,Train,2022-23,Q4,10909779,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Citytrain Network,Train,2023-24,Q1,12122932,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Citytrain Network,Train,2023-24,Q2,10830249,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Citytrain Network,Train,2023-24,Q3,10904411,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Citytrain Network,Train,2023-24,Q4,11341083,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Citytrain Network,Train,2024-25,Q1,13210010,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Citytrain Network,Train,2024-25,Q2,13101932,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Citytrain Network,Train,2024-25,Q3,12455391,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Citytrain Network,Train,2024-25,Q4,14275110,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Citytrain Network,Train,2025-26,Q1,15182104,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Citytrain Network,Train,2025-26,Q2,13675706,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Eastern Region,Bus,2018-19,Q1,764175,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Eastern Region,Bus,2018-19,Q2,725153,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Eastern Region,Bus,2018-19,Q3,756675,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Eastern Region,Bus,2018-19,Q4,788814,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Eastern Region,Bus,2019-20,Q1,782089,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Eastern Region,Bus,2019-20,Q2,711661,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Eastern Region,Bus,2019-20,Q3,671163,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Eastern Region,Bus,2019-20,Q4,345879,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Eastern Region,Bus,2020-21,Q1,551646,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Eastern Region,Bus,2020-21,Q2,539237,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Eastern Region,Bus,2020-21,Q3,565250,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Eastern Region,Bus,2020-21,Q4,590559,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Eastern Region,Bus,2021-22,Q1,528352,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Eastern Region,Bus,2021-22,Q2,535401,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Eastern Region,Bus,2021-22,Q3,440096,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Eastern Region,Bus,2021-22,Q4,557164,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Eastern Region,Bus,2022-23,Q1,591701,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Eastern Region,Bus,2022-23,Q2,590970,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Eastern Region,Bus,2022-23,Q3,677945,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Eastern Region,Bus,2022-23,Q4,664377,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Eastern Region,Bus,2023-24,Q1,695401,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Eastern Region,Bus,2023-24,Q2,666596,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Eastern Region,Bus,2023-24,Q3,693397,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Eastern Region,Bus,2023-24,Q4,699545,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Eastern Region,Bus,2024-25,Q1,728891,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Eastern Region,Bus,2024-25,Q2,718346,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Eastern Region,Bus,2024-25,Q3,689304,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Eastern Region,Bus,2024-25,Q4,746174,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Eastern Region,Bus,2025-26,Q1,770044,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Eastern Region,Bus,2025-26,Q2,728677,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+G:Link Network,Tram,2018-19,Q1,2849061,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+G:Link Network,Tram,2018-19,Q2,2606957,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+G:Link Network,Tram,2018-19,Q3,2715950,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+G:Link Network,Tram,2018-19,Q4,2571057,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+G:Link Network,Tram,2019-20,Q1,2869847,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+G:Link Network,Tram,2019-20,Q2,2609256,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+G:Link Network,Tram,2019-20,Q3,2313383,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+G:Link Network,Tram,2019-20,Q4,671953,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+G:Link Network,Tram,2020-21,Q1,1291823,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+G:Link Network,Tram,2020-21,Q2,1463087,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+G:Link Network,Tram,2020-21,Q3,1626725,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+G:Link Network,Tram,2020-21,Q4,1738150,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+G:Link Network,Tram,2021-22,Q1,1384232,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+G:Link Network,Tram,2021-22,Q2,1444855,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+G:Link Network,Tram,2021-22,Q3,1467470,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+G:Link Network,Tram,2021-22,Q4,2041236,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+G:Link Network,Tram,2022-23,Q1,2404262,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+G:Link Network,Tram,2022-23,Q2,2668311,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+G:Link Network,Tram,2022-23,Q3,2692128,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+G:Link Network,Tram,2022-23,Q4,2628177,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+G:Link Network,Tram,2023-24,Q1,2972590,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+G:Link Network,Tram,2023-24,Q2,2786730,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+G:Link Network,Tram,2023-24,Q3,2814962,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+G:Link Network,Tram,2023-24,Q4,2635407,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+G:Link Network,Tram,2024-25,Q1,3354136,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+G:Link Network,Tram,2024-25,Q2,3655280,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+G:Link Network,Tram,2024-25,Q3,3363178,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+G:Link Network,Tram,2024-25,Q4,3453470,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+G:Link Network,Tram,2025-26,Q1,3855018,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+G:Link Network,Tram,2025-26,Q2,3810173,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Gold Coast,Bus,2018-19,Q1,3462142,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Gold Coast,Bus,2018-19,Q2,3423735,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Gold Coast,Bus,2018-19,Q3,3561981,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Gold Coast,Bus,2018-19,Q4,3552052,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Gold Coast,Bus,2019-20,Q1,3705152,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Gold Coast,Bus,2019-20,Q2,3556638,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Gold Coast,Bus,2019-20,Q3,3168663,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Gold Coast,Bus,2019-20,Q4,1435741,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Gold Coast,Bus,2020-21,Q1,2352764,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Gold Coast,Bus,2020-21,Q2,2442923,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Gold Coast,Bus,2020-21,Q3,2561756,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Gold Coast,Bus,2020-21,Q4,2680564,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Gold Coast,Bus,2021-22,Q1,2295445,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Gold Coast,Bus,2021-22,Q2,2440674,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Gold Coast,Bus,2021-22,Q3,2342357,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Gold Coast,Bus,2021-22,Q4,2930834,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Gold Coast,Bus,2022-23,Q1,3169954,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Gold Coast,Bus,2022-23,Q2,3330670,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Gold Coast,Bus,2022-23,Q3,3450183,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Gold Coast,Bus,2022-23,Q4,3407520,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Gold Coast,Bus,2023-24,Q1,3464681,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Gold Coast,Bus,2023-24,Q2,3147984,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Gold Coast,Bus,2023-24,Q3,3351804,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Gold Coast,Bus,2023-24,Q4,3258157,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Gold Coast,Bus,2024-25,Q1,3540055,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Gold Coast,Bus,2024-25,Q2,3697334,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Gold Coast,Bus,2024-25,Q3,3401119,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Gold Coast,Bus,2024-25,Q4,3612269,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Gold Coast,Bus,2025-26,Q1,3827240,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Gold Coast,Bus,2025-26,Q2,3734184,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Northern Region,Bus,2018-19,Q1,1367802,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Northern Region,Bus,2018-19,Q2,1301298,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Northern Region,Bus,2018-19,Q3,1327230,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Northern Region,Bus,2018-19,Q4,1395807,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Northern Region,Bus,2019-20,Q1,1375004,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Northern Region,Bus,2019-20,Q2,1262686,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Northern Region,Bus,2019-20,Q3,1173872,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Northern Region,Bus,2019-20,Q4,693043,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Northern Region,Bus,2020-21,Q1,1053410,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Northern Region,Bus,2020-21,Q2,1021971,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Northern Region,Bus,2020-21,Q3,1017525,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Northern Region,Bus,2020-21,Q4,1056313,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Northern Region,Bus,2021-22,Q1,958187,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Northern Region,Bus,2021-22,Q2,959497,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Northern Region,Bus,2021-22,Q3,823514,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Northern Region,Bus,2021-22,Q4,1027712,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Northern Region,Bus,2022-23,Q1,1080597,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Northern Region,Bus,2022-23,Q2,1090597,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Northern Region,Bus,2022-23,Q3,1208319,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Northern Region,Bus,2022-23,Q4,1162530,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Northern Region,Bus,2023-24,Q1,1193744,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Northern Region,Bus,2023-24,Q2,1144862,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Northern Region,Bus,2023-24,Q3,1224287,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Northern Region,Bus,2023-24,Q4,1229277,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Northern Region,Bus,2024-25,Q1,1308537,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Northern Region,Bus,2024-25,Q2,1304576,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Northern Region,Bus,2024-25,Q3,1301204,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Northern Region,Bus,2024-25,Q4,1436270,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Northern Region,Bus,2025-26,Q1,1484400,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Northern Region,Bus,2025-26,Q2,1433755,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,All,2014-15,Q1,77800000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2014-15,Q2,74200000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2014-15,Q3,76900000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2014-15,Q4,79100000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2015-16,Q1,79100000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2015-16,Q2,75400000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2015-16,Q3,78200000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2015-16,Q4,79800000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2016-17,Q1,78500000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2016-17,Q2,75100000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2016-17,Q3,77600000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2016-17,Q4,79000000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2017-18,Q1,78900000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2017-18,Q2,75200000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2017-18,Q3,78100000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,All,2017-18,Q4,79600000,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+South East Queensland,Bus,2018-19,Q1,30145055,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+South East Queensland,All,2018-19,Q1,49171293,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+South East Queensland,Ferry,2018-19,Q1,1776764,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+South East Queensland,Bus,2018-19,Q2,28128289,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+South East Queensland,All,2018-19,Q2,45491975,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+South East Queensland,Ferry,2018-19,Q2,1583060,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+South East Queensland,Bus,2018-19,Q3,29071853,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+South East Queensland,All,2018-19,Q3,46952681,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+South East Queensland,Ferry,2018-19,Q3,1617944,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+South East Queensland,Bus,2018-19,Q4,30038051,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+South East Queensland,All,2018-19,Q4,48109077,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+South East Queensland,Ferry,2018-19,Q4,1614416,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+South East Queensland,Bus,2019-20,Q1,31311920,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,All,2019-20,Q1,50931286,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Ferry,2019-20,Q1,1676727,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Bus,2019-20,Q2,28250443,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,All,2019-20,Q2,45171161,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Ferry,2019-20,Q2,1610124,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Bus,2019-20,Q3,25223083,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,All,2019-20,Q3,41012147,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Ferry,2019-20,Q3,1364277,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Bus,2019-20,Q4,10420569,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,All,2019-20,Q4,15474993,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Ferry,2019-20,Q4,577337,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Bus,2020-21,Q1,18001506,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,All,2020-21,Q1,27431267,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Ferry,2020-21,Q1,888402,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Bus,2020-21,Q2,18821484,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,All,2020-21,Q2,29190617,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Ferry,2020-21,Q2,985461,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Bus,2020-21,Q3,19303278,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,All,2020-21,Q3,30231564,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Ferry,2020-21,Q3,963979,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Bus,2020-21,Q4,20225829,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,All,2020-21,Q4,32206913,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Ferry,2020-21,Q4,1097624,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Bus,2021-22,Q1,17960279,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,All,2021-22,Q1,28379556,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Ferry,2021-22,Q1,945621,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Bus,2021-22,Q2,18358822,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,All,2021-22,Q2,29273867,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Ferry,2021-22,Q2,1027315,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Bus,2021-22,Q3,15458650,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,All,2021-22,Q3,23394160,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Ferry,2021-22,Q3,596332,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Bus,2021-22,Q4,20918526,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,All,2021-22,Q4,32359887,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Ferry,2021-22,Q4,578925,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+South East Queensland,Bus,2022-23,Q1,22910689,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,All,2022-23,Q1,36178741,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Ferry,2022-23,Q1,864261,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Bus,2022-23,Q2,23215669,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,All,2022-23,Q2,36600386,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Ferry,2022-23,Q2,972850,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Bus,2022-23,Q3,25578411,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,All,2022-23,Q3,40215836,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Ferry,2022-23,Q3,1145903,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Bus,2022-23,Q4,25479057,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,All,2022-23,Q4,40263180,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Ferry,2022-23,Q4,1246167,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Bus,2023-24,Q1,27390088,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,All,2023-24,Q1,43909936,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Ferry,2023-24,Q1,1424326,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Bus,2023-24,Q2,24776632,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,All,2023-24,Q2,39729641,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Ferry,2023-24,Q2,1336030,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Bus,2023-24,Q3,26801936,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,All,2023-24,Q3,41865734,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Ferry,2023-24,Q3,1344425,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Bus,2023-24,Q4,26800736,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,All,2023-24,Q4,42272053,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Ferry,2023-24,Q4,1494827,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+South East Queensland,Bus,2024-25,Q1,30129829,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,All,2024-25,Q1,48586849,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,Ferry,2024-25,Q1,1892874,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,Bus,2024-25,Q2,29245972,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,All,2024-25,Q2,47885289,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,Ferry,2024-25,Q2,1882105,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,Bus,2024-25,Q3,28174665,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,All,2024-25,Q3,45661776,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,Ferry,2024-25,Q3,1668542,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,Bus,2024-25,Q4,31103124,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,All,2024-25,Q4,50748737,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,Ferry,2024-25,Q4,1917033,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,Bus,2025-26,Q1,33483569,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,All,2025-26,Q1,54697826,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,Ferry,2025-26,Q1,2177135,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,Bus,2025-26,Q2,31453981,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,All,2025-26,Q2,51056396,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+South East Queensland,Ferry,2025-26,Q2,2116536,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Southern Region,Bus,2014-15,Q1,1688906,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2014-15,Q2,1537997,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2014-15,Q3,1580240,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2014-15,Q4,1650420,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2015-16,Q1,1733518,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2015-16,Q2,1580609,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2015-16,Q3,1610320,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2015-16,Q4,1720497,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2016-17,Q1,1690511,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2016-17,Q2,1595200,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2016-17,Q3,1620100,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2016-17,Q4,1586662,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2017-18,Q1,1649832,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2017-18,Q2,1560400,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2017-18,Q3,1615800,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2017-18,Q4,1675200,TMR TransLink Tracker Quarterly Reports,Pre-COVID Stable Baseline
+Southern Region,Bus,2018-19,Q1,1657398,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Southern Region,Bus,2018-19,Q2,1580203,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Southern Region,Bus,2018-19,Q3,1619864,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Southern Region,Bus,2018-19,Q4,1688724,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Southern Region,Bus,2019-20,Q1,1719042,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Southern Region,Bus,2019-20,Q2,1577004,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Southern Region,Bus,2019-20,Q3,1448100,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Southern Region,Bus,2019-20,Q4,682146,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Southern Region,Bus,2020-21,Q1,1099279,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Southern Region,Bus,2020-21,Q2,1118798,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Southern Region,Bus,2020-21,Q3,1146238,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Southern Region,Bus,2020-21,Q4,1258482,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Southern Region,Bus,2021-22,Q1,1132517,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Southern Region,Bus,2021-22,Q2,1176296,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Southern Region,Bus,2021-22,Q3,935370,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Southern Region,Bus,2021-22,Q4,1264043,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Southern Region,Bus,2022-23,Q1,1343733,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Southern Region,Bus,2022-23,Q2,1369635,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Southern Region,Bus,2022-23,Q3,1530957,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Southern Region,Bus,2022-23,Q4,1528791,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Southern Region,Bus,2023-24,Q1,1576703,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Southern Region,Bus,2023-24,Q2,1406067,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Southern Region,Bus,2023-24,Q3,1635064,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Southern Region,Bus,2023-24,Q4,1653206,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Southern Region,Bus,2024-25,Q1,1750718,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Southern Region,Bus,2024-25,Q2,1674185,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Southern Region,Bus,2024-25,Q3,1687720,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Southern Region,Bus,2024-25,Q4,1941474,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Southern Region,Bus,2025-26,Q1,2079384,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Southern Region,Bus,2025-26,Q2,1973722,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Sunshine Coast,Bus,2018-19,Q1,1474665,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Sunshine Coast,Bus,2018-19,Q2,1391692,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Sunshine Coast,Bus,2018-19,Q3,1432212,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Sunshine Coast,Bus,2018-19,Q4,1423999,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Sunshine Coast,Bus,2019-20,Q1,1488528,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Sunshine Coast,Bus,2019-20,Q2,1390679,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Sunshine Coast,Bus,2019-20,Q3,1308082,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Sunshine Coast,Bus,2019-20,Q4,672928,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Sunshine Coast,Bus,2020-21,Q1,1114934,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Sunshine Coast,Bus,2020-21,Q2,1095160,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Sunshine Coast,Bus,2020-21,Q3,1154801,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Sunshine Coast,Bus,2020-21,Q4,1131417,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Sunshine Coast,Bus,2021-22,Q1,1022948,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Sunshine Coast,Bus,2021-22,Q2,1057536,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Sunshine Coast,Bus,2021-22,Q3,934778,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Sunshine Coast,Bus,2021-22,Q4,1138295,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Sunshine Coast,Bus,2022-23,Q1,1293160,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Sunshine Coast,Bus,2022-23,Q2,1292578,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Sunshine Coast,Bus,2022-23,Q3,1389916,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Sunshine Coast,Bus,2022-23,Q4,1278389,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Sunshine Coast,Bus,2023-24,Q1,1289908,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Sunshine Coast,Bus,2023-24,Q2,819012,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Sunshine Coast,Bus,2023-24,Q3,1266754,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Sunshine Coast,Bus,2023-24,Q4,1141306,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Sunshine Coast,Bus,2024-25,Q1,1371893,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Sunshine Coast,Bus,2024-25,Q2,1408328,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Sunshine Coast,Bus,2024-25,Q3,1348749,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Sunshine Coast,Bus,2024-25,Q4,1359803,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Sunshine Coast,Bus,2025-26,Q1,1462263,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Sunshine Coast,Bus,2025-26,Q2,1367135,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Western Region,Bus,2018-19,Q1,674675,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Western Region,Bus,2018-19,Q2,641025,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Western Region,Bus,2018-19,Q3,678661,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Western Region,Bus,2018-19,Q4,717547,Translink PT Performance Dashboard (Q2 2025-26 Excel),Pre-COVID Stable Baseline
+Western Region,Bus,2019-20,Q1,736300,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Western Region,Bus,2019-20,Q2,669569,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Western Region,Bus,2019-20,Q3,630936,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Western Region,Bus,2019-20,Q4,373635,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Western Region,Bus,2020-21,Q1,550766,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Western Region,Bus,2020-21,Q2,518934,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Western Region,Bus,2020-21,Q3,536838,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Western Region,Bus,2020-21,Q4,564212,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Western Region,Bus,2021-22,Q1,531215,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Western Region,Bus,2021-22,Q2,540326,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Western Region,Bus,2021-22,Q3,456884,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Western Region,Bus,2021-22,Q4,571641,Translink PT Performance Dashboard (Q2 2025-26 Excel),COVID Disruption & Lockdowns
+Western Region,Bus,2022-23,Q1,613939,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Western Region,Bus,2022-23,Q2,596848,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Western Region,Bus,2022-23,Q3,697452,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Western Region,Bus,2022-23,Q4,659420,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Western Region,Bus,2023-24,Q1,687109,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Western Region,Bus,2023-24,Q2,631630,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Western Region,Bus,2023-24,Q3,718308,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Western Region,Bus,2023-24,Q4,701103,Translink PT Performance Dashboard (Q2 2025-26 Excel),Post-COVID Inflation & Return
+Western Region,Bus,2024-25,Q1,732513,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Western Region,Bus,2024-25,Q2,704492,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Western Region,Bus,2024-25,Q3,678954,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Western Region,Bus,2024-25,Q4,763079,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Western Region,Bus,2025-26,Q1,749342,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
+Western Region,Bus,2025-26,Q2,673551,Translink PT Performance Dashboard (Q2 2025-26 Excel),50-Cent Fare & Brisbane Metro Era
