@@ -12,7 +12,7 @@ An Agent-Based Neuromorphic Transit Choice Engine grounded in the **HHMI Janelia
 
 ---
 
-## 1. Executive Summary (The 30-Second Briefing)
+## 1. Executive Summary
 
 In August 2024, Queensland introduced a landmark **50-Cent Flat Public Transit Fare** (an 88% to 92% fare cut across South East Queensland). 
 

@@ -32,8 +32,8 @@ def render_tab1_connectome(viz: DrosophilaConnectomeVisualizer, eval_res: dict, 
         </div>
         """, unsafe_allow_html=True)
 
-    # 30-Second Executive Summary & Metric Cards
-    st.markdown("### " + ("30-Second Executive Scorecard: Four-Corridor Prediction Accuracy" if is_en else "30秒決策精華：四大走廊實證預測命中卡"))
+    # Executive Summary & Metric Cards
+    st.markdown("### " + ("Executive Scorecard: Four-Corridor Prediction Accuracy" if is_en else "核心成果概覽：四大走廊實證預測命中卡"))
     m1, m2, m3, m4 = st.columns(4)
     with m1:
         st.metric(

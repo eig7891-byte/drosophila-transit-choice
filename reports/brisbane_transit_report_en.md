@@ -2,7 +2,7 @@
 
 ---
 
-## Executive Summary: The 30-Second Engineering Punchline
+## Executive Summary
 
 In August 2024, Queensland introduced a landmark 50-cent flat transit fare across South East Queensland. This represents an 88% to 92% fare cut. 
 
