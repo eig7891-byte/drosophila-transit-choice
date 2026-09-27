@@ -43,7 +43,7 @@ def render_tab7_database(is_en: bool):
         # Global Search Box
         st.markdown("### 7.3 " + ("Interactive Multi-Table Global Search" if is_en else "全庫跨表即時全文檢索"))
         search_kw = st.text_input(
-            "🔎 " + ("Search Database Records (Corridor, Neuron, Route, Mode, or Metric):" if is_en else "全庫跨表搜尋 (走廊名稱、神經元、路線、運具或指標):"),
+            ("Search Database Records (Corridor, Neuron, Route, Mode, or Metric):" if is_en else "全庫跨表搜尋 (走廊名稱、神經元、路線、運具或指標):"),
             placeholder="e.g. Springwood, Citytrain, MBON, Punctuality..." if is_en else "例如：Springwood, Citytrain, MBON, 準點率..."
         )
 
@@ -52,7 +52,7 @@ def render_tab7_database(is_en: bool):
             search_results = db.search_all(search_kw.strip())
             if search_results:
                 for table_name, df_res in search_results.items():
-                    with st.expander(f"📁 {table_name} ({len(df_res)} " + ("matches)" if is_en else "筆相符)"), expanded=True):
+                    with st.expander(f"Table: {table_name} ({len(df_res)} " + ("matches)" if is_en else "筆相符)"), expanded=True):
                         st.dataframe(df_res, use_container_width=True)
             else:
                 st.info("No matching records found across tables." if is_en else "未在資料庫中找到相符紀錄。")

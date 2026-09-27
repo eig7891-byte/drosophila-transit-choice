@@ -1,10 +1,23 @@
 """
- Drosophila Connectome Commute Simulator: Brisbane Transit Choice
+Drosophila Connectome Commute Simulator: Brisbane Transit Choice
 Main Streamlit Application Entry Point.
 """
 import os
+import sys
 import json
+
+# Ensure repository root is always at index 0 of sys.path
+_ROOT = os.path.dirname(os.path.abspath(__file__))
+if _ROOT not in sys.path:
+    sys.path.insert(0, _ROOT)
+
 import streamlit as st
+
+st.set_page_config(
+    page_title="Drosophila Connectome Transit Simulator | Brisbane AI",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
 
 from src.core import (
     DrosophilaCommuteBrain,
@@ -18,21 +31,22 @@ from src.simulation import BrisbaneTransitSimulator, BRISBANE_CORRIDORS
 from src.visualization import DrosophilaConnectomeVisualizer
 from src.ui.styles import inject_custom_styles
 from src.ui.sidebar import render_sidebar
-from src.ui.tabs import (
-    render_tab1_connectome,
-    render_tab2_grounding,
-    render_tab3_calibration_tmr,
-    render_tab4_core_corridors,
-    render_tab5_validation_routes,
-    render_tab6_conclusions,
-    render_tab7_database,
-)
 
-st.set_page_config(
-    page_title="Drosophila Connectome Transit Simulator | Brisbane AI",
-    layout="wide",
-    initial_sidebar_state="collapsed"
-)
+try:
+    from src.ui.tabs import (
+        render_tab1_connectome,
+        render_tab2_grounding,
+        render_tab3_calibration_tmr,
+        render_tab4_core_corridors,
+        render_tab5_validation_routes,
+        render_tab6_conclusions,
+        render_tab7_database,
+    )
+except Exception as _import_err:
+    import traceback
+    st.error(f"Startup Import Error: {_import_err}")
+    st.code(traceback.format_exc())
+    st.stop()
 
 # Custom Styling
 inject_custom_styles()

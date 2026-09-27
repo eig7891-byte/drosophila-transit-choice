@@ -5,6 +5,12 @@ import pytest
 from src.ui.styles import CUSTOM_CSS, inject_custom_styles
 from src.ui.tabs import (
     render_tab1_connectome,
+    render_tab2_grounding,
+    render_tab3_calibration_tmr,
+    render_tab4_core_corridors,
+    render_tab5_validation_routes,
+    render_tab6_conclusions,
+    render_tab7_database,
     render_tab2_archetypes,
     render_tab3_phenomena,
     render_tab4_society_setup,
@@ -24,9 +30,15 @@ def test_custom_styles_defined():
     assert callable(inject_custom_styles)
 
 def test_tab_renderers_callable():
-    """Confirms all 8 decomposed tab renderers are callable functions."""
+    """Confirms all chapter and legacy tab renderers are callable functions."""
     tabs = [
         render_tab1_connectome,
+        render_tab2_grounding,
+        render_tab3_calibration_tmr,
+        render_tab4_core_corridors,
+        render_tab5_validation_routes,
+        render_tab6_conclusions,
+        render_tab7_database,
         render_tab2_archetypes,
         render_tab3_phenomena,
         render_tab4_society_setup,
