@@ -20,13 +20,12 @@ from src.ui.styles import inject_custom_styles
 from src.ui.sidebar import render_sidebar
 from src.ui.tabs import (
     render_tab1_connectome,
-    render_tab2_archetypes,
-    render_tab3_phenomena,
-    render_tab4_society_setup,
-    render_tab5_calibration,
-    render_tab6_whitepaper,
-    render_tab7_future,
-    render_tab8_spatial_equity,
+    render_tab2_grounding,
+    render_tab3_calibration_tmr,
+    render_tab4_core_corridors,
+    render_tab5_validation_routes,
+    render_tab6_conclusions,
+    render_tab7_database,
 )
 
 st.set_page_config(
@@ -98,55 +97,50 @@ def main():
         </div>
         """, unsafe_allow_html=True)
 
-    # Tabs definition
+    # Tabs definition - 1:1 Aligned with reports/brisbane_transit_report_en.md (7 Chapters)
     tab_titles_en = [
-        "1. 3D Connectome",
-        "2. Telemetry Arena",
-        "3. Curious Phenomena",
-        "4. Population Setup",
-        "5. Simulation Results",
-        "6. Policy White Paper",
-        "7. Future Horizons",
-        "8. Suburb Spatial Equity"
+        "1. Model Architecture & Connectome",
+        "2. Empirical Grounding & Context",
+        "3. Calibration & TMR Limitations",
+        "4. Core Corridors (Springwood)",
+        "5. Out-of-Sample Validation (R60 & R66)",
+        "6. Engineering Conclusions & Strengths",
+        "7. Local Empirical Database"
     ]
     tab_titles_zh = [
-        "1. 3D 神經解剖",
-        "2. 動態遙測舞台",
-        "3. 反常現象洞察",
-        "4. 萬人群體設定",
-        "5. 萬人模擬結果",
-        "6. 交通政策白皮書",
-        "7. 未來路網願景",
-        "8. 生活圈路權診斷"
+        "1. 模型架構與神經連接體",
+        "2. 實證大數據與政策背景",
+        "3. 參數校準與傳統預測局限",
+        "4. 核心走廊對決 (Springwood)",
+        "5. 盲測驗證 (Route 60 & 66)",
+        "6. 工程結論與模型優勢",
+        "7. 本地實證資料庫 (SQLite)"
     ]
 
-    t_home, t_arena, t_phenom, t_pop_setup, t_pop_results, t_whitepaper, t_future, t_equity = st.tabs(
+    t_ch1, t_ch2, t_ch3, t_ch4, t_ch5, t_ch6, t_ch7 = st.tabs(
         tab_titles_en if sb.is_en else tab_titles_zh
     )
 
-    with t_home:
+    with t_ch1:
         render_tab1_connectome(viz, sb.eval_res, sb.is_en)
 
-    with t_arena:
-        render_tab2_archetypes(sb.is_en)
+    with t_ch2:
+        render_tab2_grounding(sb.is_en)
 
-    with t_phenom:
-        render_tab3_phenomena(sb.is_en)
+    with t_ch3:
+        render_tab3_calibration_tmr(sb.is_en)
 
-    with t_pop_setup:
-        render_tab4_society_setup(study_data, sb.is_en)
+    with t_ch4:
+        render_tab4_core_corridors(sb.is_en)
 
-    with t_pop_results:
-        render_tab5_calibration(study_data, sb.is_en)
+    with t_ch5:
+        render_tab5_validation_routes(sb.is_en)
 
-    with t_whitepaper:
-        render_tab6_whitepaper(sb.is_en)
+    with t_ch6:
+        render_tab6_conclusions(study_data, sb.is_en)
 
-    with t_future:
-        render_tab7_future(sb.is_en)
-
-    with t_equity:
-        render_tab8_spatial_equity(sb.is_en)
+    with t_ch7:
+        render_tab7_database(sb.is_en)
 
     # Footer
     st.markdown("---")
