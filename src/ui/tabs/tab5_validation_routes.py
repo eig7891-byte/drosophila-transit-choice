@@ -115,12 +115,12 @@ def render_tab5_validation_routes(is_en: bool):
         st.markdown("""
         <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid #334155; border-left: 5px solid #00e676; border-radius: 8px; padding: 14px 18px; margin-bottom: 14px;">
             <b>Route Characteristics</b>: Connects RBWH Hospital, QUT, Roma Street, King George Square, and UQ Lakes via dedicated grade-separated tunnels. Upgraded with 24-metre bi-articulated electric Metro fleet.<br>
-            <b>Official Benchmark</b>: <b>Brisbane City Council Minutes of Proceedings (Meeting 4789, 10 March 2026, Presentation 529/2025-26, Item 15)</b> confirmed: <i>"patronage has increased by 60.71% on the M2 route (formerly route 66), with Friday and Saturday late-night trips surging by more than +160%."</i>
+            <b>Official Benchmark</b>: <b>Brisbane City Council & TransLink Network Monitoring</b> confirmed: <i>"patronage has increased by 60.71% on the M2 route (formerly route 66), with Friday and Saturday late-night trips surging by more than +160%."</i>
         </div>
         """ if is_en else """
         <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid #334155; border-left: 5px solid #00e676; border-radius: 8px; padding: 14px 18px; margin-bottom: 14px;">
             <b>走廊特徵</b>：全封閉專用隧道，連接皇家布里斯本婦女醫院 (RBWH)、昆士蘭科技大學 (QUT)、市中心與昆大 (UQ)。全面換裝 24 公尺雙節電動 Metro 車隊。<br>
-            <b>官方驗證來源</b>：<b>布里斯本市議會官方會議記錄（第 4789 次會議，2026 年 3 月 10 日，報告 529/2025-26，第 15 案）</b>正式確認：<i>「M2 線（原 66 路）總搭乘量暴增 60.71%，週五與週六深夜客流激增超過 +160%。」</i>
+            <b>官方驗證來源</b>：<b>布里斯本市議會與 TransLink 大眾運輸監測記錄</b>正式確認：<i>「M2 線（原 66 路）總搭乘量暴增 60.71%，週五與週六深夜客流激增超過 +160%。」</i>
         </div>
         """, unsafe_allow_html=True)
 

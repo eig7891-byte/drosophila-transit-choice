@@ -308,7 +308,7 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
         * **優化演算法 (Optimizer)**: 採用限制性擬牛頓法 **SciPy `L-BFGS-B`** 進行多維度數值收斂，設定生理邊界（如突觸權重界於 0.05 至 0.60，非線性疲勞指數界於 1.1 至 2.2）。
 
         **2. 官方數據溯源憑證 (Official Data Provenance)**:
-        * 昆士蘭政府開放資料庫：`data.qld.gov.au/dataset/translink-go-card-journey-trips`
+        * 昆士蘭政府開放資料庫：`data.qld.gov.au/dataset/translink-origin-destination-trips-2022-onwards`
           * 2024 年 7 月檔案：`202407(Jul) TL Org-Dest Trips.csv` (11,749,157 筆交易)
           * 2024 年 8 月檔案：`202408(Aug) TL Org-Dest Trips.csv` (13,023,814 筆交易)
         * 昆士蘭交通與主幹道路部 (TMR) / Translink 官方季報：
@@ -322,7 +322,7 @@ def render_tab5_calibration(study_data: dict, is_en: bool):
         * **Optimizer**: Constrained **SciPy `L-BFGS-B`** solver with physiological bounds ($w \in [0.05, 0.60]$, exponent $\in [1.1, 2.2]$).
 
         **2. Official Data Provenance**:
-        * Queensland Government Open Data: `data.qld.gov.au/dataset/translink-go-card-journey-trips`
+        * Queensland Government Open Data: `data.qld.gov.au/dataset/translink-origin-destination-trips-2022-onwards`
           * July 2024 Baseline: `202407(Jul) TL Org-Dest Trips.csv` (11,749,157 trips)
           * August 2024 50c Onset: `202408(Aug) TL Org-Dest Trips.csv` (13,023,814 trips)
         * Translink Quarterly Patronage & Customer Experience Report:

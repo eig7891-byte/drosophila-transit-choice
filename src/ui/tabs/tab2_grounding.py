@@ -33,32 +33,32 @@ def render_tab2_grounding(is_en: bool):
     with col_m3:
         st.metric("TransLink Quarterly Report" if is_en else "TransLink 官方季報", "37 Worksheets" if is_en else "37 張工作表", "Q2 2025-26 Official" if is_en else "Q2 2025-26 官方認證")
     with col_m4:
-        st.metric("Outer Suburb Car Ownership" if is_en else "外圍郊區車輛持有率", "95.6%", "ABS 2021 Census (Springwood)" if is_en else "澳洲統計局人口普查")
+        st.metric("Outer Suburb Car Ownership" if is_en else "外圍郊區車輛持有率", "95.2%", "ABS 2021 Census (Springwood)" if is_en else "澳洲統計局人口普查")
 
     data_sources_table = [
         {
-            "Dataset / Record" if is_en else "官方資料庫 / 紀錄": "TransLink Go Card Journey Trips (Queensland Open Data)",
+            "Dataset / Record" if is_en else "官方資料庫 / 紀錄": "TransLink Origin-Destination Trips (Queensland Open Data)",
             "Coverage / Size" if is_en else "涵蓋範圍 / 筆數": "24.8M Origin-Destination transactions (Jul–Aug 2024)",
             "Role in Model" if is_en else "模型中之用途": "Calibrates baseline mode share and empirical route ridership elasticity",
-            "Official Source / Link" if is_en else "認證網址": "data.qld.gov.au/dataset/translink-go-card-journey-trips"
+            "Official Source / Link" if is_en else "認證網址": "data.qld.gov.au/dataset/translink-origin-destination-trips-2022-onwards"
         },
         {
-            "Dataset / Record" if is_en else "官方資料庫 / 紀錄": "Translink Division Quarterly Reports (Performance & Patronage)",
-            "Coverage / Size" if is_en else "涵蓋範圍 / 筆數": "424 quarterly records across Bus, Train, Ferry, Tram (2014-2026)",
+            "Dataset / Record" if is_en else "官方資料庫 / 紀錄": "Translink Division Performance Reports & Dashboard",
+            "Coverage / Size" if is_en else "涵蓋範圍 / 筆數": "Quarterly records across Bus, Train, Ferry, Tram (2014-2026)",
             "Role in Model" if is_en else "模型中之用途": "Provides long-term post-COVID trends and 50c policy era benchmarking",
-            "Official Source / Link" if is_en else "認證網址": "publications.qld.gov.au/dataset/translink-division-quarterly-reports"
+            "Official Source / Link" if is_en else "認證網址": "translink.com.au/about-translink/reports-and-publications/performance"
         },
         {
             "Dataset / Record" if is_en else "官方資料庫 / 紀錄": "PT Performance & Accessibility Report (Q2 2025-26)",
             "Coverage / Size" if is_en else "涵蓋範圍 / 筆數": "37 worksheets, 4,209 rows of OTR reliability and CE satisfaction",
             "Role in Model" if is_en else "模型中之用途": "Ground truth for on-time running (OTR) and passenger experience",
-            "Official Source / Link" if is_en else "認證網址": "Queensland Department of Transport and Main Roads (TMR)"
+            "Official Source / Link" if is_en else "認證網址": "tmr.qld.gov.au/business-industry/Technical-standards-publications"
         },
         {
             "Dataset / Record" if is_en else "官方資料庫 / 紀錄": "Australian Bureau of Statistics (ABS 2021 Census)",
-            "Coverage / Size" if is_en else "涵蓋範圍 / 筆數": "Springwood / Logan SA2 demographic profiles",
-            "Role in Model" if is_en else "模型中之用途": "Grounds 10,000-agent demographic asset gating (95.6% car ownership)",
-            "Official Source / Link" if is_en else "認證網址": "abs.gov.au/census/find-census-data/quickstats/2021/SAL32626"
+            "Coverage / Size" if is_en else "涵蓋範圍 / 筆數": "Springwood SAL32635 demographic & vehicle profile",
+            "Role in Model" if is_en else "模型中之用途": "Grounds 10,000-agent demographic asset gating (95.2% car ownership)",
+            "Official Source / Link" if is_en else "認證網址": "abs.gov.au/census/find-census-data/quickstats/2021/SAL32635"
         },
         {
             "Dataset / Record" if is_en else "官方資料庫 / 紀錄": "FlyWire Whole-Brain Connectome (Nature 2024)",

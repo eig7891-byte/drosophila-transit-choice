@@ -10,11 +10,11 @@ def render_tab4_society_setup(study_data: dict, is_en: bool):
     st.markdown("## " + (" 10,000-Commuter Population & Spatial Setup" if is_en else " 萬人群體架構、載具持有與空間佈局設定"))
     st.markdown(
         "Standard transportation planning models assume unconstrained access to all travel modes. In reality, commuter choices are strictly governed by household vehicle availability and physical urban geography. "
-        "Grounded in **Australian Bureau of Statistics (ABS 2021 Census QuickStats: SAL32626)** and **Queensland Department of Transport and Main Roads (TMR)** empirical datasets, "
+        "Grounded in **Australian Bureau of Statistics (ABS 2021 Census QuickStats: SAL32635)** and **Queensland Department of Transport and Main Roads (TMR)** empirical datasets, "
         "this page documents the three fundamental pillars configured for the 10,000-commuter synthetic population: **Commuter Archetype Profiles**, **Asset Ownership Rates (Choice Set Gating)**, and **Spatial Corridor Layouts**."
         if is_en else
         "傳統交通規劃模型通常預設所有市民皆具備使用所有運具之權利。在真實世界中，通勤決策嚴格受到家戶載具持有狀態與都市實體地理空間之約束。"
-        "本頁面完整呈現基於**澳洲統計局 (ABS 2021 Census QuickStats: SAL32626)** 與 **昆士蘭交通與主幹道部 (TMR)** 官方實證人口統計學數據，"
+        "本頁面完整呈現基於**澳洲統計局 (ABS 2021 Census QuickStats: SAL32635)** 與 **昆士蘭交通與主幹道部 (TMR)** 官方實證人口統計學數據，"
         "為 10,000 名虛擬市民所配置的三大核心基石：**【角色設定】**、**【數據設定 (持有約束)】** 與 **【位置設定 (七大通勤走廊)】**。"
     )
 

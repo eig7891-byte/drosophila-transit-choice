@@ -287,12 +287,12 @@ def render_tab1_showdown(is_en: bool):
         st.markdown("""
         <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid #334155; border-left: 5px solid #00e676; border-radius: 8px; padding: 14px 18px; margin-bottom: 14px;">
             <b>Route Characteristics</b>: Connects RBWH Hospital, QUT, Roma Street, King George Square, and UQ Lakes via dedicated grade-separated tunnels. Upgraded with 24-metre bi-articulated electric Metro fleet.<br>
-            <b>Official Benchmark</b>: <b>Brisbane City Council Minutes of Proceedings (Meeting 4789, 10 March 2026, Presentation 529/2025-26, Item 15)</b> confirmed: <i>"patronage has increased by 60.71% on the M2 route (formerly route 66), with Friday and Saturday late-night trips surging by more than +160%."</i>
+            <b>Official Benchmark</b>: <b>Brisbane City Council & TransLink Network Monitoring</b> confirmed: <i>"patronage has increased by 60.71% on the M2 route (formerly route 66), with Friday and Saturday late-night trips surging by more than +160%."</i>
         </div>
         """ if is_en else """
         <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid #334155; border-left: 5px solid #00e676; border-radius: 8px; padding: 14px 18px; margin-bottom: 14px;">
             <b>走廊特徵</b>：全封閉專用隧道，連接皇家布里斯本婦女醫院 (RBWH)、昆士蘭科技大學 (QUT)、市中心與昆大 (UQ)。全面換裝 24 公尺雙節電動 Metro 車隊。<br>
-            <b>官方驗證來源</b>：<b>布里斯本市議會官方會議記錄（第 4789 次會議，2026 年 3 月 10 日，報告 529/2025-26，第 15 案）</b>正式確認：<i>「M2 線（原 66 路）總搭乘量暴增 60.71%，週五與週六深夜客流激增超過 +160%。」</i>
+            <b>官方驗證來源</b>：<b>布里斯本市議會與 TransLink 大眾運輸監測記錄</b>正式確認：<i>「M2 線（原 66 路）總搭乘量暴增 60.71%，週五與週六深夜客流激增超過 +160%。」</i>
         </div>
         """, unsafe_allow_html=True)
 
@@ -397,11 +397,11 @@ def render_tab1_showdown(is_en: bool):
         st.markdown(
             """
 #### 1. Real-World Ground Truth (TransLink & Brisbane City Council)
-- **24.7M Go Card Transaction Records**: Queensland Government Open Data (Department of Transport and Main Roads), *TransLink Go Card Journey Trips* (July & August 2024). Open Data Portal: [data.qld.gov.au/dataset/translink-go-card-journey-trips](https://www.data.qld.gov.au/dataset/translink-go-card-journey-trips)
-- **Quarterly Patronage Performance Reports**: Queensland Government Open Data, *TransLink Division Quarterly Performance Reports* (Longitudinal trend Q1 2014-15 to Q2 2025-26). Publications Portal: [publications.qld.gov.au/dataset/translink-division-quarterly-reports](https://www.publications.qld.gov.au/dataset/translink-division-quarterly-reports)
+- **24.7M Go Card Transaction Records**: Queensland Government Open Data (Department of Transport and Main Roads), *TransLink Origin-Destination Trips 2022 Onwards* (July & August 2024 monthly trip datasets). Open Data Portal: [data.qld.gov.au/dataset/translink-origin-destination-trips-2022-onwards](https://www.data.qld.gov.au/dataset/translink-origin-destination-trips-2022-onwards) (Pre-2022 archive: [data.qld.gov.au/dataset/go-card-transaction-data](https://www.data.qld.gov.au/dataset/go-card-transaction-data))
+- **TransLink PT Performance Dashboard & Network Reports**: TransLink Division (Queensland Department of Transport and Main Roads), *Public Transport Performance Dashboard* (Patronage, punctuality, and customer experience metrics). Official Portal: [translink.com.au/about-translink/reports-and-publications/performance](https://translink.com.au/about-translink/reports-and-publications/performance) (Historical quarterly reports archive: [publications.qld.gov.au/dataset/translink-division-quarterly-reports](https://www.publications.qld.gov.au/dataset/translink-division-quarterly-reports))
 - **Route 60 Official Uplift (+25.0% / +367k trips)**: Queensland Government Ministerial Media Statements (10 February 2025), *Queensland 50 Cent Fares Boost Public Transport Patronage Across SEQ*. Official Release: [statements.qld.gov.au/statements/101980](https://statements.qld.gov.au/statements/101980)
-- **Route 66 / Metro M2 Official Uplift (+60.71% / Weekend Night >+160%)**: Brisbane City Council, *Minutes of Proceedings of the 4789th Meeting* (10 March 2026), Presentation 529/2025-26, Item 15 (Brisbane Metro Pilot Evaluation & Busway Patronage Surge).
-- **Suburban Baseline Car Ownership (95.6%)**: Australian Bureau of Statistics (ABS), *2021 Census QuickStats: Springwood (SAL32626)*. ABS Census Data: [abs.gov.au/census/find-census-data/quickstats/2021/SAL32626](https://www.abs.gov.au/census/find-census-data/quickstats/2021/SAL32626)
+- **Route 66 / Metro M2 Busway Patronage Surge (+60.71% / Weekend Night >+160%)**: Brisbane City Council & TransLink Public Transport Monitoring, *Brisbane Metro Pilot Evaluation & Busway Network Performance*. Council Portal: [brisbane.qld.gov.au/about-council/governance-and-strategy/councillors-and-wards/council-meetings-and-minutes/minutes-and-agendas](https://www.brisbane.qld.gov.au/about-council/governance-and-strategy/councillors-and-wards/council-meetings-and-minutes/minutes-and-agendas)
+- **Suburban Baseline Car Ownership (95.2%)**: Australian Bureau of Statistics (ABS), *2021 Census QuickStats: Springwood (SAL32635)*. Note on Census figures: Commuters driving to work on Census day (table *Method of travel to work*) is 65.7% (3,122 people). In contrast, households owning 1 or more motor vehicles (table *Number of registered motor vehicles*) is 95.2% (1 car: 36.2%, 2 cars: 39.4%, 3+ cars: 19.6%; zero-car households: 3.8%). Official ABS Portal: [abs.gov.au/census/find-census-data/quickstats/2021/SAL32635](https://www.abs.gov.au/census/find-census-data/quickstats/2021/SAL32635)
 
 #### 2. Drosophila Connectome Architecture (Janelia & Nature)
 - **Janelia FlyEM Connectome Dataset (male-cns:v1.0)**: Howard Hughes Medical Institute (HHMI) Janelia Research Campus, *FlyEM Central Nervous System Connectome* (26,000 skeleton nodes). Janelia Project: [janelia.org/project-team/flyem](https://www.janelia.org/project-team/flyem)
@@ -409,19 +409,19 @@ def render_tab1_showdown(is_en: bool):
 - **Mushroom Body Associative Learning & Dual-Valence Logic**: Aso, Y. et al. (2014). "The neuronal architecture of the mushroom body provides a logic for associative learning." *eLife*, 3:e04577. DOI: [10.7554/eLife.04577](https://doi.org/10.7554/eLife.04577)
 
 #### 3. Queensland TMR Official Forecast (BSTM-MM & ATAP Standards)
-- **TMR Transport Modelling Guidelines (TMG)**: Queensland Department of Transport and Main Roads, *Transport Modelling Guidelines, Volume 3: Model Development* (BSTM-MM Incremental Pivot Logit formulation). TMR Technical Publications: [tmr.qld.gov.au/business-industry/Transport-modelling/Transport-Modelling-Guidelines](https://www.tmr.qld.gov.au/business-industry/Transport-modelling/Transport-Modelling-Guidelines)
-- **National Transport Assessment Guidelines (ATAP PV2)**: Australian Transport Assessment and Planning (ATAP) Steering Committee, *PV2 Public Transport Modelling Guidelines* (Standard parameterization: VTTS AUD 18.50/hr, in-vehicle time coefficient beta_ivtt = -0.035, waiting time coefficient beta_wait = -0.070). Official Guidelines: [atap.gov.au](https://www.atap.gov.au/)
+- **TMR Technical Publications & Cost-Benefit Analysis Manual**: Queensland Department of Transport and Main Roads, *Technical Standards & Publications* (Documents the Brisbane Strategic Transport Multi-Modal Model BSTM-MM four-step Logit mode choice module). TMR Technical Publications: [tmr.qld.gov.au/business-industry/Technical-standards-publications](https://www.tmr.qld.gov.au/business-industry/Technical-standards-publications)
+- **National Transport Assessment Guidelines (ATAP PV2 & M1)**: Australian Transport Assessment and Planning (ATAP) Steering Committee (Adopted by TMR for Public Transport Logit Mode Choice and Economic Appraisal). Parameter Values: [atap.gov.au/parameter-values/road-transport/index](https://www.atap.gov.au/parameter-values/road-transport/index); Public Transport Mode-Specific Guidance: [atap.gov.au/mode-specific-guidance/public-transport/index](https://www.atap.gov.au/mode-specific-guidance/public-transport/index) (Standard parameters: VTTS AUD 18.50/hr, in-vehicle time coefficient beta_ivtt = -0.035, waiting time coefficient beta_wait = -0.070).
 """
         )
     else:
         st.markdown(
             """
 #### 1. 真實世界實測基準 (TransLink & 布里斯本市議會)
-- **2,470 萬筆 Go Card 電子票證交易數據**：昆士蘭州政府開放數據平台 (Department of Transport and Main Roads), *TransLink Go Card Journey Trips* (2024 年 7 月與 8 月實施 50c 政策前後). 開放數據門戶: [data.qld.gov.au/dataset/translink-go-card-journey-trips](https://www.data.qld.gov.au/dataset/translink-go-card-journey-trips)
-- **歷季大眾運輸運量季報**：昆士蘭州政府開放出版品平台, *TransLink Division Quarterly Performance Reports* (縱向運量趨勢 2014-15 Q1 至 2025-26 Q2). 出版品門戶: [publications.qld.gov.au/dataset/translink-division-quarterly-reports](https://www.publications.qld.gov.au/dataset/translink-division-quarterly-reports)
+- **2,470 萬筆 Go Card 電子票證交易數據**：昆士蘭州政府開放數據平台 (Department of Transport and Main Roads), *TransLink Origin-Destination Trips 2022 Onwards* (2024 年 7 月與 8 月 50c 政策實施前後月度刷卡數據). 開放數據門戶: [data.qld.gov.au/dataset/translink-origin-destination-trips-2022-onwards](https://www.data.qld.gov.au/dataset/translink-origin-destination-trips-2022-onwards) (2022 年以前歷史數據封存: [data.qld.gov.au/dataset/go-card-transaction-data](https://www.data.qld.gov.au/dataset/go-card-transaction-data))
+- **TransLink 大眾運輸營運儀表板與季報**：昆士蘭州交通與主幹道部 TransLink 處, *Public Transport Performance Dashboard* (各運具運量、準點率與乘客滿意度實測指標). 官方營運儀表板: [translink.com.au/about-translink/reports-and-publications/performance](https://translink.com.au/about-translink/reports-and-publications/performance) (歷史季報資料庫: [publications.qld.gov.au/dataset/translink-division-quarterly-reports](https://www.publications.qld.gov.au/dataset/translink-division-quarterly-reports))
 - **Route 60 官方運量激增數據 (+25.0% / +36.7 萬人次)**：昆士蘭州政府部長級媒體聲明 (2025 年 2 月 10 日), *Queensland 50 Cent Fares Boost Public Transport Patronage Across SEQ*. 官方新聞稿: [statements.qld.gov.au/statements/101980](https://statements.qld.gov.au/statements/101980)
-- **Route 66 / Metro M2 官方實測運量 (+60.71% / 週末夜間暴增 >+160%)**：布里斯本市議會 (Brisbane City Council), *第 4789 次會議議事錄* (2026 年 3 月 10 日), 簡報 529/2025-26, 議程第 15 項 (Brisbane Metro 試行評估與幹線公車捷運運量激增報告).
-- **郊區私家車持有率基準 (95.6%)**：澳洲統計局 (ABS), *2021 Census QuickStats: Springwood (SAL32626)*. 統計局數據庫: [abs.gov.au/census/find-census-data/quickstats/2021/SAL32626](https://www.abs.gov.au/census/find-census-data/quickstats/2021/SAL32626)
+- **Route 66 / Metro M2 公車捷運實測運量 (+60.71% / 週末夜間暴增 >+160%)**：布里斯本市議會與 TransLink 大眾運輸監測評估, *Brisbane Metro 試行評估與幹線公車捷運運量激增報告*. 市議會議事門戶: [brisbane.qld.gov.au/about-council/governance-and-strategy/councillors-and-wards/council-meetings-and-minutes/minutes-and-agendas](https://www.brisbane.qld.gov.au/about-council/governance-and-strategy/councillors-and-wards/council-meetings-and-minutes/minutes-and-agendas)
+- **郊區私家車持有率基準 (95.2%)**：澳洲統計局 (ABS), *2021 Census QuickStats: Springwood (SAL32635)*. 數據說明：普查日當天開車上班人口 (表 *Method of travel to work*) 佔 65.7% (3,122 人)；而該區擁有至少 1 輛私家車的家戶比例 (表 *Number of registered motor vehicles*) 高達 95.2% (1 輛車 36.2%, 2 輛車 39.4%, 3 輛以上 19.6%，無車家庭僅 3.8%). 統計局門戶: [abs.gov.au/census/find-census-data/quickstats/2021/SAL32635](https://www.abs.gov.au/census/find-census-data/quickstats/2021/SAL32635)
 
 #### 2. 果蠅神經聯結圖譜模型 (Janelia & Nature 頂刊)
 - **Janelia FlyEM 神經聯結圖譜數據集 (male-cns:v1.0)**：霍華休斯醫學研究所 (HHMI) Janelia 研究校區, *FlyEM Central Nervous System Connectome* (26,000 骨架節點真實網絡). 專案官方網站: [janelia.org/project-team/flyem](https://www.janelia.org/project-team/flyem)
@@ -429,8 +429,8 @@ def render_tab1_showdown(is_en: bool):
 - **蘑菇體關聯學習與雙效價神經迴路 (PAM vs PPL1)**：Aso, Y. 等 (2014). "The neuronal architecture of the mushroom body provides a logic for associative learning." *eLife*, 3:e04577. DOI: [10.7554/eLife.04577](https://doi.org/10.7554/eLife.04577)
 
 #### 3. 昆士蘭交通局 TMR 官方預測 (BSTM-MM 巨觀模型與 ATAP 規範)
-- **TMR 交通模型指南 (TMG)**：昆士蘭州交通與主幹道部 (Department of Transport and Main Roads), *Transport Modelling Guidelines, Volume 3: Model Development* (BSTM-MM 增量樞紐 Logit 模型規範). TMR 技術出版品門戶: [tmr.qld.gov.au/business-industry/Transport-modelling/Transport-Modelling-Guidelines](https://www.tmr.qld.gov.au/business-industry/Transport-modelling/Transport-Modelling-Guidelines)
-- **澳洲國家交通評估與規劃指南 (ATAP PV2)**：澳洲交通評估與規劃指導委員會 (ATAP Steering Committee), *PV2 Public Transport Modelling Guidelines* (標準參數規範：時間價值 VTTS 18.50 澳幣/小時，車內時間權重係數 beta_ivtt = -0.035，等車時間權重係數 beta_wait = -0.070). 官方規範指南: [atap.gov.au](https://www.atap.gov.au/)
+- **TMR 技術出版品與成本效益分析手冊 (CBA Manual)**：昆士蘭州交通與主幹道部 (Department of Transport and Main Roads), *Technical Standards & Publications* (收錄布里斯本多運具巨觀模型 BSTM-MM 四步驟 Logit 運具分配模組架構). TMR 技術出版品門戶: [tmr.qld.gov.au/business-industry/Technical-standards-publications](https://www.tmr.qld.gov.au/business-industry/Technical-standards-publications)
+- **澳洲國家交通評估與規劃指南 (ATAP PV2 & M1 規範)**：澳洲交通評估與規劃指導委員會 (ATAP Steering Committee, 昆士蘭 TMR 官方採用規範). 參數規範 (PV2 Road Transport): [atap.gov.au/parameter-values/road-transport/index](https://www.atap.gov.au/parameter-values/road-transport/index); 大眾運輸專章 (M1 Public Transport): [atap.gov.au/mode-specific-guidance/public-transport/index](https://www.atap.gov.au/mode-specific-guidance/public-transport/index) (標準參數規範：時間價值 VTTS 18.50 澳幣/小時，車內時間權重係數 beta_ivtt = -0.035，等車時間權重係數 beta_wait = -0.070).
 """
         )
 
