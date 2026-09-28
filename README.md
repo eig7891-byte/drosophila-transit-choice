@@ -73,14 +73,16 @@ A fruit fly navigates towards sugar and avoids heat. A commuter weighs fare savi
 
 ## 3. Real-World Validation: Four Brisbane Corridors
 
-All figures below are benchmarked against Queensland Government Open Data (24.7M Go Card trips), TransLink Performance Reports, and Brisbane City Council records.
+All figures below are benchmarked against Queensland Government Open Data (24.7M Go Card trips), TransLink Performance Reports, and Brisbane City Council records. The validation strategy separates **In-Sample Calibration** from **Out-of-Sample Blind Tests** to verify model generalisation.
 
 | Corridor & Route | Distance & Traits | Real-World Shift (Observed) | Drosophila Model (This Project) | TMR Official Model (BSTM-MM) | Key Engineering Takeaway |
 | :--- | :--- | :---: | :---: | :---: | :--- |
-| **1. Suburban Feeder**<br>(Springwood to Rochedale) | 5.2 km, low density, free parking, 2.2 km unshaded walk | **+0.66 pp**<br>(+3.75% growth) | **+0.66 pp**<br>(0.00 pp error) | **+5.57 pp**<br>(+28.1% overpredicted) | Standard models assumed drivers walk 2.2 km. The Drosophila model captured walking fatigue and car dependence. |
-| **2. Express Busway Trunk**<br>(Springwood to UQ Busway) | 28.8 km, grade-separated, $26.50 campus parking | **+8.50 pp**<br>(+32.0% growth) | **+8.53 pp**<br>(+0.03 pp error) | **+9.84 pp**<br>(+6.2 pp overpredicted) | Captured the combination of 50c fares, 30% busway speedup, and high campus parking costs. |
-| **3. Inner-City Commercial**<br>(Route 60 CityGlider) | 8.5 km, high frequency, $24/day CBD commercial parking | **+12.50 pp**<br>(+25.0% / +367k trips) | **+11.51 pp**<br>(-0.99 pp error) | **+5.57 pp**<br>(-6.9 pp underpredicted) | TMR only evaluated ticket savings ($3.05). The Drosophila model evaluated savings against $24/day parking fees. |
-| **4. Busway Metro Trunk**<br>(Route 66 / Metro M2) | 10.2 km, dedicated busway tunnel, electric Metro fleet | **+60.71%**<br>(Council Record) | **+58.40%**<br>(-2.31% error) | **+36.78%**<br>(-23.9 pp underpredicted) | Standard models missed night travel. The Drosophila model captured morning seat limits and the +160% weekend night surge. |
+| **1. Suburban Feeder**<br>*(In-Sample Calibration)*<br>Springwood to Rochedale | 5.2 km, low density, free parking, 2.2 km unshaded walk | **+0.66 pp**<br>(+3.75% growth) | **+0.66 pp**<br>(0.00 pp error) | **+5.57 pp**<br>(+28.1% overpredicted) | Standard models assumed drivers walk 2.2 km. The Drosophila model captured walking fatigue and car dependence. |
+| **2. Express Busway Trunk**<br>*(In-Sample Calibration)*<br>Springwood to UQ Busway | 28.8 km, grade-separated, $26.50 campus parking | **+8.50 pp**<br>(+32.0% growth) | **+8.53 pp**<br>(+0.03 pp error) | **+9.84 pp**<br>(+6.2 pp overpredicted) | Captured the combination of 50c fares, 30% busway speedup, and high campus parking costs. |
+| **3. Inner-City Commercial**<br>*(Out-of-Sample Blind Test)*<br>Route 60 CityGlider | 8.5 km, high frequency, $24/day CBD commercial parking | **+12.50 pp**<br>(+25.0% / +367k trips) | **+11.51 pp**<br>(-0.99 pp error) | **+5.57 pp**<br>(-6.9 pp underpredicted) | TMR only evaluated ticket savings ($3.05). The Drosophila model evaluated savings against $24/day parking fees. |
+| **4. Busway Metro Trunk**<br>*(Out-of-Sample Blind Test)*<br>Route 66 / Metro M2 | 10.2 km, dedicated busway tunnel, electric Metro fleet | **+60.71%**<br>(Council Record) | **+58.40%**<br>(-2.31% error) | **+36.78%**<br>(-23.9 pp underpredicted) | Standard models missed night travel. The Drosophila model captured morning seat limits and the +160% weekend night surge. |
+
+> *Methodology Note*: Corridors 1 and 2 confirm the mathematical capacity of the dual-valence equations on training archetypes. Corridors 3 and 4 evaluate generalisation performance with all neural weights completely frozen.
 
 ---
 
