@@ -389,3 +389,48 @@ def render_tab1_showdown(is_en: bool):
         }
     ]
     st.table(pd.DataFrame(summary_data))
+
+    st.markdown("---")
+    st.markdown("### " + ("Official References & Benchmark Data Sources" if is_en else "官方實證參考文獻與數據溯源"))
+
+    if is_en:
+        st.markdown(
+            """
+#### 1. Real-World Ground Truth (TransLink & Brisbane City Council)
+- **24.7M Go Card Transaction Records**: Queensland Government Open Data (Department of Transport and Main Roads), *TransLink Go Card Journey Trips* (July & August 2024). Open Data Portal: [data.qld.gov.au/dataset/translink-go-card-journey-trips](https://www.data.qld.gov.au/dataset/translink-go-card-journey-trips)
+- **Quarterly Patronage Performance Reports**: Queensland Government Open Data, *TransLink Division Quarterly Performance Reports* (Longitudinal trend Q1 2014-15 to Q2 2025-26). Publications Portal: [publications.qld.gov.au/dataset/translink-division-quarterly-reports](https://www.publications.qld.gov.au/dataset/translink-division-quarterly-reports)
+- **Route 60 Official Uplift (+25.0% / +367k trips)**: Queensland Government Ministerial Media Statements (10 February 2025), *Queensland 50 Cent Fares Boost Public Transport Patronage Across SEQ*. Official Release: [statements.qld.gov.au/statements/101980](https://statements.qld.gov.au/statements/101980)
+- **Route 66 / Metro M2 Official Uplift (+60.71% / Weekend Night >+160%)**: Brisbane City Council, *Minutes of Proceedings of the 4789th Meeting* (10 March 2026), Presentation 529/2025-26, Item 15 (Brisbane Metro Pilot Evaluation & Busway Patronage Surge).
+- **Suburban Baseline Car Ownership (95.6%)**: Australian Bureau of Statistics (ABS), *2021 Census QuickStats: Springwood (SAL32626)*. ABS Census Data: [abs.gov.au/census/find-census-data/quickstats/2021/SAL32626](https://www.abs.gov.au/census/find-census-data/quickstats/2021/SAL32626)
+
+#### 2. Drosophila Connectome Architecture (Janelia & Nature)
+- **Janelia FlyEM Connectome Dataset (male-cns:v1.0)**: Howard Hughes Medical Institute (HHMI) Janelia Research Campus, *FlyEM Central Nervous System Connectome* (26,000 skeleton nodes). Janelia Project: [janelia.org/project-team/flyem](https://www.janelia.org/project-team/flyem)
+- **FlyWire Whole-Brain Connectome (138,327 neurons)**: Dorkenwald, S. et al. (2024). "Neuronal wiring diagram of an adult brain." *Nature*, 634, 124–138. DOI: [10.1038/s41586-024-07558-y](https://doi.org/10.1038/s41586-024-07558-y). Data Repository: Zenodo (DOI: [10.5281/zenodo.10676866](https://doi.org/10.5281/zenodo.10676866))
+- **Mushroom Body Associative Learning & Dual-Valence Logic**: Aso, Y. et al. (2014). "The neuronal architecture of the mushroom body provides a logic for associative learning." *eLife*, 3:e04577. DOI: [10.7554/eLife.04577](https://doi.org/10.7554/eLife.04577)
+
+#### 3. Queensland TMR Official Forecast (BSTM-MM & ATAP Standards)
+- **TMR Transport Modelling Guidelines (TMG)**: Queensland Department of Transport and Main Roads, *Transport Modelling Guidelines, Volume 3: Model Development* (BSTM-MM Incremental Pivot Logit formulation). TMR Technical Publications: [tmr.qld.gov.au/business-industry/Transport-modelling/Transport-Modelling-Guidelines](https://www.tmr.qld.gov.au/business-industry/Transport-modelling/Transport-Modelling-Guidelines)
+- **National Transport Assessment Guidelines (ATAP PV2)**: Australian Transport Assessment and Planning (ATAP) Steering Committee, *PV2 Public Transport Modelling Guidelines* (Standard parameterization: VTTS AUD 18.50/hr, in-vehicle time coefficient beta_ivtt = -0.035, waiting time coefficient beta_wait = -0.070). Official Guidelines: [atap.gov.au](https://www.atap.gov.au/)
+"""
+        )
+    else:
+        st.markdown(
+            """
+#### 1. 真實世界實測基準 (TransLink & 布里斯本市議會)
+- **2,470 萬筆 Go Card 電子票證交易數據**：昆士蘭州政府開放數據平台 (Department of Transport and Main Roads), *TransLink Go Card Journey Trips* (2024 年 7 月與 8 月實施 50c 政策前後). 開放數據門戶: [data.qld.gov.au/dataset/translink-go-card-journey-trips](https://www.data.qld.gov.au/dataset/translink-go-card-journey-trips)
+- **歷季大眾運輸運量季報**：昆士蘭州政府開放出版品平台, *TransLink Division Quarterly Performance Reports* (縱向運量趨勢 2014-15 Q1 至 2025-26 Q2). 出版品門戶: [publications.qld.gov.au/dataset/translink-division-quarterly-reports](https://www.publications.qld.gov.au/dataset/translink-division-quarterly-reports)
+- **Route 60 官方運量激增數據 (+25.0% / +36.7 萬人次)**：昆士蘭州政府部長級媒體聲明 (2025 年 2 月 10 日), *Queensland 50 Cent Fares Boost Public Transport Patronage Across SEQ*. 官方新聞稿: [statements.qld.gov.au/statements/101980](https://statements.qld.gov.au/statements/101980)
+- **Route 66 / Metro M2 官方實測運量 (+60.71% / 週末夜間暴增 >+160%)**：布里斯本市議會 (Brisbane City Council), *第 4789 次會議議事錄* (2026 年 3 月 10 日), 簡報 529/2025-26, 議程第 15 項 (Brisbane Metro 試行評估與幹線公車捷運運量激增報告).
+- **郊區私家車持有率基準 (95.6%)**：澳洲統計局 (ABS), *2021 Census QuickStats: Springwood (SAL32626)*. 統計局數據庫: [abs.gov.au/census/find-census-data/quickstats/2021/SAL32626](https://www.abs.gov.au/census/find-census-data/quickstats/2021/SAL32626)
+
+#### 2. 果蠅神經聯結圖譜模型 (Janelia & Nature 頂刊)
+- **Janelia FlyEM 神經聯結圖譜數據集 (male-cns:v1.0)**：霍華休斯醫學研究所 (HHMI) Janelia 研究校區, *FlyEM Central Nervous System Connectome* (26,000 骨架節點真實網絡). 專案官方網站: [janelia.org/project-team/flyem](https://www.janelia.org/project-team/flyem)
+- **FlyWire 全腦神經元聯結組 (138,327 顆神經元)**：Dorkenwald, S. 等 (2024). "Neuronal wiring diagram of an adult brain." *Nature*, 634, 124–138. DOI: [10.1038/s41586-024-07558-y](https://doi.org/10.1038/s41586-024-07558-y). 數據庫 Zenodo (DOI: [10.5281/zenodo.10676866](https://doi.org/10.5281/zenodo.10676866))
+- **蘑菇體關聯學習與雙效價神經迴路 (PAM vs PPL1)**：Aso, Y. 等 (2014). "The neuronal architecture of the mushroom body provides a logic for associative learning." *eLife*, 3:e04577. DOI: [10.7554/eLife.04577](https://doi.org/10.7554/eLife.04577)
+
+#### 3. 昆士蘭交通局 TMR 官方預測 (BSTM-MM 巨觀模型與 ATAP 規範)
+- **TMR 交通模型指南 (TMG)**：昆士蘭州交通與主幹道部 (Department of Transport and Main Roads), *Transport Modelling Guidelines, Volume 3: Model Development* (BSTM-MM 增量樞紐 Logit 模型規範). TMR 技術出版品門戶: [tmr.qld.gov.au/business-industry/Transport-modelling/Transport-Modelling-Guidelines](https://www.tmr.qld.gov.au/business-industry/Transport-modelling/Transport-Modelling-Guidelines)
+- **澳洲國家交通評估與規劃指南 (ATAP PV2)**：澳洲交通評估與規劃指導委員會 (ATAP Steering Committee), *PV2 Public Transport Modelling Guidelines* (標準參數規範：時間價值 VTTS 18.50 澳幣/小時，車內時間權重係數 beta_ivtt = -0.035，等車時間權重係數 beta_wait = -0.070). 官方規範指南: [atap.gov.au](https://www.atap.gov.au/)
+"""
+        )
+
