@@ -4,6 +4,9 @@ Tests for UI modules, styles, tabs, and visualizer integration.
 import pytest
 from src.ui.styles import CUSTOM_CSS, inject_custom_styles
 from src.ui.tabs import (
+    render_tab1_showdown,
+    render_tab2_calibration,
+    render_tab3_sandbox,
     render_tab1_connectome,
     render_tab2_grounding,
     render_tab3_calibration_tmr,
@@ -32,6 +35,9 @@ def test_custom_styles_defined():
 def test_tab_renderers_callable():
     """Confirms all chapter and legacy tab renderers are callable functions."""
     tabs = [
+        render_tab1_showdown,
+        render_tab2_calibration,
+        render_tab3_sandbox,
         render_tab1_connectome,
         render_tab2_grounding,
         render_tab3_calibration_tmr,
@@ -109,11 +115,6 @@ def test_english_mode_ui_purity():
 
     sb = render_sidebar()
     viz = DrosophilaConnectomeVisualizer()
-    render_tab1_connectome(viz, sb.eval_res, True)
-    render_tab2_grounding(True)
-    render_tab3_calibration_tmr(True)
-    render_tab4_core_corridors(True)
-    render_tab5_validation_routes(True)
     study_data = {
         'corridors': {
             'Springwood': {'name': 'Springwood to Brisbane CBD', 'real_growth_pct': 3.75, 'drosophila_pred_pct': 3.75, 'tmr_predicted_growth_pct': 31.88, 'tmr_overprediction_pct': 28.13},
@@ -122,6 +123,18 @@ def test_english_mode_ui_purity():
             'Route66': {'name': 'Route 66 RBWH to UQ Lakes', 'real_growth_pct': 25.7, 'drosophila_pred_pct': 28.0, 'tmr_predicted_growth_pct': 31.27, 'tmr_overprediction_pct': 5.57},
         }
     }
+
+    # Render new 3-tab showcase
+    render_tab1_showdown(True)
+    render_tab2_calibration(viz, sb.eval_res, True)
+    render_tab3_sandbox(study_data, True)
+
+    # Render legacy tabs
+    render_tab1_connectome(viz, sb.eval_res, True)
+    render_tab2_grounding(True)
+    render_tab3_calibration_tmr(True)
+    render_tab4_core_corridors(True)
+    render_tab5_validation_routes(True)
     render_tab6_conclusions(study_data, True)
     render_tab7_database(True)
 

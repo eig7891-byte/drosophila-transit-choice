@@ -34,6 +34,9 @@ from src.ui.sidebar import render_sidebar
 
 try:
     from src.ui.tabs import (
+        render_tab1_showdown,
+        render_tab2_calibration,
+        render_tab3_sandbox,
         render_tab1_connectome,
         render_tab2_grounding,
         render_tab3_calibration_tmr,
@@ -111,50 +114,30 @@ def main():
         </div>
         """, unsafe_allow_html=True)
 
-    # Tabs definition - 1:1 Aligned with reports/brisbane_transit_report_en.md (7 Chapters)
+    # Tabs definition - Streamlined 3-Chapter Interactive Showcase
     tab_titles_en = [
-        "1. Model Architecture & Connectome",
-        "2. Empirical Grounding & Context",
-        "3. Calibration & TMR Limitations",
-        "4. Core Corridors (Springwood)",
-        "5. Out-of-Sample Validation (R60 & R66)",
-        "6. Engineering Conclusions & Strengths",
-        "7. Local Empirical Database"
+        "1. Corridor Showdown (Benchmark)",
+        "2. Data Provenance & Calibration",
+        "3. Policy Sandbox (Simulation)"
     ]
     tab_titles_zh = [
-        "1. 模型架構與神經連接體",
-        "2. 實證大數據與政策背景",
-        "3. 參數校準與傳統預測局限",
-        "4. 核心走廊對決 (Springwood)",
-        "5. 盲測驗證 (Route 60 & 66)",
-        "6. 工程結論與模型優勢",
-        "7. 本地實證資料庫 (SQLite)"
+        "1. 走廊實證預測對決 (Showdown)",
+        "2. 數據溯源與校準 (Calibration)",
+        "3. 政策敏感度沙盒 (Sandbox)"
     ]
 
-    t_ch1, t_ch2, t_ch3, t_ch4, t_ch5, t_ch6, t_ch7 = st.tabs(
+    t_showdown, t_calib, t_sandbox = st.tabs(
         tab_titles_en if sb.is_en else tab_titles_zh
     )
 
-    with t_ch1:
-        render_tab1_connectome(viz, sb.eval_res, sb.is_en)
+    with t_showdown:
+        render_tab1_showdown(sb.is_en)
 
-    with t_ch2:
-        render_tab2_grounding(sb.is_en)
+    with t_calib:
+        render_tab2_calibration(viz, sb.eval_res, sb.is_en)
 
-    with t_ch3:
-        render_tab3_calibration_tmr(sb.is_en)
-
-    with t_ch4:
-        render_tab4_core_corridors(sb.is_en)
-
-    with t_ch5:
-        render_tab5_validation_routes(sb.is_en)
-
-    with t_ch6:
-        render_tab6_conclusions(study_data, sb.is_en)
-
-    with t_ch7:
-        render_tab7_database(sb.is_en)
+    with t_sandbox:
+        render_tab3_sandbox(study_data, sb.is_en)
 
     # Footer
     st.markdown("---")

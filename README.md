@@ -2,7 +2,7 @@
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://drosophila-transit-choice.streamlit.app/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Tests](https://img.shields.io/badge/tests-24%2F24%20passed-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/tests-25%2F25%20passed-brightgreen.svg)]()
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Data: TransLink Q2 2025-26](https://img.shields.io/badge/Data-TransLink%20Q2%202025--26-emerald.svg)](https://translink.com.au/)
 
@@ -172,12 +172,15 @@ cd drosophila-transit-choice
 pip install -r requirements.txt
 ```
 
-### 6.2 Launch Interactive Streamlit Dashboard
+### 6.2 Launch Interactive Streamlit Dashboard (3-Chapter Showcase)
 ```bash
 streamlit run app.py
 ```
+* **Tab 1: Corridor Showdown**: 4-corridor benchmark vs TMR BSTM-MM with dynamic delta charts.
+* **Tab 2: Data & Calibration**: 24.7M Go Card transactions, SciPy MLE parameter shifts, and expandable 3D FlyEM connectome.
+* **Tab 3: Policy Sandbox**: Interactive sliders for 10,000 commuters, CO2 mitigation, and offline SQLite explorer.
 
-### 6.3 Run Automated Test Suite (24 Tests)
+### 6.3 Run Automated Test Suite (25 Tests)
 ```bash
 pytest tests -v
 ```
