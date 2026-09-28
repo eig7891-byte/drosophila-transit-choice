@@ -24,10 +24,10 @@ def render_tab1_showdown(is_en: bool):
         st.metric(
             label="Route 1: Springwood Feeder" if is_en else "走廊 1：Springwood 郊區接駁",
             value="0.00 pp Error",
-            delta="-4.96 pp vs TMR Blunder",
+            delta="-4.96 pp vs TMR Forecast",
             delta_color="normal"
         )
-        st.caption("Ground Truth: +3.75% | TMR: +31.88% (Overpredicted by +28.1%)" if is_en else "實測增幅 +3.75% | TMR 嚴重暴衝 +31.88%")
+        st.caption("Ground Truth: +3.75% | TMR: +31.88% (Overpredicted by +28.1%)" if is_en else "實測增幅 +3.75% | TMR 官方預測 +31.88%")
     with m2:
         st.metric(
             label="Route 2: UQ Busway Trunk" if is_en else "走廊 2：UQ 專用道幹線",
@@ -40,18 +40,18 @@ def render_tab1_showdown(is_en: bool):
         st.metric(
             label="Route 60: CityGlider (Blind)" if is_en else "走廊 3：Route 60 內城幹線(盲測)",
             value="-0.99 pp Error",
-            delta="+5.91 pp vs TMR Failure",
+            delta="+5.91 pp vs TMR Forecast",
             delta_color="normal"
         )
-        st.caption("Ground Truth: +25.0% | TMR: +11.12% (Severe Underestimate)" if is_en else "實測暴增 +25.0% | TMR 嚴重低估僅 +11.12%")
+        st.caption("Ground Truth: +25.0% | TMR: +11.12% (Severe Underestimate)" if is_en else "實測增幅 +25.0% | TMR 預測僅 +11.12%")
     with m4:
         st.metric(
             label="Route 66 / M2: Metro (Blind)" if is_en else "走廊 4：Route 66/M2 捷運(盲測)",
             value="-2.31% Error",
-            delta="+21.62% vs TMR Failure",
+            delta="+21.62% vs TMR Forecast",
             delta_color="normal"
         )
-        st.caption("Council: +60.71% | Model: +58.40% | Night: >+160%" if is_en else "議會公布 +60.71% | 模型 +58.40% | 深夜暴衝 >+160%")
+        st.caption("Council: +60.71% | Model: +58.40% | Night: >+160%" if is_en else "議會公布 +60.71% | 模型 +58.40% | 深夜增幅 >+160%")
 
     st.markdown("---")
 
@@ -361,7 +361,7 @@ def render_tab1_showdown(is_en: bool):
             "Drosophila Model" if is_en else "果蠅大腦模型": "+3.75% (+0.66 pp)",
             "Model Error" if is_en else "模型誤差": "0.00 pp",
             "TMR Forecast (BSTM-MM)" if is_en else "TMR 官方預測": "+31.88% (+5.57 pp)",
-            "TMR Error" if is_en else "TMR 誤差": "+28.13% (Severe Blunder)" if is_en else "+28.13% (嚴重高估暴衝)"
+            "TMR Error" if is_en else "TMR 誤差": "+28.13% (Overpredicted)" if is_en else "+28.13% (高估)"
         },
         {
             "Corridor" if is_en else "走廊路線": "Route 2: UQ Busway Trunk (28.8 km)",
