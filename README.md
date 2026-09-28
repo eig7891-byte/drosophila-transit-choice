@@ -198,4 +198,4 @@ If using this codebase or data in academic research, please cite:
 
 1. **Queensland Open Data**: TransLink Division Quarterly Performance Reports (Q1 2014–15 to Q2 2025–26), State of Queensland (Department of Transport and Main Roads).
 2. **FlyWire Connectome**: Dorkenwald, S. et al. (2024). *Neuronal wiring diagram of an adult brain*, **Nature**, 634, 124–138. [doi:10.1038/s41586-024-07558-y](https://doi.org/10.1038/s41586-024-07558-y).
-3. **Australian Bureau of Statistics**: *2021 Census QuickStats: Springwood (SAL32626)*.
+3. **Australian Bureau of Statistics**: *2021 Census QuickStats: Springwood (SAL32635)*.

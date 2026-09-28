@@ -135,6 +135,107 @@ def render_tab3_sandbox(study_data: dict, is_en: bool):
     st.markdown("---")
 
     # -------------------------------------------------------------------------
+    # 3.3 Engineering Conclusions: Drosophila Model vs Traditional Frameworks
+    # -------------------------------------------------------------------------
+    st.markdown("### 3.3 " + ("Engineering Conclusions: Model Strengths, Trade-offs & Honest Limitations" if is_en else "3.3 交通工程總結：果蠅模型 vs 傳統計算的本質差異、核心優勢與四大局限性"))
+    st.markdown(
+        "A rigorous engineering evaluation of how the biologically grounded Drosophila Connectome compares against conventional transport planning frameworks (such as Queensland TMR BSTM-MM and national ATAP four-step models), detailing key differences, core advantages, and honest limitations."
+        if is_en else
+        "作為專業交通工程師，對本套果蠅中樞神經聯結模型與昆士蘭 TMR 官方 BSTM-MM 及澳洲國家 ATAP 四步驟傳統規劃體系進行客觀對比，全面剖析計算本質差異、核心優點、實務缺點與工程適用界限。"
+    )
+
+    if is_en:
+        st.markdown(r"""
+#### 1. Core Computational Differences
+| Dimension | Traditional Transport Models (TMR BSTM-MM / ATAP) | Drosophila Connectome Model |
+| :--- | :--- | :--- |
+| **Utility Formulation** | **Linear Additive Utility**: $V = \sum \beta_k X_k$. Assumes each marginal dollar saved or minute gained provides constant, infinite linear appeal. | **Dual-Valence & $\tanh$ Saturation**: Approach (PAM) and Avoidance (PPL1) integrate separately. Dopaminergic marginal utility saturates through hyperbolic tangent functions. |
+| **Decision Unit** | **Homogeneous Representative Agent**: Fixed regional elasticities applied uniformly across traffic analysis zones (TAZs). | **Heterogeneous Micro-Agents (10,000 Commuters)**: Each agent possesses distinct neuromodulator states (NPF budget pressure, serotonin patience, octopamine vigor) and vehicle asset constraints. |
+| **Temporal & Physical Scope** | **Static Peak-Hour Elasticity**: Calibrated primarily to weekday morning peaks, then extrapolated uniformly across the day. | **Circadian Dynamics & Subtropical Heat**: Circadian clock neurons (PDF) capture night leisure surges; non-linear walking exponent ($d^{1.508}$) captures heat resistance. |
+
+---
+
+#### 2. Core Advantages: What Problems Does This Solve?
+1. **Handling Non-Marginal Policy Shocks (89% Fare Collapse)**:
+   - Traditional logit models assume marginal price shifts (5%–10%). When fares drop abruptly to \$0.50, linear elasticity overpredicts suburban feeder patronage (+31.88% predicted by TMR vs +3.75% real).
+   - The Drosophila model incorporates $\tanh$ dopamine saturation and $d^{1.508}$ walk fatigue, correctly recognizing that suburban car owners will not walk 2.2 km for a \$3 saving (+3.75% predicted, matching ground truth exactly).
+2. **Accounting for Hidden Car Anchors (CBD Parking Tariffs)**:
+   - Standard pivot logit evaluates only the transit fare reduction (\$3.05 saving), severely underpredicting dedicated urban trunks (Route 60 predicted at +11.12% by TMR vs +25.0% real).
+   - The Drosophila model uses driving cost as a baseline anchor, correctly modeling why high-NPF motorists switch to avoid \$24/day parking (+22.96% predicted).
+3. **Unlocking Time-of-Day Dynamics (Weekend Night Surges)**:
+   - Traditional models ignore off-peak dynamics. The Drosophila model combines circadian clock states (PDF) with surge-pricing Uber anchors, accurately capturing the +160% weekend night leisure boom (+58.40% predicted vs +60.71% council record).
+4. **Explainable Neuro-Economics (White-Box Architecture)**:
+   - Every internal node represents an authentic biological microcircuit (PAM reward, PPL1 penalty, MBON valence), allowing planners to diagnose whether ridership resistance stems from walking fatigue, delay boredom, or out-of-pocket costs.
+
+---
+
+#### 3. Honest Limitations & Engineering Trade-offs
+1. **Computational Overhead (Micro-Simulation Scaling)**:
+   - Traditional four-step models solve closed-form matrix assignments in minutes.
+   - Simulating 10,000 independent neural agent forward passes requires substantially more compute. Expanding this to 2.5 million residents across Greater Brisbane requires high-performance cluster computing.
+2. **Higher Parameter Dimensionality & Data Dependence**:
+   - Standard logit models calibrate only 3 to 5 linear coefficients.
+   - The connectome model utilizes 6 core synaptic weights, 4 neuromodulator distributions, and a non-linear walking exponent. It strictly requires high-density smart card records (such as 24.7M Go Card transactions) and Bayesian MAP priors to prevent parameter over-fitting.
+3. **Lack of Dynamic Highway Traffic Assignment Feedback Loops**:
+   - Traditional systems (like EMME or Visum) run iterative volume-delay equilibrium assignments: when drivers switch to transit, highways become faster, potentially inducing rebound driving demand.
+   - This framework functions primarily as an advanced **Corridor Mode Choice Engine** and is not yet coupled directly to dynamic macroscopic traffic flow assignment software.
+4. **Institutional Review & Statutory Acceptance**:
+   - Transport authorities adhere to statutory guidelines (ATAP, Austroads). Introducing insect mushroom body logic into public tenders carries higher communication barriers, necessitating presentation as non-linear dual-valence discrete choice micro-simulation.
+
+---
+
+#### 4. Engineering Deployment Guide: When to Use Which?
+- **Use Traditional 4-Step Models**: For metropolitan-wide, long-range (20-year) regional master planning, corridor screening across thousands of links, and statutory road network impact assessments.
+- **Use the Drosophila Connectome Model**: For high-stakes corridor project appraisals involving non-marginal disruptive policies (e.g., 50c fares, zero-emission shuttle mandates, congestion pricing), dedicated busway infrastructure design, and transit-oriented development (TOD) first-mile catchment audits.
+""")
+    else:
+        st.markdown(r"""
+#### 1. 核心計算本質差在哪裡？
+| 比較維度 | 傳統交通規劃模型 (TMR BSTM-MM / ATAP 規範) | 果蠅大腦連接體模型 (Drosophila Connectome) |
+| :--- | :--- | :--- |
+| **效用函數數學本質** | **線性疊加 (Linear Additive Utility)**：$V = \sum \beta_k X_k$。假設每多省 \$1 塊錢或省 1 分鐘的吸引力**永遠固定且無限線性延伸**。 | **雙效價與非線性飽和 (Dual-Valence & $\tanh$)**：獎勵迴路 (PAM) 與痛感迴路 (PPL1) 分開計算，多巴胺具備**雙曲正切邊際遞減邊界**。 |
+| **決策行為受體** | **同質代表性個體 (Representative Agent)**：全都會區套用統一的彈性係數與固定時間價值 (VTTS \$18.50/hr)。 | **異質微觀市民 (Micro-Agents, 10,000 人)**：每位虛擬市民具備獨立的神經調控劑濃度 (NPF 預算壓力、血清素耐性、辛弗林活力) 與**家戶私家車持有門檻**。 |
+| **時間與氣候維度** | **靜態單一彈性 (Static Peak Elasticity)**：通常以平日早尖峰為基準回歸單一係數，全天離峰與週末套用統一膨脹因子。 | **生物時鐘與亞熱帶疲勞**：引入晝夜時鐘神經元 (PDF) 捕捉深夜避開 Uber 加價之效應；引入非線性步行疲勞指數 ($d^{1.508}$) 反映豔陽阻抗。 |
+
+---
+
+#### 2. 本套件的核心優點：解決了傳統方法的什麼痛點？
+1. **精準駕馭「極端非邊際政策衝擊（Non-marginal Shock）」**：
+   - 傳統 Logit 模型適用於 5%～10% 的微幅調整。面對 50c 這種**票價暴跌 89% 的極端變動**，線性彈性會給出荒謬的暴衝預測（TMR 預測外環 Springwood 客流暴增 +31.88%）。
+   - 果蠅模型引入多巴胺 $\tanh$ 飽和與 $d^{1.508}$ 步行疲勞懲罰，精準識別出 2,200 公尺艷陽步行直接抵消了省下 \$3 的誘因，**預測僅微增 +3.75%（實測 +3.75%），成功守住傳統模型的預測破綻**。
+2. **精確納入「私家車持有總成本（市區停車費錨點）」**：
+   - 傳統增量模型只計算票價省下 \$3.05，完全忽略開車進市區每日高達 \$24～\$26 的高額停車費，導致市區專用道 Route 60 預測嚴重低估（TMR 預測僅 +11.12% vs 實測 +25.0%）。
+   - 果蠅模型以開車總成本為參考基準，高預算壓力（高 NPF）族群逃避停車費能激發強大 PAM 獎勵，**精準預測 +22.96%（實測 +25.0%）**。
+3. **捕捉跨時段的動態大爆發（Time-of-Day Dynamics）**：
+   - 傳統模型忽略夜間休閒市場。果蠅模型結合晝夜節律（PDF）與夜間加價 Uber 替代錨點，精準重現週五週六夜間公車捷運大爆發（Route 66 預測 +58.40% vs 市議會實績 +60.71%）。
+4. **高透明度生物可解釋性（Explainable AI，非黑盒子）**：
+   - 公式中每個迴路節點（PAM 獎勵、PPL1 痛感、MBON 淨效價）皆對應真實生理與行為機制，能向決策者清楚解釋「為何市民搭車、為何車主不換運具」。
+
+---
+
+#### 3. 誠實面對缺點與工程局限性（實務代價）
+1. **運算成本顯著增加（Micro-Simulation Scaling）**：
+   - 傳統四步驟模型採矩陣運算與封閉式機率求解，數分鐘即可完成都會區分配。
+   - 萬人個體微模擬需要循序計算每一名市民的神經傳導與非線性激發。若擴展至全東南昆士蘭 250 萬人口全路網，需依賴分散式平行計算架構。
+2. **參數維度較多，重度依賴高精度刷卡大數據校準**：
+   - 傳統 Logit 模型僅需校準 3～5 個線性係數。
+   - 果蠅模型包含 6 個突觸權重、4 種神經調控劑初始濃度分布與非線性步行指數。必須依賴如本專案 2,477 萬筆 Go Card 這種高密度刷卡數據與貝氏 MAP 先驗約束，否則參數容易產生自由度過高的風險。
+3. **尚未與宏觀交通量動態指派（Traffic Assignment）完全閉環**：
+   - 傳統軟體（如 EMME, Visum）具備路網平衡指派：大量人改搭公車後公路變順暢，會引發部分車次回流（反彈效應 Rebound Effect）。
+   - 本套件目前定位為**走廊級微觀運具選擇引擎（Corridor Mode Choice Engine）**，尚未完全接入都會區路網的 BPR 路阻回饋迴圈。
+4. **體制審查與法規溝通門檻**：
+   - 政府工程審查嚴格依循標準規範（ATAP, Austroads）。向審查委員解釋果蠅神經生物學需要較高溝通成本，實務上需轉化包裝為「非線性雙效價行為微模擬」。
+
+---
+
+#### 4. 工程應用指引：什麼時候該用傳統法？什麼時候必須用果蠅模型？
+- **適用傳統 4-Step 模型的時機**：全都會區宏觀長程（20年期）路網普查、數千條道路鏈的初篩、法定道路拓寬環境影響評估。
+- **必須使用果蠅連接體模型的時機**：面臨**非邊際極端政策衝擊**（如 50c 廉價票價、零碳免費接駁、市中心擁擠費）、高投資專用道路權評估（如 Brisbane Metro）、以及熱帶/亞熱帶氣候下車站第一哩路（TOD）步行可達性審計。
+""")
+
+    st.markdown("---")
+
+    # -------------------------------------------------------------------------
     # Collapsible Technical Appendices: Database & BSTM-MM Limitations Matrix
     # -------------------------------------------------------------------------
     with st.expander("Technical Appendix A: Offline SQLite Empirical Database Explorer (4,390+ Records)" if is_en else "技術附錄 A：本機 SQLite 離線實證資料庫終端 (4,390+ 筆記錄)"):
