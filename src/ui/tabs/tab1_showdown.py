@@ -59,10 +59,10 @@ def render_tab1_showdown(is_en: bool):
     # Corridor Interactive Selector & Drilldown
     # -------------------------------------------------------------------------
     corridor_options = [
-        "1. Springwood Feeder (5.2 km Suburban Feeder)" if is_en else "1. Springwood 至 Rochedale South (5.2 km 郊區生活圈接駁)",
-        "2. UQ Busway Trunk (28.8 km University Express)" if is_en else "2. Springwood 至昆士蘭大學 UQ (28.8 km 專用道大動脈)",
-        "3. Route 60 CityGlider (Inner-City Commercial - Blind Test)" if is_en else "3. Route 60 CityGlider 內城商務幹線 (盲測驗證)",
-        "4. Route 66 / Brisbane Metro M2 (Dedicated Busway - Blind Test)" if is_en else "4. Route 66 / Brisbane Metro M2 捷運專用道 (盲測驗證)"
+        "1. Springwood Feeder [In-Sample Benchmark] (5.2 km)" if is_en else "1. Springwood 郊區接駁 [樣本內校準基準] (5.2 km)",
+        "2. UQ Busway Trunk [In-Sample Benchmark] (28.8 km)" if is_en else "2. UQ 專用道幹線 [樣本內校準基準] (28.8 km)",
+        "3. Route 60 CityGlider [Out-of-Sample Blind Test] (8.5 km)" if is_en else "3. Route 60 CityGlider [樣本外盲測驗證] (8.5 km)",
+        "4. Route 66 / Brisbane Metro M2 [Out-of-Sample Blind Test] (10.2 km)" if is_en else "4. Route 66 / Metro M2 [樣本外盲測驗證] (10.2 km)"
     ]
 
     selected_corridor_label = st.radio(
@@ -356,7 +356,7 @@ def render_tab1_showdown(is_en: bool):
     st.markdown("### " + ("Master Benchmark Summary: All 4 Corridors at a Glance" if is_en else "四大走廊三方對決總覽表"))
     summary_data = [
         {
-            "Corridor" if is_en else "走廊路線": "Route 1: Springwood Feeder (5.2 km)",
+            "Corridor" if is_en else "走廊路線": "Route 1: Springwood Feeder [In-Sample] (5.2 km)" if is_en else "走廊 1: Springwood 接駁 [樣本內校準] (5.2 km)",
             "Ground Truth (Real)" if is_en else "真實世界實測": "+3.75% (+0.66 pp)",
             "Drosophila Model" if is_en else "果蠅大腦模型": "+3.75% (+0.66 pp)",
             "Model Error" if is_en else "模型誤差": "0.00 pp",
@@ -364,31 +364,36 @@ def render_tab1_showdown(is_en: bool):
             "TMR Error" if is_en else "TMR 誤差": "+28.13% (Overpredicted)" if is_en else "+28.13% (高估)"
         },
         {
-            "Corridor" if is_en else "走廊路線": "Route 2: UQ Busway Trunk (28.8 km)",
+            "Corridor" if is_en else "走廊路線": "Route 2: UQ Busway Trunk [In-Sample] (28.8 km)" if is_en else "走廊 2: UQ 專用道幹線 [樣本內校準] (28.8 km)",
             "Ground Truth (Real)" if is_en else "真實世界實測": "+32.0% (+8.50 pp)",
             "Drosophila Model" if is_en else "果蠅大腦模型": "+32.35% (+8.53 pp)",
-            "Model Error" if is_en else "模型誤差": "+0.03 pp (99.7% Accuracy)",
+            "Model Error" if is_en else "模型誤差": "+0.03 pp (99.7% Accuracy)" if is_en else "+0.03 pp (精度 99.7%)",
             "TMR Forecast (BSTM-MM)" if is_en else "TMR 官方預測": "+38.55% (+9.84 pp)",
             "TMR Error" if is_en else "TMR 誤差": "+6.20 pp (Overpredicted)" if is_en else "+6.20 pp (高估)"
         },
         {
-            "Corridor" if is_en else "走廊路線": "Route 60: CityGlider (Blind Test)",
-            "Ground Truth (Real)" if is_en else "真實世界實測": "+25.00% (+367k trips)",
+            "Corridor" if is_en else "走廊路線": "Route 60: CityGlider [Blind Test] (8.5 km)" if is_en else "走廊 3: Route 60 內城幹線 [樣本外盲測] (8.5 km)",
+            "Ground Truth (Real)" if is_en else "真實世界實測": "+25.00% (+367k trips)" if is_en else "+25.00% (+36.7萬人次)",
             "Drosophila Model" if is_en else "果蠅大腦模型": "+22.96% (+11.51 pp)",
             "Model Error" if is_en else "模型誤差": "-2.04% (-0.99 pp)",
             "TMR Forecast (BSTM-MM)" if is_en else "TMR 官方預測": "+11.12% (+5.57 pp)",
             "TMR Error" if is_en else "TMR 誤差": "-13.88% (Severe Underestimate)" if is_en else "-13.88% (嚴重低估漏算)"
         },
         {
-            "Corridor" if is_en else "走廊路線": "Route 66 / M2: Metro Trunk (Blind Test)",
-            "Ground Truth (Real)" if is_en else "真實世界實測": "+60.71% (Council Record)",
-            "Drosophila Model" if is_en else "果蠅大腦模型": "+58.40% (Time-Weighted)",
+            "Corridor" if is_en else "走廊路線": "Route 66 / M2: Metro Trunk [Blind Test] (10.2 km)" if is_en else "走廊 4: Route 66 / Metro M2 [樣本外盲測] (10.2 km)",
+            "Ground Truth (Real)" if is_en else "真實世界實測": "+60.71% (Council Record)" if is_en else "+60.71% (市議會實績)",
+            "Drosophila Model" if is_en else "果蠅大腦模型": "+58.40% (Time-Weighted)" if is_en else "+58.40% (時段加權)",
             "Model Error" if is_en else "模型誤差": "-2.31%",
-            "TMR Forecast (BSTM-MM)" if is_en else "TMR 官方預測": "+36.78% (Flat Factor)",
+            "TMR Forecast (BSTM-MM)" if is_en else "TMR 官方預測": "+36.78% (Flat Factor)" if is_en else "+36.78% (單一彈性)",
             "TMR Error" if is_en else "TMR 誤差": "-23.93% (Missed Night Surge)" if is_en else "-23.93% (漏算夜間狂潮)"
         }
     ]
     st.table(pd.DataFrame(summary_data))
+    st.caption(
+        "Validation Strategy: Routes 1 & 2 verify mathematical convergence on calibration archetypes. Routes 3 & 4 evaluate out-of-sample prediction with 100% frozen synaptic weights."
+        if is_en else
+        "模型驗證架構：走廊 1 與 2 用於確認雙效價架構對基準原型的收斂容量；走廊 3 與 4 則在突觸權重 100% 凍結下進行樣本外盲測驗證。"
+    )
 
     st.markdown("---")
     st.markdown("### " + ("Official References & Benchmark Data Sources" if is_en else "官方實證參考文獻與數據溯源"))

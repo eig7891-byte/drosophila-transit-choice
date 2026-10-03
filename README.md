@@ -1,4 +1,5 @@
 # Bio-Transit: Biologically Grounded Transit Choice Engine
+### A Bio-Inspired Multi-Agent Choice Engine Grounded in Drosophila Mushroom Body Microcircuits
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://drosophila-transit-choice.streamlit.app/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
@@ -6,9 +7,10 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Data: TransLink Q2 2025-26](https://img.shields.io/badge/Data-TransLink%20Q2%202025--26-emerald.svg)](https://translink.com.au/)
 
-> **The 30-Second Summary**: When Queensland cut public transit fares to 50 cents in August 2024, official transport models predicted a huge surge in suburban bus ridership (+31.9%). Instead, ridership barely moved (+3.75%). Why? Walking 2 km in 30°C subtropical heat causes physical fatigue that outweighs saving $3. 
-> 
-> This side project models commuter decisions using the neural connectome of the fruit fly (*Drosophila melanogaster*). By mapping ticket savings to dopamine reward circuits (PAM) and walking heat fatigue to dopamine aversion circuits (PPL1), the model reproduces real-world travel behavior across 24.7 million Go Card trips. It predicted the real +3.75% suburban outcome with 0.00% error.
+> **The 20-Minute Portfolio Pitch**: 
+> * **The Problem**: Queensland slashed public transit fares to 50 cents (-89%). Official government models predicted suburban drivers would rush to buses (+31.9%). Instead, ridership barely shifted (+3.75%). Why? Walking 2.2 km under 30°C Queensland sun hurts more than saving $3.
+> * **The Model**: An explainable **Bio-Inspired Multi-Agent Choice Engine** grounded in the *Drosophila* Mushroom Body dual-valence microcircuit (HHMI Janelia FlyEM / FlyWire *Nature* 2024). It replaces arbitrary linear utility ($V = \beta X$) with biological reward ($\tanh$) and heat walk fatigue ($d^{1.51}$), providing a physiological foundation for Kahneman & Tversky's Prospect Theory.
+> * **The Results**: Calibrated on 24.7M Go Card trips with Bayesian priors. In 100% frozen out-of-sample blind tests, it predicted Route 60 CityGlider within -0.99 pp (vs TMR's -6.9 pp error) and Route 66 Metro within -2.31% (vs TMR's -23.9 pp error).
 
 [Launch Interactive Streamlit App](https://drosophila-transit-choice.streamlit.app/) | [Read Full Technical Report](reports/brisbane_transit_report_en.md)
 
@@ -32,7 +34,7 @@ Three physical factors explain why standard models struggled:
 
 Fruit flies and human commuters make decisions using similar reward-versus-pain trade-offs. 
 
-A fruit fly navigates towards sugar and avoids heat. A commuter weighs fare savings against walking in the sun. This project maps the adult *Drosophila* mushroom body connectome (from HHMI Janelia Research Campus) directly to transport choice:
+A fruit fly navigates towards sugar and avoids heat. A commuter weighs fare savings against walking in the sun. This project maps the adult *Drosophila* mushroom body microcircuit (from HHMI Janelia Research Campus) directly to transport choice:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -58,6 +60,17 @@ A fruit fly navigates towards sugar and avoids heat. A commuter weighs fare savi
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
+### Theoretical Bridge: Grounding Prospect Theory in Neurobiology
+
+Traditional transport models assume linear expected utility without reference anchors. This project provides a biological neural foundation for Kahneman & Tversky's (1979) **Prospect Theory**:
+
+| Dimension | Expected Utility (TMR Logit) | Prospect Theory (Kahneman-Tversky) | Drosophila Microcircuit Engine (This Project) |
+| :--- | :--- | :--- | :--- |
+| **Reference Anchor** | None (Absolute cost) | Subjective baseline | **$28/day private driving cost anchor** |
+| **Gain Evaluation** | Linear ($+\beta \cdot \text{Savings}$) | S-curve concave gain | **PAM dopamine circuit with $\tanh$ saturation** |
+| **Loss & Fatigue** | Linear ($-\beta \cdot \text{Time}$) | Loss aversion | **PPL1 dopamine circuit with $d^{1.51}$ exponential heat fatigue** |
+| **Internal State** | Static representative agent | Static framing | **Neuromodulators: NPF (budget), Serotonin (patience), PDF (circadian clock)** |
+
 ### Brain Circuit to Urban Commute Mapping
 
 | Fruit Fly Circuit | Biological Role | Urban Commute Translation | Mathematical Form |
@@ -82,7 +95,7 @@ All figures below are benchmarked against Queensland Government Open Data (24.7M
 | **3. Inner-City Commercial**<br>*(Out-of-Sample Blind Test)*<br>Route 60 CityGlider | 8.5 km, high frequency, $24/day CBD commercial parking | **+12.50 pp**<br>(+25.0% / +367k trips) | **+11.51 pp**<br>(-0.99 pp error) | **+5.57 pp**<br>(-6.9 pp underpredicted) | TMR only evaluated ticket savings ($3.05). The Drosophila model evaluated savings against $24/day parking fees. |
 | **4. Busway Metro Trunk**<br>*(Out-of-Sample Blind Test)*<br>Route 66 / Metro M2 | 10.2 km, dedicated busway tunnel, electric Metro fleet | **+60.71%**<br>(Council Record) | **+58.40%**<br>(-2.31% error) | **+36.78%**<br>(-23.9 pp underpredicted) | Standard models missed night travel. The Drosophila model captured morning seat limits and the +160% weekend night surge. |
 
-> *Methodology Note*: Corridors 1 and 2 confirm the mathematical capacity of the dual-valence equations on training archetypes. Corridors 3 and 4 evaluate generalisation performance with all neural weights completely frozen.
+> *Methodology Note*: Corridors 1 and 2 verify mathematical convergence on training archetypes (anchored by Bayesian literature priors via Ridge regularisation to prevent unconstrained drifting). Corridors 3 and 4 evaluate generalisation performance with all neural weights completely frozen.
 
 ---
 
@@ -98,9 +111,11 @@ All figures below are benchmarked against Queensland Government Open Data (24.7M
 
 ### Engineering Limitations & Honest Trade-offs
 
-1. **Computational Overhead**: Simulating 10,000 heterogeneous neural agents takes more computing time than solving a closed-form matrix equation. Scaling this to 2.5 million metropolitan residents requires distributed processing.
-2. **Data Requirements**: Needs smart-card transaction data (such as 24.7M Go Card trips) to calibrate its six synaptic weights and walking fatigue exponent.
-3. **No Network Equilibrium Loop**: The current version focuses on corridor mode choice. It does not yet include dynamic traffic assignment software (e.g., Aimsun or SUMO) for network-wide road congestion feedback.
+1. **Architecture Scope (Microcircuit Choice Kernel vs Spiking Network)**: This project implements a bio-inspired discrete choice agent kernel grounded in Mushroom Body microcircuits, not a 26,000-neuron biophysical spiking simulation. This abstraction allows simulating 10,000 agents efficiently while preserving biological non-linearities.
+2. **Computational Overhead**: Simulating 10,000 heterogeneous neural agents takes more computing time than solving a closed-form matrix equation. Scaling this to 2.5 million metropolitan residents requires distributed computing.
+3. **Parameter Optimization & Regularisation**: The model utilizes 6 core synaptic weights constrained by Bayesian literature priors (Ridge penalty). Out-of-sample validity is confirmed by the 100% frozen blind tests on Routes 60 and 66.
+4. **Lack of Dynamic Highway Assignment Equilibrium**: Functions as a corridor mode choice engine. It does not yet include dynamic traffic assignment software (e.g. Aimsun or SUMO) for network-wide volume-delay congestion feedback.
+5. **Climate Decoupling & Transferability**: Environmental inputs (weather heat index $W$, walk distance $d$, parking tariffs $C$) are decoupled from biological synaptic weights, allowing zero-shot or few-shot transfer to other metropolitan regions without recalibrating core neural sensitivity.
 
 ---
 
